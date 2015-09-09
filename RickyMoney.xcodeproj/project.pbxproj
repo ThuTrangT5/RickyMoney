@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1823D41C1B8E140D005AC56B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823D41B1B8E140D005AC56B /* main.m */; };
+		1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823D41E1B8E140D005AC56B /* AppDelegate.m */; };
+		1823D4251B8E140D005AC56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1823D4231B8E140D005AC56B /* Main.storyboard */; };
+		1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1823D4261B8E140D005AC56B /* Assets.xcassets */; };
+		1823D4351B8E140D005AC56B /* RickyMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823D4341B8E140D005AC56B /* RickyMoneyTests.m */; };
+		1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */; };
+		1840BD8D1B9DEFF9001A9160 /* RMSettingOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */; };
+		18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */; };
+		18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */; };
+		18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */; };
+		18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9681B9B4C4F00E0185D /* NSString+FontAwesome.m */; };
+		18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */; };
+		18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9711B9B603200E0185D /* UIColor+HexColor.m */; };
+		18CAE9771B9B603200E0185D /* VBPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9731B9B603200E0185D /* VBPieChart.m */; };
+		18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9751B9B603200E0185D /* VBPiePiece.m */; };
+		18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */; };
+		18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */; };
+		46C801703568AD245586F66C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C469627E6E76798F4FCEEA0 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1823D4311B8E140D005AC56B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1823D40F1B8E140D005AC56B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1823D4161B8E140D005AC56B;
+			remoteInfo = RickyMoney;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1823D4171B8E140D005AC56B /* RickyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1823D41B1B8E140D005AC56B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1823D41D1B8E140D005AC56B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1823D41E1B8E140D005AC56B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1823D4241B8E140D005AC56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1823D4261B8E140D005AC56B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1823D42B1B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1823D4301B8E140D005AC56B /* RickyMoneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickyMoneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1823D4341B8E140D005AC56B /* RickyMoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RickyMoneyTests.m; sourceTree = "<group>"; };
+		1823D4361B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1823D43F1B8E140D005AC56B /* RickyMoneyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RickyMoneyUITests.m; sourceTree = "<group>"; };
+		1823D4411B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingViewController.h; sourceTree = "<group>"; };
+		1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingViewController.m; sourceTree = "<group>"; };
+		1840BD8B1B9DEFF9001A9160 /* RMSettingOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingOptionViewController.h; sourceTree = "<group>"; };
+		1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingOptionViewController.m; sourceTree = "<group>"; };
+		18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMHomeViewController.h; sourceTree = "<group>"; };
+		18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMHomeViewController.m; sourceTree = "<group>"; };
+		18CAE9611B9AF89F00E0185D /* RMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoginViewController.h; sourceTree = "<group>"; };
+		18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMLoginViewController.m; sourceTree = "<group>"; };
+		18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		18CAE9671B9B4C4F00E0185D /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		18CAE9681B9B4C4F00E0185D /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		18CAE9691B9B4C4F00E0185D /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		18CAE96E1B9B4DD400E0185D /* RMConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConstant.h; sourceTree = "<group>"; };
+		18CAE9701B9B603200E0185D /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		18CAE9711B9B603200E0185D /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		18CAE9721B9B603200E0185D /* VBPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPieChart.h; sourceTree = "<group>"; };
+		18CAE9731B9B603200E0185D /* VBPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPieChart.m; sourceTree = "<group>"; };
+		18CAE9741B9B603200E0185D /* VBPiePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPiePiece.h; sourceTree = "<group>"; };
+		18CAE9751B9B603200E0185D /* VBPiePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPiePiece.m; sourceTree = "<group>"; };
+		18CAE9791B9C3A8C00E0185D /* RMCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategoryViewController.h; sourceTree = "<group>"; };
+		18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryViewController.m; sourceTree = "<group>"; };
+		18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMParseRequestHandler.h; sourceTree = "<group>"; };
+		18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMParseRequestHandler.m; sourceTree = "<group>"; };
+		4C469627E6E76798F4FCEEA0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1823D4141B8E140D005AC56B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46C801703568AD245586F66C /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1823D42D1B8E140D005AC56B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1823D40E1B8E140D005AC56B = {
+			isa = PBXGroup;
+			children = (
+				1823D4191B8E140D005AC56B /* RickyMoney */,
+				1823D4331B8E140D005AC56B /* RickyMoneyTests */,
+				1823D43E1B8E140D005AC56B /* RickyMoneyUITests */,
+				1823D4181B8E140D005AC56B /* Products */,
+				490F8789054314FC46125CE9 /* Pods */,
+				71F895E18A22AF386955E608 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1823D4181B8E140D005AC56B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1823D4171B8E140D005AC56B /* RickyMoney.app */,
+				1823D4301B8E140D005AC56B /* RickyMoneyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1823D4191B8E140D005AC56B /* RickyMoney */ = {
+			isa = PBXGroup;
+			children = (
+				18CAE9641B9B4C4F00E0185D /* Utils */,
+				18CAE95D1B9AE6FC00E0185D /* ViewControllers */,
+				1823D41D1B8E140D005AC56B /* AppDelegate.h */,
+				1823D41E1B8E140D005AC56B /* AppDelegate.m */,
+				1823D4231B8E140D005AC56B /* Main.storyboard */,
+				1823D4261B8E140D005AC56B /* Assets.xcassets */,
+				1823D42B1B8E140D005AC56B /* Info.plist */,
+				1823D41A1B8E140D005AC56B /* Supporting Files */,
+			);
+			path = RickyMoney;
+			sourceTree = "<group>";
+		};
+		1823D41A1B8E140D005AC56B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1823D41B1B8E140D005AC56B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1823D4331B8E140D005AC56B /* RickyMoneyTests */ = {
+			isa = PBXGroup;
+			children = (
+				1823D4341B8E140D005AC56B /* RickyMoneyTests.m */,
+				1823D4361B8E140D005AC56B /* Info.plist */,
+			);
+			path = RickyMoneyTests;
+			sourceTree = "<group>";
+		};
+		1823D43E1B8E140D005AC56B /* RickyMoneyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1823D43F1B8E140D005AC56B /* RickyMoneyUITests.m */,
+				1823D4411B8E140D005AC56B /* Info.plist */,
+			);
+			path = RickyMoneyUITests;
+			sourceTree = "<group>";
+		};
+		18CAE95D1B9AE6FC00E0185D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */,
+				18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */,
+				18CAE9611B9AF89F00E0185D /* RMLoginViewController.h */,
+				18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */,
+				18CAE9791B9C3A8C00E0185D /* RMCategoryViewController.h */,
+				18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */,
+				1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */,
+				1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */,
+				1840BD8B1B9DEFF9001A9160 /* RMSettingOptionViewController.h */,
+				1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		18CAE9641B9B4C4F00E0185D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				18CAE96F1B9B603200E0185D /* VBPieChart */,
+				18CAE9651B9B4C4F00E0185D /* FontAwesome */,
+				18CAE96E1B9B4DD400E0185D /* RMConstant.h */,
+				18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */,
+				18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		18CAE9651B9B4C4F00E0185D /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */,
+				18CAE9671B9B4C4F00E0185D /* NSString+FontAwesome.h */,
+				18CAE9681B9B4C4F00E0185D /* NSString+FontAwesome.m */,
+				18CAE9691B9B4C4F00E0185D /* UIImage+FontAwesome.h */,
+				18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */,
+			);
+			path = FontAwesome;
+			sourceTree = "<group>";
+		};
+		18CAE96F1B9B603200E0185D /* VBPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				18CAE9701B9B603200E0185D /* UIColor+HexColor.h */,
+				18CAE9711B9B603200E0185D /* UIColor+HexColor.m */,
+				18CAE9721B9B603200E0185D /* VBPieChart.h */,
+				18CAE9731B9B603200E0185D /* VBPieChart.m */,
+				18CAE9741B9B603200E0185D /* VBPiePiece.h */,
+				18CAE9751B9B603200E0185D /* VBPiePiece.m */,
+			);
+			path = VBPieChart;
+			sourceTree = "<group>";
+		};
+		490F8789054314FC46125CE9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */,
+				661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		71F895E18A22AF386955E608 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C469627E6E76798F4FCEEA0 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1823D4161B8E140D005AC56B /* RickyMoney */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1823D4441B8E140D005AC56B /* Build configuration list for PBXNativeTarget "RickyMoney" */;
+			buildPhases = (
+				8219E7E9EE13A69A96B7FAF4 /* Check Pods Manifest.lock */,
+				1823D4131B8E140D005AC56B /* Sources */,
+				1823D4141B8E140D005AC56B /* Frameworks */,
+				1823D4151B8E140D005AC56B /* Resources */,
+				915717DF33226D0C92717C2D /* Embed Pods Frameworks */,
+				34702F300B32C7694129DE82 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RickyMoney;
+			productName = RickyMoney;
+			productReference = 1823D4171B8E140D005AC56B /* RickyMoney.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1823D42F1B8E140D005AC56B /* RickyMoneyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1823D4471B8E140D005AC56B /* Build configuration list for PBXNativeTarget "RickyMoneyTests" */;
+			buildPhases = (
+				1823D42C1B8E140D005AC56B /* Sources */,
+				1823D42D1B8E140D005AC56B /* Frameworks */,
+				1823D42E1B8E140D005AC56B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1823D4321B8E140D005AC56B /* PBXTargetDependency */,
+			);
+			name = RickyMoneyTests;
+			productName = RickyMoneyTests;
+			productReference = 1823D4301B8E140D005AC56B /* RickyMoneyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1823D40F1B8E140D005AC56B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RM;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = adelphatech;
+				TargetAttributes = {
+					1823D4161B8E140D005AC56B = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 6B38QGCCQS;
+					};
+					1823D42F1B8E140D005AC56B = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 1823D4161B8E140D005AC56B;
+					};
+				};
+			};
+			buildConfigurationList = 1823D4121B8E140D005AC56B /* Build configuration list for PBXProject "RickyMoney" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1823D40E1B8E140D005AC56B;
+			productRefGroup = 1823D4181B8E140D005AC56B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1823D4161B8E140D005AC56B /* RickyMoney */,
+				1823D42F1B8E140D005AC56B /* RickyMoneyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1823D4151B8E140D005AC56B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */,
+				1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */,
+				1823D4251B8E140D005AC56B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1823D42E1B8E140D005AC56B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		34702F300B32C7694129DE82 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8219E7E9EE13A69A96B7FAF4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		915717DF33226D0C92717C2D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1823D4131B8E140D005AC56B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */,
+				18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */,
+				18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */,
+				1840BD8D1B9DEFF9001A9160 /* RMSettingOptionViewController.m in Sources */,
+				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
+				18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */,
+				18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */,
+				18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */,
+				18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */,
+				18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */,
+				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
+				1823D41C1B8E140D005AC56B /* main.m in Sources */,
+				18CAE9771B9B603200E0185D /* VBPieChart.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1823D42C1B8E140D005AC56B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1823D4351B8E140D005AC56B /* RickyMoneyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1823D4321B8E140D005AC56B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1823D4161B8E140D005AC56B /* RickyMoney */;
+			targetProxy = 1823D4311B8E140D005AC56B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1823D4231B8E140D005AC56B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1823D4241B8E140D005AC56B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1823D4421B8E140D005AC56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1823D4431B8E140D005AC56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1823D4451B8E140D005AC56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: atahir@adelphatech.com (8846FWA4QQ)";
+				INFOPLIST_FILE = RickyMoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoney;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1823D4461B8E140D005AC56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: atahir@adelphatech.com (8846FWA4QQ)";
+				INFOPLIST_FILE = RickyMoney/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoney;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1823D4481B8E140D005AC56B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RickyMoneyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RickyMoney.app/RickyMoney";
+			};
+			name = Debug;
+		};
+		1823D4491B8E140D005AC56B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RickyMoneyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RickyMoney.app/RickyMoney";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1823D4121B8E140D005AC56B /* Build configuration list for PBXProject "RickyMoney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1823D4421B8E140D005AC56B /* Debug */,
+				1823D4431B8E140D005AC56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1823D4441B8E140D005AC56B /* Build configuration list for PBXNativeTarget "RickyMoney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1823D4451B8E140D005AC56B /* Debug */,
+				1823D4461B8E140D005AC56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1823D4471B8E140D005AC56B /* Build configuration list for PBXNativeTarget "RickyMoneyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1823D4481B8E140D005AC56B /* Debug */,
+				1823D4491B8E140D005AC56B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1823D40F1B8E140D005AC56B /* Project object */;
+}
