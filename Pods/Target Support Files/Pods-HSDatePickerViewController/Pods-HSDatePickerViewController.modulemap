@@ -1,0 +1,6 @@
+framework module HSDatePickerViewController {
+  umbrella header "Pods-HSDatePickerViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -20,7 +20,6 @@
     
     _menuItems = [[NSArray alloc] initWithObjects:
                   @[@"fa-user", @"Profile"],
-                  @[@"fa-cog", @"Setting"],
                   @[@"fa-pencil-square-o", @"Transactions"],
                   @[@"fa-tags", @"Categories"],
                   @[@"fa-bell", @"Notifications"],
@@ -96,16 +95,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) { // profile
-        
-        
-    } else if (indexPath.row == 1) { // setting
-        [self performSegueWithIdentifier:@"settingSegue" sender:nil];        
-        
-    } else if (indexPath.row == 2) { // Transactions
+        [self performSegueWithIdentifier:@"settingSegue" sender:nil];
+ 
+    } else if (indexPath.row == 1) { // Transactions
         [self performSegueWithIdentifier:@"transactionSegue" sender:nil];
         
-    } else if (indexPath.row == 3) { // category
+    } else if (indexPath.row == 2) { // category
         [self performSegueWithIdentifier:@"categorySegue" sender:nil];
+        
+    } else if (indexPath.row == 3) {
+        
         
     } else if (indexPath.row == 4) {
         
@@ -114,9 +113,6 @@
         
         
     } else if (indexPath.row == 6) {
-        
-        
-    } else if (indexPath.row == 7) {
         [PFUser logOut];
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
         

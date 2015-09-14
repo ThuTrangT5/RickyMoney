@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RMSettingOptionViewController.h"
+#import "RMOptionsViewController.h"
 
-@interface RMSettingViewController : UITableViewController <RMSettingOptionDelegate>
+@interface RMSettingViewController : UITableViewController <RMOptionsDelegate>
 
 @end

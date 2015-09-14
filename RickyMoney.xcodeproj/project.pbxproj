@@ -13,7 +13,7 @@
 		1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1823D4261B8E140D005AC56B /* Assets.xcassets */; };
 		1823D4351B8E140D005AC56B /* RickyMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823D4341B8E140D005AC56B /* RickyMoneyTests.m */; };
 		1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */; };
-		1840BD8D1B9DEFF9001A9160 /* RMSettingOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */; };
+		18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */; };
 		18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */; };
 		18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */; };
 		18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */; };
@@ -24,6 +24,8 @@
 		18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9751B9B603200E0185D /* VBPiePiece.m */; };
 		18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */; };
 		18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */; };
+		18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F877771BA1DE7000AB362B /* RMTransactionController.m */; };
+		18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */; };
 		46C801703568AD245586F66C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C469627E6E76798F4FCEEA0 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -52,8 +54,8 @@
 		1823D4411B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingViewController.h; sourceTree = "<group>"; };
 		1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingViewController.m; sourceTree = "<group>"; };
-		1840BD8B1B9DEFF9001A9160 /* RMSettingOptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingOptionViewController.h; sourceTree = "<group>"; };
-		1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingOptionViewController.m; sourceTree = "<group>"; };
+		18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOptionsViewController.h; sourceTree = "<group>"; };
+		18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOptionsViewController.m; sourceTree = "<group>"; };
 		18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMHomeViewController.h; sourceTree = "<group>"; };
 		18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMHomeViewController.m; sourceTree = "<group>"; };
 		18CAE9611B9AF89F00E0185D /* RMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoginViewController.h; sourceTree = "<group>"; };
@@ -74,6 +76,10 @@
 		18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryViewController.m; sourceTree = "<group>"; };
 		18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMParseRequestHandler.h; sourceTree = "<group>"; };
 		18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMParseRequestHandler.m; sourceTree = "<group>"; };
+		18F877761BA1DE7000AB362B /* RMTransactionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTransactionController.h; sourceTree = "<group>"; };
+		18F877771BA1DE7000AB362B /* RMTransactionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTransactionController.m; sourceTree = "<group>"; };
+		18F877791BA1DE7F00AB362B /* RMTransactionDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTransactionDetailController.h; sourceTree = "<group>"; };
+		18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMTransactionDetailController.m; sourceTree = "<group>"; };
 		4C469627E6E76798F4FCEEA0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,8 +177,12 @@
 				18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */,
 				1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */,
 				1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */,
-				1840BD8B1B9DEFF9001A9160 /* RMSettingOptionViewController.h */,
-				1840BD8C1B9DEFF9001A9160 /* RMSettingOptionViewController.m */,
+				18F877761BA1DE7000AB362B /* RMTransactionController.h */,
+				18F877771BA1DE7000AB362B /* RMTransactionController.m */,
+				18F877791BA1DE7F00AB362B /* RMTransactionDetailController.h */,
+				18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */,
+				18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */,
+				18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -387,8 +397,8 @@
 				1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */,
 				18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */,
 				18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */,
-				1840BD8D1B9DEFF9001A9160 /* RMSettingOptionViewController.m in Sources */,
 				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
+				18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */,
 				18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */,
 				18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */,
 				18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */,
@@ -396,6 +406,8 @@
 				18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */,
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
+				18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */,
+				18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */,
 				18CAE9771B9B603200E0185D /* VBPieChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

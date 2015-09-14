@@ -18,16 +18,38 @@
 #pragma mark- Tableview delegate & datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 1;
+    }
     return 3;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 150;
+    }
+    return 44;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = [NSString stringWithFormat:@"settingCell%ld", (long)indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    UITableViewCell *cell;
+    
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"userCell"];
+        
+        UIImageView *profile = (UIImageView*)[cell viewWithTag:1];
+        profile.layer.cornerRadius = profile.frame.size.width;
+        profile.layer.masksToBounds = YES;
+        
+    } else {
+        NSString *identifier = [NSString stringWithFormat:@"settingCell%ld", (long)indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    }
+    
     
     return cell;
 }
@@ -36,19 +58,9 @@
     [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
 }
 
-#pragma mark- RMSettingOptionDelegate
+#pragma mark- RMOptionsDelegate
 
-- (void)settingOption:(SettingOptions)settingOption DidSelectedWithName:(NSString *)optionName andOptionId:(NSString *)optionId {
-    int row = 0;
-    if (settingOption == OPTION_CURRENCY) {
-        row = 1;
-    } else if (settingOption == OPTION_REPORT) {
-        row = 2;
-    }
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [cell.detailTextLabel setText:optionName];
+- (void) optionView:(OptionTypes) option DoneWithSelectedData:(NSDictionary*) selectedData {
     
 }
 
@@ -56,16 +68,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"optionSegue"]) {
-        RMSettingOptionViewController *optionVC = (RMSettingOptionViewController*)[segue destinationViewController];
+        RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
         optionVC.delegate = self;
         NSIndexPath *idp = (NSIndexPath*) sender;
         if (idp.row == 0) {
             optionVC.option = OPTION_PASSCODE;
         } else if (idp.row == 1) {
             optionVC.option = OPTION_CURRENCY;
-        } else {
-            optionVC.option = OPTION_REPORT;
-        }
+        } else if (idp.row == 2) {
+            optionVC.option = OPTION_PERIOD_TIME;
+        } 
     }
 }
 

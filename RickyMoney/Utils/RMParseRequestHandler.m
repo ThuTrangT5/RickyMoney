@@ -13,7 +13,8 @@
 @implementation RMParseRequestHandler
 
 + (void)getObjectById:(NSString *)objectId inClass:(NSString *)className withSuccessBlock:(PFObjectResultBlock)block {
-    
+    PFQuery *query = [PFQuery queryWithClassName:className];
+    [query getObjectInBackgroundWithId:objectId block:block];
 }
 
 + (void)getDataByQuery:(PFQuery *)query withSuccessBlock:(PFArrayResultBlock)block {
