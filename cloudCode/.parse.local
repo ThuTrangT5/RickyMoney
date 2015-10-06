@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "RickyMoney": {
+      "applicationId": "RfUxmpN0LZrBjt3ot3nNSEs7mZi8FkH1eXj3xNNq"
+    },
+    "_default": {
+      "link": "RickyMoney"
+    }
+  }
+}
