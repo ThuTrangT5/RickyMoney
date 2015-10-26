@@ -26,11 +26,12 @@
 @property (weak, nonatomic) IBOutlet UISwitch *repeateField;
 @property (weak, nonatomic) IBOutlet UIButton *dateField;
 @property (weak, nonatomic) IBOutlet UITextView *noteField;
-
-@property (strong, nonatomic) HSDatePickerViewController *datePicker;
+//
+//@property (strong, nonatomic) HSDatePickerViewController *datePicker;
 
 - (IBAction)onchangeRepeatValue:(UISwitch *)sender;
 - (IBAction)ontouchSaveTransaction:(id)sender;
 - (IBAction)ontouchSelectDate:(UIButton *)sender;
+- (IBAction)showPickerDate:(id)sender;
 
 @end

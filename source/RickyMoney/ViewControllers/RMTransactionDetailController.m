@@ -34,7 +34,6 @@
         }
         isLoadData = true;
     }
-    
 }
 
 - (void) getTransactionDetail {
@@ -103,24 +102,20 @@
 }
 
 - (IBAction)ontouchSelectDate:(UIButton *)sender {
-    //    if (_datePicker == nil ) {
-    //        _datePicker = [[HSDatePickerViewController alloc] init];
-    //        _datePicker.delegate = self;
-    //        _datePicker.mainColor = RM_COLOR;
-    //        _datePicker.confirmButtonTitle = @"OK";
-    //        _datePicker.backButtonTitle = @"Cancel";
-    //    }
-    //
-    //    _datePicker.date = _transactionDate;
-    //
-    //    [self presentViewController:_datePicker animated:YES completion:nil];
     HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
     hsdpvc.delegate = self;
-    if (self.transactionDate) {
-        hsdpvc.date = self.transactionDate;
-    }
+    hsdpvc.mainColor = RM_COLOR;
+            hsdpvc.confirmButtonTitle = @"OK";
+            hsdpvc.backButtonTitle = @"Cancel";
+    hsdpvc.dateFormatter = 
     [self presentViewController:hsdpvc animated:YES completion:nil];
-    
+}
+
+- (IBAction)showPickerDate:(id)sender {
+    HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
+    hsdpvc.delegate = self;
+    [self presentViewController:hsdpvc animated:YES completion:nil];
+
 }
 
 #pragma mark- Save transaction
@@ -173,8 +168,9 @@
 
 - (void)hsDatePickerPickedDate:(NSDate *)date {
     _transactionDate = date;
-    NSString *dateStr = [NSString stringWithFormat:@"%@", date];
-    [_dateField setTitle:dateStr forState:UIControlStateNormal];
+    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    dateFormater.dateFormat = @"EEEE dd, yyyy";
+    [_dateField setTitle: [dateFormater stringFromDate:date] forState:UIControlStateNormal];
 }
 
 @end

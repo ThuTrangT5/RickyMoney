@@ -32,20 +32,21 @@
                   nil];
     
     [_menuTableView setHidden:YES];
+    [_menuTableView removeFromSuperview];
     
     // UI for menu bar button
     UIImage *menuicon = [UIImage imageWithIcon:@"fa-list-ul" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:CGSizeMake(25, 25)];
     [self.navigationItem.leftBarButtonItem setImage:menuicon];
     [self.navigationItem.leftBarButtonItem setTitle:@""];
     
-//    [self initChart];
+    [self initChart];
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//    [self getTransactionByUser];
-//}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self getTransactionByUser];
+}
 
 #pragma mark - DropDownView
 
@@ -65,7 +66,7 @@
         
         
         CGRect frame = self.view.bounds;
-        frame.size.height = 52 * (_menuItems.count);
+        frame.size.height = 44 * (_menuItems.count);
         [self.menuTableView setFrame:frame];
         [self.menuTableView setHidden:NO];
     }
@@ -73,8 +74,7 @@
     // Show/hide dropdown view
     if ([self.dropdownView isOpen]) {
         [self.dropdownView hide];
-    }
-    else {
+    } else {
         [self.dropdownView showFromNavigationController:self.navigationController withContentView:self.menuTableView];
     }
 }

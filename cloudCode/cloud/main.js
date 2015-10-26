@@ -29,6 +29,7 @@ Parse.Cloud.define("transactionReview", function(request, response) {
 			  
 			  var categoryId = trans.get("category").id;
 			  var amount = trans.get("amount");
+			  console.log("categoryId=" + categoryId + "/ amount = " + amount);
 			  
 			  if (trans.get("type") == 0) { // Expense group
 				  if (group.expense[categoryId] == null) {
@@ -45,7 +46,7 @@ Parse.Cloud.define("transactionReview", function(request, response) {
 					  group.income[categoryId].name = trans.get("category").get(language);
 					  
 				  } else {
-					  group.expense[categoryId].amount += amount;
+					  group.income[categoryId].amount += amount;
 				  }
 			  }
 		  }
