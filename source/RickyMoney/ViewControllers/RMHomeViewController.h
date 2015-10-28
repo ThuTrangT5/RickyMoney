@@ -13,6 +13,7 @@
 @interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) NSArray *expenseTransactions, *incomeTransactions;
 
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (strong, nonatomic) LMDropdownView *dropdownView;
@@ -22,5 +23,6 @@
 
 - (IBAction)ontouchMenu:(id)sender;
 - (IBAction)ontouchSelectRange:(UIButton *)sender;
+- (IBAction)onchangeTransactionType:(UISegmentedControl*)sender;
 
 @end

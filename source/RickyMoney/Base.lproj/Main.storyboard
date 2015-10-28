@@ -766,7 +766,7 @@
                                 </segments>
                                 <color key="tintColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="onchangeTransactionType:" destination="Zqd-Sq-6AE" eventType="valueChanged" id="t2c-6A-EPm"/>
+                                    <action selector="onchangeTransactionType:" destination="8yA-4p-pYk" eventType="valueChanged" id="zyV-w4-JvY"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-xe-dOP">

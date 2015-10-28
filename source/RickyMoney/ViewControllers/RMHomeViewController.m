@@ -114,7 +114,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) { // profile
         [self performSegueWithIdentifier:@"settingSegue" sender:nil];
- 
+        
     } else if (indexPath.row == 1) { // Transactions
         [self performSegueWithIdentifier:@"transactionSegue" sender:nil];
         
@@ -148,7 +148,7 @@
         
         [chartViewParent addSubview:_chartView];
     }
-
+    
     [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
     [_chartView setEnableStrokeColor:YES];
     [_chartView setHoleRadiusPrecent:0.3];
@@ -158,20 +158,20 @@
     [_chartView.layer setShadowColor:[UIColor blackColor].CGColor];
     [_chartView.layer setShadowOpacity:0.7];
     
-    [_chartView setLabelsPosition:VBLabelsPositionOnChart];
+    [_chartView setLabelsPosition:VBLabelsPositionOutChart];
     
-    NSArray *chartValues = @[
-                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
-                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
-                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
-                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
-                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
-                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
-                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
-                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
-                             ];
-    
-    [_chartView setChartValues:chartValues animation:YES];
+    //    NSArray *chartValues = @[
+    //                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
+    //                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
+    //                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
+    //                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
+    //                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
+    //                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
+    //                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
+    //                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
+    //                             ];
+    //
+    //    [_chartView setChartValues:chartValues animation:YES];
     
 }
 
@@ -182,7 +182,7 @@
     
     [RMParseRequestHandler callFunction:@"transactionReview" WithParams:params withSuccessBlock:^(NSDictionary *trans) {
         NSMutableArray *chartValues = [[NSMutableArray alloc] init];
-    
+        
         NSDictionary *expense = [trans valueForKey:@"expense"];
         for (NSString *categoryId in [expense allKeys]) {
             NSDictionary *tran = [expense valueForKey:categoryId];
@@ -193,7 +193,9 @@
                                     };
             [chartValues addObject:chart];
         }
+        _expenseTransactions = chartValues;
         
+        [chartValues removeAllObjects];
         NSDictionary *income = [trans valueForKey:@"income"];
         for (NSString *categoryId in [income allKeys]) {
             NSDictionary *tran = [income valueForKey:categoryId];
@@ -204,8 +206,9 @@
                                     };
             [chartValues addObject:chart];
         }
+        _incomeTransactions = chartValues;
         
-         [_chartView setChartValues:chartValues animation:YES];
+        [_chartView setChartValues:_expenseTransactions animation:YES];
     }];
     //transactionReview
     
@@ -225,5 +228,14 @@
 }
 
 - (IBAction)ontouchSelectRange:(UIButton *)sender {
+}
+
+- (IBAction)onchangeTransactionType:(UISegmentedControl*)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        [_chartView setChartValues:_expenseTransactions animation:YES];
+        
+    } else if (sender.selectedSegmentIndex == 1) {
+        [_chartView setChartValues:_incomeTransactions animation:YES];
+    }
 }
 @end
