@@ -459,17 +459,18 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-db-aY0">
-                                            <rect key="frame" x="276" y="0.0" width="55" height="45"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="passcode-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3bS-zT-Bbd">
                                             <rect key="frame" x="21" y="7" width="30" height="30"/>
                                             <animations/>
                                         </imageView>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hif-0z-Bud">
+                                            <rect key="frame" x="286" y="7" width="51" height="31"/>
+                                            <animations/>
+                                            <color key="onTintColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="turnOnOffPasscode:" destination="SpM-o9-cWD" eventType="valueChanged" id="oJv-i8-AnO"/>
+                                            </connections>
+                                        </switch>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -865,6 +866,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ur3-Qh-i4V"/>
-        <segue reference="a6m-8G-ol2"/>
+        <segue reference="fSN-7S-jVs"/>
     </inferredMetricsTieBreakers>
 </document>

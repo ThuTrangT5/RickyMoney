@@ -90,7 +90,7 @@
                   moduleName = "RickyMoney"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/OneDrive/Documents/Mobile/iOS/ThuTrang-projects/RickyMoney/source/RickyMoney/ViewControllers/RMOptionsViewController.m"
-                  timestampString = "467654501.224091"
+                  timestampString = "467724259.400427"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -105,7 +105,7 @@
                   moduleName = "RickyMoney"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/OneDrive/Documents/Mobile/iOS/ThuTrang-projects/RickyMoney/source/RickyMoney/ViewControllers/RMOptionsViewController.m"
-                  timestampString = "467654501.224467"
+                  timestampString = "467724259.400887"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -137,38 +137,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "467654085.447094"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-showDropDownView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/LMDropdownView/LMDropdownView/LMDropdownView.m"
-            timestampString = "467545486.875341"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-showFromNavigationController:withContentView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMViewController.m"
             timestampString = "467549340.322488"
             startingColumnNumber = "9223372036854775807"
@@ -185,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "467654460.113225"
+            filePath = "Pods/THPinViewController/THPinViewController/THPinView.m"
+            timestampString = "467724231.681003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-initChart"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-initWithDelegate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "467654479.9094"
+            filePath = "Pods/THPinViewController/THPinViewController/THPinView.m"
+            timestampString = "467724235.161481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-initChart"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-updateBottomButton"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

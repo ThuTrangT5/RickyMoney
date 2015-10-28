@@ -55,7 +55,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+    if (indexPath.row > 0) {
+        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+    }
 }
 
 #pragma mark- RMOptionsDelegate
@@ -79,6 +81,52 @@
             optionVC.option = OPTION_PERIOD_TIME;
         } 
     }
+}
+
+#pragma mark- Passcode
+
+- (IBAction)turnOnOffPasscode:(id)sender {
+    
+    if ([((UISwitch*) sender) isOn]) {
+        // open Passcode page
+        
+        THPinViewController *pinViewController = [[THPinViewController alloc] initWithDelegate:self];
+        pinViewController.promptTitle = @"Enter Passcode";
+        pinViewController.promptColor =  RM_COLOR;
+        pinViewController.view.tintColor = RM_COLOR;
+        pinViewController.hideLetters = YES;
+        pinViewController.disableCancel = NO;
+        
+        // for a translucent background, use this:
+        self.view.tag = THPinViewControllerContentViewTag;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+        pinViewController.translucentBackground = YES;
+        
+        [self presentViewController:pinViewController animated:YES completion:nil];
+    }
+}
+
+// mandatory delegate methods
+
+- (NSUInteger)pinLengthForPinViewController:(THPinViewController *)pinViewController
+{
+    return 5;
+}
+
+- (BOOL)pinViewController:(THPinViewController *)pinViewController isPinValid:(NSString *)pin
+{
+//    if ([pin isEqualToString:self.correctPin]) {
+//        return YES;
+//    } else {
+//        self.remainingPinEntries--;
+//        return NO;
+//    }
+    return YES;
+}
+
+- (BOOL)userCanRetryInPinViewController:(THPinViewController *)pinViewController
+{
+    return YES;
 }
 
 @end

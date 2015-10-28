@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RMOptionsViewController.h"
+#import <THPinViewController/THPinViewController.h>
 
-@interface RMSettingViewController : UITableViewController <RMOptionsDelegate>
+@interface RMSettingViewController : UITableViewController <RMOptionsDelegate, THPinViewControllerDelegate>
 
+- (IBAction)turnOnOffPasscode:(id)sender;
 @end
