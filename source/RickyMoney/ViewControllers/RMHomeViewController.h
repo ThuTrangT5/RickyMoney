@@ -16,8 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (strong, nonatomic) LMDropdownView *dropdownView;
+@property (weak, nonatomic) IBOutlet UIButton *rangeButton;
 
 @property (strong, nonatomic) VBPieChart *chartView;
 
 - (IBAction)ontouchMenu:(id)sender;
+- (IBAction)ontouchSelectRange:(UIButton *)sender;
+
 @end

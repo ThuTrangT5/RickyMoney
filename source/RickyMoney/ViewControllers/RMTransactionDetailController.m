@@ -27,7 +27,7 @@
     if (isLoadData == false) {
         
         if (_transactionId == nil || _transactionId.length == 0) {
-            _transactionDate = [NSDate new];
+            [self ttDatePickerPickedDate:[NSDate new]];
             
         } else {
             [self getTransactionDetail];
@@ -102,20 +102,13 @@
 }
 
 - (IBAction)ontouchSelectDate:(UIButton *)sender {
-    HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
-    hsdpvc.delegate = self;
-    hsdpvc.mainColor = RM_COLOR;
-            hsdpvc.confirmButtonTitle = @"OK";
-            hsdpvc.backButtonTitle = @"Cancel";
-    hsdpvc.dateFormatter = 
-    [self presentViewController:hsdpvc animated:YES completion:nil];
-}
-
-- (IBAction)showPickerDate:(id)sender {
-    HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
-    hsdpvc.delegate = self;
-    [self presentViewController:hsdpvc animated:YES completion:nil];
-
+    TTDatePickerViewController *datepickerVC = [TTDatePickerViewController new];
+    datepickerVC.mainColor = RM_COLOR;
+    datepickerVC.confirmButtonTitle = @"Select";
+    datepickerVC.titlePicker = @"Transaction Date";
+    datepickerVC.delegate = self;
+    [self presentViewController:datepickerVC animated:YES completion:nil];
+    
 }
 
 #pragma mark- Save transaction
@@ -164,12 +157,12 @@
     [self.categoryField setTitle:[selectedData valueForKey:@"categoryName"] forState:UIControlStateNormal];
 }
 
-#pragma mark- HSDatePickerViewControllerDelegate
+#pragma mark- TTDatePickerViewControllerDelegate
 
-- (void)hsDatePickerPickedDate:(NSDate *)date {
+- (void)ttDatePickerPickedDate:(NSDate *)date {
     _transactionDate = date;
     NSDateFormatter *dateFormater = [NSDateFormatter new];
-    dateFormater.dateFormat = @"EEEE dd, yyyy";
+    dateFormater.dateFormat = @"MMMM dd, yyyy";
     [_dateField setTitle: [dateFormater stringFromDate:date] forState:UIControlStateNormal];
 }
 

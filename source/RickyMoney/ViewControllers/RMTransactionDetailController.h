@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RMOptionsViewController.h"
-#import <HSDatePickerViewController/HSDatePickerViewController.h>
+#import "TTDatePickerViewController.h"
 
-@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, HSDatePickerViewControllerDelegate> {
+@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, TTDatePickerViewControllerDelegate> {
     BOOL isLoadData;
 }
 
@@ -26,12 +26,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *repeateField;
 @property (weak, nonatomic) IBOutlet UIButton *dateField;
 @property (weak, nonatomic) IBOutlet UITextView *noteField;
-//
-//@property (strong, nonatomic) HSDatePickerViewController *datePicker;
 
 - (IBAction)onchangeRepeatValue:(UISwitch *)sender;
 - (IBAction)ontouchSaveTransaction:(id)sender;
 - (IBAction)ontouchSelectDate:(UIButton *)sender;
-- (IBAction)showPickerDate:(id)sender;
 
 @end

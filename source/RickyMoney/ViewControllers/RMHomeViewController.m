@@ -39,6 +39,9 @@
     [self.navigationItem.leftBarButtonItem setImage:menuicon];
     [self.navigationItem.leftBarButtonItem setTitle:@""];
     
+    // range button
+    
+    
     [self initChart];
 }
 
@@ -138,10 +141,14 @@
 - (void) initChart {
     if (_chartView == nil) {
         _chartView = [[VBPieChart alloc] init];
-        [self.view addSubview:_chartView];
+        
+        UIView *chartViewParent = [self.view viewWithTag:1];
+        [chartViewParent setBackgroundColor:[UIColor clearColor]];
+        [_chartView setFrame:chartViewParent.bounds];
+        
+        [chartViewParent addSubview:_chartView];
     }
-    [_chartView setFrame:CGRectMake((self.view.bounds.size.width - 300)/2, 90, 300, 300)];
-    
+
     [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
     [_chartView setEnableStrokeColor:YES];
     [_chartView setHoleRadiusPrecent:0.3];
@@ -153,16 +160,18 @@
     
     [_chartView setLabelsPosition:VBLabelsPositionOnChart];
     
-//    NSArray *chartValues = @[
-//                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
-//                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
-//                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
-//                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
-//                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
-//                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
-//                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
-//                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
-//                             ];
+    NSArray *chartValues = @[
+                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
+                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
+                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
+                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
+                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
+                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
+                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
+                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
+                             ];
+    
+    [_chartView setChartValues:chartValues animation:YES];
     
 }
 
@@ -213,5 +222,8 @@
 - (IBAction)ontouchMenu:(id)sender {
     [self.menuTableView reloadData];
     [self showDropDownView];
+}
+
+- (IBAction)ontouchSelectRange:(UIButton *)sender {
 }
 @end

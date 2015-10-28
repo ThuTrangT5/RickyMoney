@@ -12,9 +12,8 @@
 		1823D4251B8E140D005AC56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1823D4231B8E140D005AC56B /* Main.storyboard */; };
 		1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1823D4261B8E140D005AC56B /* Assets.xcassets */; };
 		1823D4351B8E140D005AC56B /* RickyMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823D4341B8E140D005AC56B /* RickyMoneyTests.m */; };
-		1831603D1BDE3A8900898482 /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1831603C1BDE3A8900898482 /* RMViewController.m */; };
-		183160421BDE3CE300898482 /* HSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183160401BDE3CE300898482 /* HSDatePickerViewController.m */; };
-		183160431BDE3CE300898482 /* HSDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183160411BDE3CE300898482 /* HSDatePickerViewController.xib */; };
+		183160481BDE8A7700898482 /* TTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183160461BDE8A7700898482 /* TTDatePickerViewController.m */; };
+		183160491BDE8A7700898482 /* TTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183160471BDE8A7700898482 /* TTDatePickerViewController.xib */; };
 		1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */; };
 		18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */; };
 		18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */; };
@@ -55,11 +54,9 @@
 		1823D4361B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1823D43F1B8E140D005AC56B /* RickyMoneyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RickyMoneyUITests.m; sourceTree = "<group>"; };
 		1823D4411B8E140D005AC56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1831603B1BDE3A8900898482 /* RMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMViewController.h; sourceTree = "<group>"; };
-		1831603C1BDE3A8900898482 /* RMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMViewController.m; sourceTree = "<group>"; };
-		1831603F1BDE3CE300898482 /* HSDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDatePickerViewController.h; sourceTree = "<group>"; };
-		183160401BDE3CE300898482 /* HSDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDatePickerViewController.m; sourceTree = "<group>"; };
-		183160411BDE3CE300898482 /* HSDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSDatePickerViewController.xib; sourceTree = "<group>"; };
+		183160451BDE8A7700898482 /* TTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDatePickerViewController.h; sourceTree = "<group>"; };
+		183160461BDE8A7700898482 /* TTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDatePickerViewController.m; sourceTree = "<group>"; };
+		183160471BDE8A7700898482 /* TTDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTDatePickerViewController.xib; sourceTree = "<group>"; };
 		1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingViewController.h; sourceTree = "<group>"; };
 		1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingViewController.m; sourceTree = "<group>"; };
 		18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOptionsViewController.h; sourceTree = "<group>"; };
@@ -174,14 +171,14 @@
 			path = RickyMoneyUITests;
 			sourceTree = "<group>";
 		};
-		1831603E1BDE3CE300898482 /* HSDatePickerViewController */ = {
+		183160441BDE8A5A00898482 /* TTDatePickerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1831603F1BDE3CE300898482 /* HSDatePickerViewController.h */,
-				183160401BDE3CE300898482 /* HSDatePickerViewController.m */,
-				183160411BDE3CE300898482 /* HSDatePickerViewController.xib */,
+				183160451BDE8A7700898482 /* TTDatePickerViewController.h */,
+				183160461BDE8A7700898482 /* TTDatePickerViewController.m */,
+				183160471BDE8A7700898482 /* TTDatePickerViewController.xib */,
 			);
-			path = HSDatePickerViewController;
+			path = TTDatePickerViewController;
 			sourceTree = "<group>";
 		};
 		18CAE95D1B9AE6FC00E0185D /* ViewControllers */ = {
@@ -201,8 +198,6 @@
 				18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */,
 				18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */,
 				18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */,
-				1831603B1BDE3A8900898482 /* RMViewController.h */,
-				1831603C1BDE3A8900898482 /* RMViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -210,7 +205,7 @@
 		18CAE9641B9B4C4F00E0185D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1831603E1BDE3CE300898482 /* HSDatePickerViewController */,
+				183160441BDE8A5A00898482 /* TTDatePickerViewController */,
 				18CAE96F1B9B603200E0185D /* VBPieChart */,
 				18CAE9651B9B4C4F00E0185D /* FontAwesome */,
 				18CAE96E1B9B4DD400E0185D /* RMConstant.h */,
@@ -347,7 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */,
-				183160431BDE3CE300898482 /* HSDatePickerViewController.xib in Resources */,
+				183160491BDE8A7700898482 /* TTDatePickerViewController.xib in Resources */,
 				1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */,
 				1823D4251B8E140D005AC56B /* Main.storyboard in Resources */,
 			);
@@ -419,15 +414,14 @@
 				18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */,
 				18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */,
 				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
+				183160481BDE8A7700898482 /* TTDatePickerViewController.m in Sources */,
 				18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */,
 				18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */,
 				18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */,
 				18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */,
 				18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */,
-				183160421BDE3CE300898482 /* HSDatePickerViewController.m in Sources */,
 				18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */,
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
-				1831603D1BDE3A8900898482 /* RMViewController.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
 				18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */,
 				18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */,
