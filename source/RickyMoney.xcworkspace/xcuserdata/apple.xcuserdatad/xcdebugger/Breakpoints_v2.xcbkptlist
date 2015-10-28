@@ -90,7 +90,7 @@
                   moduleName = "RickyMoney"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/OneDrive/Documents/Mobile/iOS/ThuTrang-projects/RickyMoney/source/RickyMoney/ViewControllers/RMOptionsViewController.m"
-                  timestampString = "467724259.400427"
+                  timestampString = "467743455.650397"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -105,7 +105,7 @@
                   moduleName = "RickyMoney"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/OneDrive/Documents/Mobile/iOS/ThuTrang-projects/RickyMoney/source/RickyMoney/ViewControllers/RMOptionsViewController.m"
-                  timestampString = "467724259.400887"
+                  timestampString = "467743455.650844"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -144,38 +144,6 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "-showPickerDate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/THPinViewController/THPinViewController/THPinView.m"
-            timestampString = "467724231.681003"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-initWithDelegate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/THPinViewController/THPinViewController/THPinView.m"
-            timestampString = "467724235.161481"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-updateBottomButton"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

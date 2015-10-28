@@ -405,6 +405,87 @@
             </objects>
             <point key="canvasLocation" x="1058.5" y="2700.5"/>
         </scene>
+        <!--Passcode-->
+        <scene sceneID="CWT-wd-ukV">
+            <objects>
+                <viewController id="vcK-sv-ibv" customClass="RMPasscodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aTh-Cv-grP"/>
+                        <viewControllerLayoutGuide type="bottom" id="zd1-Ds-927"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nSd-y0-o6I">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passcode is OFF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-9W-O3m">
+                                <rect key="frame" x="56" y="29" width="264" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og8-k7-SFr">
+                                <rect key="frame" x="20" y="168" width="90" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passcode to access RM" minimumFontSize="17" background="input-border" translatesAutoresizingMaskIntoConstraints="NO" id="i0s-6h-dxz">
+                                <rect key="frame" x="118" y="168" width="245" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dNe-d5-KNX" id="vra-bf-yie"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Retype" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05X-0V-SHG">
+                                <rect key="frame" x="20" y="214" width="90" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Retype Passcode" minimumFontSize="17" background="input-border" translatesAutoresizingMaskIntoConstraints="NO" id="qLF-CL-s7k">
+                                <rect key="frame" x="118" y="214" width="245" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dNe-d5-KNX" id="c3O-b3-V20"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZt-Hj-6Qt">
+                                <rect key="frame" x="63" y="314" width="249" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Turn ON">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="OuP-v8-dIj" eventType="touchUpInside" id="Sv5-pd-nyr"/>
+                                    <action selector="turnOnOffPasscodeAction:" destination="vcK-sv-ibv" eventType="touchUpInside" id="wHi-l8-MSA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Passcode" id="eIt-mo-b3V"/>
+                    <connections>
+                        <outlet property="passcodeField" destination="i0s-6h-dxz" id="p1M-8q-AkS"/>
+                        <outlet property="retypeField" destination="qLF-CL-s7k" id="gYS-GN-8QV"/>
+                        <outlet property="titleField" destination="Z4x-9W-O3m" id="xP6-Vv-9I3"/>
+                        <outlet property="turnOnOffButton" destination="AZt-Hj-6Qt" id="6Ts-Hb-1Wv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUz-3B-CkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-452.5" y="1962.5"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="V6r-TC-6YC">
             <objects>
@@ -463,14 +544,13 @@
                                             <rect key="frame" x="21" y="7" width="30" height="30"/>
                                             <animations/>
                                         </imageView>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hif-0z-Bud">
-                                            <rect key="frame" x="286" y="7" width="51" height="31"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-lt-2Iz">
+                                            <rect key="frame" x="284" y="-1" width="51" height="45"/>
                                             <animations/>
-                                            <color key="onTintColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="turnOnOffPasscode:" destination="SpM-o9-cWD" eventType="valueChanged" id="oJv-i8-AnO"/>
-                                            </connections>
-                                        </switch>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -506,36 +586,6 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingCell2" id="hqK-wR-WTx">
-                                <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hqK-wR-WTx" id="wQ5-Bf-aoK">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8R-3n-BCn">
-                                            <rect key="frame" x="67" y="0.0" width="140" height="45"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UK-eY-dTv">
-                                            <rect key="frame" x="211" y="0.0" width="120" height="45"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="report-icon" translatesAutoresizingMaskIntoConstraints="NO" id="mdw-ux-bv8">
-                                            <rect key="frame" x="21" y="7" width="30" height="30"/>
-                                            <animations/>
-                                        </imageView>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="SpM-o9-cWD" id="lLN-sH-qDy"/>
@@ -547,11 +597,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="riz-kn-DnL" kind="push" identifier="optionSegue" id="fSN-7S-jVs"/>
+                        <segue destination="vcK-sv-ibv" kind="push" identifier="passcodeSegue" id="56h-5d-OUb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyv-oV-sUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129.5" y="1914.5"/>
+            <point key="canvasLocation" x="168.5" y="1914.5"/>
         </scene>
         <!--Options-->
         <scene sceneID="0EE-o6-MaX">
@@ -692,7 +743,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaf-fI-60O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129.5" y="2714.5"/>
+            <point key="canvasLocation" x="129.5" y="2872.5"/>
         </scene>
         <!--Ricky Money-->
         <scene sceneID="5eI-9v-rBk">
@@ -862,7 +913,6 @@
         <image name="input-border" width="350" height="30"/>
         <image name="main-logo" width="300" height="200"/>
         <image name="passcode-icon" width="30" height="30"/>
-        <image name="report-icon" width="28" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ur3-Qh-i4V"/>

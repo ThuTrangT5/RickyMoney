@@ -20,4 +20,8 @@ typedef enum _options {
 
 #define REPORT_OPTIONS @[@"Monthly", @"Quarterly", @"Yearly"]
 
+#define kPasscode @"kPasscode"
+#define kPasscodeOn @"Passcode is ON"
+#define kPasscodeOff @"Passcode is OFF"
+
 #endif

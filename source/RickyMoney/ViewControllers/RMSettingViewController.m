@@ -25,7 +25,7 @@
     if (section == 0) {
         return 1;
     }
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,8 +55,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row > 0) {
-        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"passcodeSegue" sender:nil];
+            
+        } else if (indexPath.row == 1){
+            [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+        }
     }
 }
 
@@ -72,61 +77,8 @@
     if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
         optionVC.delegate = self;
-        NSIndexPath *idp = (NSIndexPath*) sender;
-        if (idp.row == 0) {
-            optionVC.option = OPTION_PASSCODE;
-        } else if (idp.row == 1) {
-            optionVC.option = OPTION_CURRENCY;
-        } else if (idp.row == 2) {
-            optionVC.option = OPTION_PERIOD_TIME;
-        } 
+        optionVC.option = OPTION_CURRENCY;
     }
-}
-
-#pragma mark- Passcode
-
-- (IBAction)turnOnOffPasscode:(id)sender {
-    
-    if ([((UISwitch*) sender) isOn]) {
-        // open Passcode page
-        
-        THPinViewController *pinViewController = [[THPinViewController alloc] initWithDelegate:self];
-        pinViewController.promptTitle = @"Enter Passcode";
-        pinViewController.promptColor =  RM_COLOR;
-        pinViewController.view.tintColor = RM_COLOR;
-        pinViewController.hideLetters = YES;
-        pinViewController.disableCancel = NO;
-        
-        // for a translucent background, use this:
-        self.view.tag = THPinViewControllerContentViewTag;
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        pinViewController.translucentBackground = YES;
-        
-        [self presentViewController:pinViewController animated:YES completion:nil];
-    }
-}
-
-// mandatory delegate methods
-
-- (NSUInteger)pinLengthForPinViewController:(THPinViewController *)pinViewController
-{
-    return 5;
-}
-
-- (BOOL)pinViewController:(THPinViewController *)pinViewController isPinValid:(NSString *)pin
-{
-//    if ([pin isEqualToString:self.correctPin]) {
-//        return YES;
-//    } else {
-//        self.remainingPinEntries--;
-//        return NO;
-//    }
-    return YES;
-}
-
-- (BOOL)userCanRetryInPinViewController:(THPinViewController *)pinViewController
-{
-    return YES;
 }
 
 @end

@@ -15,6 +15,7 @@
 		183160481BDE8A7700898482 /* TTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183160461BDE8A7700898482 /* TTDatePickerViewController.m */; };
 		183160491BDE8A7700898482 /* TTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183160471BDE8A7700898482 /* TTDatePickerViewController.xib */; };
 		1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */; };
+		188266A31BE128310047B521 /* RMPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188266A21BE128310047B521 /* RMPasscodeViewController.m */; };
 		18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */; };
 		18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */; };
 		18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */; };
@@ -59,6 +60,8 @@
 		183160471BDE8A7700898482 /* TTDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTDatePickerViewController.xib; sourceTree = "<group>"; };
 		1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSettingViewController.h; sourceTree = "<group>"; };
 		1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingViewController.m; sourceTree = "<group>"; };
+		188266A11BE128310047B521 /* RMPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPasscodeViewController.h; sourceTree = "<group>"; };
+		188266A21BE128310047B521 /* RMPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPasscodeViewController.m; sourceTree = "<group>"; };
 		18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOptionsViewController.h; sourceTree = "<group>"; };
 		18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOptionsViewController.m; sourceTree = "<group>"; };
 		18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMHomeViewController.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 				18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */,
 				18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */,
 				18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */,
+				188266A11BE128310047B521 /* RMPasscodeViewController.h */,
+				188266A21BE128310047B521 /* RMPasscodeViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			files = (
 				1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */,
 				18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */,
+				188266A31BE128310047B521 /* RMPasscodeViewController.m in Sources */,
 				18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */,
 				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
 				183160481BDE8A7700898482 /* TTDatePickerViewController.m in Sources */,
