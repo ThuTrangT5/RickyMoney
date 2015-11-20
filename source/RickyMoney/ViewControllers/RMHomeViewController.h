@@ -9,17 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <LMDropdownView/LMDropdownView.h>
 #import "VBPieChart.h"
+#import "RMConstant.h"
 
 @interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *menuItems;
-@property (strong, nonatomic) NSArray *expenseTransactions, *incomeTransactions;
+@property (strong, nonatomic) NSMutableArray *expenseTransactions, *incomeTransactions;
 
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (strong, nonatomic) LMDropdownView *dropdownView;
 @property (weak, nonatomic) IBOutlet UIButton *rangeButton;
 
 @property (strong, nonatomic) VBPieChart *chartView;
+@property (nonatomic) TimePeriod timePeriod;
 
 - (IBAction)ontouchMenu:(id)sender;
 - (IBAction)ontouchSelectRange:(UIButton *)sender;

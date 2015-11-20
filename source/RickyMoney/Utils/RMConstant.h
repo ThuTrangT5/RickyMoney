@@ -24,4 +24,10 @@ typedef enum _options {
 #define kPasscodeOn @"Passcode is ON"
 #define kPasscodeOff @"Passcode is OFF"
 
+typedef enum _timePeriod {
+    WEEKLY,
+    MONTHLY,
+    YEARLY
+} TimePeriod;
+
 #endif

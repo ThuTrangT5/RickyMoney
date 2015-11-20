@@ -39,9 +39,12 @@
     [self.navigationItem.leftBarButtonItem setImage:menuicon];
     [self.navigationItem.leftBarButtonItem setTitle:@""];
     
-    // range button
+    // data
+    _expenseTransactions = [[NSMutableArray alloc] init];
+    _incomeTransactions = [[NSMutableArray alloc] init];
+    _timePeriod = MONTHLY;
     
-    
+    // chart
     [self initChart];
 }
 
@@ -150,38 +153,115 @@
     }
     
     [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
-    [_chartView setEnableStrokeColor:YES];
+    //    [_chartView setEnableStrokeColor:YES];
     [_chartView setHoleRadiusPrecent:0.3];
     
-    [_chartView.layer setShadowOffset:CGSizeMake(2, 2)];
-    [_chartView.layer setShadowRadius:3];
-    [_chartView.layer setShadowColor:[UIColor blackColor].CGColor];
-    [_chartView.layer setShadowOpacity:0.7];
-    
     [_chartView setLabelsPosition:VBLabelsPositionOutChart];
-    
-    //    NSArray *chartValues = @[
-    //                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
-    //                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
-    //                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
-    //                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
-    //                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
-    //                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
-    //                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
-    //                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
-    //                             ];
-    //
-    //    [_chartView setChartValues:chartValues animation:YES];
     
 }
 
 - (void) getTransactionByUser {
-    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"Monthly", @"ENName", nil];
-    NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"timePeriod", @"language", nil];
+    NSString *from, *to;
+    
+//    NSDate *today = [NSDate date];
+    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
+    int day, month, year;
+    
+    [myFormatter setDateFormat:@"dd/MM/yyy"];
+    NSDate *today = [myFormatter dateFromString:@"27/12/2015"];
+    
+    [myFormatter setDateFormat:@"dd"];
+    day = [[myFormatter stringFromDate:today] intValue];
+    [myFormatter setDateFormat:@"MM"];
+    month = [[myFormatter stringFromDate:today] intValue];
+    [myFormatter setDateFormat:@"yyyy"];
+    year = [[myFormatter stringFromDate:today] intValue];
+    
+    _timePeriod = WEEKLY;
+    // date string format mm/dd/yyyy
+    switch (_timePeriod) {
+        case WEEKLY:
+            // weekly from sunday to saturday
+            [myFormatter setDateFormat:@"c"];
+            int dayOfWeek = [[myFormatter stringFromDate:today] intValue]; // 7 for Saturday
+            
+            
+            // from date
+            if (day - dayOfWeek >= 0) {
+                from = [NSString stringWithFormat:@"%d/%d/%d",month, (day - dayOfWeek) + 1, year];
+                
+            } else {
+                if (month == 1 || month== 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                    if (month == 1) {
+                        from = [NSString stringWithFormat:@"11/%d/%d",  31 + (day - dayOfWeek), year - 1];
+                    } else {
+                        from = [NSString stringWithFormat:@"%d/%d/%d", month - 1, 31 + (day - dayOfWeek), year];
+                    }
+                } else if (month == 2) {
+                    if (year % 4 == 0) { // leap year
+                        from = [NSString stringWithFormat:@"11/%d/%d",  29 + (day - dayOfWeek), year];
+                    } else {
+                        from = [NSString stringWithFormat:@"11/%d/%d",  28 + (day - dayOfWeek), year];
+                    }
+                } else {
+                    from = [NSString stringWithFormat:@"11/%d/%d",  30 + (day - dayOfWeek), year];
+                }
+            }
+            
+            // to date
+            if (day + (7- dayOfWeek) > 31) {
+                if (month == 1 || month== 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                    if (month == 12) {
+                        to = [NSString stringWithFormat:@"01/%d/%d", (day + (7- dayOfWeek) - 31), year + 1];
+                    } else {
+                        to = [NSString stringWithFormat:@"01/%d/%d", (day + (7- dayOfWeek) - 31), year ];
+                    }
+                } else if (month == 2) {
+                    if (year % 4 == 0) { // leap year
+                        to = [NSString stringWithFormat:@"03/%d/%d", (day + (7- dayOfWeek) - 29), year ];
+                    } else {
+                        to = [NSString stringWithFormat:@"03/%d/%d", (day + (7- dayOfWeek) - 28), year ];
+                    }
+                } else {
+                    to = [NSString stringWithFormat:@"%d/%d/%d", month + 1, (day + (7- dayOfWeek) - 30), year ];
+                }
+                
+            } else {
+                to = [NSString stringWithFormat:@"%d/%d/%d", month, (day + (7- dayOfWeek) - 31), year ];
+            }
+            
+            break;
+            
+        case MONTHLY:
+            
+            from = [NSString stringWithFormat:@"%d/01/%d",month,year];
+            if (month == 12) {
+                to = [NSString stringWithFormat:@"01/01/%d", year + 1];
+            } else {
+                to = [NSString stringWithFormat:@"%d/01/%d", month + 1, year];
+            }
+            
+            break;
+            
+        case YEARLY:
+            from = [NSString stringWithFormat:@"01/01/%d",year];
+            to = [NSString stringWithFormat:@"01/01/%d",year + 1];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", from, to, nil];
+    NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"language", @"fromDate", @"toDate", nil];
     NSDictionary *params = [[NSDictionary alloc] initWithObjects: objs forKeys: keys];
     
+    
+    
     [RMParseRequestHandler callFunction:@"transactionReview" WithParams:params withSuccessBlock:^(NSDictionary *trans) {
-        NSMutableArray *chartValues = [[NSMutableArray alloc] init];
+        [_expenseTransactions removeAllObjects];
         
         NSDictionary *expense = [trans valueForKey:@"expense"];
         for (NSString *categoryId in [expense allKeys]) {
@@ -189,28 +269,25 @@
             NSDictionary *chart = @{
                                     @"name": [tran valueForKey:@"name"],
                                     @"value": [tran valueForKey:@"amount"],
-                                    @"color": [UIColor purpleColor]
+                                    @"labelColor": RM_COLOR
                                     };
-            [chartValues addObject:chart];
+            [_expenseTransactions addObject:chart];
         }
-        _expenseTransactions = chartValues;
         
-        [chartValues removeAllObjects];
+        [_incomeTransactions removeAllObjects];
         NSDictionary *income = [trans valueForKey:@"income"];
         for (NSString *categoryId in [income allKeys]) {
             NSDictionary *tran = [income valueForKey:categoryId];
             NSDictionary *chart = @{
                                     @"name": [tran valueForKey:@"name"],
                                     @"value": [tran valueForKey:@"amount"],
-                                    @"color": [UIColor greenColor]
+                                    @"labelColor": RM_COLOR
                                     };
-            [chartValues addObject:chart];
+            [_incomeTransactions addObject:chart];
         }
-        _incomeTransactions = chartValues;
         
         [_chartView setChartValues:_expenseTransactions animation:YES];
     }];
-    //transactionReview
     
 }
 
