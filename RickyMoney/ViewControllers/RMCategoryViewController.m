@@ -10,6 +10,7 @@
 #import <Parse/PFQuery.h>
 #import <Parse/PFFile.h>
 #import "RMParseRequestHandler.h"
+#import "RMTransactionController.h"
 
 @implementation RMCategoryViewController
 
@@ -29,6 +30,7 @@
 }
 
 #pragma mark- TableView datasource & delegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -54,8 +56,21 @@
     UILabel *name = (UILabel*)[cell viewWithTag:2];
     [name setText:[cellData valueForKey:@"ENName"]];
     
-    
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *cellData = [_categories objectAtIndex:indexPath.row];
+    NSString *categoryId = cellData.objectId;
+    [self performSegueWithIdentifier:@"transactionSegue" sender:categoryId];
+}
+
+#pragma mark- prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"transactionSegue"]) {
+        RMTransactionController *vc = (RMTransactionController*) segue.destinationViewController;
+        vc.category = (NSString*) sender;
+    }
 }
 @end

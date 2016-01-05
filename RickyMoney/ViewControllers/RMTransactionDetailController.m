@@ -27,14 +27,13 @@
     if (isLoadData == false) {
         
         if (_transactionId == nil || _transactionId.length == 0) {
-            _transactionDate = [NSDate new];
+            [self ttDatePickerPickedDate:[NSDate new]];
             
         } else {
             [self getTransactionDetail];
         }
         isLoadData = true;
     }
-    
 }
 
 - (void) getTransactionDetail {
@@ -103,23 +102,12 @@
 }
 
 - (IBAction)ontouchSelectDate:(UIButton *)sender {
-    //    if (_datePicker == nil ) {
-    //        _datePicker = [[HSDatePickerViewController alloc] init];
-    //        _datePicker.delegate = self;
-    //        _datePicker.mainColor = RM_COLOR;
-    //        _datePicker.confirmButtonTitle = @"OK";
-    //        _datePicker.backButtonTitle = @"Cancel";
-    //    }
-    //
-    //    _datePicker.date = _transactionDate;
-    //
-    //    [self presentViewController:_datePicker animated:YES completion:nil];
-    HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
-    hsdpvc.delegate = self;
-    if (self.transactionDate) {
-        hsdpvc.date = self.transactionDate;
-    }
-    [self presentViewController:hsdpvc animated:YES completion:nil];
+    TTDatePickerViewController *datepickerVC = [TTDatePickerViewController new];
+    datepickerVC.mainColor = RM_COLOR;
+    datepickerVC.confirmButtonTitle = @"Select";
+    datepickerVC.titlePicker = @"Transaction Date";
+    datepickerVC.delegate = self;
+    [self presentViewController:datepickerVC animated:YES completion:nil];
     
 }
 
@@ -169,12 +157,13 @@
     [self.categoryField setTitle:[selectedData valueForKey:@"categoryName"] forState:UIControlStateNormal];
 }
 
-#pragma mark- HSDatePickerViewControllerDelegate
+#pragma mark- TTDatePickerViewControllerDelegate
 
-- (void)hsDatePickerPickedDate:(NSDate *)date {
+- (void)ttDatePickerPickedDate:(NSDate *)date {
     _transactionDate = date;
-    NSString *dateStr = [NSString stringWithFormat:@"%@", date];
-    [_dateField setTitle:dateStr forState:UIControlStateNormal];
+    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    dateFormater.dateFormat = @"MMMM dd, yyyy";
+    [_dateField setTitle: [dateFormater stringFromDate:date] forState:UIControlStateNormal];
 }
 
 @end

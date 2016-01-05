@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RMConstant.h"
 
 @interface RMTransactionController : UITableViewController {
     int currentPage;
 }
 
-@property (nonatomic) int transactionType;
+@property (nonatomic) TransactionType transactionType;
+@property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSMutableArray *transactions;
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl *)sender;

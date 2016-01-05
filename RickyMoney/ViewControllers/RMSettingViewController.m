@@ -25,7 +25,7 @@
     if (section == 0) {
         return 1;
     }
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,7 +55,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"passcodeSegue" sender:nil];
+            
+        } else if (indexPath.row == 1){
+            [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+        }
+    }
 }
 
 #pragma mark- RMOptionsDelegate
@@ -70,14 +77,7 @@
     if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
         optionVC.delegate = self;
-        NSIndexPath *idp = (NSIndexPath*) sender;
-        if (idp.row == 0) {
-            optionVC.option = OPTION_PASSCODE;
-        } else if (idp.row == 1) {
-            optionVC.option = OPTION_CURRENCY;
-        } else if (idp.row == 2) {
-            optionVC.option = OPTION_PERIOD_TIME;
-        } 
+        optionVC.option = OPTION_CURRENCY;
     }
 }
 

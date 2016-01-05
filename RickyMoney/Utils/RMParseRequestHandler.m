@@ -125,6 +125,40 @@ static DGActivityIndicatorView *waitingView;
     }];
 }
 
++ (void) getAllTransactionByUser:(NSString*) userId transactionType:(TransactionType) type inCategory:(NSString*) categoryId forPage:(int) page withSuccessBlock: (void (^) (NSArray*)) block {
+    [RMParseRequestHandler showWaitingView];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
+    if (userId != nil) {
+        [query whereKey:@"userId" equalTo:userId];
+    }
+    if (categoryId != nil) {
+        PFQuery *categoryQuery = [PFQuery queryWithClassName:@"Category"];
+        [categoryQuery whereKey:@"objectId" equalTo:categoryId];
+        
+        [query whereKey:@"category" matchesQuery:categoryQuery];
+    }
+    if (type == INCOME) {
+        [query whereKey:@"type"equalTo:@1];
+    } else {
+        // default is Getting Transations for Expense
+        [query whereKey:@"type"equalTo:@0];
+    }
+    [query setSkip:(page-1) * ITEM_PER_PAGE];
+    [query setLimit:ITEM_PER_PAGE];
+    [query orderByDescending:@"transactionDate"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [RMParseRequestHandler closeWaitingView];
+        
+        if (error == nil) {
+            block(objects);
+        } else {
+            [RMParseRequestHandler showErrorWithMessage:error.description andCompletionCallback:nil];
+        }
+    }];
+}
+
 #pragma mark- Parse Error handling
 
 + (void)handleParseError:(NSError *)error {
