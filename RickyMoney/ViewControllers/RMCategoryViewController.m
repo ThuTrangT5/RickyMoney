@@ -22,7 +22,7 @@
 - (void) getAllCategories {
     PFQuery *query = [PFQuery queryWithClassName:@"Category"];
     [query orderByAscending:@"ENName"];
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
         _categories = objects;
         [self.tableView reloadData];
     }];

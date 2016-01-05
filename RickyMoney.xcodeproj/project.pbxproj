@@ -294,7 +294,6 @@
 				TargetAttributes = {
 					1823D4161B8E140D005AC56B = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 6B38QGCCQS;
 					};
 					1823D42F1B8E140D005AC56B = {
 						CreatedOnToolsVersion = 7.0;
@@ -527,11 +526,12 @@
 			baseConfigurationReference = BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: atahir@adelphatech.com (8846FWA4QQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoney;
+				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -541,11 +541,12 @@
 			baseConfigurationReference = 661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: atahir@adelphatech.com (8846FWA4QQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adelphatech.RickyMoney;
+				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

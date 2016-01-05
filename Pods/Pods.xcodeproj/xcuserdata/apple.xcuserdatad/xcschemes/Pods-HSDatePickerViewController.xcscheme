@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1233683B9D938409CEA06C66"
+               BlueprintIdentifier = "4E847B6C6EB39F169800F140"
                BuildableName = "HSDatePickerViewController.framework"
                BlueprintName = "Pods-HSDatePickerViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

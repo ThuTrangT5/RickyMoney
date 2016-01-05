@@ -36,8 +36,8 @@
     
     // check already login
     PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        NSLog(@"Already Logined!.");
+    if (currentUser && currentUser.objectId != nil) {
+        NSLog(@"Already Logined with id = %@", currentUser.objectId);
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
         
     } else {

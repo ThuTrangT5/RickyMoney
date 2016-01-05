@@ -15,37 +15,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (_transactionId == nil || _transactionId.length == 0) {
-        _transactionDate = [NSDate new];
+    _noteField.layer.cornerRadius = 10;
+    _noteField.layer.borderWidth = 1;
+    _noteField.layer.borderColor = RM_COLOR.CGColor;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (isLoadData == false) {
         
-    } else {
-        [self getTransactionDetail];
+        if (_transactionId == nil || _transactionId.length == 0) {
+            _transactionDate = [NSDate new];
+            
+        } else {
+            [self getTransactionDetail];
+        }
+        isLoadData = true;
     }
     
 }
 
 - (void) getTransactionDetail {
-    [RMParseRequestHandler getObjectById:_transactionId inClass:@"Transaction" withSuccessBlock:^(PFObject * __nullable object, NSError * __nullable error) {
+    [RMParseRequestHandler getObjectById:_transactionId inClass:@"Transaction" includeFields:@[@"category"] withSuccessBlock:^(PFObject * object) {
+        
+        PFObject *category = [object valueForKey:@"category"];
+        _categoryId = [category valueForKey:@"objectId"];
+        NSString *categoryName = [category valueForKey:@"ENName"];
         
         NSString *item = [object valueForKey:@"itemName"];
         NSString *amount = [NSString stringWithFormat:@"%@", [object valueForKey:@"amount"]];
-        NSString *categoryId = [object valueForKey:@"categoryId"];
-        BOOL repeat = [object valueForKey:@"repeat"];
-        NSString *date = [NSString stringWithFormat:@"%@", [object valueForKey:@"transactionDate"]];
+        BOOL repeat = [[object valueForKey:@"repeat"] boolValue];
+        NSString *notes = [object valueForKey:@"notes"];
+        _transactionType = (int) [object[@"type"] integerValue];
+        _transactionDate = [object valueForKey:@"transactionDate"];
+        
+        NSString *date = [NSString stringWithFormat:@"%@", _transactionDate];
         date = [date substringToIndex:19];
         
-        [RMParseRequestHandler getObjectById:categoryId inClass:@"Category" withSuccessBlock:^(PFObject * __nullable object, NSError * __nullable error) {
-            NSString *category = [object valueForKey:@"ENName"];
-            
-            [_itemField setText:item];
-            [_amountField setText:amount];
-            [_categoryField setTitle:category forState:UIControlStateNormal];
-            [_dateField setTitle:date forState:UIControlStateNormal];
-            [_repeateField setSelected:repeat];
-            
-            _categoryId = categoryId;
-            _repeatTransaction = repeat;
-        }];
+        
+        [_itemField setText:item];
+        [_amountField setText:amount];
+        [_categoryField setTitle:categoryName forState:UIControlStateNormal];
+        [_dateField setTitle:date forState:UIControlStateNormal];
+        [_repeateField setOn:repeat animated:YES];
+        [_noteField setText:notes];
+        
+        _repeatTransaction = repeat;
         
     }];
 }
@@ -110,19 +127,31 @@
 
 - (void) saveTransaction {
     
+    PFObject *pointer = [PFObject objectWithoutDataWithClassName:@"Category" objectId:_categoryId];
+    
     PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
     transaction[@"userId"] = [[PFUser currentUser] objectId];
     transaction[@"itemName"] = _itemField.text;
-    transaction[@"categoryId"] = _categoryId;
+    transaction[@"category"] = pointer;
     transaction[@"amount"] = [NSNumber numberWithInt:[_amountField.text intValue]];
     transaction[@"transactionDate"] = _transactionDate;
     transaction[@"repeat"] = _repeatTransaction ? @YES : @NO;
     transaction[@"notes"] = _noteField.text;
+    transaction[@"type"] = [NSNumber numberWithInt:_transactionType];
+    
+    if (_transactionId != nil) {
+        transaction.objectId = _transactionId;
+    }
     
     [transaction saveEventually:^(BOOL success, NSError *err){
         NSLog(@"Save stransaction [%@] with error = %@", success? @"OK" : @"FAILED", err.description);
+        if (success) {
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } else {
+            
+        }
     }];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark- Prepare for segue

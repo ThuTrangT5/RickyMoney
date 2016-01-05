@@ -4,17 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-BFRadialWaveHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-BFRadialWaveView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DGActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-UIColor+BFPaperColors.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F04CB3272CB00A9993A4A78</key>
+		<key>1E0EAA850DC57CDC33E325A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1233683B9D938409CEA06C66</key>
+		<key>4E847B6C6EB39F169800F140</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>490E7F3965CAFABAF9D1808A</key>
+		<key>62309A561CAAA0DF1487A796</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A74529B470DCA81EFBD7EE2</key>
+		<key>AD9D02CD54256F019E35A643</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C99609F5622ED9AF86DEE87</key>
+		<key>BC0CBDE8AFE118CC70403209</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A55016E454A039229BF6519A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD745C9F02EB70BEF960A51D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D9088AB96A67DF9D94B1DE44</key>
+		<key>E548C8F3A0380CB654ACFBB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,29 +1,22 @@
 PODS:
-  - BFRadialWaveHUD (1.5.3):
-    - BFRadialWaveView
-    - UIColor+BFPaperColors
-  - BFRadialWaveView (1.4.6):
-    - UIColor+BFPaperColors
   - Bolts/Tasks (1.2.1)
+  - DGActivityIndicatorView (1.0)
   - HSDatePickerViewController (1.0.1)
   - LMDropdownView (1.0.2)
   - Parse (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
-  - UIColor+BFPaperColors (1.7.1)
 
 DEPENDENCIES:
-  - BFRadialWaveHUD (~> 1.5.3)
+  - DGActivityIndicatorView
   - HSDatePickerViewController (~> 1.0)
   - LMDropdownView
   - Parse
 
 SPEC CHECKSUMS:
-  BFRadialWaveHUD: 5914e6d38ea707593d9f1bd9610c35a25fc6e921
-  BFRadialWaveView: dcf3f2b07b3993e6e748fd3489e490d94c1052a8
   Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
+  DGActivityIndicatorView: 980091f8d8cc647a1af7804660272e64aef9e516
   HSDatePickerViewController: b292f2a53b2644a68aa5e1343053d2f3554de64c
   LMDropdownView: 50188c9678eab3690153993d1824b7235d9b7edc
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
-  UIColor+BFPaperColors: b1efa4320e2f56c4b14f73232faf967ba0e5b4a2
 
 COCOAPODS: 0.36.3

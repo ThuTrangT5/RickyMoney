@@ -19,17 +19,27 @@
     [super viewDidLoad];
     
     _transactions = [[NSMutableArray alloc] init];
-    [self getTransactionsByPage:1];
+    currentPage = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (currentPage == 0) {
+        [_transactions removeAllObjects];
+        [self getTransactionsByPage:1];
+    }
 }
 
 - (void) getTransactionsByPage:(int) page {
     PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
     [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:_transactionType]];
     [query orderByDescending:@"transactionDate"];
     [query setLimit:TRANSACTION_PER_PAGE];
     [query setSkip:TRANSACTION_PER_PAGE * (page - 1)];
     
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
         currentPage = page;
         [_transactions addObjectsFromArray:objects];
         [self.tableView reloadData];
@@ -70,12 +80,25 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"transactionDetail"]) {
-        if ([sender isKindOfClass:[UIBarButtonItem class]]) {
-            return;
-        }
-        NSString *transactionId = (NSString*) sender;
         RMTransactionDetailController *detailVC = (RMTransactionDetailController*) segue.destinationViewController;
-        [detailVC setTransactionId:transactionId];
+        
+        if ([sender isKindOfClass:[UIBarButtonItem class]]) { // touch on Insert new Transaction bar button
+            detailVC.transactionType = _transactionType;
+            
+        } else {
+            NSString *transactionId = (NSString*) sender;
+            detailVC.transactionId = transactionId;
+        }
     }
+}
+
+#pragma mark- Actions
+
+- (IBAction)onchangeTransactionType:(UISegmentedControl *)sender {
+    _transactionType = (int) sender.selectedSegmentIndex;
+    [_transactions removeAllObjects];
+    [self.tableView reloadData];
+    
+    [self getTransactionsByPage:1];
 }
 @end

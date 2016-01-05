@@ -40,7 +40,7 @@
 
 - (void) getCerrencyUnit {
     PFQuery *query = [PFQuery queryWithClassName:@"CurrencyUnit"];
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
         _optionData = objects;
         [self.tableView reloadData];
     }];
@@ -48,7 +48,7 @@
 
 - (void) getCategory {
     PFQuery *query = [PFQuery queryWithClassName:@"Category"];
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
         _optionData = objects;
         [self.tableView reloadData];
     }];

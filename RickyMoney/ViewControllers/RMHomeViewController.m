@@ -11,9 +11,12 @@
 #import "RMConstant.h"
 #import "AppDelegate.h"
 #import "UIColor+HexColor.h"
-#import <Parse/PFUser.h>
+#import "RMParseRequestHandler.h"
 
 @implementation RMHomeViewController
+
+#define MENU_TABLE_TAG 10
+#define TRANSACTION_TABLE_TAG 20
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +39,12 @@
     [self.navigationItem.leftBarButtonItem setTitle:@""];
     
     [self initChart];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self getTransactionByUser];
 }
 
 #pragma mark - DropDownView
@@ -73,10 +82,16 @@
 #pragma mark- TableView datasource & delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (tableView.tag == MENU_TABLE_TAG) {
+        return 1;
+    } else if (tableView.tag == TRANSACTION_TABLE_TAG) {
+        return 0;
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return _menuItems.count;
 }
 
@@ -125,7 +140,7 @@
         _chartView = [[VBPieChart alloc] init];
         [self.view addSubview:_chartView];
     }
-    [_chartView setFrame:CGRectMake((self.view.bounds.size.width - 300)/2, 120, 300, 300)];
+    [_chartView setFrame:CGRectMake((self.view.bounds.size.width - 300)/2, 90, 300, 300)];
     
     [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
     [_chartView setEnableStrokeColor:YES];
@@ -138,17 +153,59 @@
     
     [_chartView setLabelsPosition:VBLabelsPositionOnChart];
     
-    NSArray *chartValues = @[
-                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
-                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
-                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
-                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
-                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
-                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
-                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
-                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
-                             ];
-    [_chartView setChartValues:chartValues animation:YES];// duration:0.5 options:VBPieChartAnimationGrowth];
+//    NSArray *chartValues = @[
+//                             @{@"name":@"Food", @"value":@50, @"color":[UIColor colorWithHex:0xdd191daa]},
+//                             @{@"name":@"Eletric & Water", @"value":@20, @"color":[UIColor colorWithHex:0xd81b60aa]},
+//                             @{@"name":@"Friends", @"value":@40, @"color":[UIColor colorWithHex:0x8e24aaaa]},
+//                             @{@"name":@"Eating & Drinking", @"value":@70, @"color":[UIColor colorWithHex:0x3f51b5aa]},
+//                             @{@"name":@"Gas", @"value":@65, @"color":[UIColor colorWithHex:0x5677fcaa]},
+//                             @{@"name":@"Internet", @"value":@23, @"color":[UIColor colorWithHex:0x2baf2baa]},
+//                             @{@"name":@"Transportation", @"value":@34, @"color":[UIColor colorWithHex:0xb0bec5aa]},
+//                             @{@"name":@"Study", @"value":@54, @"color":[UIColor colorWithHex:0xf57c00aa]}
+//                             ];
+    
+}
+
+- (void) getTransactionByUser {
+    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"Monthly", @"ENName", nil];
+    NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"timePeriod", @"language", nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjects: objs forKeys: keys];
+    
+    [RMParseRequestHandler callFunction:@"transactionReview" WithParams:params withSuccessBlock:^(NSDictionary *trans) {
+        NSMutableArray *chartValues = [[NSMutableArray alloc] init];
+    
+        NSDictionary *expense = [trans valueForKey:@"expense"];
+        for (NSString *categoryId in [expense allKeys]) {
+            NSDictionary *tran = [expense valueForKey:categoryId];
+            NSDictionary *chart = @{
+                                    @"name": [tran valueForKey:@"name"],
+                                    @"value": [tran valueForKey:@"amount"],
+                                    @"color": [UIColor purpleColor]
+                                    };
+            [chartValues addObject:chart];
+        }
+        
+        NSDictionary *income = [trans valueForKey:@"income"];
+        for (NSString *categoryId in [income allKeys]) {
+            NSDictionary *tran = [income valueForKey:categoryId];
+            NSDictionary *chart = @{
+                                    @"name": [tran valueForKey:@"name"],
+                                    @"value": [tran valueForKey:@"amount"],
+                                    @"color": [UIColor greenColor]
+                                    };
+            [chartValues addObject:chart];
+        }
+        
+         [_chartView setChartValues:chartValues animation:YES];
+    }];
+    //transactionReview
+    
+}
+
+- (void) getTransactionsByCategory {
+    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
+    [query whereKey:@"userId" equalTo:[[PFUser currentUser] objectId]];
+    
 }
 
 #pragma mark- Actions

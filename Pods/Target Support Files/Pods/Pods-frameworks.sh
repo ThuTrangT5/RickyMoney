@@ -48,20 +48,16 @@ code_sign() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework 'BFRadialWaveHUD.framework'
-  install_framework 'BFRadialWaveView.framework'
   install_framework 'Bolts.framework'
+  install_framework 'DGActivityIndicatorView.framework'
   install_framework 'HSDatePickerViewController.framework'
   install_framework 'LMDropdownView.framework'
   install_framework 'Parse.framework'
-  install_framework 'UIColor_BFPaperColors.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework 'BFRadialWaveHUD.framework'
-  install_framework 'BFRadialWaveView.framework'
   install_framework 'Bolts.framework'
+  install_framework 'DGActivityIndicatorView.framework'
   install_framework 'HSDatePickerViewController.framework'
   install_framework 'LMDropdownView.framework'
   install_framework 'Parse.framework'
-  install_framework 'UIColor_BFPaperColors.framework'
 fi

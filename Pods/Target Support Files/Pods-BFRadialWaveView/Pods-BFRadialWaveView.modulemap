@@ -1,6 +1,0 @@
-framework module BFRadialWaveView {
-  umbrella header "Pods-BFRadialWaveView-umbrella.h"
-
-  export *
-  module * { export * }
-}

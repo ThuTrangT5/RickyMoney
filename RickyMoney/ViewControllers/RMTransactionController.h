@@ -15,4 +15,5 @@
 @property (nonatomic) int transactionType;
 @property (strong, nonatomic) NSMutableArray *transactions;
 
+- (IBAction)onchangeTransactionType:(UISegmentedControl *)sender;
 @end

@@ -10,16 +10,18 @@
 #import "RMOptionsViewController.h"
 #import <HSDatePickerViewController/HSDatePickerViewController.h>
 
-@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, HSDatePickerViewControllerDelegate>
+@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, HSDatePickerViewControllerDelegate> {
+    BOOL isLoadData;
+}
 
 @property (strong, nonatomic) NSString *transactionId;
 @property (strong, nonatomic) NSString *categoryId;
 @property (nonatomic) BOOL repeatTransaction;
 @property (strong, nonatomic) NSDate *transactionDate;
+@property (nonatomic) int transactionType; // type == 0 => expense
 
 @property (weak, nonatomic) IBOutlet UITextField *itemField;
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
-@property (weak, nonatomic) IBOutlet UILabel *currencyUnit;
 @property (weak, nonatomic) IBOutlet UIButton *categoryField;
 @property (weak, nonatomic) IBOutlet UISwitch *repeateField;
 @property (weak, nonatomic) IBOutlet UIButton *dateField;

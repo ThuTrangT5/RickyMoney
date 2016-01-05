@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/PFObject.h>
-#import <Parse/PFQuery.h>
-#import <Parse/PFCloud.h>
-#import <Parse/PFConstants.h>
+#import <Parse/Parse.h>
 
 @interface RMParseRequestHandler : UIViewController
 
-+ (void) getObjectById:(NSString*) objectId inClass:(NSString*) className withSuccessBlock:(PFObjectResultBlock) block;
-+ (void) getDataByQuery:(PFQuery*) query withSuccessBlock: (PFArrayResultBlock) block;
-+ (void) callFunction:(NSString*) functionName withSuccessBlock: (PFArrayResultBlock) block;
++ (void)getObjectById:(NSString *)objectId inClass:(NSString *) className includeFields:(NSArray*) fields withSuccessBlock:(void (^)(id))block;
++ (void) getDataByQuery:(PFQuery*) query withSuccessBlock: (void (^)(NSArray *)) block;
++ (void)callFunction:(NSString *)functionName WithParams:(NSDictionary *)params withSuccessBlock:(void (^)(id))block;
 
 @end
