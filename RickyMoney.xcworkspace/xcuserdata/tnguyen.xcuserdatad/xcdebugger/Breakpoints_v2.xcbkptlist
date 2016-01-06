@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "473679524.488277"
+            timestampString = "473760616.976603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-getTransactionByUser"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "473679524.488277"
+            timestampString = "473760616.976603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-initChart"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-getTransactionByUser"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,46 +41,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "473679524.488277"
+            filePath = "RickyMoney/ViewControllers/RMLoginViewController.m"
+            timestampString = "473760770.398015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "-getTransactionByUser"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-loginAction:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RMHomeViewController getTransactionByUser]"
-                  moduleName = "RickyMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tnguyen/ThuTrang/rickymoney/source/RickyMoney/ViewControllers/RMHomeViewController.m"
-                  timestampString = "473671953.437032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "263"
-                  endingLineNumber = "263"
-                  offsetFromSymbolStart = "3284">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__44-[RMHomeViewController getTransactionByUser]_block_invoke"
-                  moduleName = "RickyMoney"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tnguyen/ThuTrang/rickymoney/source/RickyMoney/ViewControllers/RMHomeViewController.m"
-                  timestampString = "473671953.438658"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "263"
-                  endingLineNumber = "263"
-                  offsetFromSymbolStart = "65">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickyMoney/ViewControllers/RMPasscodeViewController.m"
+            timestampString = "473764651.713253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

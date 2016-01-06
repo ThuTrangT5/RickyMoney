@@ -42,7 +42,7 @@ static DGActivityIndicatorView *waitingView;
 
 + (void) showWaitingView {
     if (waitingView != nil) {
-        [RMParseRequestHandler closeWaitingView];
+        [self closeWaitingView];
     }
     
     waitingView = [RMParseRequestHandler createWaitingView];
@@ -56,7 +56,7 @@ static DGActivityIndicatorView *waitingView;
 }
 
 + (void)showSuccessWithMessage:(NSString *)message andCompletionCallback: (void (^)())completionBlock {
-    [RMParseRequestHandler closeWaitingView];
+    [self closeWaitingView];
     
     if (message != nil) {
         //???
@@ -69,7 +69,7 @@ static DGActivityIndicatorView *waitingView;
 
 + (void)showErrorWithMessage:(NSString *)message andCompletionCallback: (void (^)())completionBlock {
     
-    [RMParseRequestHandler closeWaitingView];
+    [self closeWaitingView];
     
     if (message == nil || [message isEqualToString:@""]) {
         message = @"Something wrong happen. Please check again.";
@@ -80,15 +80,32 @@ static DGActivityIndicatorView *waitingView;
 
 #pragma mark- Queries
 
++ (void) getCurrentUserInformation:(void (^)(id))block {
+    [self showWaitingView];
+    
+    PFQuery *query = [PFUser query];
+    [query includeKey:@"currencyUnit"]; // Include the currency data for user
+    
+    [query getObjectInBackgroundWithId:[PFUser currentUser].objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        [self closeWaitingView];
+        
+        if (error) {
+            [self showErrorWithMessage: error.description andCompletionCallback:nil];
+        } else {
+            block(object);
+        }
+    }];
+}
+
 + (void)getObjectById:(NSString *)objectId inClass:(NSString *) className includeFields:(NSArray*) fields withSuccessBlock:(void (^)(id))block {
-    [RMParseRequestHandler showWaitingView];
+    [self showWaitingView];
     PFQuery *query = [PFQuery queryWithClassName:className];
     for (NSString *field in fields) {
         [query includeKey:field];
     }
     
     [query getObjectInBackgroundWithId:objectId block:^(PFObject *object, NSError *error){
-        [RMParseRequestHandler closeWaitingView];
+        [self closeWaitingView];
         
         if (error != nil) {
             [self handleParseError:error];
@@ -100,7 +117,7 @@ static DGActivityIndicatorView *waitingView;
 
 + (void)getDataByQuery:(PFQuery *)query withSuccessBlock:(void (^)(NSArray *))block {
     [query findObjectsInBackgroundWithBlock: ^(NSArray* objects, NSError* error) {
-        [RMParseRequestHandler closeWaitingView];
+        [self closeWaitingView];
         
         if (error != nil) {
             [self handleParseError:error];
@@ -116,7 +133,7 @@ static DGActivityIndicatorView *waitingView;
             [RMParseRequestHandler handleParseError:error];
             
         } else {
-            [RMParseRequestHandler showSuccessWithMessage:nil andCompletionCallback:nil];
+            [self showSuccessWithMessage:nil andCompletionCallback:nil];
             
             if (block != nil) {
                 block(result);
@@ -126,7 +143,7 @@ static DGActivityIndicatorView *waitingView;
 }
 
 + (void) getAllTransactionByUser:(NSString*) userId transactionType:(TransactionType) type inCategory:(NSString*) categoryId forPage:(int) page withSuccessBlock: (void (^) (NSArray*)) block {
-    [RMParseRequestHandler showWaitingView];
+    [self showWaitingView];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
     if (userId != nil) {
@@ -149,12 +166,28 @@ static DGActivityIndicatorView *waitingView;
     [query orderByDescending:@"transactionDate"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        [RMParseRequestHandler closeWaitingView];
+        [self closeWaitingView];
         
         if (error == nil) {
             block(objects);
         } else {
-            [RMParseRequestHandler showErrorWithMessage:error.description andCompletionCallback:nil];
+            [self showErrorWithMessage:error.description andCompletionCallback:nil];
+        }
+    }];
+}
+
++ (void) getAllCurrencyUnitsWithSuccessBlock: (void (^) (NSArray*)) block {
+    [self showWaitingView];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"CurrencyUnit"];
+    [query orderByAscending:@"name"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [self closeWaitingView];
+        if (error == nil) {
+            block(objects);
+        } else {
+            [self showErrorWithMessage:error.description andCompletionCallback:nil];
         }
     }];
 }

@@ -110,7 +110,8 @@
     NSArray *cellData = _menuItems[indexPath.row];
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
-    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(20, 20)]];
+    [icon setContentMode:UIViewContentModeCenter];
+    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(30, 20)]];
     
     UILabel *item = (UILabel*) [cell viewWithTag:2];
     [item setText: cellData[1]];

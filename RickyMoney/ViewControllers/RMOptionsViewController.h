@@ -10,7 +10,7 @@
 #import "RMConstant.h"
 
 @protocol RMOptionsDelegate <NSObject>
-- (void) optionView:(OptionTypes) option DoneWithSelectedData:(NSDictionary*) selectedData;
+- (void) optionView:(OptionTypes) option DoneWithSelectedData:(id) selectedData;
 @end
 
 @interface RMOptionsViewController : UITableViewController

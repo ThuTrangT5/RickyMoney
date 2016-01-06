@@ -11,13 +11,19 @@
 #import "RMParseRequestHandler.h"
 #import "RMTransactionDetailController.h"
 
-@implementation RMTransactionController
+@implementation RMTransactionController {
+    NSDateFormatter *_formatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _transactions = [[NSMutableArray alloc] init];
     currentPage = 0;
+    
+    
+    _formatter = [[NSDateFormatter alloc] init];
+    [_formatter setDateFormat:@"EEEE, dd MMMM yyyy"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -69,8 +75,11 @@
     PFObject *cellData = _transactions[indexPath.row];
     NSString *item = [cellData valueForKey:@"itemName"];
     NSString *amount = [NSString stringWithFormat:@"%@",[cellData valueForKey:@"amount"]];
-    NSString *date = [NSString stringWithFormat:@"%@",[cellData valueForKey:@"transactionDate"]];
-    date = [date substringToIndex:19];
+    
+    NSString *date = @"";
+    if ([cellData valueForKey:@"transactionDate"] != nil) {
+        date = [_formatter stringFromDate: [cellData valueForKey:@"transactionDate"]];
+    }
     
     [(UILabel*) [cell viewWithTag:1] setText:item];
     [(UILabel*) [cell viewWithTag:2] setText:amount];
@@ -103,7 +112,7 @@
 #pragma mark- Actions
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl *)sender {
-    _transactionType = (sender.selectedSegmentIndex == 0) ? EXPENSE : INCOME;    
+    _transactionType = (sender.selectedSegmentIndex == 0) ? EXPENSE : INCOME;
     
     [_transactions removeAllObjects];
     [self.tableView reloadData];

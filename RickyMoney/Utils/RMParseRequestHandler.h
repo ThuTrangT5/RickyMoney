@@ -16,6 +16,11 @@
 + (void) getDataByQuery:(PFQuery*) query withSuccessBlock: (void (^)(NSArray *)) block;
 + (void)callFunction:(NSString *)functionName WithParams:(NSDictionary *)params withSuccessBlock:(void (^)(id))block;
 
+//////////////////
++ (void) getCurrentUserInformation:(void (^)(id))block;
+
 + (void) getAllTransactionByUser:(NSString*) userId transactionType:(TransactionType) type inCategory:(NSString*) categoryId forPage:(int) page withSuccessBlock: (void (^) (NSArray*)) block;
+
++ (void) getAllCurrencyUnitsWithSuccessBlock: (void (^) (NSArray*)) block;
 
 @end
