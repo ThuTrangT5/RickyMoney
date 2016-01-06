@@ -14,13 +14,15 @@
 
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _userInfo = [[NSMutableArray alloc] init];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self getUserInfo];
 }
 

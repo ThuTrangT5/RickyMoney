@@ -43,7 +43,6 @@
     // data
     _expenseTransactions = [[NSMutableArray alloc] init];
     _incomeTransactions = [[NSMutableArray alloc] init];
-    _timePeriod = MONTHLY;
     
     // chart
     [self initChart];
@@ -55,7 +54,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //[self getTransactionByUser];
+    [self getTransactionByTimePeriod: @"This Month"];
 }
 
 #pragma mark - DropDownView
@@ -159,21 +158,25 @@
     
     [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
     //    [_chartView setEnableStrokeColor:YES];
-    [_chartView setHoleRadiusPrecent:0.3];
     
     [_chartView setLabelsPosition:VBLabelsPositionOutChart];
     
 }
 
-- (void) getTransactionByUser {
+- (void) getTransactionByTimePeriod:(NSString*) timePeriod {
+    /* NOTE FOR CLOUD CODE
+     1. Formatter datetime is [MM/dd/yyyy]
+     2. Get data with from & to is [from <= date < to]
+     */
+    
     NSString *from, *to;
-    
-//    NSDate *today = [NSDate date];
-    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
+    NSDate *today = [NSDate date];
     int day, month, year;
+    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
     
-    [myFormatter setDateFormat:@"dd/MM/yyy"];
-    NSDate *today = [myFormatter dateFromString:@"27/12/2015"];
+    // for testing
+    [myFormatter setDateFormat:@"dd/MM/yyyy"];
+     today = [myFormatter dateFromString:@"27/12/2015"];
     
     [myFormatter setDateFormat:@"dd"];
     day = [[myFormatter stringFromDate:today] intValue];
@@ -182,88 +185,54 @@
     [myFormatter setDateFormat:@"yyyy"];
     year = [[myFormatter stringFromDate:today] intValue];
     
-    _timePeriod = WEEKLY;
-    // date string format mm/dd/yyyy
-    switch (_timePeriod) {
-        case WEEKLY:
-            // weekly from sunday to saturday
-            [myFormatter setDateFormat:@"c"];
-            int dayOfWeek = [[myFormatter stringFromDate:today] intValue]; // 7 for Saturday
-            
-            
-            // from date
-            if (day - dayOfWeek >= 0) {
-                from = [NSString stringWithFormat:@"%d/%d/%d",month, (day - dayOfWeek) + 1, year];
-                
-            } else {
-                if (month == 1 || month== 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-                    if (month == 1) {
-                        from = [NSString stringWithFormat:@"11/%d/%d",  31 + (day - dayOfWeek), year - 1];
-                    } else {
-                        from = [NSString stringWithFormat:@"%d/%d/%d", month - 1, 31 + (day - dayOfWeek), year];
-                    }
-                } else if (month == 2) {
-                    if (year % 4 == 0) { // leap year
-                        from = [NSString stringWithFormat:@"11/%d/%d",  29 + (day - dayOfWeek), year];
-                    } else {
-                        from = [NSString stringWithFormat:@"11/%d/%d",  28 + (day - dayOfWeek), year];
-                    }
-                } else {
-                    from = [NSString stringWithFormat:@"11/%d/%d",  30 + (day - dayOfWeek), year];
-                }
-            }
-            
-            // to date
-            if (day + (7- dayOfWeek) > 31) {
-                if (month == 1 || month== 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-                    if (month == 12) {
-                        to = [NSString stringWithFormat:@"01/%d/%d", (day + (7- dayOfWeek) - 31), year + 1];
-                    } else {
-                        to = [NSString stringWithFormat:@"01/%d/%d", (day + (7- dayOfWeek) - 31), year ];
-                    }
-                } else if (month == 2) {
-                    if (year % 4 == 0) { // leap year
-                        to = [NSString stringWithFormat:@"03/%d/%d", (day + (7- dayOfWeek) - 29), year ];
-                    } else {
-                        to = [NSString stringWithFormat:@"03/%d/%d", (day + (7- dayOfWeek) - 28), year ];
-                    }
-                } else {
-                    to = [NSString stringWithFormat:@"%d/%d/%d", month + 1, (day + (7- dayOfWeek) - 30), year ];
-                }
-                
-            } else {
-                to = [NSString stringWithFormat:@"%d/%d/%d", month, (day + (7- dayOfWeek) - 31), year ];
-            }
-            
-            break;
-            
-        case MONTHLY:
-            
-            from = [NSString stringWithFormat:@"%d/01/%d",month,year];
-            if (month == 12) {
-                to = [NSString stringWithFormat:@"01/01/%d", year + 1];
-            } else {
-                to = [NSString stringWithFormat:@"%d/01/%d", month + 1, year];
-            }
-            
-            break;
-            
-        case YEARLY:
-            from = [NSString stringWithFormat:@"01/01/%d",year];
-            to = [NSString stringWithFormat:@"01/01/%d",year + 1];
-            break;
-            
-        default:
-            break;
+    if ([timePeriod isEqualToString: pickerData[0]]) { // today
+        from = [myFormatter stringFromDate:today];
+        to = from;
+        
+    } else if ([timePeriod isEqualToString:pickerData[1]]) { // this week
+        // weekly from sunday to saturday
+        [myFormatter setDateFormat:@"c"];
+        int dayOfWeek = [[myFormatter stringFromDate:today] intValue]; // 7 for Saturday
+        
+        // from date
+        NSTimeInterval timeInterval = - (60 * 60 * 24 * (dayOfWeek - 1));
+        NSDate *date = [today dateByAddingTimeInterval:timeInterval];
+        
+        [myFormatter setDateFormat:@"MM/dd/yyyy"];
+        from = [myFormatter stringFromDate:date];
+        
+        // to date
+        timeInterval = 60 * 60 * 24 * 7; // 7 days include [from date]
+        date = [date dateByAddingTimeInterval:timeInterval];
+        to = [myFormatter stringFromDate:date];
+        
+    } else if ([timePeriod isEqualToString:pickerData[2]]) { // this month
+        from = [NSString stringWithFormat:@"%d/01/%d",month,year];
+        if (month == 12) {
+            to = [NSString stringWithFormat:@"01/01/%d", year + 1];
+        } else {
+            to = [NSString stringWithFormat:@"%d/01/%d", month + 1, year];
+        }
+        
+    } else if ([timePeriod isEqualToString:pickerData[3]]) { // last month
+        to = [NSString stringWithFormat:@"%d/01/%d", month, year];
+        
+        if (month == 1) {
+            month = 12;
+            year--;
+        } else {
+            month --;
+        }
+        from = [NSString stringWithFormat:@"%d/01/%d",month,year];
+        
+    } else if ([timePeriod isEqualToString:pickerData[4]]) { // this year
+        from = [NSString stringWithFormat:@"01/01/%d",year];
+        to = [NSString stringWithFormat:@"01/01/%d",year + 1];
     }
-    
-    
     
     NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", from, to, nil];
     NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"language", @"fromDate", @"toDate", nil];
     NSDictionary *params = [[NSDictionary alloc] initWithObjects: objs forKeys: keys];
-    
-    
     
     [RMParseRequestHandler callFunction:@"transactionReview" WithParams:params withSuccessBlock:^(NSDictionary *trans) {
         [_expenseTransactions removeAllObjects];
@@ -314,6 +283,7 @@
 
 - (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
     [self.rangeButton setTitle:pickerData[row] forState:UIControlStateNormal];
+    [self getTransactionByTimePeriod:pickerData[row]];
 }
 
 - (void) showPicker {
@@ -336,11 +306,19 @@
 }
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl*)sender {
+    NSMutableArray *selectedData = nil;
     if (sender.selectedSegmentIndex == 0) {
-        [_chartView setChartValues:_expenseTransactions animation:YES];
+        selectedData = _expenseTransactions;
         
     } else if (sender.selectedSegmentIndex == 1) {
-        [_chartView setChartValues:_incomeTransactions animation:YES];
+        selectedData = _incomeTransactions;
+    }
+    
+    if (selectedData.count > 0) {
+        [_chartView setHidden:NO];
+        [_chartView setChartValues: selectedData animation:YES];
+    } else {
+        [_chartView setHidden:YES];
     }
 }
 @end

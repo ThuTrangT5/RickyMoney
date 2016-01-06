@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *rangeButton;
 
 @property (strong, nonatomic) VBPieChart *chartView;
-@property (nonatomic) TimePeriod timePeriod;
+//@property (nonatomic) TimePeriod timePeriod;
 
 - (IBAction)ontouchMenu:(id)sender;
 - (IBAction)ontouchSelectRange:(UIButton *)sender;
