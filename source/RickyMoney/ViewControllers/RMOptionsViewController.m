@@ -8,7 +8,6 @@
 
 #import "RMOptionsViewController.h"
 #import "RMParseRequestHandler.h"
-#import <Parse/PFQuery.h>
 #import <Parse/PFFile.h>
 
 @implementation RMOptionsViewController
@@ -21,7 +20,7 @@
             break;
             
         case OPTION_CURRENCY:
-            [self getCerrencyUnit];
+            [self getCurrencyUnit];
             break;
             
         case OPTION_PERIOD_TIME:{
@@ -38,9 +37,8 @@
     }
 }
 
-- (void) getCerrencyUnit {
-    PFQuery *query = [PFQuery queryWithClassName:@"CurrencyUnit"];
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
+- (void) getCurrencyUnit {
+    [RMParseRequestHandler getAllCurrencyUnitsWithSuccessBlock:^(NSArray * objects) {
         _optionData = objects;
         [self.tableView reloadData];
     }];
@@ -127,7 +125,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.delegate != nil) {
         
-        NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
+//        NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
+        NSString *selectedData = @"";
         switch (_option) {
             case OPTION_CATEGORY:{
                 PFObject *cellData = _optionData[indexPath.row];
@@ -137,11 +136,12 @@
                 break;
                 
             case OPTION_CURRENCY: {
-                PFObject *cellData = _optionData[indexPath.row];
-                NSString *objId = cellData.objectId;
-                NSString *displayName = [NSString stringWithFormat:@"%@ (%@)", cellData[@"name"], cellData[@"symbol"]];
-                [selectedData setValue: objId forKey:@"objectId"];
-                [selectedData setValue:displayName forKey:@"currencyName"];
+                selectedData = [(PFObject*) _optionData[indexPath.row] objectId];
+//                PFObject *cellData = _optionData[indexPath.row];
+//                NSString *objId = cellData.objectId;
+//                NSString *displayName = [NSString stringWithFormat:@"%@ (%@)", cellData[@"name"], cellData[@"symbol"]];
+//                [selectedData setValue: objId forKey:@"objectId"];
+//                [selectedData setValue:displayName forKey:@"currencyName"];
             }
                 break;
                 
@@ -149,7 +149,7 @@
                 break;
                 
             case OPTION_PERIOD_TIME:
-                [selectedData setValue:_optionData[indexPath.row] forKey:@"periodTime"];
+//                [selectedData setValue:_optionData[indexPath.row] forKey:@"periodTime"];
                 break;
                 
             default:

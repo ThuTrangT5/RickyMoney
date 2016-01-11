@@ -11,15 +11,19 @@
 #import "RMParseRequestHandler.h"
 #import "RMTransactionDetailController.h"
 
-@implementation RMTransactionController
-
-#define TRANSACTION_PER_PAGE 15
+@implementation RMTransactionController {
+    NSDateFormatter *_formatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _transactions = [[NSMutableArray alloc] init];
     currentPage = 0;
+    
+    
+    _formatter = [[NSDateFormatter alloc] init];
+    [_formatter setDateFormat:@"EEEE, dd MMMM yyyy"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -32,18 +36,28 @@
 }
 
 - (void) getTransactionsByPage:(int) page {
-    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
-    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
-    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:_transactionType]];
-    [query orderByDescending:@"transactionDate"];
-    [query setLimit:TRANSACTION_PER_PAGE];
-    [query setSkip:TRANSACTION_PER_PAGE * (page - 1)];
+    //    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
+    //    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
+    //    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:_transactionType]];
+    //    [query orderByDescending:@"transactionDate"];
+    //    [query setLimit:TRANSACTION_PER_PAGE];
+    //    [query setSkip:TRANSACTION_PER_PAGE * (page - 1)];
+    //
+    //    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
+    //        currentPage = page;
+    //        [_transactions addObjectsFromArray:objects];
+    //        [self.tableView reloadData];
+    //    }];
     
-    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
-        currentPage = page;
-        [_transactions addObjectsFromArray:objects];
-        [self.tableView reloadData];
-    }];
+    [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
+                                   transactionType:_transactionType
+                                        inCategory:_category
+                                           forPage: page
+                                  withSuccessBlock:^(NSArray *objects) {
+                                      currentPage = page;
+                                      [_transactions addObjectsFromArray:objects];
+                                      [self.tableView reloadData];
+                                  }];
 }
 
 #pragma mark- TableView delegate & datasource
@@ -61,8 +75,11 @@
     PFObject *cellData = _transactions[indexPath.row];
     NSString *item = [cellData valueForKey:@"itemName"];
     NSString *amount = [NSString stringWithFormat:@"%@",[cellData valueForKey:@"amount"]];
-    NSString *date = [NSString stringWithFormat:@"%@",[cellData valueForKey:@"transactionDate"]];
-    date = [date substringToIndex:19];
+    
+    NSString *date = @"";
+    if ([cellData valueForKey:@"transactionDate"] != nil) {
+        date = [_formatter stringFromDate: [cellData valueForKey:@"transactionDate"]];
+    }
     
     [(UILabel*) [cell viewWithTag:1] setText:item];
     [(UILabel*) [cell viewWithTag:2] setText:amount];
@@ -95,7 +112,8 @@
 #pragma mark- Actions
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl *)sender {
-    _transactionType = (int) sender.selectedSegmentIndex;
+    _transactionType = (sender.selectedSegmentIndex == 0) ? EXPENSE : INCOME;
+    
     [_transactions removeAllObjects];
     [self.tableView reloadData];
     

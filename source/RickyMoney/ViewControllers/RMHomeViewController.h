@@ -10,8 +10,10 @@
 #import <LMDropdownView/LMDropdownView.h>
 #import "VBPieChart.h"
 #import "RMConstant.h"
+#import "CZPicker.h"
+#import "RMCalendar.h"
 
-@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CZPickerViewDataSource, CZPickerViewDelegate, RMCalendarDelegate>
 
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *expenseTransactions, *incomeTransactions;
@@ -21,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *rangeButton;
 
 @property (strong, nonatomic) VBPieChart *chartView;
-@property (nonatomic) TimePeriod timePeriod;
 
 - (IBAction)ontouchMenu:(id)sender;
 - (IBAction)ontouchSelectRange:(UIButton *)sender;

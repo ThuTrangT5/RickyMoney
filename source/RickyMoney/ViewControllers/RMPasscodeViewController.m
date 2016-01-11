@@ -95,7 +95,7 @@
         _passcodeField.text = @"";
         _retypeField.text = @"";
         _isLock = NO;
-        [ud removeObjectForKey:kPasscodeOn];
+        [ud removeObjectForKey:kPasscode];
         [_turnOnOffButton setTitle:@"Turn ON" forState:UIControlStateNormal];
         
         return YES;

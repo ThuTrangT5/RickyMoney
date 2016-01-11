@@ -6,5 +6,6 @@ pod 'DGActivityIndicatorView'
 pod 'Parse'
 pod 'LMDropdownView'
 pod 'THPinViewController'
+pod 'JTCalendar', '~> 2.0'
 
 use_frameworks!
