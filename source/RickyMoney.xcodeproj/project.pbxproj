@@ -22,9 +22,6 @@
 		18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */; };
 		18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9681B9B4C4F00E0185D /* NSString+FontAwesome.m */; };
 		18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */; };
-		18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9711B9B603200E0185D /* UIColor+HexColor.m */; };
-		18CAE9771B9B603200E0185D /* VBPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9731B9B603200E0185D /* VBPieChart.m */; };
-		18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9751B9B603200E0185D /* VBPiePiece.m */; };
 		18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */; };
 		18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */; };
 		18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F877771BA1DE7000AB362B /* RMTransactionController.m */; };
@@ -45,6 +42,9 @@
 		6A1BD9691C43929A00DA7A85 /* JTHorizontalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95C1C43929A00DA7A85 /* JTHorizontalCalendarView.m */; };
 		6A1BD96A1C43929A00DA7A85 /* JTVerticalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95E1C43929A00DA7A85 /* JTVerticalCalendarView.m */; };
 		6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */; };
+		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
+		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
+		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,12 +89,6 @@
 		18CAE9691B9B4C4F00E0185D /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		18CAE96E1B9B4DD400E0185D /* RMConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConstant.h; sourceTree = "<group>"; };
-		18CAE9701B9B603200E0185D /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
-		18CAE9711B9B603200E0185D /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
-		18CAE9721B9B603200E0185D /* VBPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPieChart.h; sourceTree = "<group>"; };
-		18CAE9731B9B603200E0185D /* VBPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPieChart.m; sourceTree = "<group>"; };
-		18CAE9741B9B603200E0185D /* VBPiePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBPiePiece.h; sourceTree = "<group>"; };
-		18CAE9751B9B603200E0185D /* VBPiePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBPiePiece.m; sourceTree = "<group>"; };
 		18CAE9791B9C3A8C00E0185D /* RMCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategoryViewController.h; sourceTree = "<group>"; };
 		18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryViewController.m; sourceTree = "<group>"; };
 		18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMParseRequestHandler.h; sourceTree = "<group>"; };
@@ -143,6 +137,10 @@
 		6A2037F01C3BC3BD00F680C7 /* CZPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPicker.h; sourceTree = "<group>"; };
 		6A2037F11C3BC3BD00F680C7 /* CZPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPickerView.h; sourceTree = "<group>"; };
 		6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
+		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
+		6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RickyMoney-Bridging-Header.h"; sourceTree = "<group>"; };
+		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
+		6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDelegate.swift; sourceTree = "<group>"; };
 		BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +194,7 @@
 				1823D4231B8E140D005AC56B /* Main.storyboard */,
 				1823D4261B8E140D005AC56B /* Assets.xcassets */,
 				1823D42B1B8E140D005AC56B /* Info.plist */,
+				6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */,
 				1823D41A1B8E140D005AC56B /* Supporting Files */,
 			);
 			path = RickyMoney;
@@ -265,9 +264,9 @@
 			children = (
 				6A1BD9351C43927400DA7A85 /* RMCalendar */,
 				183160441BDE8A5A00898482 /* TTDatePickerViewController */,
-				18CAE96F1B9B603200E0185D /* VBPieChart */,
 				18CAE9651B9B4C4F00E0185D /* FontAwesome */,
 				6A2037EF1C3BC3BD00F680C7 /* CZPicker */,
+				6AC020431C4CDEF6001A1DCA /* MDRotatingPieChart */,
 				18CAE96E1B9B4DD400E0185D /* RMConstant.h */,
 				18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */,
 				18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */,
@@ -285,19 +284,6 @@
 				18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */,
 			);
 			path = FontAwesome;
-			sourceTree = "<group>";
-		};
-		18CAE96F1B9B603200E0185D /* VBPieChart */ = {
-			isa = PBXGroup;
-			children = (
-				18CAE9701B9B603200E0185D /* UIColor+HexColor.h */,
-				18CAE9711B9B603200E0185D /* UIColor+HexColor.m */,
-				18CAE9721B9B603200E0185D /* VBPieChart.h */,
-				18CAE9731B9B603200E0185D /* VBPieChart.m */,
-				18CAE9741B9B603200E0185D /* VBPiePiece.h */,
-				18CAE9751B9B603200E0185D /* VBPiePiece.m */,
-			);
-			path = VBPieChart;
 			sourceTree = "<group>";
 		};
 		490F8789054314FC46125CE9 /* Pods */ = {
@@ -393,6 +379,16 @@
 			path = CZPicker;
 			sourceTree = "<group>";
 		};
+		6AC020431C4CDEF6001A1DCA /* MDRotatingPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */,
+				6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */,
+				6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */,
+			);
+			path = MDRotatingPieChart;
+			sourceTree = "<group>";
+		};
 		71F895E18A22AF386955E608 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +445,8 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = RM;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = adelphatech;
 				TargetAttributes = {
@@ -565,27 +563,27 @@
 				6A1BD9631C43929A00DA7A85 /* JTCalendarScrollManager.m in Sources */,
 				6A1BD9671C43929A00DA7A85 /* JTCalendarWeekDayView.m in Sources */,
 				6A1BD9621C43929A00DA7A85 /* JTCalendarDelegateManager.m in Sources */,
-				18CAE9761B9B603200E0185D /* UIColor+HexColor.m in Sources */,
 				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
 				6A1BD9641C43929A00DA7A85 /* JTCalendarDayView.m in Sources */,
 				6A1BD9661C43929A00DA7A85 /* JTCalendarPageView.m in Sources */,
 				183160481BDE8A7700898482 /* TTDatePickerViewController.m in Sources */,
+				6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */,
+				6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */,
 				6A1BD96A1C43929A00DA7A85 /* JTVerticalCalendarView.m in Sources */,
 				18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */,
 				18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */,
-				18CAE9781B9B603200E0185D /* VBPiePiece.m in Sources */,
 				18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */,
 				18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */,
 				6A1BD9691C43929A00DA7A85 /* JTHorizontalCalendarView.m in Sources */,
 				6A1BD9651C43929A00DA7A85 /* JTCalendarMenuView.m in Sources */,
 				18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */,
+				6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */,
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
 				18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */,
 				6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */,
 				6A1BD95F1C43929A00DA7A85 /* JTCalendarManager.m in Sources */,
 				18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */,
-				18CAE9771B9B603200E0185D /* VBPieChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +702,7 @@
 			baseConfigurationReference = BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
@@ -711,6 +710,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RickyMoney/RickyMoney-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -719,6 +721,7 @@
 			baseConfigurationReference = 661164BE16BB17FFC4652DC0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
@@ -726,6 +729,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RickyMoney/RickyMoney-Bridging-Header.h";
 			};
 			name = Release;
 		};

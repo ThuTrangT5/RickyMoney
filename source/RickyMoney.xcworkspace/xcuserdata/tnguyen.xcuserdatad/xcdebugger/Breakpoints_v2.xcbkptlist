@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "474194258.653082"
+            timestampString = "474804108.657747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "-getTransactionByTimePeriod:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyMoney/Utils/RMCalendar/RMCalendar.m"
-            timestampString = "474198318.706235"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-calendar:didTouchDayView:"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "-getTransactionFromDate:toDate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

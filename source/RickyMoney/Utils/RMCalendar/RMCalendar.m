@@ -10,7 +10,7 @@
 #import "RMConstant.h"
 
 @implementation RMCalendar {
-    NSDate *_dateSelected;
+    NSDate *_dateSelected, *_previousSelected;
     __weak IBOutlet UIView *contentView;
 }
 
@@ -18,11 +18,11 @@
 
 //-(instancetype)initWithCoder:(NSCoder *)aDecoder {
 //    self = [super initWithCoder:aDecoder];
-//    
+//
 //    if (self) {
 //        self = [self initializeSubviews];
 //    }
-//    
+//
 //    return self;
 //}
 
@@ -81,6 +81,13 @@
     if([dayView isFromAnotherMonth]){
         dayView.hidden = YES;
     }
+    // previous selected date
+    else if (_previousSelected && [_calendarManager.dateHelper date:_previousSelected isTheSameDayThan:dayView.date]){
+        dayView.circleView.hidden = NO;
+        dayView.circleView.backgroundColor = [UIColor blueColor];
+        dayView.dotView.backgroundColor = [UIColor whiteColor];
+        dayView.textLabel.textColor = [UIColor whiteColor];
+    }
     // Selected date
     else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
@@ -133,9 +140,6 @@
             [_calendarContentView loadPreviousPageWithAnimation];
         }
     }
-    
-    // call delegate of RMCalendar
-    [self.delegate RMCalendar:self didSelectDate:dayView.date];
 }
 
 #pragma mark- Actions
@@ -167,9 +171,9 @@
                      }];
     
     
-//    [UIView animateWithDuration:0.3f animations:^{
-//        contentView.alpha = 1.0f;
-//    }];
+    //    [UIView animateWithDuration:0.3f animations:^{
+    //        contentView.alpha = 1.0f;
+    //    }];
 }
 
 - (void) hide {
@@ -192,5 +196,16 @@
     }];
     
 }
+
+- (IBAction)ontouchConfirm:(id)sender {
+    if (_dateSelected != nil) {
+        _previousSelected = _dateSelected;
+        [_calendarManager reload];
+        
+        // call delegate of RMCalendar
+        [self.delegate RMCalendar:self didSelectDate:_dateSelected];
+    }
+}
+
 
 @end

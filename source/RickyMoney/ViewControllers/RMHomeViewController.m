@@ -9,12 +9,20 @@
 #import "RMHomeViewController.h"
 #import "UIImage+FontAwesome.h"
 #import "AppDelegate.h"
-#import "UIColor+HexColor.h"
 #import "RMParseRequestHandler.h"
+
+#import "RickyMoney-Swift.h"
+
+@interface RMHomeViewController () <MDRotatingPieChartDataSource>
+
+@end
 
 @implementation RMHomeViewController {
     NSArray *pickerData;
     NSDate *_fromDate, *_toDate;
+    
+    MDRotatingPieChart *_chartView;
+    NSArray *_chartData, *_chartColor;
 }
 
 #define MENU_TABLE_TAG 10
@@ -44,9 +52,8 @@
     // data
     _expenseTransactions = [[NSMutableArray alloc] init];
     _incomeTransactions = [[NSMutableArray alloc] init];
-    
-    // chart
-    [self initChart];
+    _chartData = [[NSArray alloc] init];
+    [_noDataLabel setHidden:YES];
     
     // picker
     pickerData = [[NSArray alloc] initWithObjects:@"Today", @"This Week", @"This Month", @"Last Month", @"This Year", @"Custome", nil];
@@ -148,22 +155,76 @@
 
 #pragma mark- Chart
 - (void) initChart {
-    if (_chartView == nil) {
-        _chartView = [[VBPieChart alloc] init];
-        
-        UIView *chartViewParent = [self.view viewWithTag:1];
-        [chartViewParent setBackgroundColor:[UIColor clearColor]];
-        [_chartView setFrame:chartViewParent.bounds];
-        
-        [chartViewParent addSubview:_chartView];
-    }
     
-    [_chartView setHoleRadiusPrecent:0.3]; /* hole inside of chart */
-    //    [_chartView setEnableStrokeColor:YES];
+    _chartColor = [[NSArray alloc] initWithObjects:
+                   [UIColor redColor],
+                   [UIColor orangeColor],
+                   [UIColor yellowColor],
+                   [UIColor greenColor],
+                   [UIColor blueColor],
+                   [UIColor purpleColor],
+                   [UIColor grayColor],
+                   nil];
     
-    [_chartView setLabelsPosition:VBLabelsPositionOutChart];
+    _chartView = [[MDRotatingPieChart alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width - 20, self.view.frame.size.height - 250)];
+    /*
+     Here you can dig into some properties
+     -------------------------------------
+     
+     var properties = Properties()
+     
+     properties.smallRadius = 50
+     properties.bigRadius = 120
+     properties.expand = 25
+     
+     
+     properties.displayValueTypeInSlices = .Percent
+     properties.displayValueTypeCenter = .Label
+     
+     properties.fontTextInSlices = UIFont(name: "Arial", size: 12)!
+     properties.fontTextCenter = UIFont(name: "Arial", size: 10)!
+     
+     properties.enableAnimation = true
+     properties.animationDuration = 0.5
+     
+     
+     var nf = NSNumberFormatter()
+     nf.groupingSize = 3
+     nf.maximumSignificantDigits = 2
+     nf.minimumSignificantDigits = 2
+     
+     properties.nf = nf
+     
+     pieChart.properties = properties
+     */
     
+    _chartView.datasource = self;
+    
+    [self.view addSubview:_chartView];
 }
+
+- (NSInteger)numberOfSlices {
+    return _chartData.count;
+}
+
+- (UIColor *)colorForSliceAtIndex:(NSInteger)index {
+    return _chartColor[index % 7];
+}
+
+- (CGFloat)valueForSliceAtIndex:(NSInteger)index {
+    NSDictionary *chart = (NSDictionary*) _chartData[index];
+    CGFloat fValue = [[chart valueForKey: @"value"] doubleValue];
+    return fValue;
+}
+
+- (NSString *)labelForSliceAtIndex:(NSInteger)index {
+    NSDictionary *chart = (NSDictionary*) _chartData[index];
+    NSString *label = [NSString stringWithFormat:@"%@-%.2f",
+                       [chart valueForKey:@"name"],
+                       [[chart valueForKey:@"value"] floatValue]];
+    return label;
+}
+
 
 #pragma mark- Get Transaction data
 
@@ -238,9 +299,9 @@
 }
 
 - (void) getTransactionFromDate:(NSString*) fromDate toDate:(NSString*) toDate {
-    // format of date is dd/mm/yyyy
+    // format of date is MM/dd/yyyy
     
-    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", fromDate, fromDate, nil];
+    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", fromDate, toDate, nil];
     NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"language", @"fromDate", @"toDate", nil];
     NSDictionary *params = [[NSDictionary alloc] initWithObjects: objs forKeys: keys];
     
@@ -252,8 +313,7 @@
             NSDictionary *tran = [expense valueForKey:categoryId];
             NSDictionary *chart = @{
                                     @"name": [tran valueForKey:@"name"],
-                                    @"value": [tran valueForKey:@"amount"],
-                                    @"labelColor": RM_COLOR
+                                    @"value": [tran valueForKey:@"amount"]
                                     };
             [_expenseTransactions addObject:chart];
         }
@@ -264,19 +324,34 @@
             NSDictionary *tran = [income valueForKey:categoryId];
             NSDictionary *chart = @{
                                     @"name": [tran valueForKey:@"name"],
-                                    @"value": [tran valueForKey:@"amount"],
-                                    @"labelColor": RM_COLOR
+                                    @"value": [tran valueForKey:@"amount"]
                                     };
             [_incomeTransactions addObject:chart];
         }
         
-        [_chartView setChartValues:_expenseTransactions animation:YES];
+        if (self.transactionType.selectedSegmentIndex == 0) {
+            _chartData = _expenseTransactions;
+        } else {
+            _chartData = _incomeTransactions;
+        }
+        
+        if (_chartData.count > 0) {
+            
+            [_chartView setHidden:NO];
+            [_noDataLabel setHidden:YES];
+            
+            if (_chartView == nil) {
+                [self initChart];
+            }
+            [
+             _chartView build];
+            
+        } else {
+            [_chartView setHidden:YES];
+            [_noDataLabel setHidden:NO];
+        }
+        
     }];
-}
-
-- (void) getTransactionsByCategory {
-    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
-    [query whereKey:@"userId" equalTo:[[PFUser currentUser] objectId]];
 }
 
 #pragma mark- PickerView
@@ -313,22 +388,28 @@
 #pragma mark- Calendar
 
 - (void) showCalendar {
-    RMCalendar *calendar = [[RMCalendar alloc] initCalendarWithTitle:@"Date from ... " andConfirmButton:@"Next"];
+    RMCalendar *calendar = [[RMCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
     calendar.delegate = self;
     [calendar show];
 }
 
 - (void)RMCalendar:(RMCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/MM/yyyy"];
+    
     if (_fromDate == nil) {
-        calendar.titleView.text = @"to date ...";
+        calendar.titleView.text = [NSString stringWithFormat:@"%@ => ...", [formatter stringFromDate:selectedDate]];
         [calendar.confirmButton setTitle:@"Confirm" forState:UIControlStateNormal];
         _fromDate = selectedDate;
     } else {
         _toDate = selectedDate;
         [calendar hide];
         
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"dd/MM/yyyy"];
+        [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
+                      forState:UIControlStateNormal];
+        
+        [formatter setDateFormat:@"MM/dd/yyyy"];
         [self getTransactionFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
     }
 }
@@ -345,19 +426,13 @@
 }
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl*)sender {
-    NSMutableArray *selectedData = nil;
     if (sender.selectedSegmentIndex == 0) {
-        selectedData = _expenseTransactions;
-        
-    } else if (sender.selectedSegmentIndex == 1) {
-        selectedData = _incomeTransactions;
+        _chartData = _expenseTransactions;
+    } else {
+        _chartData = _incomeTransactions;
     }
     
-    if (selectedData.count > 0) {
-        [_chartView setHidden:NO];
-        [_chartView setChartValues: selectedData animation:YES];
-    } else {
-        [_chartView setHidden:YES];
-    }
+    [_chartView reset];
+    
 }
 @end

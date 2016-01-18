@@ -33,6 +33,9 @@
                             <state key="normal" title="Confirm">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="ontouchConfirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="KCo-2t-oRm"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" id="XnT-9Z-mVW" customClass="JTVerticalCalendarView">
                             <rect key="frame" x="0.0" y="80" width="295" height="210"/>

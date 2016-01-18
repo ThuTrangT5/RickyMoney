@@ -654,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2gM-bp-zXX">
-                                <rect key="frame" x="47" y="505" width="280" height="29"/>
+                                <rect key="frame" x="47" y="537" width="280" height="29"/>
                                 <segments>
                                     <segment title="Expense"/>
                                     <segment title="Income"/>
@@ -674,14 +674,22 @@
                                     <action selector="ontouchSelectRange:" destination="8yA-4p-pYk" eventType="touchUpInside" id="BSG-AU-fjJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-r9-eI4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-r9-eI4">
                                 <rect key="frame" x="156" y="291" width="63" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="0xl-qO-o22"/>
+                                    <constraint firstAttribute="width" constant="63" id="ARq-PY-MdY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ieZ-r9-eI4" firstAttribute="top" secondItem="FuG-lo-7XY" secondAttribute="bottom" constant="291" id="33z-xN-nsH"/>
+                            <constraint firstItem="ieZ-r9-eI4" firstAttribute="centerX" secondItem="xtq-z4-Kle" secondAttribute="centerX" id="Wzf-IZ-nVh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ricky Money" id="1rP-Kb-iTe">
                         <barButtonItem key="backBarButtonItem" title=" " id="p7B-u9-wH9"/>
@@ -693,7 +701,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuTableView" destination="oxb-sF-ARE" id="jYb-as-ZYG"/>
+                        <outlet property="noDataLabel" destination="ieZ-r9-eI4" id="XkT-dq-toJ"/>
                         <outlet property="rangeButton" destination="WnR-xe-dOP" id="3G5-Ij-3Yv"/>
+                        <outlet property="transactionType" destination="2gM-bp-zXX" id="hWd-0z-vgi"/>
                         <segue destination="IZ2-WW-sdz" kind="push" identifier="categorySegue" id="8Xf-I1-qcH"/>
                         <segue destination="SpM-o9-cWD" kind="push" identifier="settingSegue" id="kCY-dE-mn4"/>
                         <segue destination="Zqd-Sq-6AE" kind="push" identifier="transactionSegue" id="Ur3-Qh-i4V"/>

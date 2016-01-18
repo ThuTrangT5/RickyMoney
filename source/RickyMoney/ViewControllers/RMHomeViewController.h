@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <LMDropdownView/LMDropdownView.h>
-#import "VBPieChart.h"
 #import "RMConstant.h"
 #import "CZPicker.h"
 #import "RMCalendar.h"
@@ -21,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (strong, nonatomic) LMDropdownView *dropdownView;
 @property (weak, nonatomic) IBOutlet UIButton *rangeButton;
-
-@property (strong, nonatomic) VBPieChart *chartView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *transactionType;
+@property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 
 - (IBAction)ontouchMenu:(id)sender;
 - (IBAction)ontouchSelectRange:(UIButton *)sender;
