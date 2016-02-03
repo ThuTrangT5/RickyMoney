@@ -24,6 +24,9 @@
     
     _formatter = [[NSDateFormatter alloc] init];
     [_formatter setDateFormat:@"EEEE, dd MMMM yyyy"];
+    
+    // notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectInsertNewTransaction:) name:kInsertNewTransaction object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -35,19 +38,9 @@
     }
 }
 
+#pragma mark- Data
+
 - (void) getTransactionsByPage:(int) page {
-    //    PFQuery *query = [PFQuery queryWithClassName:@"Transaction"];
-    //    [query whereKey:@"userId" equalTo:[PFUser currentUser].objectId];
-    //    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:_transactionType]];
-    //    [query orderByDescending:@"transactionDate"];
-    //    [query setLimit:TRANSACTION_PER_PAGE];
-    //    [query setSkip:TRANSACTION_PER_PAGE * (page - 1)];
-    //
-    //    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
-    //        currentPage = page;
-    //        [_transactions addObjectsFromArray:objects];
-    //        [self.tableView reloadData];
-    //    }];
     
     [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
                                    transactionType:_transactionType
@@ -58,6 +51,15 @@
                                       [_transactions addObjectsFromArray:objects];
                                       [self.tableView reloadData];
                                   }];
+}
+
+- (void) detectInsertNewTransaction:(NSNotification*) notification {
+    if (notification.object != nil) {
+        PFObject *newTransaction = (PFObject*) notification.object;
+        [_transactions insertObject:newTransaction atIndex:0];
+        NSIndexPath *idp = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[idp] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark- TableView delegate & datasource
@@ -91,6 +93,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *transactionId = [(PFObject*)_transactions[indexPath.row] objectId];
     [self performSegueWithIdentifier:@"transactionDetail" sender:transactionId];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        PFObject *obj = _transactions[indexPath.row];
+        [_transactions removeObjectAtIndex:indexPath.row];
+        NSLog(@"DELETE => %@", obj.objectId);
+        
+        [obj deleteEventually];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
 }
 
 #pragma mark- Prepare for Segue

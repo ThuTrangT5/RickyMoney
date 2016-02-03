@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "473772237.225447"
+            filePath = "RickyMoney/ViewControllers/RMTransactionController.m"
+            timestampString = "476189326.303385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "-getTransactionByTimePeriod:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-detectInsertNewTransaction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

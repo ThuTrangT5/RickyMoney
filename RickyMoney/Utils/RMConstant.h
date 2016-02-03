@@ -31,9 +31,11 @@ typedef enum _transactiontype {
 
 #define REPORT_OPTIONS @[@"Monthly", @"Quarterly", @"Yearly"]
 
-#define kPasscode @"kPasscode"
+#define kPasscode @"RM-kPasscode"
 #define kPasscodeOn @"Passcode is ON"
 #define kPasscodeOff @"Passcode is OFF"
+
+#define kInsertNewTransaction @"RM-kInsertNewTransaction"
 
 #define ITEM_PER_PAGE 20
 

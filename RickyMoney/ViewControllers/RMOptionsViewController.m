@@ -125,8 +125,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.delegate != nil) {
         
-//        NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
-        NSString *selectedData = @"";
+        NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
+//        NSString *selectedData = @"";
         switch (_option) {
             case OPTION_CATEGORY:{
                 PFObject *cellData = _optionData[indexPath.row];
@@ -136,12 +136,12 @@
                 break;
                 
             case OPTION_CURRENCY: {
-                selectedData = [(PFObject*) _optionData[indexPath.row] objectId];
-//                PFObject *cellData = _optionData[indexPath.row];
-//                NSString *objId = cellData.objectId;
-//                NSString *displayName = [NSString stringWithFormat:@"%@ (%@)", cellData[@"name"], cellData[@"symbol"]];
-//                [selectedData setValue: objId forKey:@"objectId"];
-//                [selectedData setValue:displayName forKey:@"currencyName"];
+//                selectedData = [(PFObject*) _optionData[indexPath.row] objectId];
+                PFObject *cellData = _optionData[indexPath.row];
+                NSString *objId = cellData.objectId;
+                NSString *displayName = [NSString stringWithFormat:@"%@ (%@)", cellData[@"name"], cellData[@"symbol"]];
+                [selectedData setValue: objId forKey:@"objectId"];
+                [selectedData setValue:displayName forKey:@"currencyName"];
             }
                 break;
                 
