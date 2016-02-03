@@ -11,6 +11,7 @@
 #import "UIImage+FontAwesome.h"
 #import "RMParseRequestHandler.h"
 #import <Parse/PFObject.h>
+#import "RMOptionsViewController.h"
 
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
@@ -34,10 +35,7 @@
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-key", @"Passcode", passcode];
-        //_userInfo[3] = @[@"fa-key", @"Wallet", passcode];
-        // language ???
-        
+        _userInfo[2] = @[@"fa-key", @"Passcode", passcode];        
         [self.tableView reloadData];
     }];
 }
@@ -99,35 +97,11 @@
     }
 }
 
-#pragma mark- RMOptionsDelegate
-
-- (void) optionView:(OptionTypes) option DoneWithSelectedData:(id) selectedData {
-    switch (option) {
-        case OPTION_CURRENCY: {
-            PFObject *currency = [PFObject objectWithoutDataWithClassName:@"CurrencyUnit" objectId: (NSString*) selectedData];
-            [[PFUser currentUser] setObject:currency forKey:@"currencyUnit"];
-            [[PFUser currentUser] saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
-                
-                // reload user information
-                [self getUserInfo];
-            }];
-        }
-            break;
-            
-        case OPTION_PASSCODE:
-            
-            break;
-        default:
-            break;
-    }
-}
-
 #pragma mark- prepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
-        optionVC.delegate = self;
         optionVC.option = OPTION_CURRENCY;
     }
 }

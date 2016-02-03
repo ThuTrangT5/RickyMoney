@@ -29,7 +29,10 @@
         UIButton *button = (UIButton*) [self.view viewWithTag:i+1];
         [button addSubview:view];
     }
-    
+ 
+    // testing
+    _emailField.text = @"thutrangitmt@gmail.com";
+    _passwordField.text = @"111111";
 }
 
 - (void)viewDidAppear:(BOOL)animated {

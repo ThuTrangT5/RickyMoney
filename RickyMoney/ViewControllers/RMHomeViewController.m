@@ -23,6 +23,7 @@
     
     MDRotatingPieChart *_chartView;
     NSArray *_chartData, *_chartColor;
+    NSString *currency;
 }
 
 #define MENU_TABLE_TAG 10
@@ -56,12 +57,15 @@
     // picker
     pickerData = [[NSArray alloc] initWithObjects:@"Today", @"This Week", @"This Month", @"Last Month", @"This Year", @"Custome", nil];
     
+    // currency
+    [self getUserCurrency];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateCurrency:) name:kUpdateCurrency object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self getTransactionByTimePeriod: @"This Month"];
+    [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
 }
 
 #pragma mark - DropDownView
@@ -71,8 +75,6 @@
     // Init dropdown view
     if (!self.dropdownView) {
         self.dropdownView = [LMDropdownView dropdownView];
-        //        self.dropdownView.delegate = self;
-        
         // Customize Dropdown style
         self.dropdownView.closedScale = 0.85;
         self.dropdownView.blurRadius = 5;
@@ -151,10 +153,11 @@
     _chartColor = [[NSArray alloc] initWithObjects:
                    [UIColor redColor],
                    [UIColor orangeColor],
+                   RM_COLOR,
                    [UIColor yellowColor],
-                   [UIColor greenColor],
-                   [UIColor blueColor],
-                   [UIColor purpleColor],
+                   [UIColor colorWithRed:135.0/255.0 green:245.0/255.0 blue:150.0/255.0 alpha:1.0f],
+                   [UIColor colorWithRed:5.0/255.0 green:185.0/255.0 blue:245.0/255.0 alpha:1.0f],
+                   [UIColor colorWithRed:245.0/255.0 green:100.0/255.0 blue:225.0/255.0 alpha:1.0f],
                    [UIColor grayColor],
                    nil];
     
@@ -181,14 +184,30 @@
 
 - (NSString *)labelForSliceAtIndex:(NSInteger)index {
     NSDictionary *chart = (NSDictionary*) _chartData[index];
-    NSString *label = [NSString stringWithFormat:@"%@\n%.2f",
+    NSString *label = [NSString stringWithFormat:@"%@\n%.2f %@",
                        [chart valueForKey:@"name"],
-                       [[chart valueForKey:@"value"] floatValue]];
+                       [[chart valueForKey:@"value"] floatValue],
+                       currency];
     return label;
 }
 
 
-#pragma mark- Get Transaction data
+#pragma mark- Data
+
+- (void) getUserCurrency {
+    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
+        PFObject *obj = [user objectForKey:@"currencyUnit"];
+        if (obj != nil) {
+            currency = obj[@"symbol"];
+        }
+    }];
+}
+
+- (void) detectUpdateCurrency:(NSNotification*) notification {
+    if (notification.object != nil) {
+        currency = (NSString*) notification.object;
+    }
+}
 
 - (void) getTransactionByTimePeriod:(NSString*) timePeriod {
     /* NOTE FOR CLOUD CODE
@@ -261,6 +280,11 @@
 }
 
 - (void) getTransactionFromDate:(NSString*) fromDate toDate:(NSString*) toDate {
+    if (_chartView == nil) {
+        [self initChart];
+    } else {
+        [_chartView reset];
+    }
     // format of date is MM/dd/yyyy
     
     NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", fromDate, toDate, nil];
@@ -302,9 +326,6 @@
             [_chartView setHidden:NO];
             [_noDataLabel setHidden:YES];
             
-            if (_chartView == nil) {
-                [self initChart];
-            }
             [_chartView build];
             
         } else {
@@ -400,10 +421,7 @@
         
         [_chartView setHidden:NO];
         [_noDataLabel setHidden:YES];
-        
-        if (_chartView == nil) {
-            [self initChart];
-        }
+
         [_chartView build];
         
     } else {

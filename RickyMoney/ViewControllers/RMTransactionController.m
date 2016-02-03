@@ -13,6 +13,7 @@
 
 @implementation RMTransactionController {
     NSDateFormatter *_formatter;
+    NSIndexPath *selectedIndexPath;
 }
 
 - (void)viewDidLoad {
@@ -27,6 +28,7 @@
     
     // notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectInsertNewTransaction:) name:kInsertNewTransaction object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateTransaction:) name:kUpdateTransaction object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -41,6 +43,9 @@
 #pragma mark- Data
 
 - (void) getTransactionsByPage:(int) page {
+    if (page == 1) {
+        [_transactions removeAllObjects];
+    }
     
     [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
                                    transactionType:_transactionType
@@ -59,6 +64,13 @@
         [_transactions insertObject:newTransaction atIndex:0];
         NSIndexPath *idp = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[idp] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void) detectUpdateTransaction:(NSNotification*) notification {
+    if (notification.object != nil) {
+        _transactions[selectedIndexPath.row] = (PFObject*) notification.object;
+        [self.tableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationMiddle];
     }
 }
 
@@ -87,10 +99,15 @@
     [(UILabel*) [cell viewWithTag:2] setText:amount];
     [(UILabel*) [cell viewWithTag:3] setText:date];
     
+    if (indexPath.row == _transactions.count - 1 && _transactions.count >= ITEM_PER_PAGE *currentPage) {
+        [self getTransactionsByPage:currentPage+1];
+    }
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    selectedIndexPath = indexPath;
     NSString *transactionId = [(PFObject*)_transactions[indexPath.row] objectId];
     [self performSegueWithIdentifier:@"transactionDetail" sender:transactionId];
 }

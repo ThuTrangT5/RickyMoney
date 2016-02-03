@@ -114,6 +114,7 @@ class MDRotatingPieChart: UIControl {
             currentShape.shapeLayer.removeFromSuperlayer()
         }
         slicesArray.removeAll(keepCapacity: false)
+        currentSelected = -1
     }
     
     /**
@@ -245,6 +246,10 @@ class MDRotatingPieChart: UIControl {
      Closes a slice
      */
     func closeSlice() {
+        if currentSelected == -1 || currentSelected >= slicesArray.count || slicesArray.count == 0 {
+            return
+        }
+        
         delegate?.willCloseSliceAtIndex!(currentSelected)
         slicesArray[currentSelected].shapeLayer.transform = oldTransform!
         delegate?.didCloseSliceAtIndex!(currentSelected)

@@ -168,9 +168,8 @@ static DGActivityIndicatorView *waitingView;
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         [self closeWaitingView];
         
-        if (error == nil) {
-            block(objects);
-        } else {
+        block(objects);
+        if (error != nil) {
             [self showErrorWithMessage:error.description andCompletionCallback:nil];
         }
     }];
@@ -212,7 +211,7 @@ static DGActivityIndicatorView *waitingView;
         default: {
             // Other Parse API Errors that you want to explicitly handle.
             NSLog(@"error: %@", error.description);
-//            [SnapostUtils showErrorWithMessage:error.description andCompletionCallback:nil];
+            //            [SnapostUtils showErrorWithMessage:error.description andCompletionCallback:nil];
             break;
         }
     }
@@ -237,12 +236,25 @@ static DGActivityIndicatorView *waitingView;
     // You may want this if the logout button is inaccessible in the UI.
     //
     NSLog(@"Session is no longer valid, please log out and log in again.");
-//    [SnapostUtils showErrorWithMessage:@"Session is no longer valid, please log out and log in again." andCompletionCallback:^{
-//        [PFUser logOut];
-//        [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissViewControllerAnimated:YES completion:nil];
-//    }];
+    //    [SnapostUtils showErrorWithMessage:@"Session is no longer valid, please log out and log in again." andCompletionCallback:^{
+    //        [PFUser logOut];
+    //        [[[[UIApplication sharedApplication] keyWindow] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    //    }];
     //     UIViewController *presentingViewController = [[UIApplication sharedApplication].keyWindow.rootViewController;
     // PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
     // [presentingViewController presentViewController:logInViewController animated:YES completion:nil];
 }
+
++ (void) updateCurrencyUnit:(NSString*) currencyId bllock:(void (^) (BOOL, NSError *)) block {
+    [self showWaitingView];
+    
+    PFUser *user = [PFUser currentUser];
+    PFObject *currency = [PFObject objectWithoutDataWithClassName:@"CurrencyUnit" objectId:currencyId];
+    [user setValue: currency forKey:@"currencyUnit"];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self closeWaitingView];
+        block(succeeded, error);
+    }];
+}
+
 @end
