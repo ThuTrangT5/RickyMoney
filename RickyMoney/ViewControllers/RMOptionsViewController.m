@@ -129,6 +129,7 @@
             
         case OPTION_CURRENCY: {
             PFObject *cellData = _optionData[indexPath.row];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:cellData[@"symbol"]];
             [RMParseRequestHandler updateCurrencyUnit:cellData.objectId bllock:^(BOOL succeed, NSError *error) {
                 [self.navigationController popViewControllerAnimated:YES];
             }];

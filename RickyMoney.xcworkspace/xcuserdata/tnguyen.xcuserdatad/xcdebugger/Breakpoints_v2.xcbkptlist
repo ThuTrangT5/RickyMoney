@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/Utils/MDRotatingPieChart/MDRotatingPieChart.swift"
-            timestampString = "476211521.285718"
+            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
+            timestampString = "476295510.004788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "closeSlice()"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-detectUpdateCurrency:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
