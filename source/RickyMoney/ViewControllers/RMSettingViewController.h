@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RMPasscodeViewController.h"
 
-@interface RMSettingViewController : UITableViewController
+@interface RMSettingViewController : UITableViewController <RMPasscodeDelegate>
 
 @end

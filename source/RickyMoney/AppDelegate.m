@@ -8,13 +8,10 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-
-@interface AppDelegate ()
-
-@end
+#import "RMConstant.h"
+#import "RMPasscodeViewController.h"
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -37,6 +34,14 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    // check passcode
+    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    if (passcode != nil && passcode.length > 0) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        RMPasscodeViewController *vc = (RMPasscodeViewController*) [mainStoryboard instantiateViewControllerWithIdentifier:PASSCODE_VIEW_STORYBOARD_KEY];
+        [vc displayView];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

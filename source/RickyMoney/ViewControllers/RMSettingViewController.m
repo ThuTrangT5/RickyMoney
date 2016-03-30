@@ -35,7 +35,7 @@
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-key", @"Passcode", passcode];        
+        _userInfo[2] = @[@"fa-key", @"Passcode", passcode];
         [self.tableView reloadData];
     }];
 }
@@ -92,9 +92,53 @@
             [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
             
         } else if (indexPath.row == 2){
-            [self performSegueWithIdentifier:@"passcodeSegue" sender:nil];
+            [self openPasscodeView];
         }
     }
+}
+
+#pragma mark- PassCode
+
+- (void) openPasscodeView {
+    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    NSString *titleMessage = @"";
+    if (passcode == nil || passcode.length == 0) {
+        titleMessage = @"Enter New PassCode to set it ON";
+    } else {
+        titleMessage = @"Enter Current PassCode to set it OFF";
+    }
+    
+    RMPasscodeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: PASSCODE_VIEW_STORYBOARD_KEY];
+    vc.delegate = self;
+    vc.titleText = titleMessage;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)doneActionWithPasscode:(RMPasscodeViewController *) passcodeVC {
+    NSString *currentPasscode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    NSString *newPasscode = passcodeVC.passcodeField.text;
+    
+    if ((currentPasscode == nil || currentPasscode.length == 0) && newPasscode != nil && newPasscode.length > 0) {
+        // turn on passcode
+        [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:kPasscode];
+        _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
+        [self.tableView reloadData];
+        
+        [passcodeVC dismissViewControllerAnimated:YES completion:nil];
+        
+    } else if (currentPasscode != nil && currentPasscode.length > 0){
+        if ([newPasscode isEqualToString:currentPasscode]) {
+            // turn off passcode
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPasscode];
+            _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
+            [self.tableView reloadData];
+            [passcodeVC dismissViewControllerAnimated:YES completion:nil];
+            
+        } else {
+            [passcodeVC passcodeIsWrong];
+        }
+    }
+    
 }
 
 #pragma mark- prepareForSegue

@@ -9,21 +9,31 @@
 #import <UIKit/UIKit.h>
 #import <THPinViewController/THPinViewController.h>
 
-@protocol PasscodeDelegate <NSObject>
+@class RMPasscodeViewController;
 
-- (void) doneActionWithPasscode:(UIViewController*) passcodeVC;
+@protocol RMPasscodeDelegate <NSObject>
+
+- (void) doneActionWithPasscode:(RMPasscodeViewController*) passcodeController;
 
 @end
 
 @interface RMPasscodeViewController : UIViewController
 
+/* Title Field */
+@property (weak, nonatomic) IBOutlet UILabel *titleField;
+
 /* UITextField to store passcode text */
 @property (weak, nonatomic) IBOutlet UITextField *passcodeField;
 
 /* Delegate */
-@property (nonatomic, weak) id<PasscodeDelegate> delegate;
+@property (nonatomic, weak) id<RMPasscodeDelegate> delegate;
 
 /* The background color for control buttons */
 @property (nonatomic, strong) UIColor *mainColor;
+
+@property (nonatomic, strong) NSString *titleText;
+
+- (void) displayView;
+- (void) passcodeIsWrong;
 
 @end

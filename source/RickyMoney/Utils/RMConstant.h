@@ -38,4 +38,6 @@ typedef enum _transactiontype {
 
 #define ITEM_PER_PAGE 20
 
+#define PASSCODE_VIEW_STORYBOARD_KEY @"RM-PassCodeVC"
+
 #endif
