@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     _menuItems = [[NSArray alloc] initWithObjects:
-                  @[@"fa-user", @"Profile"],
+                  @[@"fa-user", @"Setting"],
                   @[@"fa-pencil-square-o", @"Transactions"],
                   @[@"fa-tags", @"Categories"],
                   @[@"fa-money", @"About RickyMoney"],

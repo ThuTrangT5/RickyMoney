@@ -11,15 +11,24 @@
 #import "UIImage+FontAwesome.h"
 #import "RMParseRequestHandler.h"
 #import <Parse/PFObject.h>
-#import "RMOptionsViewController.h"
+#import <Parse/PFFile.h>
 
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
+    PFFile *_avatar;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _userInfo = [[NSMutableArray alloc] init];
+    
+    float test = _profileField.frame.size.width / 2.0f;
+    float test2 = _profileField.frame.size.height / 2.0f;
+    NSLog(@"width = %.2f, height = %.2f", test, test2);
+    
+    _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
+    _profileField.layer.masksToBounds = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -37,65 +46,125 @@
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
         _userInfo[2] = @[@"fa-key", @"Passcode", passcode];
         [self.tableView reloadData];
+        
+        _avatar = [user valueForKey:@"avatar"];
+        if (_avatar != nil) {
+            [_avatar getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                if (data != nil && error == nil ) {
+                    UIImage *image = [[UIImage alloc] initWithData:data];
+                    [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+                }
+            }];
+        }
     }];
 }
 
 #pragma mark- Tableview delegate & datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }
     return _userInfo.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 110;
-    }
-    return 44;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSArray *cellData = _userInfo[indexPath.row];
     
-    if (indexPath.section == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"avatarCell"];
-        
-        //        UIImageView *profile = (UIImageView*)[cell viewWithTag:1];
-        //        profile.layer.cornerRadius = profile.frame.size.width;
-        //        profile.layer.masksToBounds = YES;
-        
+    UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
+    [icon setContentMode:UIViewContentModeCenter];
+    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(30, 25)]];
+    
+    [(UILabel*)[cell viewWithTag:2] setText:cellData[1]];
+    [(UILabel*)[cell viewWithTag:3] setText:cellData[2]];
+    
+    if (indexPath.row == 0) {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentCenter];
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
-        
-        NSArray *cellData = _userInfo[indexPath.row];
-        
-        UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
-        [icon setContentMode:UIViewContentModeCenter];
-        [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(30, 25)]];
-        
-        [(UILabel*)[cell viewWithTag:2] setText:cellData[1]];
-        [(UILabel*)[cell viewWithTag:3] setText:cellData[2]];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentRight];
     }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
-        if (indexPath.row == 1) {
-            [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
-            
-        } else if (indexPath.row == 2){
-            [self openPasscodeView];
-        }
+    if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+        
+    } else if (indexPath.row == 2){
+        [self openPasscodeView];
     }
 }
+
+#pragma mark- PickerView
+
+- (IBAction)ontuuchAvatar:(id)sender {
+    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"Upload Avatar from" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Select" mainColor:RM_COLOR];
+    picker.delegate = self;
+    picker.dataSource = self;
+    picker.needFooterView = NO;
+    [picker show];
+}
+
+- (NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
+    return 2;
+}
+
+- (NSString *)czpickerView:(CZPickerView *)pickerView titleForRow:(NSInteger)row {
+    if (row == 0) {
+        return @"Camera";
+    }
+    return @"Gallery";
+}
+
+- (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+    
+    if (row == 0) { // open camera
+        [self openMediaWithType:UIImagePickerControllerSourceTypeCamera];
+        
+    } else { // open gallery
+        [self openMediaWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+}
+
+#pragma mark- ImagePicker
+
+- (void) openMediaWithType:(UIImagePickerControllerSourceType) type {
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.sourceType = type;
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    // Create a pointer to an object of class Point with id dlkj83d
+    PFUser *userPointer = [PFUser objectWithoutDataWithObjectId:[PFUser currentUser].objectId];
+    PFFile *newAvatar = [PFFile fileWithData:UIImagePNGRepresentation(image)];
+    
+    // Set a new value on quantity
+    [userPointer setObject:newAvatar forKey:@"avatar"];
+    
+    // Save
+    [userPointer saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            _avatar = newAvatar;
+            [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+        }
+    }];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark- PassCode
 
