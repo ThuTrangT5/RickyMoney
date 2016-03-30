@@ -14,7 +14,6 @@
 typedef enum _options {
     OPTION_PASSCODE,
     OPTION_CURRENCY,
-    OPTION_PERIOD_TIME,
     OPTION_CATEGORY
 } OptionTypes;
 
@@ -29,11 +28,13 @@ typedef enum _transactiontype {
     INCOME
 } TransactionType;
 
-#define REPORT_OPTIONS @[@"Monthly", @"Quarterly", @"Yearly"]
-
-#define kPasscode @"kPasscode"
+#define kPasscode @"RM-kPasscode"
 #define kPasscodeOn @"Passcode is ON"
 #define kPasscodeOff @"Passcode is OFF"
+
+#define kInsertNewTransaction @"RM-kInsertNewTransaction"
+#define kUpdateTransaction @"RM-kUpdateTransaction"
+#define kUpdateCurrency @"RM-kUpdateCurrency"
 
 #define ITEM_PER_PAGE 20
 

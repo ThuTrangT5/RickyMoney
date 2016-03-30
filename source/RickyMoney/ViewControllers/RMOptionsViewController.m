@@ -23,12 +23,6 @@
             [self getCurrencyUnit];
             break;
             
-        case OPTION_PERIOD_TIME:{
-            _optionData = REPORT_OPTIONS;
-            [self.tableView reloadData];
-        }
-            break;
-            
         case OPTION_CATEGORY:
             [self getCategory];
             break;
@@ -85,12 +79,6 @@
         }
             break;
             
-        case OPTION_PERIOD_TIME:{
-            cell = [tableView dequeueReusableCellWithIdentifier:@"reportCell"];
-            [cell.textLabel setText: _optionData[indexPath.row]];
-        }
-            break;
-            
         case OPTION_PASSCODE:{
             NSString *identifier = [NSString stringWithFormat:@"passcodeCell%d", (int) indexPath.row];
             cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -123,43 +111,38 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate != nil) {
-        
-//        NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
-        NSString *selectedData = @"";
-        switch (_option) {
-            case OPTION_CATEGORY:{
+    
+    switch (_option) {
+        case OPTION_CATEGORY:{
+            if (self.delegate != nil) {
+                NSMutableDictionary *selectedData = [[NSMutableDictionary alloc] init];
                 PFObject *cellData = _optionData[indexPath.row];
                 [selectedData setValue:cellData.objectId forKey:@"objectId"];
                 [selectedData setValue:cellData[@"ENName"] forKey:@"categoryName"];
+                
+                [self.delegate optionView:_option DoneWithSelectedData:selectedData];
+                
+                [self.navigationController popViewControllerAnimated:YES];
             }
-                break;
-                
-            case OPTION_CURRENCY: {
-                selectedData = [(PFObject*) _optionData[indexPath.row] objectId];
-//                PFObject *cellData = _optionData[indexPath.row];
-//                NSString *objId = cellData.objectId;
-//                NSString *displayName = [NSString stringWithFormat:@"%@ (%@)", cellData[@"name"], cellData[@"symbol"]];
-//                [selectedData setValue: objId forKey:@"objectId"];
-//                [selectedData setValue:displayName forKey:@"currencyName"];
-            }
-                break;
-                
-            case OPTION_PASSCODE:
-                break;
-                
-            case OPTION_PERIOD_TIME:
-//                [selectedData setValue:_optionData[indexPath.row] forKey:@"periodTime"];
-                break;
-                
-            default:
-                break;
         }
-        
-        [self.delegate optionView:_option DoneWithSelectedData:selectedData];
+            break;
+            
+        case OPTION_CURRENCY: {
+            PFObject *cellData = _optionData[indexPath.row];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:cellData[@"symbol"]];
+            [RMParseRequestHandler updateCurrencyUnit:cellData.objectId bllock:^(BOOL succeed, NSError *error) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+        }
+            break;
+            
+        case OPTION_PASSCODE:
+            break;
+            
+        default:
+            break;
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

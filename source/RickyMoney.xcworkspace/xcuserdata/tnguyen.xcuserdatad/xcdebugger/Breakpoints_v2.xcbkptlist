@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMLoginViewController.m"
-            timestampString = "473760770.398015"
+            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
+            timestampString = "476295510.004788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-loginAction:"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-detectUpdateCurrency:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMPasscodeViewController.m"
-            timestampString = "473765473.664367"
+            timestampString = "481018103.588765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-pinViewController:isPinValid:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMHomeViewController.m"
-            timestampString = "474804108.657747"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "-getTransactionFromDate:toDate:"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-ontouchBackDelete:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

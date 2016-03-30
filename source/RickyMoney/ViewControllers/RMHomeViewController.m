@@ -23,6 +23,7 @@
     
     MDRotatingPieChart *_chartView;
     NSArray *_chartData, *_chartColor;
+    NSString *currency;
 }
 
 #define MENU_TABLE_TAG 10
@@ -35,9 +36,7 @@
                   @[@"fa-user", @"Profile"],
                   @[@"fa-pencil-square-o", @"Transactions"],
                   @[@"fa-tags", @"Categories"],
-                  @[@"fa-bell", @"Notifications"],
                   @[@"fa-money", @"About RickyMoney"],
-                  @[@"fa-question", @"Help"],
                   @[@"fa-sign-out", @"Sign out"],
                   nil];
     
@@ -58,12 +57,15 @@
     // picker
     pickerData = [[NSArray alloc] initWithObjects:@"Today", @"This Week", @"This Month", @"Last Month", @"This Year", @"Custome", nil];
     
+    // currency
+    [self getUserCurrency];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateCurrency:) name:kUpdateCurrency object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self getTransactionByTimePeriod: @"This Month"];
+    [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
 }
 
 #pragma mark - DropDownView
@@ -73,8 +75,6 @@
     // Init dropdown view
     if (!self.dropdownView) {
         self.dropdownView = [LMDropdownView dropdownView];
-        //        self.dropdownView.delegate = self;
-        
         // Customize Dropdown style
         self.dropdownView.closedScale = 0.85;
         self.dropdownView.blurRadius = 5;
@@ -137,16 +137,10 @@
     } else if (indexPath.row == 2) { // category
         [self performSegueWithIdentifier:@"categorySegue" sender:nil];
         
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 3) { // about
         
         
-    } else if (indexPath.row == 4) {
-        
-        
-    } else if (indexPath.row == 5) {
-        
-        
-    } else if (indexPath.row == 6) {
+    } else if (indexPath.row == 4) { // sign out
         [PFUser logOut];
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
         
@@ -159,44 +153,15 @@
     _chartColor = [[NSArray alloc] initWithObjects:
                    [UIColor redColor],
                    [UIColor orangeColor],
+                   RM_COLOR,
                    [UIColor yellowColor],
-                   [UIColor greenColor],
-                   [UIColor blueColor],
-                   [UIColor purpleColor],
+                   [UIColor colorWithRed:135.0/255.0 green:245.0/255.0 blue:150.0/255.0 alpha:1.0f],
+                   [UIColor colorWithRed:5.0/255.0 green:185.0/255.0 blue:245.0/255.0 alpha:1.0f],
+                   [UIColor colorWithRed:245.0/255.0 green:100.0/255.0 blue:225.0/255.0 alpha:1.0f],
                    [UIColor grayColor],
                    nil];
     
-    _chartView = [[MDRotatingPieChart alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width - 20, self.view.frame.size.height - 250)];
-    /*
-     Here you can dig into some properties
-     -------------------------------------
-     
-     var properties = Properties()
-     
-     properties.smallRadius = 50
-     properties.bigRadius = 120
-     properties.expand = 25
-     
-     
-     properties.displayValueTypeInSlices = .Percent
-     properties.displayValueTypeCenter = .Label
-     
-     properties.fontTextInSlices = UIFont(name: "Arial", size: 12)!
-     properties.fontTextCenter = UIFont(name: "Arial", size: 10)!
-     
-     properties.enableAnimation = true
-     properties.animationDuration = 0.5
-     
-     
-     var nf = NSNumberFormatter()
-     nf.groupingSize = 3
-     nf.maximumSignificantDigits = 2
-     nf.minimumSignificantDigits = 2
-     
-     properties.nf = nf
-     
-     pieChart.properties = properties
-     */
+    _chartView = [[MDRotatingPieChart alloc] initWithFrame:CGRectMake(10, 120, self.view.frame.size.width - 20, self.view.frame.size.height - 250)];
     
     _chartView.datasource = self;
     
@@ -219,14 +184,30 @@
 
 - (NSString *)labelForSliceAtIndex:(NSInteger)index {
     NSDictionary *chart = (NSDictionary*) _chartData[index];
-    NSString *label = [NSString stringWithFormat:@"%@-%.2f",
+    NSString *label = [NSString stringWithFormat:@"%@\n%.2f %@",
                        [chart valueForKey:@"name"],
-                       [[chart valueForKey:@"value"] floatValue]];
+                       [[chart valueForKey:@"value"] floatValue],
+                       currency];
     return label;
 }
 
 
-#pragma mark- Get Transaction data
+#pragma mark- Data
+
+- (void) getUserCurrency {
+    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
+        PFObject *obj = [user objectForKey:@"currencyUnit"];
+        if (obj != nil) {
+            currency = obj[@"symbol"];
+        }
+    }];
+}
+
+- (void) detectUpdateCurrency:(NSNotification*) notification {
+    if (notification.object != nil) {
+        currency = (NSString*) notification.object;
+    }
+}
 
 - (void) getTransactionByTimePeriod:(NSString*) timePeriod {
     /* NOTE FOR CLOUD CODE
@@ -299,6 +280,11 @@
 }
 
 - (void) getTransactionFromDate:(NSString*) fromDate toDate:(NSString*) toDate {
+    if (_chartView == nil) {
+        [self initChart];
+    } else {
+        [_chartView reset];
+    }
     // format of date is MM/dd/yyyy
     
     NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", fromDate, toDate, nil];
@@ -340,11 +326,7 @@
             [_chartView setHidden:NO];
             [_noDataLabel setHidden:YES];
             
-            if (_chartView == nil) {
-                [self initChart];
-            }
-            [
-             _chartView build];
+            [_chartView build];
             
         } else {
             [_chartView setHidden:YES];
@@ -396,12 +378,13 @@
 - (void)RMCalendar:(RMCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/MM/yyyy"];
+    [formatter setDateFormat:@"dd MMM yyyy"];
     
     if (_fromDate == nil) {
         calendar.titleView.text = [NSString stringWithFormat:@"%@ => ...", [formatter stringFromDate:selectedDate]];
         [calendar.confirmButton setTitle:@"Confirm" forState:UIControlStateNormal];
         _fromDate = selectedDate;
+        
     } else {
         _toDate = selectedDate;
         [calendar hide];
@@ -409,7 +392,7 @@
         [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
                       forState:UIControlStateNormal];
         
-        [formatter setDateFormat:@"MM/dd/yyyy"];
+        [formatter setDateFormat:@"dd MMM yyyy"];
         [self getTransactionFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
     }
 }
@@ -426,13 +409,24 @@
 }
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl*)sender {
+    [_chartView reset];
+    
     if (sender.selectedSegmentIndex == 0) {
         _chartData = _expenseTransactions;
     } else {
         _chartData = _incomeTransactions;
     }
     
-    [_chartView reset];
-    
+    if (_chartData.count > 0) {
+        
+        [_chartView setHidden:NO];
+        [_noDataLabel setHidden:YES];
+
+        [_chartView build];
+        
+    } else {
+        [_chartView setHidden:YES];
+        [_noDataLabel setHidden:NO];
+    }
 }
 @end

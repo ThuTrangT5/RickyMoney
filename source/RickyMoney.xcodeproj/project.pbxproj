@@ -42,6 +42,9 @@
 		6A1BD9691C43929A00DA7A85 /* JTHorizontalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95C1C43929A00DA7A85 /* JTHorizontalCalendarView.m */; };
 		6A1BD96A1C43929A00DA7A85 /* JTVerticalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95E1C43929A00DA7A85 /* JTVerticalCalendarView.m */; };
 		6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */; };
+		6A6DFB0E1CABB3BE00EAD820 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A6DFB0C1CABB3BE00EAD820 /* bg.jpg */; };
+		6A6DFB0F1CABB3BE00EAD820 /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A6DFB0D1CABB3BE00EAD820 /* bg2.jpg */; };
+		6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */; };
 		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
 		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
@@ -137,6 +140,10 @@
 		6A2037F01C3BC3BD00F680C7 /* CZPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPicker.h; sourceTree = "<group>"; };
 		6A2037F11C3BC3BD00F680C7 /* CZPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPickerView.h; sourceTree = "<group>"; };
 		6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
+		6A6DFB0C1CABB3BE00EAD820 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		6A6DFB0D1CABB3BE00EAD820 /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
+		6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPassCodeButton.h; sourceTree = "<group>"; };
+		6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPassCodeButton.m; sourceTree = "<group>"; };
 		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
 		6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RickyMoney-Bridging-Header.h"; sourceTree = "<group>"; };
 		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
@@ -187,14 +194,14 @@
 		1823D4191B8E140D005AC56B /* RickyMoney */ = {
 			isa = PBXGroup;
 			children = (
-				18CAE9641B9B4C4F00E0185D /* Utils */,
-				18CAE95D1B9AE6FC00E0185D /* ViewControllers */,
 				1823D41D1B8E140D005AC56B /* AppDelegate.h */,
 				1823D41E1B8E140D005AC56B /* AppDelegate.m */,
 				1823D4231B8E140D005AC56B /* Main.storyboard */,
 				1823D4261B8E140D005AC56B /* Assets.xcassets */,
 				1823D42B1B8E140D005AC56B /* Info.plist */,
 				6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */,
+				18CAE9641B9B4C4F00E0185D /* Utils */,
+				18CAE95D1B9AE6FC00E0185D /* ViewControllers */,
 				1823D41A1B8E140D005AC56B /* Supporting Files */,
 			);
 			path = RickyMoney;
@@ -204,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				1823D41B1B8E140D005AC56B /* main.m */,
+				6A6DFB0C1CABB3BE00EAD820 /* bg.jpg */,
+				6A6DFB0D1CABB3BE00EAD820 /* bg2.jpg */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 		18CAE9641B9B4C4F00E0185D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6A78DB811C7DFD8C0088C36C /* TTPassCode */,
 				6A1BD9351C43927400DA7A85 /* RMCalendar */,
 				183160441BDE8A5A00898482 /* TTDatePickerViewController */,
 				18CAE9651B9B4C4F00E0185D /* FontAwesome */,
@@ -379,6 +389,15 @@
 			path = CZPicker;
 			sourceTree = "<group>";
 		};
+		6A78DB811C7DFD8C0088C36C /* TTPassCode */ = {
+			isa = PBXGroup;
+			children = (
+				6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */,
+				6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */,
+			);
+			path = TTPassCode;
+			sourceTree = "<group>";
+		};
 		6AC020431C4CDEF6001A1DCA /* MDRotatingPieChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,7 +505,9 @@
 				6A1BD93A1C43927400DA7A85 /* RMCalendarView.xib in Resources */,
 				18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */,
 				183160491BDE8A7700898482 /* TTDatePickerViewController.xib in Resources */,
+				6A6DFB0F1CABB3BE00EAD820 /* bg2.jpg in Resources */,
 				1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */,
+				6A6DFB0E1CABB3BE00EAD820 /* bg.jpg in Resources */,
 				1823D4251B8E140D005AC56B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +600,7 @@
 				18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */,
 				6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */,
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
+				6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
 				18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */,
 				6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */,

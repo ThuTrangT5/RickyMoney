@@ -134,6 +134,12 @@
     [transaction saveEventually:^(BOOL success, NSError *err){
         NSLog(@"Save stransaction [%@] with error = %@", success? @"OK" : @"FAILED", err.description);
         if (success) {
+            if (_transactionId != nil) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTransaction object:transaction];
+            } else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kInsertNewTransaction object:transaction];
+            }
+            
             [self.navigationController popViewControllerAnimated:YES];
             
         } else {
