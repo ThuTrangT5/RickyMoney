@@ -22,18 +22,14 @@
     [super viewDidLoad];
     
     _userInfo = [[NSMutableArray alloc] init];
-    
-    float test = _profileField.frame.size.width / 2.0f;
-    float test2 = _profileField.frame.size.height / 2.0f;
-    NSLog(@"width = %.2f, height = %.2f", test, test2);
-    
-    _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
-    _profileField.layer.masksToBounds = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self getUserInfo];
+    
+    _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
+    _profileField.layer.masksToBounds = YES;
 }
 
 #pragma mark- User information
@@ -147,6 +143,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+    
     // Create a pointer to an object of class Point with id dlkj83d
     PFUser *userPointer = [PFUser objectWithoutDataWithObjectId:[PFUser currentUser].objectId];
     PFFile *newAvatar = [PFFile fileWithData:UIImagePNGRepresentation(image)];
@@ -158,7 +156,6 @@
     [userPointer saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             _avatar = newAvatar;
-            [_profileField setBackgroundImage:image forState:UIControlStateNormal];
         }
     }];
     

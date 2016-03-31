@@ -14,6 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = nil;
     
     switch (_option) {
         case OPTION_PASSCODE:

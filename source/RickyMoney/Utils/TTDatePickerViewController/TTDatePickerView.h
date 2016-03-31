@@ -1,5 +1,5 @@
 //
-//  TTDatePickerViewController.h
+//  TTDatePickerView.h
 //  RickyMoney
 //
 //  Created by Adelphatech on 10/26/15.
@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  Implement this protocol to take results from TTDatePickerViewController
+ *  Implement this protocol to take results from TTDatePickerView
  */
-@protocol TTDatePickerViewControllerDelegate <NSObject>
+@protocol TTDatePickerViewDelegate <NSObject>
 /**
  *  This method is called when user touch confrim button.
  *
@@ -21,12 +21,12 @@
 
 @end
 
-@interface TTDatePickerViewController : UIViewController
+@interface TTDatePickerView : UIView
 
 /**
  *  Register your delegate here
  */
-@property (nonatomic, weak) id<TTDatePickerViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<TTDatePickerViewDelegate> delegate;
 
 /**
  *  Color of interface elements
@@ -62,5 +62,8 @@
  *  Back button title
  */
 @property (nonatomic, strong) NSString *cancelButtonTitle;
+
+/** show the date picker */
+- (void)show;
 
 @end

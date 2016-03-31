@@ -9,7 +9,7 @@
 #ifndef RickyMoney_RMConstant_h
 #define RickyMoney_RMConstant_h
 
-#define RM_COLOR [UIColor colorWithRed:230.0/255.0 green:194.0/255.0 blue:32.0/255.0 alpha:1.0]
+#define RM_COLOR [UIColor colorWithRed:230.0/255.0 green:194.0/255.0 blue:32.0/255.0 alpha:1.0] // # e6c220
 
 typedef enum _options {
     OPTION_PASSCODE,

@@ -12,7 +12,6 @@
 #import "RMTransactionDetailController.h"
 
 @implementation RMTransactionController {
-    NSDateFormatter *_formatter;
     NSIndexPath *selectedIndexPath;
 }
 
@@ -21,10 +20,6 @@
     
     _transactions = [[NSMutableArray alloc] init];
     currentPage = 0;
-    
-    
-    _formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"EEEE, dd MMMM yyyy"];
     
     // notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectInsertNewTransaction:) name:kInsertNewTransaction object:nil];
@@ -86,18 +81,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"transactionCell"];
+    
+    // UI
+    UIView *amountView = [cell viewWithTag:1];
+    amountView.layer.cornerRadius = 20.0f;
+    amountView.layer.masksToBounds = YES;
+    
+    // Data
     PFObject *cellData = _transactions[indexPath.row];
     NSString *item = [cellData valueForKey:@"itemName"];
-    NSString *amount = [NSString stringWithFormat:@"%@",[cellData valueForKey:@"amount"]];
-    
-    NSString *date = @"";
-    if ([cellData valueForKey:@"transactionDate"] != nil) {
-        date = [_formatter stringFromDate: [cellData valueForKey:@"transactionDate"]];
+    NSString *amount = [NSString stringWithFormat:@"%@ %@",_currency, [cellData valueForKey:@"amount"]];
+    NSDate *date = [cellData valueForKey:@"transactionDate"];
+    if (date == nil) {
+        date = [NSDate new];
     }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"EEE, MMM dd yyyy";
+    NSString *mdy = [formatter stringFromDate:date];
     
-    [(UILabel*) [cell viewWithTag:1] setText:item];
-    [(UILabel*) [cell viewWithTag:2] setText:amount];
-    [(UILabel*) [cell viewWithTag:3] setText:date];
+    [(UILabel*) [cell viewWithTag:1] setText:amount];
+    [(UILabel*) [cell viewWithTag:2] setText:item];
+    [(UILabel*) [cell viewWithTag:3] setText:mdy];
     
     if (indexPath.row == _transactions.count - 1 && _transactions.count >= ITEM_PER_PAGE *currentPage) {
         [self getTransactionsByPage:currentPage+1];

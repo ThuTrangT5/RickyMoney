@@ -66,17 +66,17 @@
 }
 
 - (void) setBlurBackground {
-    //only apply the blur if the user hasn't disabled transparency effects
-    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        UIView *maskView = [self.view viewWithTag:10];
-        
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.frame = self.view.bounds;
-        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        
-        [maskView addSubview:blurEffectView];
-    }
+//    //only apply the blur if the user hasn't disabled transparency effects
+//    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+//        UIView *maskView = [self.view viewWithTag:10];
+//        
+//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//        blurEffectView.frame = self.view.bounds;
+//        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        
+//        [maskView addSubview:blurEffectView];
+//    }
 }
 
 #pragma mark- Actions

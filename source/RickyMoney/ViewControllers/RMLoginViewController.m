@@ -19,17 +19,24 @@
     
     // insert fontawesome images
     CGSize size = CGSizeMake(25, 25);
-    _emailImage.image = [UIImage imageWithIcon:@"fa-envelope-o" backgroundColor:[UIColor clearColor] iconColor:RM_COLOR andSize:size];
-    _passwordImage.image = [UIImage imageWithIcon:@"fa-lock" backgroundColor:[UIColor clearColor] iconColor:RM_COLOR andSize:size];
+    _emailImage.image = [UIImage imageWithIcon:@"fa-envelope-o" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:size];
+    _passwordImage.image = [UIImage imageWithIcon:@"fa-lock" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:size];
     
     NSArray *imgButtons = [[NSArray alloc] initWithObjects:@"fa-sign-in", @"fa-plus", @"fa-facebook", @"fa-twitter", nil];
+    NSArray *colorButtons = [[NSArray alloc] initWithObjects:[UIColor whiteColor], RM_COLOR, [UIColor whiteColor], [UIColor whiteColor], nil];
     for (int i = 0; i < imgButtons.count; i++) {
         UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
-        view.image = [UIImage imageWithIcon:imgButtons[i] backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:CGSizeMake(20, 20)];
+        view.image = [UIImage imageWithIcon:imgButtons[i] backgroundColor:[UIColor clearColor] iconColor:colorButtons[i] andSize:CGSizeMake(20, 20)];
         UIButton *button = (UIButton*) [self.view viewWithTag:i+1];
         [button addSubview:view];
     }
- 
+    
+    // tap gesture
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tap];
+    
     // testing
     _emailField.text = @"thutrangitmt@gmail.com";
     _passwordField.text = @"111111";
@@ -49,6 +56,10 @@
 }
 
 #pragma mark- Login Actions
+
+- (void) dismissKeyboard {
+    [self.view endEditing:YES];
+}
 
 - (IBAction)loginAction:(id)sender {
 

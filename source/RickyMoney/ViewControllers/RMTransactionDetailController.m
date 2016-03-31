@@ -102,12 +102,13 @@
 }
 
 - (IBAction)ontouchSelectDate:(UIButton *)sender {
-    TTDatePickerViewController *datepickerVC = [TTDatePickerViewController new];
-    datepickerVC.mainColor = RM_COLOR;
-    datepickerVC.confirmButtonTitle = @"Select";
-    datepickerVC.titlePicker = @"Transaction Date";
-    datepickerVC.delegate = self;
-    [self presentViewController:datepickerVC animated:YES completion:nil];
+    TTDatePickerView *datepicker = [[TTDatePickerView alloc] init];
+    datepicker.mainColor = RM_COLOR;
+    datepicker.confirmButtonTitle = @"Select";
+    datepicker.titlePicker = @"Transaction Date";
+    datepicker.delegate = self;
+    
+    [datepicker show];
     
 }
 
@@ -163,7 +164,7 @@
     [self.categoryField setTitle:[selectedData valueForKey:@"categoryName"] forState:UIControlStateNormal];
 }
 
-#pragma mark- TTDatePickerViewControllerDelegate
+#pragma mark- TTDatePickerViewDelegate
 
 - (void)ttDatePickerPickedDate:(NSDate *)date {
     _transactionDate = date;

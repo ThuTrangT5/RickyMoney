@@ -16,6 +16,8 @@
 @property (nonatomic) TransactionType transactionType;
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSMutableArray *transactions;
+@property (strong, nonatomic) NSDate *fromDate, *toDate;
+@property (strong, nonatomic) NSString *currency;
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl *)sender;
 @end

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RMOptionsViewController.h"
-#import "TTDatePickerViewController.h"
+#import "TTDatePickerView.h"
 
-@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, TTDatePickerViewControllerDelegate> {
+@interface RMTransactionDetailController : UIViewController <RMOptionsDelegate, TTDatePickerViewDelegate> {
     BOOL isLoadData;
 }
 

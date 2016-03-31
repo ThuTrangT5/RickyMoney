@@ -10,6 +10,7 @@
 #import "UIImage+FontAwesome.h"
 #import "AppDelegate.h"
 #import "RMParseRequestHandler.h"
+#import "RMTransactionController.h"
 
 #import "RickyMoney-Swift.h"
 
@@ -429,4 +430,14 @@
         [_noDataLabel setHidden:NO];
     }
 }
+
+#pragma mark- Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"transactionSegue"]) {
+        RMTransactionController *vc = (RMTransactionController*) [segue destinationViewController];
+        vc.currency = currency;        
+    }
+}
+
 @end
