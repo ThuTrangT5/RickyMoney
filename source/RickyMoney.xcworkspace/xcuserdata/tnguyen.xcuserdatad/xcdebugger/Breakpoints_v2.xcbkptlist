@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Utils/TTDatePickerViewController/TTDatePickerView.m"
-            timestampString = "481113851.60072"
+            timestampString = "481181644.351539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-commonInit"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "-show"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,44 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Utils/TTDatePickerViewController/TTDatePickerView.m"
-            timestampString = "481113851.60072"
+            timestampString = "481181644.351539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-setupUI"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyMoney/Utils/TTDatePickerViewController/TTDatePickerView.m"
-            timestampString = "481113851.60072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-commonInit"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyMoney/Utils/TTDatePickerViewController/TTDatePickerView.m"
-            timestampString = "481113851.60072"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-buildBackgroundDimmingView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

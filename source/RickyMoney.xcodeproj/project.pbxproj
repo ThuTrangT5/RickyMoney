@@ -46,7 +46,6 @@
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
 		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
 		6AE55CB31CAD159B00E5B824 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AE55CB21CAD159B00E5B824 /* bg.jpg */; };
-		6AE55CB71CAD31F600E5B824 /* RMDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE55CB61CAD31F600E5B824 /* RMDatePicker.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +144,6 @@
 		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
 		6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDelegate.swift; sourceTree = "<group>"; };
 		6AE55CB21CAD159B00E5B824 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
-		6AE55CB61CAD31F600E5B824 /* RMDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMDatePicker.xib; sourceTree = "<group>"; };
 		BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,7 +235,6 @@
 			children = (
 				183160451BDE8A7700898482 /* TTDatePickerView.h */,
 				183160461BDE8A7700898482 /* TTDatePickerView.m */,
-				6AE55CB61CAD31F600E5B824 /* RMDatePicker.xib */,
 			);
 			name = TTDatePickerView;
 			path = TTDatePickerViewController;
@@ -500,7 +497,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AE55CB71CAD31F600E5B824 /* RMDatePicker.xib in Resources */,
 				6A1BD93A1C43927400DA7A85 /* RMCalendarView.xib in Resources */,
 				18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */,
 				1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */,
