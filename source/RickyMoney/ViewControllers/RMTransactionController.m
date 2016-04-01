@@ -86,6 +86,8 @@
     UIView *amountView = [cell viewWithTag:1];
     amountView.layer.cornerRadius = 20.0f;
     amountView.layer.masksToBounds = YES;
+    amountView.layer.borderWidth = 2.0f;
+    amountView.layer.borderColor = RM_COLOR.CGColor;
     
     // Data
     PFObject *cellData = _transactions[indexPath.row];

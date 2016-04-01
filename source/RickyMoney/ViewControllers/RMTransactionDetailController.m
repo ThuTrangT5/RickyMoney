@@ -10,15 +10,26 @@
 #import <Parse/Parse.h>
 #import "RMParseRequestHandler.h"
 
+#define DATE_FORMAT @"MMM dd, yyyy"
+
 @implementation RMTransactionDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _noteField.layer.cornerRadius = 10;
-    _noteField.layer.borderWidth = 1;
-    _noteField.layer.borderColor = RM_COLOR.CGColor;
+    // UI border
+    NSArray *controls = [[NSArray alloc] initWithObjects:_itemField, _amountField.superview, _categoryField, _dateField, _noteField, nil];
+    for (UIView *control in controls) {
+        control.layer.cornerRadius = 10;
+        control.layer.borderWidth = 0.5f;
+        control.layer.borderColor = RM_COLOR.CGColor;
+    }
     
+    // tap gesture
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -45,31 +56,32 @@
         
         NSString *item = [object valueForKey:@"itemName"];
         NSString *amount = [NSString stringWithFormat:@"%@", [object valueForKey:@"amount"]];
-        BOOL repeat = [[object valueForKey:@"repeat"] boolValue];
         NSString *notes = [object valueForKey:@"notes"];
         _transactionType = (int) [object[@"type"] integerValue];
         _transactionDate = [object valueForKey:@"transactionDate"];
         
-        NSString *date = [NSString stringWithFormat:@"%@", _transactionDate];
-        date = [date substringToIndex:19];
-        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = DATE_FORMAT;
+        NSString *date = [formatter stringFromDate:_transactionDate];
         
         [_itemField setText:item];
         [_amountField setText:amount];
         [_categoryField setTitle:categoryName forState:UIControlStateNormal];
         [_dateField setTitle:date forState:UIControlStateNormal];
-        [_repeateField setOn:repeat animated:YES];
         [_noteField setText:notes];
-        
-        _repeatTransaction = repeat;
-        
     }];
 }
 
 #pragma mark- Actions
 
-- (IBAction)onchangeRepeatValue:(UISwitch *)sender {
-    _repeatTransaction = [sender isOn];
+- (void) dismissKeyboard {
+    [self.view endEditing:YES];
+    
+    [UIView beginAnimations:@"shiftView" context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.3];
+    self.view.bounds = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (IBAction)ontouchSaveTransaction:(id)sender {
@@ -102,6 +114,8 @@
 }
 
 - (IBAction)ontouchSelectDate:(UIButton *)sender {
+    [self dismissKeyboard];
+    
     TTDatePickerView *datepicker = [[TTDatePickerView alloc] init];
     datepicker.mainColor = RM_COLOR;
     datepicker.confirmButtonTitle = @"Select";
@@ -110,6 +124,14 @@
     
     [datepicker show];
     
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [UIView beginAnimations:@"shiftView" context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:0.3];
+    self.view.bounds = CGRectMake(self.view.frame.origin.x, 120, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 
 #pragma mark- Save transaction
@@ -124,7 +146,6 @@
     transaction[@"category"] = pointer;
     transaction[@"amount"] = [NSNumber numberWithInt:[_amountField.text intValue]];
     transaction[@"transactionDate"] = _transactionDate;
-    transaction[@"repeat"] = _repeatTransaction ? @YES : @NO;
     transaction[@"notes"] = _noteField.text;
     transaction[@"type"] = [NSNumber numberWithInt:_transactionType];
     
@@ -169,7 +190,7 @@
 - (void)ttDatePickerPickedDate:(NSDate *)date {
     _transactionDate = date;
     NSDateFormatter *dateFormater = [NSDateFormatter new];
-    dateFormater.dateFormat = @"MMMM dd, yyyy";
+    dateFormater.dateFormat = DATE_FORMAT;
     [_dateField setTitle: [dateFormater stringFromDate:date] forState:UIControlStateNormal];
 }
 
