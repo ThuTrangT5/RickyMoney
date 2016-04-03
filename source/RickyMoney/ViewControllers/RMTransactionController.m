@@ -21,6 +21,9 @@
     _transactions = [[NSMutableArray alloc] init];
     currentPage = 0;
     
+    // hide separator for empty row
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     // notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectInsertNewTransaction:) name:kInsertNewTransaction object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateTransaction:) name:kUpdateTransaction object:nil];
@@ -30,7 +33,8 @@
     [super viewDidAppear:animated];
     
     if (currentPage == 0) {
-        if (_currency == nil) {
+        if (_currency == nil || _currency.length == 0) {
+            _currency = @"";
             [self getUserCurrency];
             
         } else {
@@ -60,7 +64,7 @@
     
     [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
                                    transactionType:_transactionType
-                                        inCategory:_category
+                                        inCategory:_categoryId
                                            forPage: page
                                   withSuccessBlock:^(NSArray *objects) {
                                       currentPage = page;

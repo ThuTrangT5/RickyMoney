@@ -8,8 +8,11 @@
 
 #import "RMOptionsViewController.h"
 #import "RMParseRequestHandler.h"
+#import "RMTransactionController.h"
+
 #import <Parse/PFFile.h>
 #import <Parse/PFObject.h>
+
 @implementation RMOptionsViewController
 
 - (void)viewDidLoad {
@@ -21,7 +24,8 @@
     if (self.option == OPTION_CURRENCY) {
         self.title = @"Currency";
         [self getCurrencyUnit];
-    } else if (self.option == OPTION_CATEGORY) {
+    } else {
+        self.option = OPTION_CATEGORY;
         self.title = @"Category";
         [self getCategory];
     }
@@ -114,11 +118,18 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *selectedData = _optionData[indexPath.row];
+    
     if (self.delegate != nil) {
         [self.delegate optionViewsDoneWithSelectedData:selectedData];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } else {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        RMTransactionController *transactionsVC = (RMTransactionController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TransactionsVC"];
+        transactionsVC.categoryId = selectedData.objectId;
+        [self.navigationController pushViewController: transactionsVC animated: YES];
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

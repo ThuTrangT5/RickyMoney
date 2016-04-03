@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic) TransactionType transactionType;
-@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSString *categoryId;
 @property (strong, nonatomic) NSMutableArray *transactions;
 @property (strong, nonatomic) NSDate *fromDate, *toDate;
 @property (strong, nonatomic) NSString *currency;

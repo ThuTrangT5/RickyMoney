@@ -143,7 +143,9 @@
         [self performSegueWithIdentifier:@"transactionSegue" sender:nil];
         
     } else if (indexPath.row == 2) { // category
-        [self performSegueWithIdentifier:@"categorySegue" sender:nil];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        UIViewController *category = [mainStoryboard instantiateViewControllerWithIdentifier: @"OptionsVC"];
+        [self.navigationController pushViewController: category animated: YES];
         
     } else if (indexPath.row == 3) { // about
         
