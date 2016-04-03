@@ -30,12 +30,28 @@
     [super viewDidAppear:animated];
     
     if (currentPage == 0) {
-        [_transactions removeAllObjects];
-        [self getTransactionsByPage:1];
+        if (_currency == nil) {
+            [self getUserCurrency];
+            
+        } else {
+            [_transactions removeAllObjects];
+            [self getTransactionsByPage:1];
+        }
     }
 }
 
 #pragma mark- Data
+- (void) getUserCurrency {
+    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
+        PFObject *obj = [user objectForKey:@"currencyUnit"];
+        if (obj != nil) {
+            _currency = obj[@"symbol"];
+        }
+        
+        [_transactions removeAllObjects];
+        [self getTransactionsByPage:1];
+    }];
+}
 
 - (void) getTransactionsByPage:(int) page {
     if (page == 1) {

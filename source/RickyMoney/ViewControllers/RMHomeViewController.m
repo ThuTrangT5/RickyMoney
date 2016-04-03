@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     _menuItems = [[NSArray alloc] initWithObjects:
-                  @[@"fa-user", @"Setting"],
+                  @[@"fa-cogs", @"Setting"],
                   @[@"fa-pencil-square-o", @"Transactions"],
                   @[@"fa-tags", @"Categories"],
                   @[@"fa-money", @"About RickyMoney"],
@@ -48,6 +48,13 @@
     UIImage *menuicon = [UIImage imageWithIcon:@"fa-list-ul" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:CGSizeMake(25, 25)];
     [self.navigationItem.leftBarButtonItem setImage:menuicon];
     [self.navigationItem.leftBarButtonItem setTitle:@""];
+    
+    // insert calendar image for range button
+    CGSize size = CGSizeMake(20, 20);
+    UIImage *calendarImg = [UIImage imageWithIcon:@"fa-calendar" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:size];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    [imgView setImage:calendarImg];
+    [_rangeButton addSubview:imgView];
     
     // data
     _expenseTransactions = [[NSMutableArray alloc] init];
@@ -85,7 +92,7 @@
         
         
         CGRect frame = self.view.bounds;
-        frame.size.height = 44 * (_menuItems.count);
+        frame.size.height = self.menuTableView.rowHeight * (_menuItems.count);
         [self.menuTableView setFrame:frame];
         [self.menuTableView setHidden:NO];
     }
@@ -120,7 +127,7 @@
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
     [icon setContentMode:UIViewContentModeCenter];
-    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(30, 20)]];
+    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(65, 40)]];
     
     UILabel *item = (UILabel*) [cell viewWithTag:2];
     [item setText: cellData[1]];
@@ -185,10 +192,10 @@
 
 - (NSString *)labelForSliceAtIndex:(NSInteger)index {
     NSDictionary *chart = (NSDictionary*) _chartData[index];
-    NSString *label = [NSString stringWithFormat:@"%@\n%.2f %@",
+    NSString *label = [NSString stringWithFormat:@"%@\n%@ %.2f",
                        [chart valueForKey:@"name"],
-                       [[chart valueForKey:@"value"] floatValue],
-                       currency];
+                       currency,
+                       [[chart valueForKey:@"value"] floatValue]];
     return label;
 }
 
@@ -206,7 +213,8 @@
 
 - (void) detectUpdateCurrency:(NSNotification*) notification {
     if (notification.object != nil) {
-        currency = (NSString*) notification.object;
+        PFObject *currencyObject = (PFObject*) notification.object;
+        currency = [currencyObject valueForKey:@"symbol"];
     }
 }
 

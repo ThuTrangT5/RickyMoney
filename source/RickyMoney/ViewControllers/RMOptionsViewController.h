@@ -2,23 +2,21 @@
 //  RMOptionsViewController.h
 //  RickyMoney
 //
-//  Created by Adelphatech on 9/7/15.
-//  Copyright (c) 2015 adelphatech. All rights reserved.
+//  Created by Thu Trang on 4/3/16.
+//  Copyright © 2016 adelphatech. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "RMConstant.h"
 
 @protocol RMOptionsDelegate <NSObject>
-- (void) optionView:(OptionTypes) option DoneWithSelectedData:(id) selectedData;
+- (void) optionViewsDoneWithSelectedData:(id) selectedData;
 @end
 
-@interface RMOptionsViewController : UITableViewController
+@interface RMOptionsViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic) OptionTypes option;
-@property (strong, nonatomic) NSArray *optionData;
 @property (nonatomic, assign) id<RMOptionsDelegate> delegate;
-
-- (IBAction)ontouchSaveButton:(id)sender;
+@property (strong, nonatomic) NSArray *optionData;
 
 @end

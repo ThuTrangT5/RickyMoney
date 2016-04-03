@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *itemField;
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
+@property (weak, nonatomic) IBOutlet UILabel *currencyField;
 @property (weak, nonatomic) IBOutlet UIButton *categoryField;
 @property (weak, nonatomic) IBOutlet UIButton *dateField;
 @property (weak, nonatomic) IBOutlet UITextView *noteField;

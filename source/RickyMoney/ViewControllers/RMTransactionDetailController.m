@@ -9,6 +9,7 @@
 #import "RMTransactionDetailController.h"
 #import <Parse/Parse.h>
 #import "RMParseRequestHandler.h"
+#import "UIImage+FontAwesome.h"
 
 #define DATE_FORMAT @"MMM dd, yyyy"
 
@@ -24,6 +25,13 @@
         control.layer.borderWidth = 0.5f;
         control.layer.borderColor = RM_COLOR.CGColor;
     }
+    
+    // insert tick image for save button
+    CGSize size = CGSizeMake(20, 20);
+    UIImage *tick = [UIImage imageWithIcon:@"fa-check" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:size];
+    UIImageView *tickView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    [tickView setImage:tick];
+    [[self.view viewWithTag:10] addSubview:tickView];
     
     // tap gesture
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -69,6 +77,13 @@
         [_categoryField setTitle:categoryName forState:UIControlStateNormal];
         [_dateField setTitle:date forState:UIControlStateNormal];
         [_noteField setText:notes];
+    }];
+}
+
+- (void) getUserCurrency {
+    [RMParseRequestHandler getCurrentUserInformation:^(PFObject *user) {
+        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [user objectForKey:@"currencyUnit"][@"name"], [user objectForKey:@"currencyUnit"][@"symbol"]];
+        _currencyField.text = currency;
     }];
 }
 
@@ -179,10 +194,11 @@
     }
 }
 
-#pragma mark-
-- (void)optionView:(OptionTypes)option DoneWithSelectedData:(NSDictionary *)selectedData {
+#pragma mark- RMOptionDelegate
+
+- (void)optionViewsDoneWithSelectedData:(id)selectedData {
     self.categoryId = [selectedData valueForKey:@"objectId"];
-    [self.categoryField setTitle:[selectedData valueForKey:@"categoryName"] forState:UIControlStateNormal];
+    [self.categoryField setTitle:[selectedData valueForKey:@"ENName"] forState:UIControlStateNormal];
 }
 
 #pragma mark- TTDatePickerViewDelegate

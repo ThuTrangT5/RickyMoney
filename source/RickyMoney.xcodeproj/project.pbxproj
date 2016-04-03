@@ -15,7 +15,6 @@
 		183160481BDE8A7700898482 /* TTDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183160461BDE8A7700898482 /* TTDatePickerView.m */; };
 		1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */; };
 		188266A31BE128310047B521 /* RMPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188266A21BE128310047B521 /* RMPasscodeViewController.m */; };
-		18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */; };
 		18CAE9601B9AE77000E0185D /* RMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */; };
 		18CAE9631B9AF89F00E0185D /* RMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */; };
 		18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */; };
@@ -41,6 +40,8 @@
 		6A1BD9691C43929A00DA7A85 /* JTHorizontalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95C1C43929A00DA7A85 /* JTHorizontalCalendarView.m */; };
 		6A1BD96A1C43929A00DA7A85 /* JTVerticalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1BD95E1C43929A00DA7A85 /* JTVerticalCalendarView.m */; };
 		6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */; };
+		6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */; };
+		6A22EE9C1CB111DD002B72FC /* 500vnd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A22EE9B1CB111DD002B72FC /* 500vnd.jpg */; };
 		6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */; };
 		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
@@ -77,8 +78,6 @@
 		1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSettingViewController.m; sourceTree = "<group>"; };
 		188266A11BE128310047B521 /* RMPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPasscodeViewController.h; sourceTree = "<group>"; };
 		188266A21BE128310047B521 /* RMPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPasscodeViewController.m; sourceTree = "<group>"; };
-		18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOptionsViewController.h; sourceTree = "<group>"; };
-		18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOptionsViewController.m; sourceTree = "<group>"; };
 		18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMHomeViewController.h; sourceTree = "<group>"; };
 		18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMHomeViewController.m; sourceTree = "<group>"; };
 		18CAE9611B9AF89F00E0185D /* RMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoginViewController.h; sourceTree = "<group>"; };
@@ -137,6 +136,9 @@
 		6A2037F01C3BC3BD00F680C7 /* CZPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPicker.h; sourceTree = "<group>"; };
 		6A2037F11C3BC3BD00F680C7 /* CZPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPickerView.h; sourceTree = "<group>"; };
 		6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
+		6A22EE981CB0F597002B72FC /* RMOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOptionsViewController.h; sourceTree = "<group>"; };
+		6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOptionsViewController.m; sourceTree = "<group>"; };
+		6A22EE9B1CB111DD002B72FC /* 500vnd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 500vnd.jpg; sourceTree = "<group>"; };
 		6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPassCodeButton.h; sourceTree = "<group>"; };
 		6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPassCodeButton.m; sourceTree = "<group>"; };
 		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		1823D41A1B8E140D005AC56B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6A22EE9B1CB111DD002B72FC /* 500vnd.jpg */,
 				1823D41B1B8E140D005AC56B /* main.m */,
 				6AE55CB21CAD159B00E5B824 /* bg.jpg */,
 			);
@@ -255,10 +258,10 @@
 				18F877771BA1DE7000AB362B /* RMTransactionController.m */,
 				18F877791BA1DE7F00AB362B /* RMTransactionDetailController.h */,
 				18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */,
-				18CA75311BA1E2E600CB6C67 /* RMOptionsViewController.h */,
-				18CA75321BA1E2E600CB6C67 /* RMOptionsViewController.m */,
 				188266A11BE128310047B521 /* RMPasscodeViewController.h */,
 				188266A21BE128310047B521 /* RMPasscodeViewController.m */,
+				6A22EE981CB0F597002B72FC /* RMOptionsViewController.h */,
+				6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 			files = (
 				6A1BD93A1C43927400DA7A85 /* RMCalendarView.xib in Resources */,
 				18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */,
+				6A22EE9C1CB111DD002B72FC /* 500vnd.jpg in Resources */,
 				1823D4271B8E140D005AC56B /* Assets.xcassets in Resources */,
 				6AE55CB31CAD159B00E5B824 /* bg.jpg in Resources */,
 				1823D4251B8E140D005AC56B /* Main.storyboard in Resources */,
@@ -595,9 +599,9 @@
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
 				6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
-				18CA75331BA1E2E600CB6C67 /* RMOptionsViewController.m in Sources */,
 				6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */,
 				6A1BD95F1C43929A00DA7A85 /* JTCalendarManager.m in Sources */,
+				6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */,
 				18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@
 #import "RMOptionsViewController.h"
 #import "CZPicker.h"
 
-@interface RMSettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RMPasscodeDelegate, CZPickerViewDelegate, CZPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface RMSettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RMPasscodeDelegate, CZPickerViewDelegate, CZPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, RMOptionsDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *profileField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

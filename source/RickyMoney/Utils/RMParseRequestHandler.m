@@ -253,7 +253,9 @@ static DGActivityIndicatorView *waitingView;
     [user setValue: currency forKey:@"currencyUnit"];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self closeWaitingView];
-        block(succeeded, error);
+        if (block != nil) {
+            block(succeeded, error);
+        }
     }];
 }
 

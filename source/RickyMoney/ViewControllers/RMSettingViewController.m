@@ -22,14 +22,12 @@
     [super viewDidLoad];
     
     _userInfo = [[NSMutableArray alloc] init];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self getUserInfo];
     
     _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
     _profileField.layer.masksToBounds = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateCurrency:) name:kUpdateCurrency object:nil];
 }
 
 #pragma mark- User information
@@ -53,6 +51,15 @@
             }];
         }
     }];
+}
+
+- (void) detectUpdateCurrency:(NSNotification*) notification {
+    if (notification.object != nil) {
+        PFObject *currencyObject = (PFObject*) notification.object;
+        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [currencyObject objectForKey:@"name"], [currencyObject objectForKey:@"symbol"]];
+        _userInfo[1] = @[@"fa-money", @"Currency", currency];
+        [_tableView reloadData];
+    }
 }
 
 #pragma mark- Tableview delegate & datasource
@@ -207,12 +214,25 @@
     
 }
 
+#pragma mark- RMOptionDelegate
+- (void)optionViewsDoneWithSelectedData:(id)selectedData {
+    PFObject *currencyObject = (PFObject*) selectedData;
+    [RMParseRequestHandler updateCurrencyUnit:currencyObject.objectId bllock:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
+    
+    NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [currencyObject objectForKey:@"name"], [currencyObject objectForKey:@"symbol"]];
+    _userInfo[1] = @[@"fa-money", @"Currency", currency];
+    [_tableView reloadData];
+}
+
 #pragma mark- prepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
         optionVC.option = OPTION_CURRENCY;
+        optionVC.delegate = self;
     }
 }
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RMConstant.h"
 
-@interface RMTransactionController : UITableViewController {
+@interface RMTransactionController : UIViewController {
     int currentPage;
 }
 
@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSMutableArray *transactions;
 @property (strong, nonatomic) NSDate *fromDate, *toDate;
 @property (strong, nonatomic) NSString *currency;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)onchangeTransactionType:(UISegmentedControl *)sender;
 @end
