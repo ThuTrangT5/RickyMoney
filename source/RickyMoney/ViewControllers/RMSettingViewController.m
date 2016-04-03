@@ -38,7 +38,8 @@
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-key", @"Passcode", passcode];
+        _userInfo[2] = @[@"fa-key", @"Change Password", currency];
+        _userInfo[3] = @[@"fa-lock", @"Passcode", passcode];
         [self.tableView reloadData];
         
         _avatar = [user valueForKey:@"avatar"];
@@ -98,7 +99,10 @@
     if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
         
-    } else if (indexPath.row == 2){
+    } else if (indexPath.row == 2){ // change password
+        [self performSegueWithIdentifier:@"changePasswordSegue" sender:indexPath];
+        
+    } else if (indexPath.row == 3) { // update passcode
         [self openPasscodeView];
     }
 }
@@ -217,7 +221,7 @@
 #pragma mark- RMOptionDelegate
 - (void)optionViewsDoneWithSelectedData:(id)selectedData {
     PFObject *currencyObject = (PFObject*) selectedData;
-    [RMParseRequestHandler updateCurrencyUnit:currencyObject.objectId bllock:nil];
+    [RMParseRequestHandler updateCurrencyUnit:currencyObject.objectId block:nil];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
     

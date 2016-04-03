@@ -245,12 +245,26 @@ static DGActivityIndicatorView *waitingView;
     // [presentingViewController presentViewController:logInViewController animated:YES completion:nil];
 }
 
-+ (void) updateCurrencyUnit:(NSString*) currencyId bllock:(void (^) (BOOL, NSError *)) block {
++ (void) updateCurrencyUnit:(NSString*) currencyId block:(void (^) (BOOL, NSError *)) block {
     [self showWaitingView];
     
     PFUser *user = [PFUser currentUser];
     PFObject *currency = [PFObject objectWithoutDataWithClassName:@"CurrencyUnit" objectId:currencyId];
     [user setValue: currency forKey:@"currencyUnit"];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self closeWaitingView];
+        if (block != nil) {
+            block(succeeded, error);
+        }
+    }];
+}
+
++ (void) updatePassword:(NSString*) newPassword block:(void (^) (BOOL, NSError *)) block {
+    [self showWaitingView];
+    
+    PFUser *user = [PFUser currentUser];
+    user[@"password"] = newPassword;
+    
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self closeWaitingView];
         if (block != nil) {

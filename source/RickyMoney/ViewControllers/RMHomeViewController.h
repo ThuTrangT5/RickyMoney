@@ -11,9 +11,8 @@
 #import "RMConstant.h"
 #import "CZPicker.h"
 #import "RMCalendar.h"
-#import "RMOptionsViewController.h"
 
-@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CZPickerViewDataSource, CZPickerViewDelegate, RMCalendarDelegate, RMOptionsDelegate>
+@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CZPickerViewDataSource, CZPickerViewDelegate, RMCalendarDelegate>
 
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *expenseTransactions, *incomeTransactions;

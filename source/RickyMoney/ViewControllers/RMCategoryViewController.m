@@ -70,7 +70,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"transactionSegue"]) {
         RMTransactionController *vc = (RMTransactionController*) segue.destinationViewController;
-//        vc.category = (NSString*) sender;
+        vc.categoryId = (NSString*) sender;
     }
 }
 @end

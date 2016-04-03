@@ -1,0 +1,6 @@
+framework module Pods_RickyMoney {
+  umbrella header "Pods-RickyMoney-umbrella.h"
+
+  export *
+  module * { export * }
+}

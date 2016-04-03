@@ -18,6 +18,7 @@
 
 @interface LMDropdownView ()
 {
+    UIInterfaceOrientation lastOrientation;
     CGPoint originContentCenter;
     CGPoint desContentCenter;
 }
@@ -46,9 +47,21 @@
         _blackMaskAlpha = kDefaultBlackMaskAlpha;
         _animationDuration = kDefaultAnimationDuration;
         _animationBounceHeight = kDefaultAnimationBounceHeight;
+        _direction = LMDropdownViewDirectionTop;
         _currentState = LMDropdownViewStateDidClose;
+        
+        lastOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(orientationChanged:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -141,12 +154,22 @@
             self.mainView.alpha = 0;
         } completion:^(BOOL finished) {
             self.mainView.alpha = 1;
-            [self.contentWrapperView removeFromSuperview];
-            [self.backgroundButton removeFromSuperview];
-            [self.containerWrapperView removeFromSuperview];
-            [self.mainView removeFromSuperview];
+            [self forceHide];
         }];
     });
+}
+
+- (void)forceHide
+{
+    _currentState = LMDropdownViewStateDidClose;
+    
+    [self.contentWrapperView.layer setValue:[[self contentPositionValuesForState:_currentState] lastObject] forKeyPath:@"position"];
+    [[self.contentWrapperView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.contentWrapperView removeFromSuperview];
+    [self.backgroundButton removeFromSuperview];
+    [self.containerWrapperView.layer setValue:[[self containerTransformValuesForState:_currentState] lastObject] forKeyPath:@"transform"];
+    [self.containerWrapperView removeFromSuperview];
+    [self.mainView removeFromSuperview];
 }
 
 
@@ -209,21 +232,64 @@
     }
     self.contentWrapperView.backgroundColor = self.contentBackgroundColor;
     
-    contentView.frame = CGRectMake(0,
-                                   self.animationBounceHeight,
-                                   CGRectGetWidth(contentView.frame),
-                                   CGRectGetHeight(contentView.frame));
-    [self.contentWrapperView addSubview:contentView];
-    
     CGFloat contentWrapperViewHeight = CGRectGetHeight(contentView.frame) + self.animationBounceHeight;
-    self.contentWrapperView.frame = CGRectMake(origin.x,
-                                               origin.y - contentWrapperViewHeight,
-                                               CGRectGetWidth(contentView.frame),
-                                               contentWrapperViewHeight);
+    switch (self.direction) {
+        case LMDropdownViewDirectionTop:
+            contentView.frame = CGRectMake(0,
+                                           self.animationBounceHeight,
+                                           CGRectGetWidth(contentView.frame),
+                                           CGRectGetHeight(contentView.frame));
+            self.contentWrapperView.frame = CGRectMake(origin.x,
+                                                       origin.y - contentWrapperViewHeight,
+                                                       CGRectGetWidth(contentView.frame),
+                                                       contentWrapperViewHeight);
+            break;
+        case LMDropdownViewDirectionBottom:
+            contentView.frame = CGRectMake(0,
+                                           0,
+                                           CGRectGetWidth(contentView.frame),
+                                           CGRectGetHeight(contentView.frame));
+            self.contentWrapperView.frame = CGRectMake(origin.x,
+                                                       origin.y + contentWrapperViewHeight,
+                                                       CGRectGetWidth(contentView.frame),
+                                                       contentWrapperViewHeight);
+            break;
+        default:
+            break;
+    }
+    [self.contentWrapperView addSubview:contentView];
     [self.mainView addSubview:self.contentWrapperView];
     
-    originContentCenter = CGPointMake(CGRectGetMidX(self.contentWrapperView.frame), CGRectGetMidY(self.contentWrapperView.frame));
-    desContentCenter = CGPointMake(CGRectGetMidX(self.contentWrapperView.frame), origin.y + contentWrapperViewHeight/2 - self.animationBounceHeight);
+    /*!
+     *  Set up origin, destination content center
+     */
+    originContentCenter = CGPointMake(CGRectGetMidX(self.contentWrapperView.frame),
+                                      CGRectGetMidY(self.contentWrapperView.frame));
+    switch (self.direction) {
+        case LMDropdownViewDirectionTop:
+            desContentCenter = CGPointMake(CGRectGetMidX(self.contentWrapperView.frame),
+                                           origin.y + contentWrapperViewHeight/2 - self.animationBounceHeight);
+            break;
+        case LMDropdownViewDirectionBottom:
+            desContentCenter = CGPointMake(CGRectGetMidX(self.contentWrapperView.frame),
+                                           origin.y + contentWrapperViewHeight/2);
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL canForceHide = UIInterfaceOrientationIsPortrait(currentOrientation) && UIInterfaceOrientationIsLandscape(lastOrientation);
+    canForceHide |= UIInterfaceOrientationIsPortrait(lastOrientation) && UIInterfaceOrientationIsLandscape(currentOrientation);
+    
+    if (canForceHide) {
+        [self forceHide];
+    }
+    
+    lastOrientation = currentOrientation;
 }
 
 - (void)backgroundButtonTapped:(id)sender
@@ -282,12 +348,30 @@
     
     if (state == LMDropdownViewStateWillOpen || state == LMDropdownViewStateDidOpen)
     {
-        [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, desContentCenter.y + self.animationBounceHeight)]];
+        switch (self.direction) {
+            case LMDropdownViewDirectionTop:
+                [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, desContentCenter.y + self.animationBounceHeight)]];
+                break;
+            case LMDropdownViewDirectionBottom:
+                [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, desContentCenter.y - self.animationBounceHeight)]];
+                break;
+            default:
+                break;
+        }
         [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, desContentCenter.y)]];
     }
     else
     {
-        [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, positionY + self.animationBounceHeight)]];
+        switch (self.direction) {
+            case LMDropdownViewDirectionTop:
+                [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, positionY + self.animationBounceHeight)]];
+                break;
+            case LMDropdownViewDirectionBottom:
+                [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, positionY - self.animationBounceHeight)]];
+                break;
+            default:
+                break;
+        }
         [values addObject:[NSValue valueWithCGPoint:CGPointMake(positionX, originContentCenter.y)]];
     }
     

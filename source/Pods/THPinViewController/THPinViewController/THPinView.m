@@ -124,7 +124,6 @@
                                  @"bottomButton" : _bottomButton };
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:vFormat options:0 metrics:metrics views:views]];
     }
-    
     return self;
 }
 
@@ -207,12 +206,6 @@
         [self.bottomButton removeTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
         [self.bottomButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
-    _bottomButton.frame = CGRectMake(50, 50, 100, 50);
-    [_bottomButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    NSLog(@"HIDDEN cancel = %@", (_bottomButton.isHidden) ? @"TRUE" : @"FALSE");
-    NSLog(@"Cancel frame = %@", NSStringFromCGRect(_bottomButton.frame));
 }
 
 #pragma mark - User Interaction

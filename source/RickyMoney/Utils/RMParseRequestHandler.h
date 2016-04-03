@@ -23,8 +23,9 @@
 
 + (void) getAllCurrencyUnitsWithSuccessBlock: (void (^) (NSArray*)) block;
 
-+ (void) updateCurrencyUnit:(NSString*) currencyId bllock:(void (^) (BOOL, NSError *)) block;
++ (void) updateCurrencyUnit:(NSString*) currencyId block:(void (^) (BOOL, NSError *)) block;
 
++ (void) updatePassword:(NSString*) newPassword block:(void (^) (BOOL, NSError *)) block;
 
 
 @end
