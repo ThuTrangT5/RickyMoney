@@ -12,7 +12,7 @@
 
 #import "RickyMoney-Swift.h"
 
-#define Y_OFFSET 75
+#define Y_OFFSET 55
 
 @implementation RMChangePasswordViewController {
     float yBeforeMoveUp;

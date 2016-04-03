@@ -38,7 +38,7 @@
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-key", @"Change Password", currency];
+        _userInfo[2] = @[@"fa-key", @"Change Password", @""];
         _userInfo[3] = @[@"fa-lock", @"Passcode", passcode];
         [self.tableView reloadData];
         
@@ -74,7 +74,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSString *identifier = (indexPath.row == 2) ? @"cell1" : @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     NSArray *cellData = _userInfo[indexPath.row];
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
