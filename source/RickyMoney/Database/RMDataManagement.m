@@ -20,7 +20,7 @@ static sqlite3_stmt *statement = nil;
     NSString *databasePath;
 }
 
-+(RMDataManagement*)getSharedInstance {
++ (RMDataManagement*) getSharedInstance {
     if (!sharedInstance) {
         sharedInstance = [[super allocWithZone:NULL]init];
         [sharedInstance createDB];
@@ -28,7 +28,7 @@ static sqlite3_stmt *statement = nil;
     return sharedInstance;
 }
 
--(BOOL)createDB{
+- (BOOL)createDB{
     NSString *docsDir;
     NSArray *dirPaths;
     
@@ -45,8 +45,7 @@ static sqlite3_stmt *statement = nil;
     if ([filemgr fileExistsAtPath: databasePath ] == NO)
     {
         const char *dbpath = [databasePath UTF8String];
-        if (sqlite3_open(dbpath, &database) == SQLITE_OK)
-        {
+        if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
             // create tables
             [self createTables:@"USER"
                   tableColumns: [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -108,18 +107,49 @@ static sqlite3_stmt *statement = nil;
     
     char *errMsg;
     const char *sql_stmt = [sqlString UTF8String];
-    //"create table if not exists USERS (objectId integer primary key, email text, password text, currencyId text, avatar BLOB)";
+    
     if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK) {
-        NSLog(@"Failed to create table");
+        NSLog(@"Failed to create table: %s", errMsg);
     }
 }
 
-//- (void) test {
-//    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-//        const char *sqlStatement = "SELECT count(*) FROM TRANSACTION";
-//        
-//    }
-//}
+- (void) insertIntoTable:(NSString*) tableName values:(NSDictionary*) values {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *autoId = [formatter stringFromDate:[NSDate new]];
+        autoId = [NSString stringWithFormat:@"RM_%@_%@", [tableName substringToIndex:1], autoId];
+        
+        NSString *columnNames = @"";
+        NSString *columnValues = @"";
+        for (NSString *key in values.allKeys) {
+            columnNames = [NSString stringWithFormat:@"%@, %@", columnNames, key];
+            columnValues = [NSString stringWithFormat:@"%@, \"%@\"", columnValues, [values valueForKey: key]];
+        }
+        NSString *insertSQL = [NSString stringWithFormat: @"INSERT INTO %@ (objectId%@) VALUES (\"%@\"%@)", tableName, columnNames, autoId, columnValues];
+        const char *insert_stmt = [insertSQL UTF8String];
+        
+//        if(sqlite3_prepare_v2(database, insert_stmt, -1, &statement, NULL) != SQLITE_OK) {
+//            NSLog(@"Error while creating INSERT statement. '%s'", sqlite3_errmsg(database));
+//        }
+//        if (sqlite3_step(statement) == SQLITE_DONE) {
+//            NSLog(@"SUCCESS: %@", insertSQL);
+//        } else {
+//            NSLog(@"error");
+//        }
+//        sqlite3_finalize(statement);
+        
+        char * errMsg;
+        int result = sqlite3_exec(database, insert_stmt, NULL, NULL, &errMsg);
+        if(result != SQLITE_OK) {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
+        }
+
+        sqlite3_close(database);
+    }
+}
 
 
 @end

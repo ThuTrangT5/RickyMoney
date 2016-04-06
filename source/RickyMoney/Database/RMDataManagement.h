@@ -10,7 +10,9 @@
 
 @interface RMDataManagement : NSObject
 
-+(RMDataManagement*)getSharedInstance;
--(BOOL)createDB;
++ (RMDataManagement*)getSharedInstance;
+- (BOOL)createDB;
+
+- (void) insertIntoTable:(NSString*) tableName values:(NSDictionary*) values;
 
 @end

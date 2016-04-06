@@ -77,7 +77,12 @@
     
     [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
     
-    [RMDataManagement getSharedInstance];
+    [[RMDataManagement getSharedInstance] insertIntoTable:@"USER"
+                                                   values: [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                            @"thutrangitmt@gmail.com", @"email",
+                                                            @"11111", @"password",
+                                                            nil]];
+
 }
 
 #pragma mark - DropDownView
