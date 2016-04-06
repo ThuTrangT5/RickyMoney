@@ -42,10 +42,13 @@
 		6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */; };
 		6A22EE9F1CB166B8002B72FC /* RMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */; };
 		6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */; };
+		6AA88BE71CB50ABC00EB4D6A /* RMModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88BE51CB50ABC00EB4D6A /* RMModel.xcdatamodeld */; };
 		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
 		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
 		6AE55CB31CAD159B00E5B824 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AE55CB21CAD159B00E5B824 /* bg.jpg */; };
+		6AFAF5CD1CB4CA3B00C166BC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFAF5CC1CB4CA3B00C166BC /* libsqlite3.tbd */; };
+		6AFAF5D11CB4CAF000C166BC /* RMDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAF5D01CB4CAF000C166BC /* RMDataManagement.m */; };
 		E06F6608DEDF55E046A60678 /* Pods_RickyMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78B0670AB5E11E3B5B48698 /* Pods_RickyMoney.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,11 +145,15 @@
 		6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMChangePasswordViewController.m; sourceTree = "<group>"; };
 		6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPassCodeButton.h; sourceTree = "<group>"; };
 		6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPassCodeButton.m; sourceTree = "<group>"; };
+		6AA88BE61CB50ABC00EB4D6A /* RMModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMModel.xcdatamodel; sourceTree = "<group>"; };
 		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
 		6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RickyMoney-Bridging-Header.h"; sourceTree = "<group>"; };
 		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
 		6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDelegate.swift; sourceTree = "<group>"; };
 		6AE55CB21CAD159B00E5B824 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		6AFAF5CC1CB4CA3B00C166BC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		6AFAF5CF1CB4CAF000C166BC /* RMDataManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDataManagement.h; sourceTree = "<group>"; };
+		6AFAF5D01CB4CAF000C166BC /* RMDataManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDataManagement.m; sourceTree = "<group>"; };
 		9E5AEDC682DD4297C16A840C /* Pods-RickyMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickyMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-RickyMoney/Pods-RickyMoney.release.xcconfig"; sourceTree = "<group>"; };
 		BE1B14FC356CE1C114E5DA43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D78B0670AB5E11E3B5B48698 /* Pods_RickyMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickyMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFAF5CD1CB4CA3B00C166BC /* libsqlite3.tbd in Frameworks */,
 				E06F6608DEDF55E046A60678 /* Pods_RickyMoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,12 +203,14 @@
 		1823D4191B8E140D005AC56B /* RickyMoney */ = {
 			isa = PBXGroup;
 			children = (
+				6AA88BE41CB50ABC00EB4D6A /* CoreData */,
 				1823D41D1B8E140D005AC56B /* AppDelegate.h */,
 				1823D41E1B8E140D005AC56B /* AppDelegate.m */,
 				1823D4231B8E140D005AC56B /* Main.storyboard */,
 				1823D4261B8E140D005AC56B /* Assets.xcassets */,
 				1823D42B1B8E140D005AC56B /* Info.plist */,
 				6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */,
+				6AFAF5CE1CB4CAB600C166BC /* Database */,
 				18CAE9641B9B4C4F00E0185D /* Utils */,
 				18CAE95D1B9AE6FC00E0185D /* ViewControllers */,
 				1823D41A1B8E140D005AC56B /* Supporting Files */,
@@ -402,6 +412,14 @@
 			path = TTPassCode;
 			sourceTree = "<group>";
 		};
+		6AA88BE41CB50ABC00EB4D6A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6AA88BE51CB50ABC00EB4D6A /* RMModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		6AC020431C4CDEF6001A1DCA /* MDRotatingPieChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,9 +430,19 @@
 			path = MDRotatingPieChart;
 			sourceTree = "<group>";
 		};
+		6AFAF5CE1CB4CAB600C166BC /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6AFAF5CF1CB4CAF000C166BC /* RMDataManagement.h */,
+				6AFAF5D01CB4CAF000C166BC /* RMDataManagement.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		71F895E18A22AF386955E608 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AFAF5CC1CB4CA3B00C166BC /* libsqlite3.tbd */,
 				D78B0670AB5E11E3B5B48698 /* Pods_RickyMoney.framework */,
 			);
 			name = Frameworks;
@@ -475,6 +503,7 @@
 				TargetAttributes = {
 					1823D4161B8E140D005AC56B = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = LXSMGXYA7Z;
 					};
 					1823D42F1B8E140D005AC56B = {
 						CreatedOnToolsVersion = 7.0;
@@ -582,6 +611,7 @@
 				1840BD8A1B9DEFE9001A9160 /* RMSettingViewController.m in Sources */,
 				6A1BD9611C43929A00DA7A85 /* JTDateHelper.m in Sources */,
 				18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */,
+				6AA88BE71CB50ABC00EB4D6A /* RMModel.xcdatamodeld in Sources */,
 				188266A31BE128310047B521 /* RMPasscodeViewController.m in Sources */,
 				6A1BD9631C43929A00DA7A85 /* JTCalendarScrollManager.m in Sources */,
 				6A1BD9671C43929A00DA7A85 /* JTCalendarWeekDayView.m in Sources */,
@@ -605,6 +635,7 @@
 				6A22EE9F1CB166B8002B72FC /* RMChangePasswordViewController.m in Sources */,
 				6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,
+				6AFAF5D11CB4CAF000C166BC /* RMDataManagement.m in Sources */,
 				6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */,
 				6A1BD95F1C43929A00DA7A85 /* JTCalendarManager.m in Sources */,
 				6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */,
@@ -736,6 +767,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RickyMoney/RickyMoney-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -756,6 +788,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = thutrang.com.RickyMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RickyMoney/RickyMoney-Bridging-Header.h";
 			};
@@ -818,6 +851,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6AA88BE51CB50ABC00EB4D6A /* RMModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6AA88BE61CB50ABC00EB4D6A /* RMModel.xcdatamodel */,
+			);
+			currentVersion = 6AA88BE61CB50ABC00EB4D6A /* RMModel.xcdatamodel */;
+			path = RMModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1823D40F1B8E140D005AC56B /* Project object */;
 }

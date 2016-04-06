@@ -14,6 +14,8 @@
 
 #import "RickyMoney-Swift.h"
 
+#import "RMDataManagement.h"
+
 @interface RMHomeViewController () <MDRotatingPieChartDataSource>
 
 @end
@@ -74,6 +76,8 @@
     [super viewDidAppear:animated];
     
     [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
+    
+    [RMDataManagement getSharedInstance];
 }
 
 #pragma mark - DropDownView

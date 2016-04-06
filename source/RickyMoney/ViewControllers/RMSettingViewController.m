@@ -38,8 +38,8 @@
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-key", @"Change Password", @""];
-        _userInfo[3] = @[@"fa-lock", @"Passcode", passcode];
+//        _userInfo[2] = @[@"fa-key", @"Change Password", @""];
+        _userInfo[2] = @[@"fa-lock", @"Passcode", passcode];
         [self.tableView reloadData];
         
         _avatar = [user valueForKey:@"avatar"];
@@ -74,7 +74,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = (indexPath.row == 2) ? @"cell1" : @"cell";
+    NSString *identifier = @"cell"; // (indexPath.row == 2) ? @"cell1" : @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     NSArray *cellData = _userInfo[indexPath.row];
     
@@ -85,25 +85,25 @@
     [(UILabel*)[cell viewWithTag:2] setText:cellData[1]];
     [(UILabel*)[cell viewWithTag:3] setText:cellData[2]];
     
-    if (indexPath.row == 0) {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentCenter];
-    } else {
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentRight];
-    }
+//    if (indexPath.row == 0) {
+//        [cell setAccessoryType:UITableViewCellAccessoryNone];
+//        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentCenter];
+//    } else {
+//        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+//        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentRight];
+//    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
-        
-    } else if (indexPath.row == 2){ // change password
+    if (indexPath.row == 0){ // change password
         [self performSegueWithIdentifier:@"changePasswordSegue" sender:indexPath];
         
-    } else if (indexPath.row == 3) { // update passcode
+    } else if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+        
+    } else if (indexPath.row == 2) { // update passcode
         [self openPasscodeView];
     }
 }
