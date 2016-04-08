@@ -77,11 +77,18 @@
     
     [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
     
-    [[RMDataManagement getSharedInstance] insertIntoTable:@"USER"
-                                                   values: [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                            @"thutrangitmt@gmail.com", @"email",
-                                                            @"11111", @"password",
-                                                            nil]];
+//    [[RMDataManagement getSharedInstance] insertIntoTable:@"RMTRANSACTION"
+//                                                   values: [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                                            @"Vegetable", @"item",
+//                                                            @"12", @"amount",
+//                                                            @"0", @"type",
+//                                                            @"user", @"userId",
+//                                                            @"cate", @"categoryId",
+//                                                            @"2016-04-10", @"date", // format : YYYY-MM-DD
+//                                                            @"notes", @"notes",
+//                                                            nil]];
+    
+    
 
 }
 

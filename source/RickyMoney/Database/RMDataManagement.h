@@ -7,12 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Objects/RMObjects.h"
+
 
 @interface RMDataManagement : NSObject
 
 + (RMDataManagement*)getSharedInstance;
 - (BOOL)createDB;
 
-- (void) insertIntoTable:(NSString*) tableName values:(NSDictionary*) values;
+- (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
+- (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
+
+- (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId;
+- (BOOL) updateAvatar:(UIImage*) avatar forUser:(NSString*) userId;
+- (BOOL) updatePasscode:(NSString*) newPasscode forUser:(NSString*) userId;
+- (BOOL) updatePassword:(NSString*) newPassword forUser:(NSString*) userId;
+
+- (NSArray*) getAllCurrency;
+- (NSArray*) getAllCategory;
+
+- (NSString*) createNewTransaction:(Transaction*) newTransaction;
+- (BOOL) updateTransaction:(Transaction*) updatedTransaction;
+- (BOOL) deleteTransaction:(NSString*) transactionId;
+- (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(NSString*) type;
+
+- (NSArray*) getAllBudget;
+- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;
+
 
 @end

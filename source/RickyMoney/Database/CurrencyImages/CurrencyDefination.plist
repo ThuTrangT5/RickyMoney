@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_01</string>
+		<key>name</key>
+		<string>Vietnamese Dong</string>
+		<key>symbol</key>
+		<string>₫</string>
+		<key>image</key>
+		<string>currency-vnd</string>
+	</dict>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_02</string>
+		<key>name</key>
+		<string>US Dollar</string>
+		<key>symbol</key>
+		<string>$</string>
+		<key>image</key>
+		<string>currency-usd</string>
+	</dict>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_03</string>
+		<key>name</key>
+		<string>Euro</string>
+		<key>symbol</key>
+		<string>€</string>
+		<key>image</key>
+		<string>currency-eur</string>
+	</dict>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_04</string>
+		<key>name</key>
+		<string>South Korean Won</string>
+		<key>symbol</key>
+		<string>KRW</string>
+		<key>image</key>
+		<string>currency-krw</string>
+	</dict>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_05</string>
+		<key>name</key>
+		<string>Japanese Yen</string>
+		<key>symbol</key>
+		<string>¥</string>
+		<key>image</key>
+		<string>currency-jpy</string>
+	</dict>
+	<dict>
+		<key>objectId</key>
+		<string>RMCurrency_06</string>
+		<key>name</key>
+		<string>Canadian Dollar</string>
+		<key>symbol</key>
+		<string>$</string>
+		<key>image</key>
+		<string>currency-cad</string>
+	</dict>
+</array>
+</plist>
