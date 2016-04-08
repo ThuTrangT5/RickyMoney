@@ -38,7 +38,7 @@
 		<key>name</key>
 		<string>South Korean Won</string>
 		<key>symbol</key>
-		<string>KRW</string>
+		<string>₩</string>
 		<key>image</key>
 		<string>currency-krw</string>
 	</dict>

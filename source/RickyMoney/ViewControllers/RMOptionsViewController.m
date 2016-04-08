@@ -43,19 +43,11 @@
 #pragma mark- Data
 
 - (void) getCurrencyUnit {
-    [RMParseRequestHandler getAllCurrencyUnitsWithSuccessBlock:^(NSArray * objects) {
-        _optionData = objects;
-        [self.collectionView reloadData];
-    }];
+    _optionData = [[RMDataManagement getSharedInstance] getAllCurrency];
+    [self.collectionView reloadData];
 }
 
 - (void) getCategory {
-//    PFQuery *query = [PFQuery queryWithClassName:@"Category"];
-//    [RMParseRequestHandler getDataByQuery:query withSuccessBlock:^(NSArray * objects) {
-//        _optionData = objects;
-//        [self.collectionView reloadData];
-//    }];
-    
     _optionData = [[RMDataManagement getSharedInstance] getAllCategory];
     [self.collectionView reloadData];
 }
@@ -86,31 +78,23 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: identifier forIndexPath:indexPath];
     
     if (self.option == OPTION_CURRENCY) {
-        PFObject *cellData = [self.optionData objectAtIndex:indexPath.row];
+        Currency *currency = [self.optionData objectAtIndex:indexPath.row];
         
-        // image
-        PFFile *imageFile = [cellData objectForKey:@"image"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            if (!error) {
-                UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
-                [icon setImage:[UIImage imageWithData:data]];
-            }
-        }];
-        
-        [(UILabel*)[cell viewWithTag:2] setText:cellData[@"symbol"]];
-        [(UILabel*)[cell viewWithTag:3] setText:cellData[@"name"]];
+        ((UIImageView*)[cell viewWithTag:1]).image = [UIImage imageWithContentsOfFile:currency.image];
+        [(UILabel*)[cell viewWithTag:2] setText: currency.symbol];
+        [(UILabel*)[cell viewWithTag:3] setText: currency.name];
         
         cell.layer.borderColor = RM_COLOR.CGColor;
         cell.layer.borderWidth = 0.5f;
         
     } else {
-        Category *cellData = [_optionData objectAtIndex:indexPath.row];
+        Category *category = [_optionData objectAtIndex:indexPath.row];
         
         UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
-        icon.image = [UIImage imageWithContentsOfFile: cellData.icon];
+        icon.image = [UIImage imageWithContentsOfFile: category.icon];
         
         UILabel *categoryName = (UILabel*) [cell viewWithTag:2];
-        categoryName.text = cellData.enName;
+        categoryName.text = category.enName;
     }
     
     return cell;

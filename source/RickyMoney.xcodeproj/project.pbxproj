@@ -75,6 +75,7 @@
 		6AA88C6B1CB7B07500EB4D6A /* transportation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AA88C571CB7B07500EB4D6A /* transportation-icon.png */; };
 		6AA88C6C1CB7B07500EB4D6A /* unity-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AA88C581CB7B07500EB4D6A /* unity-icon.png */; };
 		6AA88C6E1CB7B6CD00EB4D6A /* charity-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AA88C6D1CB7B6CD00EB4D6A /* charity-icon.png */; };
+		6AA88C701CB7B93600EB4D6A /* currency-usd.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AA88C6F1CB7B93600EB4D6A /* currency-usd.png */; };
 		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
 		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
@@ -217,6 +218,7 @@
 		6AA88C571CB7B07500EB4D6A /* transportation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transportation-icon.png"; sourceTree = "<group>"; };
 		6AA88C581CB7B07500EB4D6A /* unity-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unity-icon.png"; sourceTree = "<group>"; };
 		6AA88C6D1CB7B6CD00EB4D6A /* charity-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "charity-icon.png"; sourceTree = "<group>"; };
+		6AA88C6F1CB7B93600EB4D6A /* currency-usd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currency-usd.png"; sourceTree = "<group>"; };
 		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
 		6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RickyMoney-Bridging-Header.h"; sourceTree = "<group>"; };
 		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 		6AA88C351CB7A6BC00EB4D6A /* CurrencyImages */ = {
 			isa = PBXGroup;
 			children = (
+				6AA88C6F1CB7B93600EB4D6A /* currency-usd.png */,
 				6AA88C361CB7A6BC00EB4D6A /* currency-cad.png */,
 				6AA88C371CB7A6BC00EB4D6A /* currency-eur.png */,
 				6AA88C381CB7A6BC00EB4D6A /* currency-jpy.png */,
@@ -673,6 +676,7 @@
 				6AA88C5E1CB7B07500EB4D6A /* friends-icon.png in Resources */,
 				6A1BD93A1C43927400DA7A85 /* RMCalendarView.xib in Resources */,
 				6AA88C6B1CB7B07500EB4D6A /* transportation-icon.png in Resources */,
+				6AA88C701CB7B93600EB4D6A /* currency-usd.png in Resources */,
 				6AA88C3B1CB7A6BC00EB4D6A /* currency-cad.png in Resources */,
 				6AA88C641CB7B07500EB4D6A /* internet-icon.png in Resources */,
 				6AA88C601CB7B07500EB4D6A /* house-icon.png in Resources */,

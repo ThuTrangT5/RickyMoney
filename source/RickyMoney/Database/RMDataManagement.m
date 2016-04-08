@@ -181,7 +181,7 @@ static sqlite3_stmt *statement = nil;
     NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefinition" ofType:@"plist"]];
     // map to currency object
     for (NSDictionary *obj in objects) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"name"] ofType:@"png"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"image"] ofType:@"png"];
         
         Currency *currency = [[Currency alloc] init];
         // (objectId text primary key, name text, symbol text, image text

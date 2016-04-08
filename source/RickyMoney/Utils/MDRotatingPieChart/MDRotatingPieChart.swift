@@ -269,7 +269,6 @@ class MDRotatingPieChart: UIControl {
         //update the label
         labelCenter.text = formatFromDisplayValueType(slicesArray[index], displayType: properties.displayValueTypeCenter)
         let centerTmp = labelCenter.center
-//        labelCenter.sizeToFit()
         labelCenter.center = centerTmp
         
         labelCenter.hidden = false
@@ -283,10 +282,8 @@ class MDRotatingPieChart: UIControl {
         }
         
         //move
-//        var i=0
         var angleSum:CGFloat = 0
-        //for(i=0; i<index; i += 1) {
-        for i in 0...(index - 1) {
+        for i in 0..<index {
             angleSum += slicesArray[i].angle
         }
         angleSum += slicesArray[index].angle/2.0
