@@ -124,12 +124,6 @@ static sqlite3_stmt *statement = nil;
 
 #pragma mark- USER
 
-- (NSString*) getCurrentUser {
-    NSUserDefaults *udf = [NSUserDefaults standardUserDefaults];
-    NSString *currentUserId = [udf objectForKey:CURRENT_USER_ID];
-    return currentUserId;
-}
-
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password {
     NSString *createdUserId = nil; // result is the created user id
     
@@ -185,7 +179,7 @@ static sqlite3_stmt *statement = nil;
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
         if(rc == SQLITE_OK){
             while (sqlite3_step(statement) == SQLITE_ROW) {
-                userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
                 
                 // set that userId as a current user
                 [[NSUserDefaults standardUserDefaults] setObject:userId forKey:CURRENT_USER_ID];
@@ -202,6 +196,41 @@ static sqlite3_stmt *statement = nil;
     }
     
     return userId;
+}
+
+- (NSString*) getCurrentUserId {
+    NSUserDefaults *udf = [NSUserDefaults standardUserDefaults];
+    NSString *currentUserId = [udf objectForKey:CURRENT_USER_ID];
+    return currentUserId;
+}
+
+- (User*) getCurrentUserInfo {
+    
+    User *currentUser = nil;
+    
+    NSString *userId = [self getCurrentUserId];
+    
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        NSString *query = [NSString stringWithFormat: @"SELECT * from %@ WHERE objectId = \"%@\"", USER_TABLE_NAME, userId];
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            if (sqlite3_step(statement) == SQLITE_ROW) {
+                currentUser = [[User alloc] init];
+                //  (objectId text primary key, email text, password text, currencyId text, avatar text, passcode text)
+                currentUser.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                currentUser.email = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                currentUser.password = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                currentUser.currencyId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
+                currentUser.avatar = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 4)];
+                currentUser.passcode = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+            }
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+    }
+    
+    return currentUser;
 }
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId {
@@ -270,6 +299,36 @@ static sqlite3_stmt *statement = nil;
     }
     
     return categories;
+}
+
+#pragma mark- TRANSACTION
+
+- (NSString*) createNewTransaction:(Transaction*) newTransaction {
+    NSString *objectId = nil;
+    
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        objectId = [self createAutoIdentifierForTable:TRANSACTION_TABLE_NAME];
+        NSString *userId = [self getCurrentUserId];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        NSString *transactionDate = [formatter stringFromDate:newTransaction.date];
+        
+        // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
+        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, userId, categoryId, item, amount, notes, date, type) values (\"%@\", \"%@\", \"%@\",\"%@\", %.2f, \"%@\", \"%@\", %d)", TRANSACTION_TABLE_NAME, objectId, userId, newTransaction.categoryId, newTransaction.item, newTransaction.amount, newTransaction.notes, transactionDate, newTransaction.type];
+        
+        char * errMsg;
+        int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
+        if(result != SQLITE_OK) {
+            NSLog(@"Failed to insert TRANSACTION record: %s", errMsg);
+            objectId = nil;
+        } else {
+            NSLog(@"Insert new TRANSACTION[%@] successfully", objectId);
+        }
+        
+        sqlite3_close(database);
+    }
+    return objectId;
 }
 
 #pragma mark- SELECT

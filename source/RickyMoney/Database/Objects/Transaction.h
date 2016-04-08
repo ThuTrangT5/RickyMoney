@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *item;
 @property (nonatomic) float amount;
 @property (strong, nonatomic) NSString *notes;
-@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSDate *date;
 @property (nonatomic) int type;
 
 @end

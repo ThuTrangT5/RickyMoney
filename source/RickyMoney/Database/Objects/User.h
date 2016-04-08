@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface User : NSObject
+// (objectId text primary key, email text, password text, currencyId text, avatar text, passcode text)
 
 @property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *email;

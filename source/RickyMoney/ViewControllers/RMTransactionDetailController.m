@@ -11,6 +11,9 @@
 #import "RMParseRequestHandler.h"
 #import "UIImage+FontAwesome.h"
 
+#import "RMDataManagement.h"
+#import "RMObjects.h"
+
 #define DATE_FORMAT @"MMM dd, yyyy"
 
 @implementation RMTransactionDetailController
@@ -153,6 +156,18 @@
 
 - (void) saveTransaction {
     
+    if (_transactionId == nil) {
+        Transaction *newTransaction = [[Transaction alloc] init];
+        newTransaction.item = _itemField.text;
+        newTransaction.categoryId = _categoryId;
+        newTransaction.amount = [_amountField.text floatValue];
+        newTransaction.notes = _noteField.text;
+        newTransaction.type = _transactionType;
+        newTransaction.date = _transactionDate;
+        
+        [[RMDataManagement getSharedInstance] createNewTransaction: newTransaction];
+    }
+    
     PFObject *pointer = [PFObject objectWithoutDataWithClassName:@"Category" objectId:_categoryId];
     
     PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
@@ -197,8 +212,11 @@
 #pragma mark- RMOptionDelegate
 
 - (void)optionViewsDoneWithSelectedData:(id)selectedData {
-    self.categoryId = [selectedData valueForKey:@"objectId"];
-    [self.categoryField setTitle:[selectedData valueForKey:@"ENName"] forState:UIControlStateNormal];
+    if ([selectedData isKindOfClass:[Category class]] == YES) {
+        Category *selectedCategory = (Category*) selectedData;
+        self.categoryId = selectedCategory.objectId;
+        [self.categoryField setTitle: selectedCategory.enName forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark- TTDatePickerViewDelegate

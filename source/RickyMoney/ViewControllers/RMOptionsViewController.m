@@ -7,14 +7,10 @@
 //
 
 #import "RMOptionsViewController.h"
-#import "RMParseRequestHandler.h"
 #import "RMTransactionController.h"
 
 #import "RMDataManagement.h"
 #import "RMObjects.h"
-
-#import <Parse/PFFile.h>
-#import <Parse/PFObject.h>
 
 @implementation RMOptionsViewController
 
@@ -32,7 +28,6 @@
         self.title = @"Category";
         [self getCategory];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,7 +98,7 @@
 #pragma mark- UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PFObject *selectedData = _optionData[indexPath.row];
+    id selectedData = _optionData[indexPath.row];
     
     if (self.delegate != nil) {
         [self.delegate optionViewsDoneWithSelectedData:selectedData];
@@ -112,7 +107,7 @@
     } else {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         RMTransactionController *transactionsVC = (RMTransactionController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"TransactionsVC"];
-        transactionsVC.categoryId = selectedData.objectId;
+        transactionsVC.categoryId = [(Category*)selectedData objectId];
         [self.navigationController pushViewController: transactionsVC animated: YES];
     }
     

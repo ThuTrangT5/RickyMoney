@@ -1256,10 +1256,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Transactions" id="iB0-rB-Jb3">
                         <barButtonItem key="backBarButtonItem" title=" " id="nPX-fJ-Cw8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Ps-qg-vBT">
+                            <connections>
+                                <segue destination="dNe-d5-KNX" kind="push" identifier="transactionDetail" id="D2E-iE-2Qg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="PgA-yK-npX" id="r2C-Ub-kXs"/>
-                        <segue destination="dNe-d5-KNX" kind="push" identifier="transactionDetail" id="pMM-dy-wwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ScL-UY-7ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1278,6 +1282,6 @@
         <image name="passcode-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zFJ-Gg-3Wf"/>
+        <segue reference="0Fk-iX-ere"/>
     </inferredMetricsTieBreakers>
 </document>

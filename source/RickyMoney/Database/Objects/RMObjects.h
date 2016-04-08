@@ -15,9 +15,6 @@
 #import "Transaction.h"
 #import "Budget.h"
 
-
-
-
 #define DATABASE_FILE_NAME @"RM-DATABASE.DB"
 #define ITEMS_PER_PAGE 25
 #define DATE_FORMATTER_IN_DB @"YYYY-MM-DD"

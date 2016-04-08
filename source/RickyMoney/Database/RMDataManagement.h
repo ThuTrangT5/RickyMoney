@@ -18,6 +18,7 @@
 
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
+- (User*) getCurrentUserInfo;
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId;
 - (BOOL) updateAvatar:(UIImage*) avatar forUser:(NSString*) userId;
