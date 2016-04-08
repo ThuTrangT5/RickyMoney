@@ -30,7 +30,7 @@
 		<key>enName</key>
 		<string>Internet</string>
 		<key>icon</key>
-		<string>internet-cion</string>
+		<string>internet-icon</string>
 	</dict>
 	<dict>
 		<key>objectId</key>
@@ -50,7 +50,7 @@
 		<key>enName</key>
 		<string>Transportation</string>
 		<key>icon</key>
-		<string>transport-icon</string>
+		<string>transportation-icon</string>
 	</dict>
 	<dict>
 		<key>objectId</key>
@@ -150,7 +150,7 @@
 		<key>enName</key>
 		<string>Friend</string>
 		<key>icon</key>
-		<string>friend-icon</string>
+		<string>friends-icon</string>
 	</dict>
 	<dict>
 		<key>objectId</key>
@@ -170,7 +170,7 @@
 		<key>enName</key>
 		<string>Electricity &amp; Water</string>
 		<key>icon</key>
-		<string>elictric-water-icon</string>
+		<string>electric-water-icon</string>
 	</dict>
 	<dict>
 		<key>objectId</key>
@@ -190,7 +190,7 @@
 		<key>enName</key>
 		<string>Clothing</string>
 		<key>icon</key>
-		<string>clothing-icon</string>
+		<string>cloth-icon</string>
 	</dict>
 	<dict>
 		<key>objectId</key>

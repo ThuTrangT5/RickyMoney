@@ -178,7 +178,7 @@ static sqlite3_stmt *statement = nil;
 - (NSArray*) getAllCurrency {
     NSMutableArray *currencies = [[NSMutableArray alloc] init];
     
-    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefination" ofType:@"plist"]];
+    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefinition" ofType:@"plist"]];
     // map to currency object
     for (NSDictionary *obj in objects) {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"name"] ofType:@"png"];
@@ -202,7 +202,7 @@ static sqlite3_stmt *statement = nil;
 - (NSArray*) getAllCategory {
     NSMutableArray *categories = [[NSMutableArray alloc] init];
     
-    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefination" ofType:@"plist"]];
+    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CategoryDefinition" ofType:@"plist"]];
     // map to currency object
     for (NSDictionary *obj in objects) {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"icon"] ofType:@"png"];
