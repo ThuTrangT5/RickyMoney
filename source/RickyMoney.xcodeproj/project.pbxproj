@@ -179,7 +179,6 @@
 		6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPassCodeButton.h; sourceTree = "<group>"; };
 		6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPassCodeButton.m; sourceTree = "<group>"; };
 		6AA88BE61CB50ABC00EB4D6A /* RMModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMModel.xcdatamodel; sourceTree = "<group>"; };
-		6AA88C211CB7988B00EB4D6A /* DatabaseVariables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseVariables.h; sourceTree = "<group>"; };
 		6AA88C231CB79DDF00EB4D6A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		6AA88C241CB79DDF00EB4D6A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6AA88C281CB79E3000EB4D6A /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
@@ -569,7 +568,6 @@
 				6AA88C401CB7A6D400EB4D6A /* CategoryImages */,
 				6AA88C351CB7A6BC00EB4D6A /* CurrencyImages */,
 				6AA88C221CB79DDF00EB4D6A /* Objects */,
-				6AA88C211CB7988B00EB4D6A /* DatabaseVariables.h */,
 				6AFAF5CF1CB4CAF000C166BC /* RMDataManagement.h */,
 				6AFAF5D01CB4CAF000C166BC /* RMDataManagement.m */,
 			);

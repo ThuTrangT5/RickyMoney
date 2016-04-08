@@ -12,6 +12,8 @@
 #import "UIImage+FontAwesome.h"
 #import <Parse/PFUser.h>
 
+#import "RMDataManagement.h"
+
 @implementation RMLoginViewController
 
 - (void)viewDidLoad {
@@ -62,8 +64,12 @@
 }
 
 - (IBAction)loginAction:(id)sender {
+    
 
     if ([self validate]) {
+        
+        [[RMDataManagement getSharedInstance] loginWithEmail:self.emailField.text andPassword:self.passwordField.text];
+        
         [PFUser logInWithUsernameInBackground:self.emailField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
             if (user) {
                 [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
@@ -84,6 +90,9 @@
 - (IBAction)signUpAction:(id)sender {
     
     if ([self validate]) {
+        
+        [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
+        
         PFUser *user = [PFUser user];
         user.username = self.emailField.text;
         user.password = self.passwordField.text;

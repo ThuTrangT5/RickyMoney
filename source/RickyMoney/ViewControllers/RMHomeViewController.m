@@ -74,19 +74,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+
     [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
-    
-//    [[RMDataManagement getSharedInstance] insertIntoTable:@"RMTRANSACTION"
-//                                                   values: [[NSDictionary alloc] initWithObjectsAndKeys:
-//                                                            @"Vegetable", @"item",
-//                                                            @"12", @"amount",
-//                                                            @"0", @"type",
-//                                                            @"user", @"userId",
-//                                                            @"cate", @"categoryId",
-//                                                            @"2016-04-10", @"date", // format : YYYY-MM-DD
-//                                                            @"notes", @"notes",
-//                                                            nil]];
     
     
 

@@ -7,7 +7,6 @@
 //
 
 #import "RMDataManagement.h"
-#import "DatabaseVariables.h"
 #import <sqlite3.h>
 
 
@@ -117,7 +116,7 @@ static sqlite3_stmt *statement = nil;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyyMMddHHmmss";
     NSString *autoId = [formatter stringFromDate:[NSDate new]];
-    autoId = [NSString stringWithFormat:@"RM_%@_%@", [tableName substringToIndex:1], autoId];
+    autoId = [NSString stringWithFormat:@"RM_%@_%@", [tableName substringToIndex:2], autoId];
     
     return autoId;
 }
@@ -125,14 +124,39 @@ static sqlite3_stmt *statement = nil;
 
 #pragma mark- USER
 
+- (NSString*) getCurrentUser {
+    NSUserDefaults *udf = [NSUserDefaults standardUserDefaults];
+    NSString *currentUserId = [udf objectForKey:CURRENT_USER_ID];
+    return currentUserId;
+}
+
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password {
     NSString *createdUserId = nil; // result is the created user id
     
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
         
+        // 1. Check exists email
+        NSString *query = [NSString stringWithFormat: @"SELECT objectId from %@ WHERE email = \"%@\"", USER_TABLE_NAME, email];
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            if (sqlite3_step(statement) == SQLITE_ROW) {
+                NSLog(@"Email %@ is already taken", email);
+                
+                sqlite3_finalize(statement);
+                sqlite3_close(database);
+                
+                return nil;
+                
+            } else {
+                sqlite3_finalize(statement);
+            }
+        }
+        
+        // 2. Create new account
+        
         NSString *userId = [self createAutoIdentifierForTable: USER_TABLE_NAME];
-        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (%@, %@, %@, RMCurreny_01_VND)", USER_TABLE_NAME, userId, email, password];
+        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurreny_01\")", USER_TABLE_NAME, userId, email, password];
         
         char * errMsg;
         int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
@@ -148,9 +172,36 @@ static sqlite3_stmt *statement = nil;
     
     return createdUserId;
 }
+
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password {
- 
-    return nil;
+    NSString *userId = nil;
+    
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        // select query
+        NSString *query = [NSString stringWithFormat: @"SELECT objectId from %@ WHERE email = \"%@\" AND password = \"%@\"", USER_TABLE_NAME, email, password];
+        
+        // execute
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                
+                // set that userId as a current user
+                [[NSUserDefaults standardUserDefaults] setObject:userId forKey:CURRENT_USER_ID];
+                
+                NSLog(@"Login Success with userId = %@", userId);
+            }
+            sqlite3_finalize(statement);
+            
+        } else {
+            NSLog(@"Failed to prepare statement with rc:%d",rc);
+        }
+        
+        sqlite3_close(database);
+    }
+    
+    return userId;
 }
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId {
