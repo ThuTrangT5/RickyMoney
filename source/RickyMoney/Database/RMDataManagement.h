@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Objects/RMObjects.h"
-
+#import "RMConstant.h"
 
 @interface RMDataManagement : NSObject
 
@@ -19,6 +19,7 @@
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
 - (User*) getCurrentUserInfo;
+- (NSString*) getCurrentUserCurrencySymbol;
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId;
 - (BOOL) updateAvatar:(UIImage*) avatar forUser:(NSString*) userId;
@@ -31,7 +32,7 @@
 - (NSString*) createNewTransaction:(Transaction*) newTransaction;
 - (BOOL) updateTransaction:(Transaction*) updatedTransaction;
 - (BOOL) deleteTransaction:(NSString*) transactionId;
-- (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(NSString*) type;
+- (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(TransactionType) type;
 
 - (NSArray*) getAllBudget;
 - (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;

@@ -11,6 +11,11 @@
 #import "RMParseRequestHandler.h"
 #import "RMTransactionDetailController.h"
 
+#import "RMDataManagement.h"
+#import "RMObjects.h"
+
+#define DATE_FORMATTER_FOR_DISPLAYING @"EEE, MMM dd yyyy"
+
 @implementation RMTransactionController {
     NSIndexPath *selectedIndexPath;
 }
@@ -62,15 +67,22 @@
         [_transactions removeAllObjects];
     }
     
-    [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
-                                   transactionType:_transactionType
-                                        inCategory:_categoryId
-                                           forPage: page
-                                  withSuccessBlock:^(NSArray *objects) {
-                                      currentPage = page;
-                                      [_transactions addObjectsFromArray:objects];
-                                      [self.tableView reloadData];
-                                  }];
+    NSArray *objects = [[RMDataManagement getSharedInstance] getTransactionsByPage:page category:_categoryId type:_transactionType];
+    if (objects != nil) {
+        currentPage = page;
+        [_transactions addObjectsFromArray:objects];
+        [self.tableView reloadData];
+    }
+    
+//    [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
+//                                   transactionType:_transactionType
+//                                        inCategory:_categoryId
+//                                           forPage: page
+//                                  withSuccessBlock:^(NSArray *objects) {
+//                                      currentPage = page;
+//                                      [_transactions addObjectsFromArray:objects];
+//                                      [self.tableView reloadData];
+//                                  }];
 }
 
 - (void) detectInsertNewTransaction:(NSNotification*) notification {
@@ -110,23 +122,20 @@
     amountView.layer.borderColor = RM_COLOR.CGColor;
     
     // Data
-    PFObject *cellData = _transactions[indexPath.row];
-    NSString *item = [cellData valueForKey:@"itemName"];
-    NSString *amount = [NSString stringWithFormat:@"%@ %@",_currency, [cellData valueForKey:@"amount"]];
-    NSDate *date = [cellData valueForKey:@"transactionDate"];
-    if (date == nil) {
-        date = [NSDate new];
-    }
+    Transaction *cellData = _transactions[indexPath.row];
+    NSString *item = cellData.item;
+    NSString *amount = [NSString stringWithFormat:@"%@ %.2f",_currency, cellData.amount];
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"EEE, MMM dd yyyy";
-    NSString *mdy = [formatter stringFromDate:date];
+    formatter.dateFormat = DATE_FORMATTER_FOR_DISPLAYING;
+    NSString *mdy = [formatter stringFromDate: cellData.date];
     
     [(UILabel*) [cell viewWithTag:1] setText:amount];
     [(UILabel*) [cell viewWithTag:2] setText:item];
     [(UILabel*) [cell viewWithTag:3] setText:mdy];
     
     if (indexPath.row == _transactions.count - 1 && _transactions.count >= ITEM_PER_PAGE *currentPage) {
-        [self getTransactionsByPage:currentPage+1];
+        [self getTransactionsByPage:currentPage + 1];
     }
     
     return cell;

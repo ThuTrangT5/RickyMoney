@@ -233,6 +233,19 @@ static sqlite3_stmt *statement = nil;
     return currentUser;
 }
 
+- (NSString*) getCurrentUserCurrencySymbol {
+    NSString *currency = nil;
+    //    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+    //        NSString *userId = [self getCurrentUserId];
+    //        NSString *query = [NSString stringWithFormat: @"SELECT * from %@ WHERE objectId = \"%@\"", USER_TABLE_NAME, userId];
+    //        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+    //
+    //        sqlite3_finalize(statement);
+    //        sqlite3_close(database);
+    //    }
+    return currency;
+}
+
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId {
     
     return NO;
@@ -329,6 +342,79 @@ static sqlite3_stmt *statement = nil;
         sqlite3_close(database);
     }
     return objectId;
+}
+
+
+- (BOOL) updateTransaction:(Transaction*) updatedTransaction {
+    
+    return NO;
+}
+- (BOOL) deleteTransaction:(NSString*) transactionId {
+    
+    return NO;
+}
+- (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(TransactionType) type {
+    
+    if (page < 1) {
+        return nil;
+    }
+    
+    NSMutableArray *results = nil;
+    
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString *userId = [self getCurrentUserId];
+        
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE userId = \"%@\" AND type = %d ", TRANSACTION_TABLE_NAME, userId, (type == EXPENSE) ? 0 : 1];
+        
+        if (categoryId != nil) {
+            query = [NSString stringWithFormat:@"%@ AND categoryId = \"%@\" ", query, categoryId];
+        }
+        query = [NSString stringWithFormat:@"%@ LIMIT %d OFFSET %d", query, ITEMS_PER_PAGE, (page - 1) * ITEMS_PER_PAGE];
+        
+        if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+            results = [[NSMutableArray alloc] init];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = DATE_FORMATTER_IN_DB;
+            
+            //get each row in loop
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                
+                NSString *transactionDate = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
+                
+                Transaction *ts = [[Transaction alloc] init];
+                // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
+                ts.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                ts.userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                ts.categoryId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                ts.item = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
+                ts.amount = (float) sqlite3_column_double(statement, 4);
+                ts.notes = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                ts.date = [formatter dateFromString:transactionDate];
+                ts.type = sqlite3_column_int(statement, 7);
+             
+                [results addObject:ts];
+            }
+        } else {
+            NSLog(@"Failed to getTransactionsByPage %d", page);
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+    }
+    
+    return results;
+}
+
+#pragma mark- BUDGET
+
+- (NSArray*) getAllBudget {
+    
+    return nil;
+}
+- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit {
+    
+    return NO;
 }
 
 #pragma mark- SELECT

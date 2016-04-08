@@ -162,7 +162,7 @@
         newTransaction.categoryId = _categoryId;
         newTransaction.amount = [_amountField.text floatValue];
         newTransaction.notes = _noteField.text;
-        newTransaction.type = _transactionType;
+        newTransaction.type = (_transactionType == EXPENSE) ? 0 : 1;
         newTransaction.date = _transactionDate;
         
         [[RMDataManagement getSharedInstance] createNewTransaction: newTransaction];
