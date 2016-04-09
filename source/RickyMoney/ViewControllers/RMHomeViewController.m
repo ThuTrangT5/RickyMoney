@@ -159,13 +159,14 @@
 - (void) initChart {
     
     _chartColor = [[NSArray alloc] initWithObjects:
-                   [UIColor redColor],
-                   [UIColor orangeColor],
-                   RM_COLOR,
                    [UIColor yellowColor],
-                   [UIColor colorWithRed:135.0/255.0 green:245.0/255.0 blue:150.0/255.0 alpha:1.0f],
-                   [UIColor colorWithRed:5.0/255.0 green:185.0/255.0 blue:245.0/255.0 alpha:1.0f],
-                   [UIColor colorWithRed:245.0/255.0 green:100.0/255.0 blue:225.0/255.0 alpha:1.0f],
+                   [UIColor orangeColor],
+                   [UIColor redColor],
+                   [UIColor magentaColor],
+                   [UIColor purpleColor],
+                   [UIColor blueColor],
+                   [UIColor cyanColor],
+                   [UIColor greenColor],
                    [UIColor grayColor],
                    nil];
     
@@ -181,7 +182,7 @@
 }
 
 - (UIColor *)colorForSliceAtIndex:(NSInteger)index {
-    return _chartColor[index % 7];
+    return _chartColor[index % _chartColor.count];
 }
 
 - (CGFloat)valueForSliceAtIndex:(NSInteger)index {

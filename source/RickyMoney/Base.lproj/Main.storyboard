@@ -1071,12 +1071,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-xe-dOP">
-                                <rect key="frame" x="55" y="424" width="210" height="40"/>
+                                <rect key="frame" x="40" y="424" width="240" height="40"/>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Obj-w9-kVh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="This Month">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1088,10 +1088,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ieZ-r9-eI4" firstAttribute="top" secondItem="FuG-lo-7XY" secondAttribute="bottom" constant="291" id="33z-xN-nsH"/>
-                            <constraint firstItem="WnR-xe-dOP" firstAttribute="leading" secondItem="xtq-z4-Kle" secondAttribute="leading" constant="55" id="8tn-XA-HKp"/>
+                            <constraint firstItem="WnR-xe-dOP" firstAttribute="leading" secondItem="xtq-z4-Kle" secondAttribute="leading" constant="40" id="8tn-XA-HKp"/>
                             <constraint firstItem="2gM-bp-zXX" firstAttribute="leading" secondItem="xtq-z4-Kle" secondAttribute="leading" id="LBd-Vd-uPO"/>
                             <constraint firstItem="ieZ-r9-eI4" firstAttribute="centerX" secondItem="xtq-z4-Kle" secondAttribute="centerX" id="Wzf-IZ-nVh"/>
-                            <constraint firstAttribute="trailing" secondItem="WnR-xe-dOP" secondAttribute="trailing" constant="55" id="cVQ-jq-6Ge"/>
+                            <constraint firstAttribute="trailing" secondItem="WnR-xe-dOP" secondAttribute="trailing" constant="40" id="cVQ-jq-6Ge"/>
                             <constraint firstItem="2gM-bp-zXX" firstAttribute="top" secondItem="FuG-lo-7XY" secondAttribute="bottom" id="fO0-C3-1Uj"/>
                             <constraint firstAttribute="trailing" secondItem="2gM-bp-zXX" secondAttribute="trailing" id="h9m-Qf-HP8"/>
                             <constraint firstItem="SYl-bP-6aA" firstAttribute="top" secondItem="WnR-xe-dOP" secondAttribute="bottom" constant="40" id="z4C-Jq-M1t"/>
