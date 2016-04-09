@@ -13,7 +13,7 @@
 // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
 @property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *userId;
-@property (strong, nonatomic) NSString *categoryId;
+@property (strong, nonatomic) NSString *categoryId, *categoryName;
 @property (strong, nonatomic) NSString *item;
 @property (nonatomic) float amount;
 @property (strong, nonatomic) NSString *notes;

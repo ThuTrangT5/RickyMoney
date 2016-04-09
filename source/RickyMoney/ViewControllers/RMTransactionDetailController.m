@@ -59,28 +59,19 @@
 }
 
 - (void) getTransactionDetail {
-    [RMParseRequestHandler getObjectById:_transactionId inClass:@"Transaction" includeFields:@[@"category"] withSuccessBlock:^(PFObject * object) {
-        
-        PFObject *category = [object valueForKey:@"category"];
-        _categoryId = [category valueForKey:@"objectId"];
-        NSString *categoryName = [category valueForKey:@"ENName"];
-        
-        NSString *item = [object valueForKey:@"itemName"];
-        NSString *amount = [NSString stringWithFormat:@"%@", [object valueForKey:@"amount"]];
-        NSString *notes = [object valueForKey:@"notes"];
-        _transactionType = (int) [object[@"type"] integerValue];
-        _transactionDate = [object valueForKey:@"transactionDate"];
-        
+    Transaction *transaction = [[RMDataManagement getSharedInstance] getTransactionDetail:_transactionId];
+    if (transaction != nil) {
+        _categoryId = transaction.categoryId;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = DATE_FORMAT;
-        NSString *date = [formatter stringFromDate:_transactionDate];
+        NSString *mdy = [formatter stringFromDate: transaction.date];
         
-        [_itemField setText:item];
-        [_amountField setText:amount];
-        [_categoryField setTitle:categoryName forState:UIControlStateNormal];
-        [_dateField setTitle:date forState:UIControlStateNormal];
-        [_noteField setText:notes];
-    }];
+        [_itemField setText:transaction.item];
+        [_amountField setText: [NSString stringWithFormat: @"%.2f", transaction.amount]];
+        [_categoryField setTitle:transaction.categoryName forState:UIControlStateNormal];
+        [_dateField setTitle:mdy forState:UIControlStateNormal];
+        [_noteField setText:transaction.notes];
+    }
 }
 
 - (void) getUserCurrency {

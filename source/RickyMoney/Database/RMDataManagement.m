@@ -46,7 +46,11 @@ static sqlite3_stmt *statement = nil;
         [self createCategoryTable];
         [self createTransactionTable];
         [self createBudgetTable];
+        
+        [self createCategoryData];
+        [self createCurrencyData];
     }
+    
     return isSuccess;
 }
 
@@ -119,6 +123,54 @@ static sqlite3_stmt *statement = nil;
     autoId = [NSString stringWithFormat:@"RM_%@_%@", [tableName substringToIndex:2], autoId];
     
     return autoId;
+}
+
+- (void) createCategoryData {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        
+        NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CategoryDefinition" ofType:@"plist"]];
+        for (NSDictionary *obj in objects) {
+            NSString *objectId = [obj valueForKey:@"objectId"];
+            NSString *vnName = [obj valueForKey:@"vnName"];
+            NSString *enName = [obj valueForKey:@"enName"];
+            NSString *icon = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"icon"] ofType:@"png"];
+            
+            NSString *insertQuery = @"insert into %@ (objectId, vnName, enName, icon) values (\"%@\", \"%@\", \"%@\", \"%@\")";
+            insertQuery = [NSString stringWithFormat:insertQuery, CATEGORY_TABLE_NAME, objectId, vnName, enName, icon];
+            
+            char * errMsg;
+            if (sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+                NSLog(@"Failed to Insert CATEGORY table: %s", errMsg);
+            }
+        }
+        sqlite3_close(database);
+    }
+}
+
+- (void) createCurrencyData {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        
+        NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefinition" ofType:@"plist"]];
+        for (NSDictionary *obj in objects) {
+            NSString *objectId = [obj valueForKey:@"objectId"];
+            NSString *name = [obj valueForKey:@"name"];
+            NSString *symbol = [obj valueForKey:@"symbol"];
+            NSString *image = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"image"] ofType:@"png"];
+            
+            //(objectId text primary key, name text, symbol text, image text)"
+            
+            NSString *insertQuery = @"insert into %@ (objectId, name, symbol, image) values (\"%@\", \"%@\", \"%@\", \"%@\")";
+            insertQuery = [NSString stringWithFormat:insertQuery, CURRENCY_TABLE_NAME, objectId, name, symbol, image];
+            
+            char * errMsg;
+            if (sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+                NSLog(@"Failed to Insert CURRENCY table: %s", errMsg);
+            }
+        }
+        sqlite3_close(database);
+    }
 }
 
 
@@ -205,13 +257,10 @@ static sqlite3_stmt *statement = nil;
 }
 
 - (User*) getCurrentUserInfo {
-    
     User *currentUser = nil;
-    
     NSString *userId = [self getCurrentUserId];
     
-    const char *dbpath = [databasePath UTF8String];
-    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         NSString *query = [NSString stringWithFormat: @"SELECT * from %@ WHERE objectId = \"%@\"", USER_TABLE_NAME, userId];
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
         if(rc == SQLITE_OK){
@@ -269,49 +318,71 @@ static sqlite3_stmt *statement = nil;
 #pragma mark- CURRENCY
 
 - (NSArray*) getAllCurrency {
-    NSMutableArray *currencies = [[NSMutableArray alloc] init];
+    NSMutableArray *results = nil;
     
-    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CurrencyDefinition" ofType:@"plist"]];
-    // map to currency object
-    for (NSDictionary *obj in objects) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"image"] ofType:@"png"];
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         
-        Currency *currency = [[Currency alloc] init];
-        // (objectId text primary key, name text, symbol text, image text
+        NSString *query = [NSString stringWithFormat:@"select * from %@", CURRENCY_TABLE_NAME];
         
-        currency.objectId = [obj valueForKey:@"objectId"];
-        currency.name = [obj valueForKey:@"name"];
-        currency.symbol = [obj valueForKey:@"symbol"];
-        currency.image = filePath;
+        if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+            results = [[NSMutableArray alloc] init];
+            
+            //get each row in loop
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                Currency *currency = [[Currency alloc] init];
+                // (objectId text primary key, name text, symbol text, image text
+                
+                currency.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                currency.name = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                currency.symbol = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                currency.image = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
+                
+                [results addObject:currency];
+            }
+        } else {
+            NSLog(@"Failed to get list CURRENCY");
+        }
         
-        [currencies addObject:currency];
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
     }
     
-    return currencies;
+    return results;
 }
 
 #pragma mark- CATEGORY
 
 - (NSArray*) getAllCategory {
-    NSMutableArray *categories = [[NSMutableArray alloc] init];
+    NSMutableArray *results = nil;
     
-    NSArray *objects = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CategoryDefinition" ofType:@"plist"]];
-    // map to currency object
-    for (NSDictionary *obj in objects) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"icon"] ofType:@"png"];
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         
-        Category *category = [[Category alloc] init];
-        // (objectId text primary key, vnName text, enName text, icon text)
+        NSString *query = [NSString stringWithFormat:@"select * from %@", CATEGORY_TABLE_NAME];
         
-        category.objectId = [obj valueForKey:@"objectId"];
-        category.vnName = [obj valueForKey:@"vnName"];
-        category.enName = [obj valueForKey:@"enName"];
-        category.icon = filePath;
+        if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+            results = [[NSMutableArray alloc] init];
+            
+            //get each row in loop
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                Category *category = [[Category alloc] init];
+                // (objectId text primary key, vnName text, enName text, icon text)
+                
+                category.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                category.vnName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                category.enName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                category.icon = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
+                
+                [results addObject:category];
+            }
+        } else {
+            NSLog(@"Failed to get list CATEGORY");
+        }
         
-        [categories addObject:category];
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
     }
     
-    return categories;
+    return results;
 }
 
 #pragma mark- TRANSACTION
@@ -392,7 +463,7 @@ static sqlite3_stmt *statement = nil;
                 ts.notes = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
                 ts.date = [formatter dateFromString:transactionDate];
                 ts.type = sqlite3_column_int(statement, 7);
-             
+                
                 [results addObject:ts];
             }
         } else {
@@ -404,6 +475,42 @@ static sqlite3_stmt *statement = nil;
     }
     
     return results;
+}
+
+- (Transaction*) getTransactionDetail:(NSString*) transactionId {
+    Transaction *ts = nil;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *query = [NSString stringWithFormat: @"SELECT A.*, B.enName from %@ as A INNER JOIN %@ as B ON A.categoryId = B.objectId WHERE A.objectId = \"%@\"", TRANSACTION_TABLE_NAME, CATEGORY_TABLE_NAME, transactionId];
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            if (sqlite3_step(statement) == SQLITE_ROW) {
+                ts = [[Transaction alloc] init];
+                
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = DATE_FORMATTER_IN_DB;
+                NSString *transactionDate = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 6)];
+                
+                // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
+                ts.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                ts.userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                ts.categoryId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
+                ts.item = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
+                ts.amount = (float) sqlite3_column_double(statement, 4);
+                ts.notes = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                ts.date = [formatter dateFromString:transactionDate];
+                ts.type = sqlite3_column_int(statement, 7);
+                ts.categoryName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 8)];
+                
+            } else {
+                NSLog(@"There is no data for TRANSACTION [%@]", transactionId);
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+    }
+    
+    return ts;
 }
 
 #pragma mark- BUDGET

@@ -33,6 +33,7 @@
 - (BOOL) updateTransaction:(Transaction*) updatedTransaction;
 - (BOOL) deleteTransaction:(NSString*) transactionId;
 - (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(TransactionType) type;
+- (Transaction*) getTransactionDetail:(NSString*) transactionId;
 
 - (NSArray*) getAllBudget;
 - (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;

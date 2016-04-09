@@ -20,7 +20,6 @@
 		18CAE96B1B9B4C4F00E0185D /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CAE9661B9B4C4F00E0185D /* fontawesome-webfont.ttf */; };
 		18CAE96C1B9B4C4F00E0185D /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE9681B9B4C4F00E0185D /* NSString+FontAwesome.m */; };
 		18CAE96D1B9B4C4F00E0185D /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */; };
-		18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */; };
 		18CAE97E1B9C3AD700E0185D /* RMParseRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */; };
 		18F877781BA1DE7000AB362B /* RMTransactionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F877771BA1DE7000AB362B /* RMTransactionController.m */; };
 		18F8777B1BA1DE7F00AB362B /* RMTransactionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8777A1BA1DE7F00AB362B /* RMTransactionDetailController.m */; };
@@ -124,8 +123,6 @@
 		18CAE9691B9B4C4F00E0185D /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
 		18CAE96A1B9B4C4F00E0185D /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
 		18CAE96E1B9B4DD400E0185D /* RMConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConstant.h; sourceTree = "<group>"; };
-		18CAE9791B9C3A8C00E0185D /* RMCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategoryViewController.h; sourceTree = "<group>"; };
-		18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategoryViewController.m; sourceTree = "<group>"; };
 		18CAE97C1B9C3AD700E0185D /* RMParseRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMParseRequestHandler.h; sourceTree = "<group>"; };
 		18CAE97D1B9C3AD700E0185D /* RMParseRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMParseRequestHandler.m; sourceTree = "<group>"; };
 		18F877761BA1DE7000AB362B /* RMTransactionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTransactionController.h; sourceTree = "<group>"; };
@@ -334,8 +331,6 @@
 				18CAE9621B9AF89F00E0185D /* RMLoginViewController.m */,
 				18CAE95E1B9AE77000E0185D /* RMHomeViewController.h */,
 				18CAE95F1B9AE77000E0185D /* RMHomeViewController.m */,
-				18CAE9791B9C3A8C00E0185D /* RMCategoryViewController.h */,
-				18CAE97A1B9C3A8C00E0185D /* RMCategoryViewController.m */,
 				1840BD881B9DEFE9001A9160 /* RMSettingViewController.h */,
 				1840BD891B9DEFE9001A9160 /* RMSettingViewController.m */,
 				6A22EE9D1CB166B8002B72FC /* RMChangePasswordViewController.h */,
@@ -779,7 +774,6 @@
 				6A1BD9631C43929A00DA7A85 /* JTCalendarScrollManager.m in Sources */,
 				6A1BD9671C43929A00DA7A85 /* JTCalendarWeekDayView.m in Sources */,
 				6A1BD9621C43929A00DA7A85 /* JTCalendarDelegateManager.m in Sources */,
-				18CAE97B1B9C3A8C00E0185D /* RMCategoryViewController.m in Sources */,
 				6A1BD9641C43929A00DA7A85 /* JTCalendarDayView.m in Sources */,
 				6A1BD9661C43929A00DA7A85 /* JTCalendarPageView.m in Sources */,
 				6AA88C2D1CB79E4000EB4D6A /* Budget.m in Sources */,
