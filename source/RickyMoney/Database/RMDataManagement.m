@@ -540,7 +540,7 @@ static sqlite3_stmt *statement = nil;
         NSString *transactionDate = [formatter stringFromDate:updatedTransaction.date];
         
         // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
-        NSString *updateQuery = @"update %@ set categoryId = \"%@\", item = \"%@\", amount = %.2f, notes = \"%@\", date = \"%@\", type = %.d where objectId = \"%@\"";
+        NSString *updateQuery = @"update %@ set categoryId = \"%@\", item = \"%@\", amount = %.2f, notes = \"%@\", date = \"%@\", type = %d where objectId = \"%@\"";
         updateQuery = [NSString stringWithFormat:updateQuery, TRANSACTION_TABLE_NAME,
                        updatedTransaction.categoryId,
                        updatedTransaction.item,
@@ -671,6 +671,48 @@ static sqlite3_stmt *statement = nil;
     }
     
     return ts;
+}
+
+- (NSArray*) reviewTransactionFromDate:(NSString*)fromDate toDate:(NSString*) toDate {
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString *query = @"select sum(A.amount), B.enName, A.type from %@ as A INNER JOIN %@ as B ON A.categoryId = B.objectId";
+        query = [query stringByAppendingString: @" where A.userId = \"%@\"  and A.date >= \"%@\" and A.date <= \"%@\" "];
+        query = [query stringByAppendingString: @" group by A.categoryId, A.type"];
+        query = [query stringByAppendingString: @" order by B.enName"];
+        
+        query = [NSString stringWithFormat:query, TRANSACTION_TABLE_NAME, CATEGORY_TABLE_NAME, [self getCurrentUserId], fromDate, toDate];
+        
+        NSMutableArray *results = [[NSMutableArray alloc] init];
+        
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                
+                NSString *amount = [NSString stringWithFormat:@"%.2f", (float) sqlite3_column_double(statement, 0)];
+                NSString *categoryName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *type = [NSString stringWithFormat:@"%d", sqlite3_column_int(statement, 2)];
+                
+                NSDictionary *record = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                        categoryName, @"categoryName",
+                                        amount, @"amount",
+                                        type, @"type",
+                                        nil];
+                
+                [results addObject:record];
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+        
+        return results;
+        
+    } else {
+        return nil;
+    }
+    
 }
 
 #pragma mark- BUDGET

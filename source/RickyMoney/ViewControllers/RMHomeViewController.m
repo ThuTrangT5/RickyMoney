@@ -9,12 +9,9 @@
 #import "RMHomeViewController.h"
 #import "UIImage+FontAwesome.h"
 #import "AppDelegate.h"
-#import "RMParseRequestHandler.h"
 #import "RMTransactionController.h"
-
-#import "RickyMoney-Swift.h"
-
 #import "RMDataManagement.h"
+#import "RickyMoney-Swift.h"
 
 @interface RMHomeViewController () <MDRotatingPieChartDataSource>
 
@@ -74,11 +71,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    
     [self getTransactionByTimePeriod: _rangeButton.titleLabel.text];
-    
-    
-
 }
 
 #pragma mark - DropDownView
@@ -192,16 +186,16 @@
 
 - (CGFloat)valueForSliceAtIndex:(NSInteger)index {
     NSDictionary *chart = (NSDictionary*) _chartData[index];
-    CGFloat fValue = [[chart valueForKey: @"value"] doubleValue];
+    CGFloat fValue = [[chart valueForKey: @"amount"] floatValue];
     return fValue;
 }
 
 - (NSString *)labelForSliceAtIndex:(NSInteger)index {
     NSDictionary *chart = (NSDictionary*) _chartData[index];
     NSString *label = [NSString stringWithFormat:@"%@\n%@ %.2f",
-                       [chart valueForKey:@"name"],
+                       [chart valueForKey:@"categoryName"],
                        currency,
-                       [[chart valueForKey:@"value"] floatValue]];
+                       [[chart valueForKey:@"amount"] floatValue]];
     return label;
 }
 
@@ -209,89 +203,72 @@
 #pragma mark- Data
 
 - (void) getUserCurrency {
-    [RMParseRequestHandler getCurrentUserDetailrmation:^(PFObject* user) {
-        PFObject *obj = [user objectForKey:@"currencyUnit"];
-        if (obj != nil) {
-            currency = obj[@"symbol"];
-        }
-    }];
+    currency = [[RMDataManagement getSharedInstance] getCurrentUserCurrencySymbol];
 }
 
 - (void) detectUpdateCurrency:(NSNotification*) notification {
     if (notification.object != nil) {
-        PFObject *currencyObject = (PFObject*) notification.object;
-        currency = [currencyObject valueForKey:@"symbol"];
+        Currency *currencyObject = (Currency *) notification.object;
+        currency = currencyObject.symbol;
     }
 }
 
 - (void) getTransactionByTimePeriod:(NSString*) timePeriod {
-    /* NOTE FOR CLOUD CODE
-     1. Formatter datetime is [MM/dd/yyyy]
-     2. Get data with from & to is [from <= date < to]
-     */
+    NSString *fromDate, *toDate;
     
-    NSString *from, *to;
-    NSDate *today = [NSDate date];
-    int day, month, year;
-    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
-    
-    // for testing
-    // [myFormatter setDateFormat:@"dd/MM/yyyy"];
-    // today = [myFormatter dateFromString:@"27/12/2015"];
-    
-    [myFormatter setDateFormat:@"dd"];
-    day = [[myFormatter stringFromDate:today] intValue];
-    [myFormatter setDateFormat:@"MM"];
-    month = [[myFormatter stringFromDate:today] intValue];
-    [myFormatter setDateFormat:@"yyyy"];
-    year = [[myFormatter stringFromDate:today] intValue];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDate *today = [NSDate new];
     
     if ([timePeriod isEqualToString: pickerData[0]]) { // today
-        from = [myFormatter stringFromDate:today];
-        to = from;
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        fromDate = [formatter stringFromDate:today];
+        toDate = fromDate;
         
-    } else if ([timePeriod isEqualToString:pickerData[1]]) { // this week
-        // weekly from sunday to saturday
-        [myFormatter setDateFormat:@"c"];
-        int dayOfWeek = [[myFormatter stringFromDate:today] intValue]; // 7 for Saturday
+    } else {
+        NSDate *date;
         
-        // from date
-        NSTimeInterval timeInterval = - (60 * 60 * 24 * (dayOfWeek - 1));
-        NSDate *date = [today dateByAddingTimeInterval:timeInterval];
-        
-        [myFormatter setDateFormat:@"MM/dd/yyyy"];
-        from = [myFormatter stringFromDate:date];
-        
-        // to date
-        timeInterval = 60 * 60 * 24 * 7; // 7 days include [from date]
-        date = [date dateByAddingTimeInterval:timeInterval];
-        to = [myFormatter stringFromDate:date];
-        
-    } else if ([timePeriod isEqualToString:pickerData[2]]) { // this month
-        from = [NSString stringWithFormat:@"%d/01/%d",month,year];
-        if (month == 12) {
-            to = [NSString stringWithFormat:@"01/01/%d", year + 1];
-        } else {
-            to = [NSString stringWithFormat:@"%d/01/%d", month + 1, year];
+        if ([timePeriod isEqualToString:pickerData[1]]) { // this week: from Monday to Sunday
+            formatter.dateFormat = @"c";
+            int dayOfWeek = [[formatter stringFromDate:today] intValue];// 7 for Saturday
+            
+            formatter.dateFormat = DATE_FORMATTER_IN_DB;
+            // from date
+            NSTimeInterval timeInterval = -1 * (60 * 60 * 24) * (dayOfWeek == 1 ? 7 : (dayOfWeek - 2));
+            date = [today dateByAddingTimeInterval:timeInterval];
+            fromDate = [formatter stringFromDate:date];
+            
+            // to date
+            timeInterval = 60 * 60 * 24 * 6; // 7 days include [from date]
+            date = [date dateByAddingTimeInterval:timeInterval];
+            toDate = [formatter stringFromDate:date];
+            
+        } else if ([timePeriod isEqualToString:pickerData[2]]) { // this month
+            formatter.dateFormat = @"YYYY-MM";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-31", temp];
+            
+        } else if ([timePeriod isEqualToString:pickerData[3]]) { // last month
+            NSTimeInterval timeInterval = -1 * (60 * 60 * 24) * 30;
+            today = [today dateByAddingTimeInterval:timeInterval];
+            
+            formatter.dateFormat = @"YYYY-MM";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-31", temp];
+            
+        } else if ([timePeriod isEqualToString:pickerData[4]]) { // this year
+            formatter.dateFormat = @"YYYY";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-12-31", temp];
         }
-        
-    } else if ([timePeriod isEqualToString:pickerData[3]]) { // last month
-        to = [NSString stringWithFormat:@"%d/01/%d", month, year];
-        
-        if (month == 1) {
-            month = 12;
-            year--;
-        } else {
-            month --;
-        }
-        from = [NSString stringWithFormat:@"%d/01/%d",month,year];
-        
-    } else if ([timePeriod isEqualToString:pickerData[4]]) { // this year
-        from = [NSString stringWithFormat:@"01/01/%d",year];
-        to = [NSString stringWithFormat:@"01/01/%d",year + 1];
     }
     
-    [self getTransactionFromDate:from toDate:to];
+    [self getTransactionFromDate:fromDate toDate:toDate];
 }
 
 - (void) getTransactionFromDate:(NSString*) fromDate toDate:(NSString*) toDate {
@@ -300,34 +277,18 @@
     } else {
         [_chartView reset];
     }
-    // format of date is MM/dd/yyyy
     
-    NSArray *objs = [[NSArray alloc] initWithObjects:[PFUser currentUser].objectId, @"ENName", fromDate, toDate, nil];
-    NSArray *keys = [[NSArray alloc] initWithObjects:@"userId", @"language", @"fromDate", @"toDate", nil];
-    NSDictionary *params = [[NSDictionary alloc] initWithObjects: objs forKeys: keys];
-    
-    [RMParseRequestHandler callFunction:@"transactionReview" WithParams:params withSuccessBlock:^(NSDictionary *trans) {
+    NSArray *results = [[RMDataManagement getSharedInstance] reviewTransactionFromDate:fromDate toDate:toDate];
+    if (results != nil) {
         [_expenseTransactions removeAllObjects];
-        
-        NSDictionary *expense = [trans valueForKey:@"expense"];
-        for (NSString *categoryId in [expense allKeys]) {
-            NSDictionary *tran = [expense valueForKey:categoryId];
-            NSDictionary *chart = @{
-                                    @"name": [tran valueForKey:@"name"],
-                                    @"value": [tran valueForKey:@"amount"]
-                                    };
-            [_expenseTransactions addObject:chart];
-        }
-        
         [_incomeTransactions removeAllObjects];
-        NSDictionary *income = [trans valueForKey:@"income"];
-        for (NSString *categoryId in [income allKeys]) {
-            NSDictionary *tran = [income valueForKey:categoryId];
-            NSDictionary *chart = @{
-                                    @"name": [tran valueForKey:@"name"],
-                                    @"value": [tran valueForKey:@"amount"]
-                                    };
-            [_incomeTransactions addObject:chart];
+        
+        for (NSDictionary *record in results) {
+            if ([[record valueForKey:@"type"] intValue] == 0) {
+                [_expenseTransactions addObject:record];
+            } else {
+                [_incomeTransactions addObject:record];
+            }
         }
         
         if (self.transactionType.selectedSegmentIndex == 0) {
@@ -348,7 +309,11 @@
             [_noDataLabel setHidden:NO];
         }
         
-    }];
+    } else {
+        NSLog(@"CANNOT get Review Transaction data");
+        [_chartView setHidden:YES];
+        [_noDataLabel setHidden:NO];
+    }
 }
 
 #pragma mark- PickerView
@@ -407,7 +372,7 @@
         [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
                       forState:UIControlStateNormal];
         
-        [formatter setDateFormat:@"dd MMM yyyy"];
+        [formatter setDateFormat:DATE_FORMATTER_IN_DB];
         [self getTransactionFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
     }
 }
@@ -436,7 +401,7 @@
         
         [_chartView setHidden:NO];
         [_noDataLabel setHidden:YES];
-
+        
         [_chartView build];
         
     } else {
@@ -450,7 +415,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"transactionSegue"]) {
         RMTransactionController *vc = (RMTransactionController*) [segue destinationViewController];
-        vc.currency = currency;        
+        vc.currency = currency;
     }
 }
 

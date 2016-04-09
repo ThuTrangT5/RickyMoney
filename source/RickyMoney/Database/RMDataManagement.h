@@ -40,5 +40,6 @@
 - (NSArray*) getAllBudget;
 - (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;
 
+- (NSArray*) reviewTransactionFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 
 @end
