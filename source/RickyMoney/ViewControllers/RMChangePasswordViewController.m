@@ -7,10 +7,9 @@
 //
 
 #import "RMChangePasswordViewController.h"
-#import "RMParseRequestHandler.h"
 #import "UIImage+FontAwesome.h"
-
 #import "RickyMoney-Swift.h"
+#import "RMDataManagement.h"
 
 #define Y_OFFSET 55
 
@@ -38,7 +37,7 @@
     [tickView setImage:tick];
     [[self.view viewWithTag:10] addSubview:tickView];
     
-    [self getCurrentUserDetail];
+    [self bindingUserDetail];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
@@ -48,13 +47,8 @@
     yBeforeMoveUp = self.view.frame.origin.y;
 }
 
-#pragma mark - Data
-
-- (void) getCurrentUserDetail {
-    [RMParseRequestHandler getCurrentUserDetailrmation:^(PFObject* user) {
-        currentPassword = [user valueForKey:@"password"];
-        
-    }];
+- (void) bindingUserDetail {
+    _emailField.text = _currentUser.email;
 }
 
 #pragma mark- UITextFieldDelegate
@@ -77,9 +71,8 @@
 
 - (BOOL) validate {
     NSString *message = nil;
-    if (_currentPasswordField.text.length == 0) {
+    if (_currentPasswordField.text.length == 0 || [_currentPasswordField.text isEqualToString:_currentUser.password] == NO) {
         message = @"Please input the correct current password.";
-        //        UNAlertView *alert = [UNAlertView ];
     }
     
     if (_updatePasswordField.text.length < 6) {
@@ -90,13 +83,21 @@
         message = @"Confirm new password is incorrect.";
     }
     
-    return YES;
+    if (message != nil) {
+        // ???
+        return NO;
+    }
     
+    return YES;
 }
 
 - (IBAction)ontouchChangePassword:(id)sender {
     if ([self validate]) {
-        
+        if ([[RMDataManagement getSharedInstance] updatePassword:_updatePasswordField.text forUser:_currentUser.objectId] == YES) {
+            NSLog(@"Update Password successfully");
+            _currentUser.password = _updatePasswordField.text;
+            // ???
+        }
     }
 }
 

@@ -669,7 +669,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="ontuuchAvatar:" destination="hfs-22-ERT" eventType="touchUpInside" id="Ko4-4s-tp3"/>
+                                    <action selector="ontouchAvatar:" destination="hfs-22-ERT" eventType="touchUpInside" id="Ko4-4s-tp3"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aY1-Zm-IS2">

@@ -13,6 +13,8 @@
 #import "RMObjects.h"
 #import "RMDataManagement.h"
 
+#import "RMChangePasswordViewController.h"
+
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
     User *currentUser;
@@ -27,6 +29,10 @@
     _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
     _profileField.layer.masksToBounds = YES;
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"Current Password = %@", currentUser.password);
 }
 
 #pragma mark- User information
@@ -88,7 +94,7 @@
 
 #pragma mark- PickerView
 
-- (IBAction)ontuuchAvatar:(id)sender {
+- (IBAction)ontouchAvatar:(id)sender {
     CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"Upload Avatar from" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Select" mainColor:RM_COLOR];
     picker.delegate = self;
     picker.dataSource = self;
@@ -217,7 +223,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"changePasswordSegue"]) {
-        
+        RMChangePasswordViewController *vc = (RMChangePasswordViewController*) [segue destinationViewController];
+        vc.currentUser = currentUser;
         
     } else if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];

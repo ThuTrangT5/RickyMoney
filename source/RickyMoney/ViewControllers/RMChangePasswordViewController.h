@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RMObjects.h"
 
 @interface RMChangePasswordViewController : UIViewController <UITextFieldDelegate>
+
+@property (strong, nonatomic) User *currentUser;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *currentPasswordField;

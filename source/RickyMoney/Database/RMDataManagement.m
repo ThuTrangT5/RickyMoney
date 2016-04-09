@@ -528,13 +528,10 @@ static sqlite3_stmt *statement = nil;
     return objectId;
 }
 
-
 - (BOOL) updateTransaction:(Transaction*) updatedTransaction {
     BOOL result = NO;
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-        
-        NSString *objectId = [self getCurrentUserId];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = DATE_FORMATTER_IN_DB;
         NSString *transactionDate = [formatter stringFromDate:updatedTransaction.date];
