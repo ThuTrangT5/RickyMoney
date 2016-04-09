@@ -134,7 +134,7 @@ static sqlite3_stmt *statement = nil;
             NSString *objectId = [obj valueForKey:@"objectId"];
             NSString *vnName = [obj valueForKey:@"vnName"];
             NSString *enName = [obj valueForKey:@"enName"];
-            NSString *icon = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"icon"] ofType:@"png"];
+            NSString *icon = [obj valueForKey:@"icon"];
             
             NSString *insertQuery = @"insert into %@ (objectId, vnName, enName, icon) values (\"%@\", \"%@\", \"%@\", \"%@\")";
             insertQuery = [NSString stringWithFormat:insertQuery, CATEGORY_TABLE_NAME, objectId, vnName, enName, icon];
@@ -157,7 +157,7 @@ static sqlite3_stmt *statement = nil;
             NSString *objectId = [obj valueForKey:@"objectId"];
             NSString *name = [obj valueForKey:@"name"];
             NSString *symbol = [obj valueForKey:@"symbol"];
-            NSString *image = [[NSBundle mainBundle] pathForResource:[obj valueForKey:@"image"] ofType:@"png"];
+            NSString *image = [obj valueForKey:@"image"];
             
             //(objectId text primary key, name text, symbol text, image text)"
             

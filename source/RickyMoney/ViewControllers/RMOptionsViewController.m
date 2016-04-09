@@ -75,7 +75,9 @@
     if (self.option == OPTION_CURRENCY) {
         Currency *currency = [self.optionData objectAtIndex:indexPath.row];
         
-        ((UIImageView*)[cell viewWithTag:1]).image = [UIImage imageWithContentsOfFile:currency.image];
+        NSString *imageFile = [[NSBundle mainBundle] pathForResource:currency.image ofType:@"png"];
+        
+        ((UIImageView*)[cell viewWithTag:1]).image = [UIImage imageWithContentsOfFile: imageFile];
         [(UILabel*)[cell viewWithTag:2] setText: currency.symbol];
         [(UILabel*)[cell viewWithTag:3] setText: currency.name];
         
@@ -86,7 +88,8 @@
         Category *category = [_optionData objectAtIndex:indexPath.row];
         
         UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
-        icon.image = [UIImage imageWithContentsOfFile: category.icon];
+        NSString *imageFile = [[NSBundle mainBundle] pathForResource:category.icon ofType:@"png"];
+        icon.image = [UIImage imageWithContentsOfFile: imageFile];
         
         UILabel *categoryName = (UILabel*) [cell viewWithTag:2];
         categoryName.text = category.enName;
