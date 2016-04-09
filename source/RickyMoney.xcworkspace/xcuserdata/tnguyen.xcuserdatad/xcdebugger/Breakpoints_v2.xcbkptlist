@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMDataManagement.m"
-            timestampString = "481870750.692831"
+            timestampString = "481877217.331719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "576"
-            endingLineNumber = "576"
+            startingLineNumber = "629"
+            endingLineNumber = "629"
             landmarkName = "-selectTransactionByPage:category:fromDate:toDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMDataManagement.m"
-            timestampString = "481870750.692831"
+            timestampString = "481877217.331719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
             landmarkName = "-insertIntoTable:values:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMDataManagement.m"
-            timestampString = "481870750.692831"
+            timestampString = "481877217.331719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "604"
-            endingLineNumber = "604"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
             landmarkName = "-selectTransactionByPage:category:fromDate:toDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,28 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMDataManagement.m"
-            timestampString = "481870750.692831"
+            timestampString = "481877217.331719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "-createNewTransaction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RickyMoney/ViewControllers/RMTransactionDetailController.m"
-            timestampString = "481827841.157791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-getTransactionDetail"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "-updateTransaction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMDataManagement.m"
-            timestampString = "481870750.692831"
+            timestampString = "481877217.331719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
-            landmarkName = "-getTransactionDetail:"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "-deleteTransaction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

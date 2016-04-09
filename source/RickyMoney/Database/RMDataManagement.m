@@ -283,15 +283,21 @@ static sqlite3_stmt *statement = nil;
 }
 
 - (NSString*) getCurrentUserCurrencySymbol {
-    NSString *currency = nil;
-    //    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-    //        NSString *userId = [self getCurrentUserId];
-    //        NSString *query = [NSString stringWithFormat: @"SELECT * from %@ WHERE objectId = \"%@\"", USER_TABLE_NAME, userId];
-    //        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
-    //
-    //        sqlite3_finalize(statement);
-    //        sqlite3_close(database);
-    //    }
+    NSString *currency = @"";
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *userId = [self getCurrentUserId];
+        NSString *query = [NSString stringWithFormat: @"SELECT B.symbol from %@ as A INNER JOIN %@ as B ON A.currencyId = B.objectId WHERE objectId = \"%@\"", USER_TABLE_NAME, CURRENCY_TABLE_NAME, userId];
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if (rc == SQLITE_OK) {
+            if (sqlite3_step(statement) == SQLITE_ROW) {
+                currency = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+    }
+    
     return currency;
 }
 
@@ -417,13 +423,60 @@ static sqlite3_stmt *statement = nil;
 
 
 - (BOOL) updateTransaction:(Transaction*) updatedTransaction {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString *objectId = [self getCurrentUserId];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        NSString *transactionDate = [formatter stringFromDate:updatedTransaction.date];
+        
+        // (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)
+        NSString *updateQuery = @"update %@ set categoryId = \"%@\", item = \"%@\", amount = %.2f, notes = \"%@\", date = \"%@\", type = %.d where objectId = \"%@\"";
+        updateQuery = [NSString stringWithFormat:updateQuery, TRANSACTION_TABLE_NAME,
+                       updatedTransaction.categoryId,
+                       updatedTransaction.item,
+                       updatedTransaction.amount,
+                       updatedTransaction.notes,
+                       transactionDate,
+                       updatedTransaction.type,
+                       updatedTransaction.objectId];
+        
+        char * errMsg;
+        int rc = sqlite3_exec(database, [updateQuery UTF8String], NULL, NULL, &errMsg);
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to update TRANSACTION[%@] record: %s", updatedTransaction.objectId, errMsg);
+        } else {
+            NSLog(@"Update TRANSACTION[%@] successfully", updatedTransaction.objectId);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
+    return result;
 }
+
 - (BOOL) deleteTransaction:(NSString*) transactionId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        NSString * query  = [NSString stringWithFormat:@"delete from %@ where objectId=\"%@\"", TRANSACTION_TABLE_NAME, transactionId];
+        char * errMsg;
+        int rc = sqlite3_exec(database, [query UTF8String] ,NULL,NULL,&errMsg);
+        
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to delete TRANSACTION[%@] : %s",transactionId,errMsg);
+        } else {
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
+    return result;
 }
+
 - (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(TransactionType) type {
     
     if (page < 1) {

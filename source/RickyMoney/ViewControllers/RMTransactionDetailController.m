@@ -7,8 +7,6 @@
 //
 
 #import "RMTransactionDetailController.h"
-#import <Parse/Parse.h>
-#import "RMParseRequestHandler.h"
 #import "UIImage+FontAwesome.h"
 
 #import "RMDataManagement.h"
@@ -54,6 +52,9 @@
         } else {
             [self getTransactionDetail];
         }
+        
+        [self getUserCurrency];
+        
         isLoadData = true;
     }
 }
@@ -75,10 +76,7 @@
 }
 
 - (void) getUserCurrency {
-    [RMParseRequestHandler getCurrentUserInformation:^(PFObject *user) {
-        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [user objectForKey:@"currencyUnit"][@"name"], [user objectForKey:@"currencyUnit"][@"symbol"]];
-        _currencyField.text = currency;
-    }];
+    _currencyField.text = [[RMDataManagement getSharedInstance] getCurrentUserCurrencySymbol];
 }
 
 #pragma mark- Actions
@@ -147,48 +145,30 @@
 
 - (void) saveTransaction {
     
+    Transaction *trans = [[Transaction alloc] init];
+    trans.item = _itemField.text;
+    trans.categoryId = _categoryId;
+    trans.amount = [_amountField.text floatValue];
+    trans.notes = _noteField.text;
+    trans.type = (_transactionType == EXPENSE) ? 0 : 1;
+    trans.date = _transactionDate;
+    
     if (_transactionId == nil) {
-        Transaction *newTransaction = [[Transaction alloc] init];
-        newTransaction.item = _itemField.text;
-        newTransaction.categoryId = _categoryId;
-        newTransaction.amount = [_amountField.text floatValue];
-        newTransaction.notes = _noteField.text;
-        newTransaction.type = (_transactionType == EXPENSE) ? 0 : 1;
-        newTransaction.date = _transactionDate;
-        
-        [[RMDataManagement getSharedInstance] createNewTransaction: newTransaction];
-    }
-    
-    PFObject *pointer = [PFObject objectWithoutDataWithClassName:@"Category" objectId:_categoryId];
-    
-    PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
-    transaction[@"userId"] = [[PFUser currentUser] objectId];
-    transaction[@"itemName"] = _itemField.text;
-    transaction[@"category"] = pointer;
-    transaction[@"amount"] = [NSNumber numberWithInt:[_amountField.text intValue]];
-    transaction[@"transactionDate"] = _transactionDate;
-    transaction[@"notes"] = _noteField.text;
-    transaction[@"type"] = [NSNumber numberWithInt:_transactionType];
-    
-    if (_transactionId != nil) {
-        transaction.objectId = _transactionId;
-    }
-    
-    [transaction saveEventually:^(BOOL success, NSError *err){
-        NSLog(@"Save stransaction [%@] with error = %@", success? @"OK" : @"FAILED", err.description);
-        if (success) {
-            if (_transactionId != nil) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTransaction object:transaction];
-            } else {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kInsertNewTransaction object:transaction];
-            }
-            
+        _transactionId = [[RMDataManagement getSharedInstance] createNewTransaction: trans];
+        if (_transactionId != nil) {
+            trans.objectId = _transactionId;
+            [[NSNotificationCenter defaultCenter] postNotificationName:kInsertNewTransaction object:trans];
             [self.navigationController popViewControllerAnimated:YES];
-            
-        } else {
-            
         }
-    }];
+        
+    } else {
+        trans.objectId = _transactionId;
+        
+        if ([[RMDataManagement getSharedInstance] updateTransaction:trans] == YES) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateTransaction object:trans];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 #pragma mark- Prepare for segue

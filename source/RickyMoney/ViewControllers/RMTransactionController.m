@@ -7,14 +7,12 @@
 //
 
 #import "RMTransactionController.h"
-#import <Parse/Parse.h>
-#import "RMParseRequestHandler.h"
 #import "RMTransactionDetailController.h"
 
 #import "RMDataManagement.h"
 #import "RMObjects.h"
 
-#define DATE_FORMATTER_FOR_DISPLAYING @"EEE, MMM dd yyyy"
+#define DATE_FORMAT_STRING @"EEE, MMM dd yyyy"
 
 @implementation RMTransactionController {
     NSIndexPath *selectedIndexPath;
@@ -51,15 +49,10 @@
 
 #pragma mark- Data
 - (void) getUserCurrency {
-    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
-        PFObject *obj = [user objectForKey:@"currencyUnit"];
-        if (obj != nil) {
-            _currency = obj[@"symbol"];
-        }
-        
-        [_transactions removeAllObjects];
-        [self getTransactionsByPage:1];
-    }];
+    _currency = [[RMDataManagement getSharedInstance] getCurrentUserCurrencySymbol];
+    
+    [_transactions removeAllObjects];
+    [self getTransactionsByPage:1];
 }
 
 - (void) getTransactionsByPage:(int) page {
@@ -73,21 +66,11 @@
         [_transactions addObjectsFromArray:objects];
         [self.tableView reloadData];
     }
-    
-//    [RMParseRequestHandler getAllTransactionByUser:[PFUser currentUser].objectId
-//                                   transactionType:_transactionType
-//                                        inCategory:_categoryId
-//                                           forPage: page
-//                                  withSuccessBlock:^(NSArray *objects) {
-//                                      currentPage = page;
-//                                      [_transactions addObjectsFromArray:objects];
-//                                      [self.tableView reloadData];
-//                                  }];
 }
 
 - (void) detectInsertNewTransaction:(NSNotification*) notification {
     if (notification.object != nil) {
-        PFObject *newTransaction = (PFObject*) notification.object;
+        Transaction *newTransaction = (Transaction*) notification.object;
         [_transactions insertObject:newTransaction atIndex:0];
         NSIndexPath *idp = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[idp] withRowAnimation:UITableViewRowAnimationFade];
@@ -96,7 +79,7 @@
 
 - (void) detectUpdateTransaction:(NSNotification*) notification {
     if (notification.object != nil) {
-        _transactions[selectedIndexPath.row] = (PFObject*) notification.object;
+        _transactions[selectedIndexPath.row] = (Transaction*) notification.object;
         [self.tableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationMiddle];
     }
 }
@@ -125,9 +108,9 @@
     Transaction *cellData = _transactions[indexPath.row];
     NSString *item = cellData.item;
     NSString *amount = [NSString stringWithFormat:@"%@ %.2f",_currency, cellData.amount];
-
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = DATE_FORMATTER_FOR_DISPLAYING;
+    formatter.dateFormat = DATE_FORMAT_STRING;
     NSString *mdy = [formatter stringFromDate: cellData.date];
     
     [(UILabel*) [cell viewWithTag:1] setText:amount];
@@ -143,19 +126,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     selectedIndexPath = indexPath;
-    NSString *transactionId = [(PFObject*)_transactions[indexPath.row] objectId];
+    NSString *transactionId = [(Transaction*)_transactions[indexPath.row] objectId];
     [self performSegueWithIdentifier:@"transactionDetail" sender:transactionId];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        PFObject *obj = _transactions[indexPath.row];
-        [_transactions removeObjectAtIndex:indexPath.row];
-        NSLog(@"DELETE => %@", obj.objectId);
+        Transaction *obj = _transactions[indexPath.row];
         
-        [obj deleteEventually];
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        if ([[RMDataManagement getSharedInstance] deleteTransaction:obj.objectId] == YES) {
+            [_transactions removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+        } else {
+            //???
+        }
         
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
