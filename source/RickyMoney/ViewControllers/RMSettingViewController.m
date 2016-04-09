@@ -9,13 +9,13 @@
 #import "RMSettingViewController.h"
 #import "RMConstant.h"
 #import "UIImage+FontAwesome.h"
-#import "RMParseRequestHandler.h"
-#import <Parse/PFObject.h>
-#import <Parse/PFFile.h>
+
+#import "RMObjects.h"
+#import "RMDataManagement.h"
 
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
-    PFFile *_avatar;
+    User *currentUser;
 }
 
 - (void)viewDidLoad {
@@ -27,39 +27,25 @@
     _profileField.layer.cornerRadius = _profileField.frame.size.width / 2.0f;
     _profileField.layer.masksToBounds = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectUpdateCurrency:) name:kUpdateCurrency object:nil];
 }
 
 #pragma mark- User information
 - (void) getUserInfo {
-    [RMParseRequestHandler getCurrentUserInformation:^(PFObject *user) {
-        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [user objectForKey:@"currencyUnit"][@"name"], [user objectForKey:@"currencyUnit"][@"symbol"]];
-        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode] == nil ? @"OFF" : @"ON";
+    
+    currentUser = [[RMDataManagement getSharedInstance] getCurrentUserDetail];
+    if (currentUser != nil) {
+        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currentUser.currencyName, currentUser.currencySymbol];
         
-        _userInfo[0] = @[@"fa-envelope-o",@"Email", user[@"username"]];
+        _userInfo[0] = @[@"fa-envelope-o",@"Email", currentUser.email];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-//        _userInfo[2] = @[@"fa-key", @"Change Password", @""];
-        _userInfo[2] = @[@"fa-lock", @"Passcode", passcode];
+        _userInfo[2] = @[@"fa-lock", @"Passcode", currentUser.passcode == nil ? @"OFF" : @"ON"];
+        
         [self.tableView reloadData];
         
-        _avatar = [user valueForKey:@"avatar"];
-        if (_avatar != nil) {
-            [_avatar getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                if (data != nil && error == nil ) {
-                    UIImage *image = [[UIImage alloc] initWithData:data];
-                    [_profileField setBackgroundImage:image forState:UIControlStateNormal];
-                }
-            }];
+        if (currentUser.avatar != nil) {;
+            UIImage *image = [RMDataManagement decodeBase64ToImage:currentUser.avatar];
+             [_profileField setBackgroundImage:image forState:UIControlStateNormal];
         }
-    }];
-}
-
-- (void) detectUpdateCurrency:(NSNotification*) notification {
-    if (notification.object != nil) {
-        PFObject *currencyObject = (PFObject*) notification.object;
-        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [currencyObject objectForKey:@"name"], [currencyObject objectForKey:@"symbol"]];
-        _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        [_tableView reloadData];
     }
 }
 
@@ -74,7 +60,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = @"cell"; // (indexPath.row == 2) ? @"cell1" : @"cell";
+    NSString *identifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     NSArray *cellData = _userInfo[indexPath.row];
     
@@ -85,20 +71,12 @@
     [(UILabel*)[cell viewWithTag:2] setText:cellData[1]];
     [(UILabel*)[cell viewWithTag:3] setText:cellData[2]];
     
-//    if (indexPath.row == 0) {
-//        [cell setAccessoryType:UITableViewCellAccessoryNone];
-//        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentCenter];
-//    } else {
-//        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-//        [(UILabel*)[cell viewWithTag:3] setTextAlignment:NSTextAlignmentRight];
-//    }
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0){ // change password
-        [self performSegueWithIdentifier:@"changePasswordSegue" sender:indexPath];
+        [self performSegueWithIdentifier:@"changePasswordSegue" sender:nil];
         
     } else if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
@@ -155,21 +133,10 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [_profileField setBackgroundImage:image forState:UIControlStateNormal];
     
-    // Create a pointer to an object of class Point with id dlkj83d
-    PFUser *userPointer = [PFUser objectWithoutDataWithObjectId:[PFUser currentUser].objectId];
-    PFFile *newAvatar = [PFFile fileWithData:UIImagePNGRepresentation(image)];
-    
-    // Set a new value on quantity
-    [userPointer setObject:newAvatar forKey:@"avatar"];
-    
-    // Save
-    [userPointer saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            _avatar = newAvatar;
-        }
-    }];
+    if ([[RMDataManagement getSharedInstance] updateAvatar:image forUser:currentUser.objectId] == YES) {
+        [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+    }
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -199,6 +166,10 @@
     if ((currentPasscode == nil || currentPasscode.length == 0) && newPasscode != nil && newPasscode.length > 0) {
         // turn on passcode
         [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:kPasscode];
+        
+        currentUser.passcode = newPasscode;
+        [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
+        
         _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
         [self.tableView reloadData];
         
@@ -208,6 +179,10 @@
         if ([newPasscode isEqualToString:currentPasscode]) {
             // turn off passcode
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPasscode];
+            
+            currentUser.passcode = nil;
+            [[RMDataManagement getSharedInstance] updatePasscode:nil forUser:currentUser.objectId];
+            
             _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
             [self.tableView reloadData];
             [passcodeVC dismissViewControllerAnimated:YES completion:nil];
@@ -220,21 +195,31 @@
 }
 
 #pragma mark- RMOptionDelegate
+
 - (void)optionViewsDoneWithSelectedData:(id)selectedData {
-    PFObject *currencyObject = (PFObject*) selectedData;
-    [RMParseRequestHandler updateCurrencyUnit:currencyObject.objectId block:nil];
+    Currency *currencyObject = (Currency *) selectedData;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
-    
-    NSString *currency = [NSString stringWithFormat:@"%@ (%@)", [currencyObject objectForKey:@"name"], [currencyObject objectForKey:@"symbol"]];
-    _userInfo[1] = @[@"fa-money", @"Currency", currency];
-    [_tableView reloadData];
+    if ([[RMDataManagement getSharedInstance] updateCurrency:currencyObject.objectId forUser:currentUser.objectId] == YES) {
+        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
+        
+        currentUser.currencyName = currencyObject.name;
+        currentUser.currencySymbol = currencyObject.symbol;
+        
+        _userInfo[1] = @[@"fa-money", @"Currency", currency];
+        [_tableView reloadData];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
+    }
 }
 
 #pragma mark- prepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"optionSegue"]) {
+    
+    if ([segue.identifier isEqualToString:@"changePasswordSegue"]) {
+        
+        
+    } else if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];
         optionVC.option = OPTION_CURRENCY;
         optionVC.delegate = self;

@@ -14,11 +14,13 @@
 @interface RMDataManagement : NSObject
 
 + (RMDataManagement*)getSharedInstance;
-- (BOOL)createDB;
+
++ (NSString *)encodeToBase64String:(UIImage *)image;
++ (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
 
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
-- (User*) getCurrentUserInfo;
+- (User*) getCurrentUserDetail;
 - (NSString*) getCurrentUserCurrencySymbol;
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId;

@@ -38,7 +38,7 @@
     [tickView setImage:tick];
     [[self.view viewWithTag:10] addSubview:tickView];
     
-    [self getCurrentUserInfo];
+    [self getCurrentUserDetail];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
@@ -50,8 +50,8 @@
 
 #pragma mark - Data
 
-- (void) getCurrentUserInfo {
-    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
+- (void) getCurrentUserDetail {
+    [RMParseRequestHandler getCurrentUserDetailrmation:^(PFObject* user) {
         currentPassword = [user valueForKey:@"password"];
         
     }];

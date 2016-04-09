@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSString *passcode;
 @property (strong, nonatomic) NSString *avatar;
 @property (strong, nonatomic) NSString *currencyId;
+@property (strong, nonatomic) NSString *currencyName, *currencySymbol;
 
 @end

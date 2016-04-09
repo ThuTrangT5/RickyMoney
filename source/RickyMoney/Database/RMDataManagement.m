@@ -173,6 +173,17 @@ static sqlite3_stmt *statement = nil;
     }
 }
 
+#pragma mark- BASE64 <=> Image
+
++ (NSString *)encodeToBase64String:(UIImage *)image {
+    NSString *base64String = [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return base64String;
+}
+
++ (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:data];
+}
 
 #pragma mark- USER
 
@@ -202,7 +213,7 @@ static sqlite3_stmt *statement = nil;
         // 2. Create new account
         
         NSString *userId = [self createAutoIdentifierForTable: USER_TABLE_NAME];
-        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurreny_01\")", USER_TABLE_NAME, userId, email, password];
+        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurrency_01\")", USER_TABLE_NAME, userId, email, password];
         
         char * errMsg;
         int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
@@ -256,12 +267,13 @@ static sqlite3_stmt *statement = nil;
     return currentUserId;
 }
 
-- (User*) getCurrentUserInfo {
+- (User*) getCurrentUserDetail {
     User *currentUser = nil;
     NSString *userId = [self getCurrentUserId];
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-        NSString *query = [NSString stringWithFormat: @"SELECT * from %@ WHERE objectId = \"%@\"", USER_TABLE_NAME, userId];
+        NSString *query = [NSString stringWithFormat: @"SELECT A.*, B.name, B.symbol from %@ as A LEFT JOIN %@ as B ON A.currencyId = B.objectId WHERE A.objectId = \"%@\"", USER_TABLE_NAME, CURRENCY_TABLE_NAME, userId];
+        
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
         if(rc == SQLITE_OK){
             if (sqlite3_step(statement) == SQLITE_ROW) {
@@ -270,9 +282,31 @@ static sqlite3_stmt *statement = nil;
                 currentUser.objectId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
                 currentUser.email = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
                 currentUser.password = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 2)];
-                currentUser.currencyId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 3)];
-                currentUser.avatar = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 4)];
-                currentUser.passcode = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 5)];
+                
+                const char *tempChar = (const char *) sqlite3_column_text(statement, 3);
+                if (tempChar != nil) {
+                    currentUser.currencyId = [NSString stringWithUTF8String:tempChar];
+                }
+                
+                tempChar = (const char *) sqlite3_column_text(statement, 4);
+                if (tempChar != nil) {
+                    currentUser.avatar = [NSString stringWithUTF8String:tempChar];
+                }
+                
+                tempChar = (const char *) sqlite3_column_text(statement, 5);
+                if (tempChar != nil) {
+                    currentUser.passcode = [NSString stringWithUTF8String:tempChar];
+                }
+                
+                tempChar = (const char *) sqlite3_column_text(statement, 6);
+                if (tempChar != nil) {
+                    currentUser.currencyName = [NSString stringWithUTF8String:tempChar];
+                }
+                
+                tempChar = (const char *) sqlite3_column_text(statement, 7);
+                if (tempChar != nil) {
+                    currentUser.currencySymbol = [NSString stringWithUTF8String:tempChar];
+                }
             }
         }
         sqlite3_finalize(statement);
@@ -286,7 +320,7 @@ static sqlite3_stmt *statement = nil;
     NSString *currency = @"";
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         NSString *userId = [self getCurrentUserId];
-        NSString *query = [NSString stringWithFormat: @"SELECT B.symbol from %@ as A INNER JOIN %@ as B ON A.currencyId = B.objectId WHERE objectId = \"%@\"", USER_TABLE_NAME, CURRENCY_TABLE_NAME, userId];
+        NSString *query = [NSString stringWithFormat: @"SELECT B.symbol from %@ as A INNER JOIN %@ as B ON A.currencyId = B.objectId WHERE A.objectId = \"%@\"", USER_TABLE_NAME, CURRENCY_TABLE_NAME, userId];
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
         if (rc == SQLITE_OK) {
             if (sqlite3_step(statement) == SQLITE_ROW) {
@@ -302,24 +336,97 @@ static sqlite3_stmt *statement = nil;
 }
 
 - (BOOL) updateCurrency:(NSString*) currencyId forUser:(NSString *) userId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *updateQuery = @"update %@ set currencyId = \"%@\" where objectId = \"%@\"";
+        updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, currencyId, userId];
+        
+        char * errMsg;
+        int rc = sqlite3_exec(database, [updateQuery UTF8String], NULL, NULL, &errMsg);
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to update Currency for USER[%@] record: %s", userId, errMsg);
+        } else {
+            NSLog(@"Update Currency for USER[%@] successfully", userId);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
     
+    return result;
 }
+
 - (BOOL) updateAvatar:(UIImage*) avatar forUser:(NSString*) userId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *imageBase64String = [RMDataManagement encodeToBase64String:avatar];
+        NSString *updateQuery = @"update %@ set avatar = \"%@\" where objectId = \"%@\"";
+        updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, imageBase64String, userId];
+        
+        char * errMsg;
+        int rc = sqlite3_exec(database, [updateQuery UTF8String], NULL, NULL, &errMsg);
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to update Avatar for USER[%@] record: %s", userId, errMsg);
+        } else {
+            NSLog(@"Update Avatar for USER[%@] successfully", userId);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
+    return result;
 }
+
 - (BOOL) updatePasscode:(NSString*) newPasscode forUser:(NSString*) userId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *updateQuery;
+        if (newPasscode == nil) {
+            updateQuery = @"update %@ set passcode = null where objectId = \"%@\"";
+            updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, userId];
+            
+        } else {
+            updateQuery = @"update %@ set passcode = \"%@\" where objectId = \"%@\"";
+            updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, newPasscode, userId];
+        }
+        
+        char * errMsg;
+        int rc = sqlite3_exec(database, [updateQuery UTF8String], NULL, NULL, &errMsg);
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to update PASSCODE for USER[%@] record: %s", userId, errMsg);
+        } else {
+            NSLog(@"Update PASSCODE for USER[%@] successfully", userId);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
+    return result;
 }
+
 - (BOOL) updatePassword:(NSString*) newPassword forUser:(NSString*) userId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        NSString *updateQuery = @"update %@ set password = \"%@\" where objectId = \"%@\"";
+        updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, newPassword, userId];
+        
+        char * errMsg;
+        int rc = sqlite3_exec(database, [updateQuery UTF8String], NULL, NULL, &errMsg);
+        if(rc != SQLITE_OK) {
+            NSLog(@"Failed to update PASSWORD for USER[%@] record: %s", userId, errMsg);
+        } else {
+            NSLog(@"Update PASSWORD for USER[%@] successfully", userId);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+    }
+    return result;
 }
-
-
 
 #pragma mark- CURRENCY
 

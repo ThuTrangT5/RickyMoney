@@ -210,7 +210,7 @@
 #pragma mark- Data
 
 - (void) getUserCurrency {
-    [RMParseRequestHandler getCurrentUserInformation:^(PFObject* user) {
+    [RMParseRequestHandler getCurrentUserDetailrmation:^(PFObject* user) {
         PFObject *obj = [user objectForKey:@"currencyUnit"];
         if (obj != nil) {
             currency = obj[@"symbol"];

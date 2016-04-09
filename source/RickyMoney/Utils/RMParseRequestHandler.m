@@ -80,7 +80,7 @@ static DGActivityIndicatorView *waitingView;
 
 #pragma mark- Queries
 
-+ (void) getCurrentUserInformation:(void (^)(id))block {
++ (void) getCurrentUserDetailrmation:(void (^)(id))block {
     [self showWaitingView];
     
     PFQuery *query = [PFUser query];
