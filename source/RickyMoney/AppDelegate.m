@@ -36,7 +36,7 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
     // check passcode
-    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
     if (passcode != nil && passcode.length > 0) {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         RMPasscodeViewController *vc = (RMPasscodeViewController*) [mainStoryboard instantiateViewControllerWithIdentifier:PASSCODE_VIEW_STORYBOARD_KEY];
@@ -62,20 +62,21 @@
                     animations:^{
                         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                         UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainView"];
-                        [self.window setRootViewController:mainView];
+                        [self.window.rootViewController presentViewController:mainView animated:NO completion:nil];
                     }
                     completion:nil];
 }
 
 - (void) logoutSuccess {
-    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: LOGIN_DATE];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: CURRENT_USER_ID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: CURRENT_PASSCODE];
+
     [UIView transitionWithView:self.window
                       duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                        UIViewController *mainView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginView"];
-                        [self.window setRootViewController:mainView];
+                        [self.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
                     }
                     completion:nil];
 }

@@ -28,16 +28,17 @@ typedef enum _transactiontype {
     INCOME
 } TransactionType;
 
-#define kPasscode @"RM-kPasscode"
-#define kPasscodeOn @"Passcode is ON"
-#define kPasscodeOff @"Passcode is OFF"
-
 #define kInsertNewTransaction @"RM-kInsertNewTransaction"
 #define kUpdateTransaction @"RM-kUpdateTransaction"
 #define kUpdateCurrency @"RM-kUpdateCurrency"
 
-#define ITEM_PER_PAGE 20
+//#define ITEM_PER_PAGE 20
 
 #define PASSCODE_VIEW_STORYBOARD_KEY @"RM-PassCodeVC"
+
+#define CURRENT_USER_ID @"RM-CURRENT_USER_ID"
+#define LOGIN_DATE @"RM-LOGIN_DATE"
+#define TIMEOUT_LOGIN_DAYS 7.0
+#define CURRENT_PASSCODE @"RM-CURRENT_USER_ID"
 
 #endif

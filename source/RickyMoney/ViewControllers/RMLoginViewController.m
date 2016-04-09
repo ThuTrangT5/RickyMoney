@@ -10,9 +10,10 @@
 #import "AppDelegate.h"
 #import "RMConstant.h"
 #import "UIImage+FontAwesome.h"
-#import <Parse/PFUser.h>
 
 #import "RMDataManagement.h"
+
+#define DATE_FORMAT @"yyyy-MM-dd"
 
 @implementation RMLoginViewController
 
@@ -46,14 +47,27 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    // check already login
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser && currentUser.objectId != nil) {
-        NSLog(@"Already Logined with id = %@", currentUser.objectId);
-        [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-        
-    } else {
-        // show the signup or login screen
+    NSString *loginedUserId = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_USER_ID];
+    if (loginedUserId != nil) {
+        // check time out login
+        NSString *loginDate = [[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_DATE];
+        if (loginDate != nil) {
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = DATE_FORMAT;
+            
+            NSDate *fromDate = [formatter dateFromString:loginDate];
+            NSDate *toDate = [NSDate new];
+            
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+            
+            long days = [difference day];
+            if (days < TIMEOUT_LOGIN_DAYS) {
+                NSLog(@"Already Logined with id = %@", loginedUserId);
+                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+            }
+        }
     }
 }
 
@@ -64,26 +78,28 @@
 }
 
 - (IBAction)loginAction:(id)sender {
-    
-
     if ([self validate]) {
-        
-        [[RMDataManagement getSharedInstance] loginWithEmail:self.emailField.text andPassword:self.passwordField.text];
-        
-        [PFUser logInWithUsernameInBackground:self.emailField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
-            if (user) {
-                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-                
-            } else {
-                // The login failed. Check error to see why.
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:[error userInfo][@"error"]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            }
-        }];
+        NSString *userId = [[RMDataManagement getSharedInstance] loginWithEmail:self.emailField.text andPassword:self.passwordField.text];
+        if (userId == nil) {
+            
+            // The login failed. Check error to see why.
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Your email or password is not correct."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = DATE_FORMAT;
+            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
+            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+            
+            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+        }
     }
 }
 
@@ -91,29 +107,27 @@
     
     if ([self validate]) {
         
-        [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
-        
-        PFUser *user = [PFUser user];
-        user.username = self.emailField.text;
-        user.password = self.passwordField.text;
-        user.email = self.emailField.text;
-        
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                // Hooray! Let them use the app now.
-                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-                
-            } else {
-                // Show the errorString somewhere and let the user try again.
-                NSString *errorString = [error userInfo][@"error"];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:errorString
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            }
-        }];
+        NSString *userId = [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
+        if (userId == nil) {
+            
+            // The login failed. Check error to see why.
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message: @"This email is already signed up."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = DATE_FORMAT;
+            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
+            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+            
+            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+        }
     }
 }
 

@@ -156,7 +156,6 @@
         
         
     } else if (indexPath.row == 4) { // sign out
-        [PFUser logOut];
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
         
     }

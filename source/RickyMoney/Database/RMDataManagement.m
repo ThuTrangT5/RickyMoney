@@ -188,7 +188,7 @@ static sqlite3_stmt *statement = nil;
 #pragma mark- USER
 
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password {
-    NSString *createdUserId = nil; // result is the created user id
+    NSString *userId = nil; // result is the created user id
     
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
@@ -212,22 +212,23 @@ static sqlite3_stmt *statement = nil;
         
         // 2. Create new account
         
-        NSString *userId = [self createAutoIdentifierForTable: USER_TABLE_NAME];
+        userId = [self createAutoIdentifierForTable: USER_TABLE_NAME];
         NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurrency_01\")", USER_TABLE_NAME, userId, email, password];
         
         char * errMsg;
         int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
         if(result != SQLITE_OK) {
             NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
+            userId = nil;
+            
         } else {
             NSLog(@"Insert new User(%@, %@) successfully", userId, email);
-            createdUserId = userId;
         }
         
         sqlite3_close(database);
     }
     
-    return createdUserId;
+    return userId;
 }
 
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password {
@@ -236,7 +237,7 @@ static sqlite3_stmt *statement = nil;
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
         // select query
-        NSString *query = [NSString stringWithFormat: @"SELECT objectId from %@ WHERE email = \"%@\" AND password = \"%@\"", USER_TABLE_NAME, email, password];
+        NSString *query = [NSString stringWithFormat: @"SELECT objectId, passcode from %@ WHERE email = \"%@\" AND password = \"%@\"", USER_TABLE_NAME, email, password];
         
         // execute
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
@@ -244,8 +245,11 @@ static sqlite3_stmt *statement = nil;
             while (sqlite3_step(statement) == SQLITE_ROW) {
                 userId = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
                 
-                // set that userId as a current user
-                [[NSUserDefaults standardUserDefaults] setObject:userId forKey:CURRENT_USER_ID];
+                // check passcode
+                const char *passcode = (const char *) sqlite3_column_text(statement, 1);
+                if (passcode != nil) {
+                    [[NSUserDefaults standardUserDefaults] setValue: [NSString stringWithUTF8String:passcode] forKey:CURRENT_PASSCODE];
+                }
                 
                 NSLog(@"Login Success with userId = %@", userId);
             }
@@ -262,8 +266,7 @@ static sqlite3_stmt *statement = nil;
 }
 
 - (NSString*) getCurrentUserId {
-    NSUserDefaults *udf = [NSUserDefaults standardUserDefaults];
-    NSString *currentUserId = [udf objectForKey:CURRENT_USER_ID];
+    NSString *currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:CURRENT_USER_ID];
     return currentUserId;
 }
 

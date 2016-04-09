@@ -24,7 +24,7 @@
     _titleField.text = @"";
     
     if (_titleText == nil) {
-        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode] == nil ? @"OFF" : @"ON";
+        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE] == nil ? @"OFF" : @"ON";
         if ([passcode isEqualToString:@"ON"]) {
             _titleField.text = @"Input PASSCODE to close this view.";
             // hide button "Hide"
@@ -110,7 +110,7 @@
     if (self.delegate) {
         [self.delegate doneActionWithPasscode: self];
     } else {
-        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
         if (passcode != nil && [_passcodeField.text isEqualToString:passcode] == NO) {
             [self passcodeIsWrong];
             

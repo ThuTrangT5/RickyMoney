@@ -117,7 +117,7 @@
     [(UILabel*) [cell viewWithTag:2] setText:item];
     [(UILabel*) [cell viewWithTag:3] setText:mdy];
     
-    if (indexPath.row == _transactions.count - 1 && _transactions.count >= ITEM_PER_PAGE *currentPage) {
+    if (indexPath.row == _transactions.count - 1 && _transactions.count >= ITEMS_PER_PAGE *currentPage) {
         [self getTransactionsByPage:currentPage + 1];
     }
     

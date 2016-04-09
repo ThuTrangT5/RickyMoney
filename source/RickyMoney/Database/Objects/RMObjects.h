@@ -31,6 +31,4 @@
 #define CREATE_TRANSACTION_TABLE_QUERY @"create table if not exists %@ (objectId text primary key, userId text, categoryId text, item text, amount real, notes text, date text, type integer)"
 #define CREATE_BUDGET_TABLE_QUERY @"create table if not exists %@ (objectId text primary key, userId text, categoryId text, budget real, dateUnit text)"
 
-#define CURRENT_USER_ID @"RM-CURRENT_USER_ID"
-
 #endif /* RMObjects_h */

@@ -14,6 +14,8 @@
 
 static DGActivityIndicatorView *waitingView;
 
+#define ITEM_PER_PAGE 20
+
 @implementation RMParseRequestHandler
 
 #pragma mark- Waiting view

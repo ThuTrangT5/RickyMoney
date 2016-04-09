@@ -151,7 +151,7 @@
 #pragma mark- PassCode
 
 - (void) openPasscodeView {
-    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
     NSString *titleMessage = @"";
     if (passcode == nil || passcode.length == 0) {
         titleMessage = @"Enter New PassCode to set it ON";
@@ -166,12 +166,12 @@
 }
 
 - (void)doneActionWithPasscode:(RMPasscodeViewController *) passcodeVC {
-    NSString *currentPasscode = [[NSUserDefaults standardUserDefaults] valueForKey:kPasscode];
+    NSString *currentPasscode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
     NSString *newPasscode = passcodeVC.passcodeField.text;
     
     if ((currentPasscode == nil || currentPasscode.length == 0) && newPasscode != nil && newPasscode.length > 0) {
         // turn on passcode
-        [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:kPasscode];
+        [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:CURRENT_PASSCODE];
         
         currentUser.passcode = newPasscode;
         [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
@@ -184,7 +184,7 @@
     } else if (currentPasscode != nil && currentPasscode.length > 0){
         if ([newPasscode isEqualToString:currentPasscode]) {
             // turn off passcode
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kPasscode];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_PASSCODE];
             
             currentUser.passcode = nil;
             [[RMDataManagement getSharedInstance] updatePasscode:nil forUser:currentUser.objectId];
