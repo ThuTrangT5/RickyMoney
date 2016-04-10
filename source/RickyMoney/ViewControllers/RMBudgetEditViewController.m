@@ -72,4 +72,23 @@
 }
 */
 
+- (IBAction)ontouchSave:(id)sender {
+    
+    for (id object in _budgetData) {
+        NSString *catId;
+        float budget;
+        
+        if ([object isKindOfClass:[Budget class]] == YES) {
+            catId = [(Budget *) object categoryId];
+            
+        } else if ([object isKindOfClass:[Category class]] == YES) {
+            catId = [(Category*) object objectId];
+        }
+        
+        budget = 250.0;
+        
+        [[RMDataManagement getSharedInstance] createNewBudget:budget forCategory:catId ];
+    }
+    
+}
 @end

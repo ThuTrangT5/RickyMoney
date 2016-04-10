@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSMutableArray *budgetData;
 
+- (IBAction)ontouchSave:(id)sender;
+
 @end

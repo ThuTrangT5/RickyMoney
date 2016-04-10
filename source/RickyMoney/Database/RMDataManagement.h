@@ -39,7 +39,7 @@
 - (NSArray*) reviewTransactionFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 
 - (NSArray*) getAllBudgetsFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
-- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;
+- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId;
 - (NSArray*) getAllBudgetsForEdit;
 
 @end

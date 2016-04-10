@@ -1195,7 +1195,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="h83-hT-dXh"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1255,6 +1255,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Budgets" id="Upt-4R-G4J">
+                        <barButtonItem key="backBarButtonItem" title=" " id="H5c-cW-PSz"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="vJk-BA-e7z">
                             <connections>
                                 <segue destination="cKH-lx-hEv" kind="push" id="s2x-dJ-hZf"/>
@@ -1270,7 +1271,7 @@
             </objects>
             <point key="canvasLocation" x="1195" y="1106"/>
         </scene>
-        <!--Budget Edit View Controller-->
+        <!--Budgets for a month-->
         <scene sceneID="udH-1j-zpb">
             <objects>
                 <tableViewController id="cKH-lx-hEv" customClass="RMBudgetEditViewController" sceneMemberID="viewController">
@@ -1309,7 +1310,13 @@
                             <outlet property="delegate" destination="cKH-lx-hEv" id="mPC-cW-gJW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cHO-Vk-WhU"/>
+                    <navigationItem key="navigationItem" title="Budgets for a month" id="cHO-Vk-WhU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="arY-iv-uZt">
+                            <connections>
+                                <action selector="ontouchSave:" destination="cKH-lx-hEv" id="sDl-Ub-At4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iej-J0-foH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

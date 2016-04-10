@@ -50,7 +50,7 @@ static sqlite3_stmt *statement = nil;
         [self createCategoryData];
         [self createCurrencyData];
     }
-    
+
     return isSuccess;
 }
 
@@ -734,13 +734,13 @@ static sqlite3_stmt *statement = nil;
                                                                 fromDate:date1
                                                                   toDate:date2
                                                                  options:NSCalendarWrapComponents];
-            days = (int)[components day];
+            days = (int)[components day] + 1;
         }
         //@"create table if not exists %@ (objectId text primary key, userId text, categoryId text, budget real, dateUnit
         
         NSString *query = @"select sum(A.amount), B.enName, C.budget from %@ as A, %@ as B, %@ as C ";
         query = [query stringByAppendingString:@" where A.categoryId = B.objectId and A.userId = C.userId and C.categoryId = B.objectId"];
-        query = [query stringByAppendingString: @" and A.userId = \"%@\"  and A.date >= \"%@\" and A.date <= \"%@\" "];
+        query = [query stringByAppendingString: @" and A.userId = \"%@\"  and A.date >= \"%@\" and A.date <= \"%@\" and type = 0 "];
         query = [query stringByAppendingString: @" group by A.categoryId"];
         query = [query stringByAppendingString: @" order by B.enName"];
         
@@ -773,7 +773,6 @@ static sqlite3_stmt *statement = nil;
         sqlite3_close(database);
         
         return results;
-        
     }
     
     return nil;
@@ -797,8 +796,6 @@ static sqlite3_stmt *statement = nil;
             NSLog(@"Insert new TRANSACTION[%@, %@] successfully", categoryId, userId);
             result = YES;
         }
-        
-        sqlite3_finalize(statement);
         sqlite3_close(database);
         
         return result;

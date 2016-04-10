@@ -23,7 +23,7 @@
     // Initialization code
     ASProgressPopUpView *progressView = (ASProgressPopUpView *)[self viewWithTag:1];
     progressView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-    progressView.popUpViewAnimatedColors = @[RM_COLOR];// @[[UIColor greenColor], RM_COLOR, [UIColor redColor]];
+    progressView.popUpViewAnimatedColors = @[ RM_COLOR, [UIColor redColor]];
     progressView.progress = 0.0;
     
     progressView.delegate = self;
@@ -75,7 +75,7 @@
 }
 
 - (BOOL)progressViewShouldPreCalculatePopUpViewSize:(ASProgressPopUpView *)progressView;{
-    return YES;
+    return NO;
 }
 
 #pragma mark - Timer
@@ -84,7 +84,7 @@
     
     ASProgressPopUpView *progressView = (ASProgressPopUpView*) [self viewWithTag:1];
     float progress = progressView.progress;
-    if (progress < (progressValue / maxProgressValue)) {
+    if (progress < (progressValue / maxProgressValue) && progress < 1) {
         progress += (progressValue / maxProgressValue) / 5.0;
         [progressView setProgress:progress animated: YES];
         
@@ -95,8 +95,15 @@
                                         repeats:NO];
     } else {
         progress = progressValue / maxProgressValue;
-        [progressView setProgress:progress animated: YES];
-        NSLog(@" %.0f : value %.0f", progress, progressValue);
+        if (progress > 1) {
+            progress = 1;
+        }
+//        [progressView setProgress:progress animated: YES];
+//        if (progress < 0.35) {
+//             progressView.popUpViewAnimatedColors = @[[UIColor greenColor]];
+//        } else if (progress > 0.8) {
+//             progressView.popUpViewAnimatedColors = @[[UIColor redColor]];
+//        }
         [progressView showPopUpViewAnimated: YES];
     }
 }

@@ -139,7 +139,7 @@
     NSDictionary *cellData = (NSDictionary*) [_budgetData objectAtIndex:indexPath.row];
     NSString *budgetValue = [NSString stringWithFormat:@"%@ %.2f", currency, [[cellData valueForKey:@"budget"] floatValue]];
     
-    [cell setProgressValue:indexPath.row + 1 maxValue:10.0];
+    [cell setProgressValue:[[cellData valueForKey:@"expense"] floatValue] maxValue:[[cellData valueForKey:@"budget"] floatValue]];
     [cell setCurrencySymbol:currency];
     [cell setCategoryName:[cellData valueForKey:@"categoryName"]];
     [cell setBudgetValue: budgetValue];
