@@ -9,12 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface Budget : NSObject
-//(objectId text primary key, userId text, categoryId text, budget real, dateUnit text)
+// (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
 
-@property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *userId;
-@property (strong, nonatomic) NSString *categoryId;
+@property (strong, nonatomic) NSString *categoryId, *categoryName;
 @property (nonatomic) float budget;
-@property (strong, nonatomic) NSString *dateUnit;
 
 @end

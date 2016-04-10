@@ -778,9 +778,70 @@ static sqlite3_stmt *statement = nil;
     
     return nil;
 }
-- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit {
+
+- (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId {
+    BOOL result = NO;
     
-    return NO;
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
+        NSString *userId = [self getCurrentUserId];
+        NSString *insertQuery = @"insert or replace into %@ (userId, categoryId, budget) values (\"%@\", \"%@\", %.2f)";
+        insertQuery = [NSString stringWithFormat:insertQuery, BUDGET_TABLE_NAME, userId, categoryId, budget];
+        
+        char * errMsg;
+        int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
+        if(result != SQLITE_OK) {
+            NSLog(@"Failed to insert TRANSACTION record: %s", errMsg);
+    
+        } else {
+            NSLog(@"Insert new TRANSACTION[%@, %@] successfully", categoryId, userId);
+            result = YES;
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+        
+        return result;
+    }
+    return result;
+}
+
+- (NSArray*) getAllBudgetsForEdit {
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        //BUDGET (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
+        // CATEGORY: (objectId text primary key, vnName text, enName text, icon text)"
+        
+        NSString *query = @"select A.*, B.enName from %@ as B LEFT OUTER JOIN %@ as A ON A.categoryId = B.objectId where A.userId = \"%@\"";
+        query = [NSString stringWithFormat:query, CATEGORY_TABLE_NAME, BUDGET_TABLE_NAME, [self getCurrentUserId]];
+        
+        NSMutableArray *results = [[NSMutableArray alloc] init];
+        
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                const char *userId = (const char*) sqlite3_column_text(statement, 0);
+                const char *catId = (const char*) sqlite3_column_text(statement, 1);
+                float budget =  sqlite3_column_double(statement, 2);
+                const char *catName = (const char*) sqlite3_column_text(statement, 3);
+                
+                Budget *object = [[Budget alloc] init];
+                object.userId = (userId == nil) ? nil :[NSString stringWithUTF8String:userId];
+                object.categoryId = (catId == nil) ? nil :[NSString stringWithUTF8String:catId];
+                object.budget =  budget;
+                object.categoryName = (catName == nil) ? nil :[NSString stringWithUTF8String:catName];
+                
+                [results addObject:object];
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+        
+        return results;
+        
+    }
+    
+    return nil;
 }
 
 @end

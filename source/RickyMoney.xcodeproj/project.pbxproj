@@ -78,6 +78,7 @@
 		6AA88C7F1CBA241100EB4D6A /* ASProgressPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C7D1CBA241100EB4D6A /* ASProgressPopUpView.m */; };
 		6AA88C821CBA257600EB4D6A /* RMBudgetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C811CBA257600EB4D6A /* RMBudgetsViewController.m */; };
 		6AA88C851CBA293300EB4D6A /* RMProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C841CBA293200EB4D6A /* RMProgressCell.m */; };
+		6AA88C8B1CBA631200EB4D6A /* RMBudgetEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C8A1CBA631200EB4D6A /* RMBudgetEditViewController.m */; };
 		6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */; };
 		6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */; };
 		6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC0204C1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift */; };
@@ -224,6 +225,8 @@
 		6AA88C811CBA257600EB4D6A /* RMBudgetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBudgetsViewController.m; sourceTree = "<group>"; };
 		6AA88C831CBA293200EB4D6A /* RMProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMProgressCell.h; sourceTree = "<group>"; };
 		6AA88C841CBA293200EB4D6A /* RMProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMProgressCell.m; sourceTree = "<group>"; };
+		6AA88C891CBA631200EB4D6A /* RMBudgetEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBudgetEditViewController.h; sourceTree = "<group>"; };
+		6AA88C8A1CBA631200EB4D6A /* RMBudgetEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBudgetEditViewController.m; sourceTree = "<group>"; };
 		6AC020451C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChartDataSource.swift; sourceTree = "<group>"; };
 		6AC0204A1C4CDFC5001A1DCA /* RickyMoney-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RickyMoney-Bridging-Header.h"; sourceTree = "<group>"; };
 		6AC0204B1C4CE0D8001A1DCA /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */,
 				6AA88C801CBA257600EB4D6A /* RMBudgetsViewController.h */,
 				6AA88C811CBA257600EB4D6A /* RMBudgetsViewController.m */,
+				6AA88C891CBA631200EB4D6A /* RMBudgetEditViewController.h */,
+				6AA88C8A1CBA631200EB4D6A /* RMBudgetEditViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -500,7 +505,6 @@
 		6AA88C221CB79DDF00EB4D6A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				6AA88C311CB79E6200EB4D6A /* RMObjects.h */,
 				6AA88C231CB79DDF00EB4D6A /* User.h */,
 				6AA88C241CB79DDF00EB4D6A /* User.m */,
 				6AA88C281CB79E3000EB4D6A /* Transaction.h */,
@@ -511,6 +515,7 @@
 				6AA88C2F1CB79E5700EB4D6A /* Currency.m */,
 				6AA88C321CB7A45C00EB4D6A /* Category.h */,
 				6AA88C331CB7A45C00EB4D6A /* Category.m */,
+				6AA88C311CB79E6200EB4D6A /* RMObjects.h */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -795,6 +800,7 @@
 				6AA88BE71CB50ABC00EB4D6A /* RMModel.xcdatamodeld in Sources */,
 				188266A31BE128310047B521 /* RMPasscodeViewController.m in Sources */,
 				6A1BD9631C43929A00DA7A85 /* JTCalendarScrollManager.m in Sources */,
+				6AA88C8B1CBA631200EB4D6A /* RMBudgetEditViewController.m in Sources */,
 				6A1BD9671C43929A00DA7A85 /* JTCalendarWeekDayView.m in Sources */,
 				6AA88C821CBA257600EB4D6A /* RMBudgetsViewController.m in Sources */,
 				6AA88C851CBA293300EB4D6A /* RMProgressCell.m in Sources */,

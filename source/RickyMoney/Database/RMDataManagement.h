@@ -40,6 +40,6 @@
 
 - (NSArray*) getAllBudgetsFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 - (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;
-
+- (NSArray*) getAllBudgetsForEdit;
 
 @end
