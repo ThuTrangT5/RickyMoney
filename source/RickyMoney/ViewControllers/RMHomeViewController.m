@@ -36,6 +36,7 @@
                   @[@"fa-cogs", @"Setting"],
                   @[@"fa-pencil-square-o", @"Transactions"],
                   @[@"fa-tags", @"Categories"],
+                  @[@"fa-tasks", @"Budgets"],
                   @[@"fa-money", @"About RickyMoney"],
                   @[@"fa-sign-out", @"Sign out"],
                   nil];
@@ -126,7 +127,7 @@
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
     [icon setContentMode:UIViewContentModeCenter];
-    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(65, 40)]];
+    [icon setImage: [UIImage imageWithIcon:cellData[0] backgroundColor:[UIColor clearColor] iconColor: RM_COLOR andSize:CGSizeMake(40, 25)]];
     
     UILabel *item = (UILabel*) [cell viewWithTag:2];
     [item setText: cellData[1]];
@@ -146,10 +147,12 @@
         UIViewController *category = [mainStoryboard instantiateViewControllerWithIdentifier: @"OptionsVC"];
         [self.navigationController pushViewController: category animated: YES];
         
-    } else if (indexPath.row == 3) { // about
+    } else if (indexPath.row == 3) { // budget
+        [self performSegueWithIdentifier:@"budgetSegue" sender:nil];
         
+    } else if (indexPath.row == 4) { // about
         
-    } else if (indexPath.row == 4) { // sign out
+    } else if (indexPath.row == 5) { // sign out
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
         
     }

@@ -60,7 +60,7 @@
         UIView *btn = [self.view viewWithTag:i];
         btn.layer.borderColor = [[UIColor whiteColor] CGColor];
         btn.layer.borderWidth = 1.0f;
-        btn.layer.cornerRadius = btn.frame.size.height / 2.0;
+//        btn.layer.cornerRadius = btn.frame.size.height / 2.0;
         btn.backgroundColor = _mainColor;
     }
 }

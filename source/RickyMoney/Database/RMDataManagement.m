@@ -438,7 +438,7 @@ static sqlite3_stmt *statement = nil;
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         
-        NSString *query = [NSString stringWithFormat:@"select * from %@", CURRENCY_TABLE_NAME];
+        NSString *query = [NSString stringWithFormat:@"select * from %@ order by objectId", CURRENCY_TABLE_NAME];
         
         if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK) {
             results = [[NSMutableArray alloc] init];
@@ -473,7 +473,7 @@ static sqlite3_stmt *statement = nil;
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         
-        NSString *query = [NSString stringWithFormat:@"select * from %@", CATEGORY_TABLE_NAME];
+        NSString *query = [NSString stringWithFormat:@"select * from %@ order by enName", CATEGORY_TABLE_NAME];
         
         if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL) == SQLITE_OK) {
             results = [[NSMutableArray alloc] init];

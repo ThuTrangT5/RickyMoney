@@ -49,8 +49,8 @@
 
 #pragma mark- UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    float width = (self.option == OPTION_CURRENCY) ? (collectionView.frame.size.width / 2.0) : (collectionView.frame.size.width / 3.0);
-    float height = (self.option == OPTION_CURRENCY) ? (width * 0.7) : (width / 0.8);
+    float width = (self.option == OPTION_CURRENCY) ? (collectionView.frame.size.width / 2.0) : (collectionView.frame.size.width / 3.5);
+    float height = (self.option == OPTION_CURRENCY) ? (width * 0.7) : (width / 0.9);
     return CGSizeMake(width, height);
 }
 
