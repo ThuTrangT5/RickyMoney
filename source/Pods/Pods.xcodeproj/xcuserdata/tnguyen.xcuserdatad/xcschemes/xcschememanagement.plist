@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JTCalendar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>LMDropdownView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,17 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0103D5C045CF8875FFCA19A0E2F63EA5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>291621037D68F7869D267C25CE205F97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39B5CF86C5D5526023BFA614CD6D37DC</key>
+		<key>4A2564988BF4988E86FBF82EDCBC2149</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>55E1FC5384A0D61D863E5C9D6FFF406C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C463863A91096E02D9F1BDA73A794BA1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E79CF300F71F0D7724BAF9984759D684</key>
+		<key>BA2E829196619A49792ADA3C5BB6354B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,7 +1,6 @@
 PODS:
   - Bolts/Tasks (1.7.0)
   - DGActivityIndicatorView (2.0)
-  - JTCalendar (2.1.5)
   - LMDropdownView (1.0.3)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
@@ -10,7 +9,6 @@ PODS:
 
 DEPENDENCIES:
   - DGActivityIndicatorView
-  - JTCalendar (~> 2.0)
   - LMDropdownView
   - Parse
   - THPinViewController
@@ -19,12 +17,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
-  JTCalendar: 57a4420f12d10c93c3b28da96803e7043d1c9281
   LMDropdownView: f03fadfe65908c735580f63d04c47e6d7c5325f3
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   THPinViewController: 6ea25443b2205bdfaaf5a6db8b05403dfbe0bdec
   UNAlertView: fc58ca04357a5e8e7e1eb2803fc8152a89e9ce39
 
-PODFILE CHECKSUM: e2042fb363909bac09893f5d25436e83ccff5225
+PODFILE CHECKSUM: 9aea5e93f722b9db6903a906bf44952c76394cc3
 
 COCOAPODS: 1.0.0.beta.2
