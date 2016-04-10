@@ -332,10 +332,10 @@
 
 - (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
     [self.rangeButton setTitle:pickerData[row] forState:UIControlStateNormal];
+    _fromDate = nil;
+    _toDate = nil;
     
     if ([pickerData[row] isEqualToString:@"Custome"]) {
-        _fromDate = nil;
-        _toDate = nil;
         [self showCalendar];
         
     } else {

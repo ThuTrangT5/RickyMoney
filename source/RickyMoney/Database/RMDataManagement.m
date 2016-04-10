@@ -709,15 +709,72 @@ static sqlite3_stmt *statement = nil;
         
         return results;
         
-    } else {
-        return nil;
     }
     
+    return nil;
 }
 
 #pragma mark- BUDGET
 
-- (NSArray*) getAllBudget {
+- (NSArray*) getAllBudgetsFromDate:(NSString*)fromDate toDate:(NSString*) toDate {
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        // get number of days between fromDate and to Date
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        NSDate *date2 = [formatter dateFromString:toDate];
+        
+        int days = 30;
+        if (date2 != nil) {
+            
+            NSDate *date1 = [formatter dateFromString:fromDate];
+            
+            NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                                fromDate:date1
+                                                                  toDate:date2
+                                                                 options:NSCalendarWrapComponents];
+            days = (int)[components day];
+        }
+        //@"create table if not exists %@ (objectId text primary key, userId text, categoryId text, budget real, dateUnit
+        
+        NSString *query = @"select sum(A.amount), B.enName, C.budget from %@ as A, %@ as B, %@ as C ";
+        query = [query stringByAppendingString:@" where A.categoryId = B.objectId and A.userId = C.userId and C.categoryId = B.objectId"];
+        query = [query stringByAppendingString: @" and A.userId = \"%@\"  and A.date >= \"%@\" and A.date <= \"%@\" "];
+        query = [query stringByAppendingString: @" group by A.categoryId"];
+        query = [query stringByAppendingString: @" order by B.enName"];
+        
+        query = [NSString stringWithFormat:query, TRANSACTION_TABLE_NAME, CATEGORY_TABLE_NAME, BUDGET_TABLE_NAME, [self getCurrentUserId], fromDate, toDate];
+        
+        NSMutableArray *results = [[NSMutableArray alloc] init];
+        
+        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
+        if(rc == SQLITE_OK){
+            
+            while (sqlite3_step(statement) == SQLITE_ROW) {
+                float val = (float) sqlite3_column_double(statement, 2);
+                val = val / 30.0 * days;
+                
+                NSString *expense = [NSString stringWithFormat:@"%.2f", (float) sqlite3_column_double(statement, 0)];
+                NSString *categoryName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *budget = [NSString stringWithFormat:@"%.2f", val];
+                
+                NSDictionary *record = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                        categoryName, @"categoryName",
+                                        expense, @"expense",
+                                        budget, @"budget",
+                                        nil];
+                
+                [results addObject:record];
+            }
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(database);
+        
+        return results;
+        
+    }
     
     return nil;
 }
@@ -725,112 +782,5 @@ static sqlite3_stmt *statement = nil;
     
     return NO;
 }
-
-#pragma mark- SELECT
-
-- (void) insertIntoTable:(NSString*) tableName values:(NSDictionary*) values {
-    const char *dbpath = [databasePath UTF8String];
-    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyyMMddHHmmss";
-        NSString *autoId = [formatter stringFromDate:[NSDate new]];
-        autoId = [NSString stringWithFormat:@"RM_%@_%@", [tableName substringToIndex:1], autoId];
-        
-        NSString *columnNames = @"";
-        NSString *columnValues = @"";
-        for (NSString *key in values.allKeys) {
-            columnNames = [NSString stringWithFormat:@"%@, %@", columnNames, key];
-            columnValues = [NSString stringWithFormat:@"%@, \"%@\"", columnValues, [values valueForKey: key]];
-        }
-        NSString *insertSQL = [NSString stringWithFormat: @"INSERT INTO %@ (objectId%@) VALUES (\"%@\"%@)", tableName, columnNames, autoId, columnValues];
-        
-        char * errMsg;
-        int result = sqlite3_exec(database, [insertSQL UTF8String], NULL, NULL, &errMsg);
-        if(result != SQLITE_OK) {
-            NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
-        }
-        
-        sqlite3_close(database);
-    }
-}
-
-- (void) deleteTransactionWithObjectId:(NSString*) objectId {
-    const char *dbpath = [databasePath UTF8String];
-    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
-        NSString * query  = [NSString stringWithFormat:@"DELETE FROM TRANSACTION_TABLE WHERE objectId=\"%@\"", objectId];
-        char * errMsg;
-        int rc = sqlite3_exec(database, [query UTF8String] ,NULL,NULL,&errMsg);
-        if(rc != SQLITE_OK) {
-            NSLog(@"Failed to delete record  rc:%d, msg=%s",rc,errMsg);
-        }
-        sqlite3_close(database);
-    }
-}
-
-- (NSArray*) selectTransactionByPage:(int) page category:(NSString*) categoryId fromDate:(NSDate*) fromDate toDate:(NSDate*) toDate {
-    
-    const char *dbpath = [databasePath UTF8String];
-    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
-        NSMutableArray *transactions = [[NSMutableArray alloc] init];
-        
-        // where statement
-        NSString *whereStm = @" 1 = 1";
-        if (categoryId != nil) {
-            whereStm = [NSString stringWithFormat:@"%@ AND categoryId = \"%@\"", whereStm, categoryId];
-        }
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = DATE_FORMATTER_IN_DB;
-        
-        if (fromDate != nil) {
-            NSString *dateString = [formatter stringFromDate:fromDate];
-            whereStm = [NSString stringWithFormat:@"%@ AND date >= \"%@\"", whereStm, dateString];
-        }
-        
-        if (toDate != nil) {
-            NSString *dateString = [formatter stringFromDate:toDate];
-            whereStm = [NSString stringWithFormat:@"%@ AND date <= \"%@\"", whereStm, dateString];
-        }
-        
-        // limit
-        NSString *limit = [NSString stringWithFormat:@" LIMIT %d OFFSET %d", ITEMS_PER_PAGE, (page - 1) * ITEMS_PER_PAGE];
-        
-        // select query
-        NSString *query = [NSString stringWithFormat: @"SELECT * from RMTRANSACTION WHERE %@ %@", whereStm, limit];
-        
-        
-        // execute
-        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
-        if(rc == SQLITE_OK){
-            while (sqlite3_step(statement) == SQLITE_ROW) {
-                //get each row in loop
-                for (int i = 1; i<=7; i++) {
-                    NSString *text = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, i)];
-                    NSLog(@"[%d]. %@", i, text);
-                }
-                
-                //                                        NSString * name =[NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
-                //                                        NSInteger age =  sqlite3_column_int(stmt, 2);
-                //                                        NSInteger marks =  sqlite3_column_int(stmt, 3);
-                //
-                //                                        NSDictionary *student =[NSDictionary dictionaryWithObjectsAndKeys:name,@"name",
-                //                                                                                                        [NSNumber numberWithInteger:age],@"age",[NSNumber numberWithInteger:marks], @"marks",nil];
-                //
-                //                                        [students addObject:student];
-            }
-            NSLog(@"Done");
-            sqlite3_finalize(statement);
-            
-            return  transactions;
-        } else {
-            NSLog(@"Failed to prepare statement with rc:%d",rc);
-        }
-        
-        sqlite3_close(database);
-    }
-    return nil;
-}
-
 
 @end

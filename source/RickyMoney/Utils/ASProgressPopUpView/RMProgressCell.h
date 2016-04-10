@@ -11,6 +11,10 @@
 
 @interface RMProgressCell : UITableViewCell <ASProgressPopUpViewDelegate, ASProgressPopUpViewDataSource>
 
+@property (strong, nonatomic) NSString* currencySymbol;
+
 - (void) setProgressValue:(float) currentValue maxValue:(float) maxValue;
+- (void) setCategoryName:(NSString*) category;
+- (void) setBudgetValue:(NSString*) budget;
 
 @end

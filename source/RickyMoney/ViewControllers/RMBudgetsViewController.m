@@ -9,22 +9,118 @@
 #import "RMBudgetsViewController.h"
 #import "RMConstant.h"
 #import "RMProgressCell.h"
+#import "UIImage+FontAwesome.h"
+//#import "RMObjects.h"
+#import "RMDataManagement.h"
 
-@implementation RMBudgetsViewController
+@implementation RMBudgetsViewController {
+    NSArray *pickerData;
+    NSDate *_fromDate, *_toDate;
+    NSString *currency;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // insert calendar image for range button
+    CGSize size = CGSizeMake(20, 20);
+    UIImage *calendarImg = [UIImage imageWithIcon:@"fa-calendar" backgroundColor:[UIColor clearColor] iconColor:[UIColor whiteColor] andSize:size];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    [imgView setImage:calendarImg];
+    [_rangeButton addSubview:imgView];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _budgetData = [[NSMutableArray alloc] init];
+    pickerData = [[NSArray alloc] initWithObjects:@"Today", @"This Week", @"This Month", @"Last Month", @"This Year", @"Custome", nil];
+    
+    [self getUserCurrency];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_fromDate == nil && _toDate == nil) {
+        [self getBudgetsByTimePeriod: _rangeButton.titleLabel.text];
+        
+    } else {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        NSString *fromDate = [formatter stringFromDate:_fromDate];
+        NSString *toDate = [formatter stringFromDate:_toDate];
+        
+        [self getBudgetsFromDate:fromDate toDate:toDate];
+    }
+}
+#pragma mark- Data
+
+- (void) getUserCurrency {
+    currency = [[RMDataManagement getSharedInstance] getCurrentUserCurrencySymbol];
+}
+
+- (void) getBudgetsFromDate:(NSString*) fromDate toDate:(NSString*) toDate {
+    [_budgetData removeAllObjects];
+    NSArray *budgets = [[RMDataManagement getSharedInstance] getAllBudgetsFromDate:fromDate toDate:toDate];
+    if (budgets != nil) {
+        [_budgetData addObjectsFromArray:budgets];
+    }
+    [self.tableView reloadData];
+}
+
+- (void) getBudgetsByTimePeriod:(NSString*) timePeriod {
+    NSString *fromDate, *toDate;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDate *today = [NSDate new];
+    
+    if ([timePeriod isEqualToString: pickerData[0]]) { // today
+        formatter.dateFormat = DATE_FORMATTER_IN_DB;
+        fromDate = [formatter stringFromDate:today];
+        toDate = fromDate;
+        
+    } else {
+        NSDate *date;
+        
+        if ([timePeriod isEqualToString:pickerData[1]]) { // this week: from Monday to Sunday
+            formatter.dateFormat = @"c";
+            int dayOfWeek = [[formatter stringFromDate:today] intValue];// 7 for Saturday
+            
+            formatter.dateFormat = DATE_FORMATTER_IN_DB;
+            // from date
+            NSTimeInterval timeInterval = -1 * (60 * 60 * 24) * (dayOfWeek == 1 ? 7 : (dayOfWeek - 2));
+            date = [today dateByAddingTimeInterval:timeInterval];
+            fromDate = [formatter stringFromDate:date];
+            
+            // to date
+            timeInterval = 60 * 60 * 24 * 6; // 7 days include [from date]
+            date = [date dateByAddingTimeInterval:timeInterval];
+            toDate = [formatter stringFromDate:date];
+            
+        } else if ([timePeriod isEqualToString:pickerData[2]]) { // this month
+            formatter.dateFormat = @"YYYY-MM";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-31", temp];
+            
+        } else if ([timePeriod isEqualToString:pickerData[3]]) { // last month
+            NSTimeInterval timeInterval = -1 * (60 * 60 * 24) * 30;
+            today = [today dateByAddingTimeInterval:timeInterval];
+            
+            formatter.dateFormat = @"YYYY-MM";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-31", temp];
+            
+        } else if ([timePeriod isEqualToString:pickerData[4]]) { // this year
+            formatter.dateFormat = @"YYYY";
+            NSString *temp = [formatter stringFromDate:today];
+            
+            fromDate = [NSString stringWithFormat:@"%@-01-01", temp];
+            toDate = [NSString stringWithFormat:@"%@-12-31", temp];
+        }
+    }
+    
+    [self getBudgetsFromDate:fromDate toDate:toDate];
 }
 
 #pragma mark - Table view data source
@@ -34,60 +130,87 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _budgetData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RMProgressCell *cell = (RMProgressCell*)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSDictionary *cellData = (NSDictionary*) [_budgetData objectAtIndex:indexPath.row];
+    NSString *budgetValue = [NSString stringWithFormat:@"%@ %.2f", currency, [[cellData valueForKey:@"budget"] floatValue]];
+    
     [cell setProgressValue:indexPath.row + 1 maxValue:10.0];
+    [cell setCurrencySymbol:currency];
+    [cell setCategoryName:[cellData valueForKey:@"categoryName"]];
+    [cell setBudgetValue: budgetValue];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark- PickerView
+
+- (NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
+    return pickerData.count;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (NSString *)czpickerView:(CZPickerView *)pickerView titleForRow:(NSInteger)row {
+    return pickerData[row];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+    [self.rangeButton setTitle:pickerData[row] forState:UIControlStateNormal];
+    _fromDate = nil;
+    _toDate = nil;
+    
+    if ([pickerData[row] isEqualToString:@"Custome"]) {
+        [self showCalendar];
+        
+    } else {
+        [self getBudgetsByTimePeriod:pickerData[row]];
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void) showPicker {
+    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"Select Date Range" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Select" mainColor:RM_COLOR];
+    picker.delegate = self;
+    picker.dataSource = self;
+    picker.needFooterView = NO;
+    [picker show];
 }
-*/
 
-/*
-#pragma mark - Navigation
+#pragma mark- Calendar
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) showCalendar {
+    RMCalendar *calendar = [[RMCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
+    calendar.delegate = self;
+    [calendar show];
 }
-*/
 
+- (void)RMCalendar:(RMCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MMM yyyy"];
+    
+    if (_fromDate == nil) {
+        calendar.titleView.text = [NSString stringWithFormat:@"%@ => ...", [formatter stringFromDate:selectedDate]];
+        [calendar.confirmButton setTitle:@"Confirm" forState:UIControlStateNormal];
+        _fromDate = selectedDate;
+        
+    } else {
+        _toDate = selectedDate;
+        [calendar hide];
+        
+        [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
+                      forState:UIControlStateNormal];
+        
+        [formatter setDateFormat:DATE_FORMATTER_IN_DB];
+        [self getBudgetsFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
+    }
+}
+
+#pragma mark- Actions
+
+- (IBAction)ontouchSelectRange:(id)sender {
+    [self showPicker];
+}
 @end

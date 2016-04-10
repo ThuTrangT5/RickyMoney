@@ -29,10 +29,12 @@
     progressView.delegate = self;
     progressView.dataSource = self;
 }
+//
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    [super setSelected:selected animated:animated];
+//}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
+#pragma mark- Actions
 
 - (void) setProgressValue:(float) currentValue maxValue:(float) maxValue {
     progressValue = currentValue;
@@ -46,6 +48,17 @@
     }];
 }
 
+- (void) setCategoryName:(NSString*) category {
+    UILabel *label = (UILabel*)[self viewWithTag:2];
+    [label setText:category];
+}
+
+- (void) setBudgetValue:(NSString*) budget {
+    UILabel *label = (UILabel*)[self viewWithTag:3];
+    [label setText:budget];
+}
+
+
 #pragma mark- ASProgressPopUpView
 
 - (void)progressViewWillDisplayPopUpView:(ASProgressPopUpView *)progressView {
@@ -53,7 +66,12 @@
 }
 
 - (NSString *)progressView:(ASProgressPopUpView *)progressView stringForProgress:(float)progress {
-    return [NSString stringWithFormat:@"$  %.2f", progressValue];
+    NSString *text = [NSString stringWithFormat:@" %.2f ", progressValue];
+    if (_currencySymbol != nil) {
+        text = [_currencySymbol stringByAppendingString:text];
+    }
+    
+    return text;
 }
 
 - (BOOL)progressViewShouldPreCalculatePopUpViewSize:(ASProgressPopUpView *)progressView;{
@@ -67,7 +85,7 @@
     ASProgressPopUpView *progressView = (ASProgressPopUpView*) [self viewWithTag:1];
     float progress = progressView.progress;
     if (progress < (progressValue / maxProgressValue)) {
-        progress += progressValue / 5.0;
+        progress += (progressValue / maxProgressValue) / 5.0;
         [progressView setProgress:progress animated: YES];
         
         [NSTimer scheduledTimerWithTimeInterval: TIME_INTERVAL

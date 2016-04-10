@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Objects/RMObjects.h"
+#import "RMObjects.h"
 #import "RMConstant.h"
 
 @interface RMDataManagement : NSObject
@@ -36,10 +36,10 @@
 - (BOOL) deleteTransaction:(NSString*) transactionId;
 - (NSArray*) getTransactionsByPage:(int) page category:(NSString*) categoryId type:(TransactionType) type;
 - (Transaction*) getTransactionDetail:(NSString*) transactionId;
+- (NSArray*) reviewTransactionFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 
-- (NSArray*) getAllBudget;
+- (NSArray*) getAllBudgetsFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 - (BOOL) createNewBudget:(float) budget forCategory:(NSString*) categoryId withDateUnit:(NSString*) dateUnit;
 
-- (NSArray*) reviewTransactionFromDate:(NSString*)fromDate toDate:(NSString*) toDate;
 
 @end
