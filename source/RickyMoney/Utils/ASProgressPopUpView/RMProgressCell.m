@@ -98,12 +98,6 @@
         if (progress > 1) {
             progress = 1;
         }
-//        [progressView setProgress:progress animated: YES];
-//        if (progress < 0.35) {
-//             progressView.popUpViewAnimatedColors = @[[UIColor greenColor]];
-//        } else if (progress > 0.8) {
-//             progressView.popUpViewAnimatedColors = @[[UIColor redColor]];
-//        }
         [progressView showPopUpViewAnimated: YES];
     }
 }

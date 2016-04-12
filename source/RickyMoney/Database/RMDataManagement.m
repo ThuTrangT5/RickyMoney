@@ -9,7 +9,6 @@
 #import "RMDataManagement.h"
 #import <sqlite3.h>
 
-
 static RMDataManagement *sharedInstance = nil;
 static sqlite3 *database = nil;
 static sqlite3_stmt *statement = nil;
@@ -183,6 +182,16 @@ static sqlite3_stmt *statement = nil;
 + (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
     NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:data];
+}
+
+#pragma mark- MESSAGE
+
++ (void) showMessage:(NSString*) message withTitle:(NSString*) title {
+   
+    
+//    [alert add]
+    //[[UNAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
 }
 
 #pragma mark- USER
@@ -808,7 +817,7 @@ static sqlite3_stmt *statement = nil;
         //BUDGET (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
         // CATEGORY: (objectId text primary key, vnName text, enName text, icon text)"
         
-        NSString *query = @"select A.*, B.enName from %@ as B LEFT OUTER JOIN %@ as A ON A.categoryId = B.objectId where A.userId = \"%@\"";
+        NSString *query = @"select A.*, B.enName, B.icon from %@ as B LEFT OUTER JOIN %@ as A ON A.categoryId = B.objectId where A.userId = \"%@\"";
         query = [NSString stringWithFormat:query, CATEGORY_TABLE_NAME, BUDGET_TABLE_NAME, [self getCurrentUserId]];
         
         NSMutableArray *results = [[NSMutableArray alloc] init];
@@ -820,12 +829,14 @@ static sqlite3_stmt *statement = nil;
                 const char *catId = (const char*) sqlite3_column_text(statement, 1);
                 float budget =  sqlite3_column_double(statement, 2);
                 const char *catName = (const char*) sqlite3_column_text(statement, 3);
+                const char *catIcon = (const char*) sqlite3_column_text(statement, 4);
                 
                 Budget *object = [[Budget alloc] init];
                 object.userId = (userId == nil) ? nil :[NSString stringWithUTF8String:userId];
                 object.categoryId = (catId == nil) ? nil :[NSString stringWithUTF8String:catId];
                 object.budget =  budget;
                 object.categoryName = (catName == nil) ? nil :[NSString stringWithUTF8String:catName];
+                object.categoryIcon = (catIcon == nil) ? nil :[NSString stringWithUTF8String:catIcon];
                 
                 [results addObject:object];
             }

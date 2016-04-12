@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RMBudgetEditViewController : UITableViewController
+@interface RMBudgetEditViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSMutableArray *budgetData;
+@property (strong, nonatomic) NSMutableDictionary *budgetUpdatedData;
 
 - (IBAction)ontouchSave:(id)sender;
 

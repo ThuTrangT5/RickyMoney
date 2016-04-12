@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DGActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,22 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Parse.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-RickyMoney.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>THPinViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>UNAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,27 +27,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A2564988BF4988E86FBF82EDCBC2149</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>55E1FC5384A0D61D863E5C9D6FFF406C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>87DE974A8397FF450BEAB6A65C76DB8B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BA2E829196619A49792ADA3C5BB6354B</key>
+		<key>AE0CBE76C4F9564CFE8E3FBE0F64F016</key>
 		<dict>
 			<key>primary</key>
 			<true/>

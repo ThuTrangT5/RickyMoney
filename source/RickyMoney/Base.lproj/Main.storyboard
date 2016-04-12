@@ -1280,28 +1280,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="fPh-Ai-tWr" detailTextLabel="8Ks-D0-68c" style="IBUITableViewCellStyleValue1" id="QNv-47-N2f">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="QNv-47-N2f">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QNv-47-N2f" id="ez6-AL-fRN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fPh-Ai-tWr">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="2" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K13-HM-KrS">
+                                            <rect key="frame" x="43" y="0.0" width="144" height="43.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MiZ-ox-eAk">
+                                            <rect key="frame" x="10" y="9.5" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="bQt-Xt-Ena"/>
+                                                <constraint firstAttribute="width" constant="25" id="vpA-9A-ueL"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="budget" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPe-wS-b5S">
+                                            <rect key="frame" x="212" y="0.0" width="108" height="43.5"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUZ-Ck-sjj">
+                                            <rect key="frame" x="187" y="0.0" width="25" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="Ntm-f4-ZDB"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Ks-D0-68c">
-                                            <rect key="frame" x="263.5" y="12" width="41.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tUZ-Ck-sjj" firstAttribute="leading" secondItem="K13-HM-KrS" secondAttribute="trailing" id="05E-Xj-Iec"/>
+                                        <constraint firstItem="K13-HM-KrS" firstAttribute="leading" secondItem="MiZ-ox-eAk" secondAttribute="trailing" constant="8" id="0ZX-EO-rAv"/>
+                                        <constraint firstItem="MiZ-ox-eAk" firstAttribute="leading" secondItem="ez6-AL-fRN" secondAttribute="leading" constant="10" id="4ZW-bQ-9Fb"/>
+                                        <constraint firstAttribute="bottom" secondItem="OPe-wS-b5S" secondAttribute="bottom" id="8bw-F0-nkq"/>
+                                        <constraint firstItem="OPe-wS-b5S" firstAttribute="leading" secondItem="tUZ-Ck-sjj" secondAttribute="trailing" id="B1J-0I-iQY"/>
+                                        <constraint firstItem="OPe-wS-b5S" firstAttribute="top" secondItem="ez6-AL-fRN" secondAttribute="top" id="JBo-AU-8Ui"/>
+                                        <constraint firstAttribute="trailing" secondItem="OPe-wS-b5S" secondAttribute="trailing" id="TdA-85-cb7"/>
+                                        <constraint firstAttribute="bottom" secondItem="K13-HM-KrS" secondAttribute="bottom" id="a6R-px-flj"/>
+                                        <constraint firstItem="K13-HM-KrS" firstAttribute="top" secondItem="ez6-AL-fRN" secondAttribute="top" id="dxH-cn-avi"/>
+                                        <constraint firstItem="MiZ-ox-eAk" firstAttribute="centerY" secondItem="ez6-AL-fRN" secondAttribute="centerY" id="geT-y1-Kxd"/>
+                                        <constraint firstItem="tUZ-Ck-sjj" firstAttribute="top" secondItem="ez6-AL-fRN" secondAttribute="top" id="pN9-wr-vH5"/>
+                                        <constraint firstItem="K13-HM-KrS" firstAttribute="width" secondItem="ez6-AL-fRN" secondAttribute="width" multiplier="0.45" id="uUb-ZP-XSP"/>
+                                        <constraint firstAttribute="bottom" secondItem="tUZ-Ck-sjj" secondAttribute="bottom" id="z5S-tn-LgE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

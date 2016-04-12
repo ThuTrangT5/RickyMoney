@@ -40,6 +40,7 @@
 		6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */; };
 		6A22EE9F1CB166B8002B72FC /* RMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */; };
 		6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */; };
+		6A9FD9CB1CBC08530068C747 /* TTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9FD9CA1CBC08530068C747 /* TTAlertView.m */; };
 		6AA88BE71CB50ABC00EB4D6A /* RMModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88BE51CB50ABC00EB4D6A /* RMModel.xcdatamodeld */; };
 		6AA88C251CB79DDF00EB4D6A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C241CB79DDF00EB4D6A /* User.m */; };
 		6AA88C2A1CB79E3000EB4D6A /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA88C291CB79E3000EB4D6A /* Transaction.m */; };
@@ -177,6 +178,8 @@
 		6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMChangePasswordViewController.m; sourceTree = "<group>"; };
 		6A78DB821C7DFDB20088C36C /* RMPassCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPassCodeButton.h; sourceTree = "<group>"; };
 		6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPassCodeButton.m; sourceTree = "<group>"; };
+		6A9FD9C91CBC08530068C747 /* TTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTAlertView.h; sourceTree = "<group>"; };
+		6A9FD9CA1CBC08530068C747 /* TTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTAlertView.m; sourceTree = "<group>"; };
 		6AA88BE61CB50ABC00EB4D6A /* RMModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RMModel.xcdatamodel; sourceTree = "<group>"; };
 		6AA88C231CB79DDF00EB4D6A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		6AA88C241CB79DDF00EB4D6A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -366,6 +369,7 @@
 		18CAE9641B9B4C4F00E0185D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6A9FD9C81CBC08000068C747 /* TTAlertView */,
 				6AA88C791CBA241100EB4D6A /* ASProgressPopUpView */,
 				6A78DB811C7DFD8C0088C36C /* TTPassCode */,
 				6A1BD9351C43927400DA7A85 /* RMCalendar */,
@@ -492,6 +496,15 @@
 				6A78DB831C7DFDB20088C36C /* RMPassCodeButton.m */,
 			);
 			path = TTPassCode;
+			sourceTree = "<group>";
+		};
+		6A9FD9C81CBC08000068C747 /* TTAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				6A9FD9C91CBC08530068C747 /* TTAlertView.h */,
+				6A9FD9CA1CBC08530068C747 /* TTAlertView.m */,
+			);
+			path = TTAlertView;
 			sourceTree = "<group>";
 		};
 		6AA88BE41CB50ABC00EB4D6A /* CoreData */ = {
@@ -826,6 +839,7 @@
 				6AC020481C4CDEF6001A1DCA /* MDRotatingPieChartDataSource.swift in Sources */,
 				1823D41F1B8E140D005AC56B /* AppDelegate.m in Sources */,
 				6A22EE9F1CB166B8002B72FC /* RMChangePasswordViewController.m in Sources */,
+				6A9FD9CB1CBC08530068C747 /* TTAlertView.m in Sources */,
 				6AA88C7F1CBA241100EB4D6A /* ASProgressPopUpView.m in Sources */,
 				6A78DB841C7DFDB20088C36C /* RMPassCodeButton.m in Sources */,
 				1823D41C1B8E140D005AC56B /* main.m in Sources */,

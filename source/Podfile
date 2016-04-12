@@ -5,9 +5,6 @@ use_frameworks!
 target 'RickyMoney' do
     
 pod 'DGActivityIndicatorView'
-pod 'Parse'
 pod 'LMDropdownView'
-pod 'THPinViewController'
-pod 'UNAlertView'
 
 end

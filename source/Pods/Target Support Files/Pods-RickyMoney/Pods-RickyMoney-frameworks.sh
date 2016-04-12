@@ -84,18 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-RickyMoney/Bolts.framework"
   install_framework "Pods-RickyMoney/DGActivityIndicatorView.framework"
   install_framework "Pods-RickyMoney/LMDropdownView.framework"
-  install_framework "Pods-RickyMoney/Parse.framework"
-  install_framework "Pods-RickyMoney/THPinViewController.framework"
-  install_framework "Pods-RickyMoney/UNAlertView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-RickyMoney/Bolts.framework"
   install_framework "Pods-RickyMoney/DGActivityIndicatorView.framework"
   install_framework "Pods-RickyMoney/LMDropdownView.framework"
-  install_framework "Pods-RickyMoney/Parse.framework"
-  install_framework "Pods-RickyMoney/THPinViewController.framework"
-  install_framework "Pods-RickyMoney/UNAlertView.framework"
 fi

@@ -12,7 +12,7 @@
 // (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
 
 @property (strong, nonatomic) NSString *userId;
-@property (strong, nonatomic) NSString *categoryId, *categoryName;
+@property (strong, nonatomic) NSString *categoryId, *categoryName, *categoryIcon;
 @property (nonatomic) float budget;
 
 @end
