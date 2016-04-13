@@ -761,13 +761,15 @@ static sqlite3_stmt *statement = nil;
         }
         //@"create table if not exists %@ (objectId text primary key, userId text, categoryId text, budget real, dateUnit
         
-        NSString *query = @"select sum(A.amount), B.enName, C.budget from %@ as A, %@ as B, %@ as C ";
-        query = [query stringByAppendingString:@" where A.categoryId = B.objectId and A.userId = C.userId and C.categoryId = B.objectId"];
-        query = [query stringByAppendingString: @" and A.userId = \"%@\"  and A.date >= \"%@\" and A.date <= \"%@\" and type = 0 "];
-        query = [query stringByAppendingString: @" group by A.categoryId"];
-        query = [query stringByAppendingString: @" order by B.enName"];
+        NSString *userId = [self getCurrentUserId];
+        NSString *query = @"select C.enName, C.expense, D.budget from";
+        query = [query stringByAppendingString:@" (select A.objectId, A.enName, sum(B.amount) as expense from %@ as A INNER JOIN %@ as B ON A.objectId = B.categoryId"];
+        query = [query stringByAppendingString:@" where B.userId = \"%@\"  and B.date >= \"%@\" and B.date <= \"%@\" and B.type = 0"];
+        query = [query stringByAppendingString:@" group by A.objectId, A.enName) as C LEFT OUTER JOIN"];
+        query = [query stringByAppendingString:@" (select * from %@ where userId = \"%@\" ) as D"];
+        query = [query stringByAppendingString:@" ON C.objectId = D.categoryId"];
         
-        query = [NSString stringWithFormat:query, TRANSACTION_TABLE_NAME, CATEGORY_TABLE_NAME, BUDGET_TABLE_NAME, [self getCurrentUserId], fromDate, toDate];
+        query = [NSString stringWithFormat:query, CATEGORY_TABLE_NAME, TRANSACTION_TABLE_NAME, userId, fromDate, toDate, BUDGET_TABLE_NAME, userId];
         
         NSMutableArray *results = [[NSMutableArray alloc] init];
         
@@ -778,8 +780,8 @@ static sqlite3_stmt *statement = nil;
                 float val = (float) sqlite3_column_double(statement, 2);
                 val = val / 30.0 * days;
                 
-                NSString *expense = [NSString stringWithFormat:@"%.2f", (float) sqlite3_column_double(statement, 0)];
-                NSString *categoryName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                NSString *categoryName = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(statement, 0)];
+                NSString *expense = [NSString stringWithFormat:@"%.2f", (float) sqlite3_column_double(statement, 1)];
                 NSString *budget = [NSString stringWithFormat:@"%.2f", val];
                 
                 NSDictionary *record = [[NSDictionary alloc] initWithObjectsAndKeys:
