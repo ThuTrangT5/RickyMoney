@@ -49,6 +49,8 @@ static sqlite3_stmt *statement = nil;
         [self createCategoryData];
         [self createCurrencyData];
     }
+    
+//    [self deleteTable:BUDGET_TABLE_NAME];
 
     return isSuccess;
 }
@@ -108,6 +110,18 @@ static sqlite3_stmt *statement = nil;
         char * errMsg;
         if (sqlite3_exec(database, [createQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
             NSLog(@"Failed to create BUDGET table: %s", errMsg);
+        }
+        sqlite3_close(database);
+    }
+}
+
+- (void) deleteTable:(NSString*) tableName {
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        NSString *createQuery = [NSString stringWithFormat: @"Delete from %@", tableName];
+        char * errMsg;
+        if (sqlite3_exec(database, [createQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+            NSLog(@"Failed to Delete table[%@]: %s", tableName, errMsg);
         }
         sqlite3_close(database);
     }
@@ -814,10 +828,14 @@ static sqlite3_stmt *statement = nil;
 
 - (NSArray*) getAllBudgetsForEdit {
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-        //BUDGET (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
+        // BUDGET (userId text, categoryId text, budget real, PRIMARY KEY (userId, categoryId))
         // CATEGORY: (objectId text primary key, vnName text, enName text, icon text)"
         
-        NSString *query = @"select A.*, B.enName, B.icon from %@ as B LEFT OUTER JOIN %@ as A ON A.categoryId = B.objectId where A.userId = \"%@\"";
+        NSString *query = @"select A.objectId, A.enName, a.icon, C.userId, C.budget from %@ as A LEFT OUTER JOIN";
+        query = [query stringByAppendingString:@" (select budget, userId, categoryId from %@ as B where B.userId = \"%@\") as C"];
+        query = [query stringByAppendingString:@" ON A.objectId = C.categoryId"];
+        query = [query stringByAppendingString:@" order by A.enName"];
+        
         query = [NSString stringWithFormat:query, CATEGORY_TABLE_NAME, BUDGET_TABLE_NAME, [self getCurrentUserId]];
         
         NSMutableArray *results = [[NSMutableArray alloc] init];
@@ -825,11 +843,11 @@ static sqlite3_stmt *statement = nil;
         int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
         if(rc == SQLITE_OK){
             while (sqlite3_step(statement) == SQLITE_ROW) {
-                const char *userId = (const char*) sqlite3_column_text(statement, 0);
-                const char *catId = (const char*) sqlite3_column_text(statement, 1);
-                float budget =  sqlite3_column_double(statement, 2);
-                const char *catName = (const char*) sqlite3_column_text(statement, 3);
-                const char *catIcon = (const char*) sqlite3_column_text(statement, 4);
+                const char *catId = (const char*) sqlite3_column_text(statement, 0);
+                const char *catName = (const char*) sqlite3_column_text(statement, 1);
+                const char *catIcon = (const char*) sqlite3_column_text(statement, 2);
+                const char *userId = (const char*) sqlite3_column_text(statement, 3);
+                float budget =  sqlite3_column_double(statement, 4);
                 
                 Budget *object = [[Budget alloc] init];
                 object.userId = (userId == nil) ? nil :[NSString stringWithUTF8String:userId];

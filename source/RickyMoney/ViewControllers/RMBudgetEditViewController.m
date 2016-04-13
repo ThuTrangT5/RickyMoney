@@ -144,7 +144,7 @@
                                           }
                                           completion:^(BOOL finished) {
                                               textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
-                                              textField.textColor = [UIColor lightGrayColor];
+                                              textField.textColor = [UIColor blackColor];
                                           }];
                      }];
 }
