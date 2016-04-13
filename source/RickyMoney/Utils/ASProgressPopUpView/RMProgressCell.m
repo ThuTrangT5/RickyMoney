@@ -98,6 +98,7 @@
         if (progress > 1) {
             progress = 1;
         }
+        [progressView setProgress:progress animated: YES];
         [progressView showPopUpViewAnimated: YES];
     }
 }
