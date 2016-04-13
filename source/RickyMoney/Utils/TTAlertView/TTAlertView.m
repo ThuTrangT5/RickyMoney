@@ -17,10 +17,12 @@
 @property (strong, nonatomic) UIView *contentView;
 
 @property (strong, nonatomic) UILabel *titleField;
-@property (strong, nonatomic) UILabel *messageField;
+@property (strong, nonatomic) UITextView *messageField;
 @property (strong, nonatomic) UIButton *cancelButton;
 
 @end
+
+#define TT_BACKGROUND_ALPHA 0.9
 
 @implementation TTAlertView
 
@@ -87,6 +89,11 @@
         [_contentView addSubview:_titleField];
     }
     
+    if (_messageField == nil) {
+        _messageField = [self createMessageView];
+        [_contentView addSubview:_messageField];
+    }
+    
     if (_cancelButton == nil) {
         _cancelButton = [self createCancelButton];
         [_contentView addSubview:_cancelButton];
@@ -96,7 +103,7 @@
     [_titleField setText:_titleAlert];
     [_messageField setText:_messageAlert];\
     [_cancelButton setTitle:_cancelButtonTitle forState:UIControlStateNormal];
-
+    
 }
 
 - (UIView *)createBackgroundDimmingView{
@@ -121,13 +128,11 @@
 }
 
 - (UIView*) createContentView {
-    CGAffineTransform transform = CGAffineTransformMake(0.88, 0, 0, 0.55, 0, 0);
+    CGAffineTransform transform = CGAffineTransformMake(0.88, 0, 0, 0.25, 0, 0);
     CGRect newRect = CGRectApplyAffineTransform(self.frame, transform);
     UIView *cv = [[UIView alloc] initWithFrame:newRect];
     [cv setBackgroundColor:[UIColor whiteColor]];
     [cv.layer setCornerRadius:10.0f];
-    [cv.layer setBorderWidth:1.0f];
-    [cv.layer setBorderColor:_mainColor.CGColor];
     [cv.layer setMasksToBounds:YES];
     
     return cv;
@@ -140,19 +145,18 @@
     tv.textAlignment = NSTextAlignmentCenter;
     tv.font = [UIFont systemFontOfSize:18.0];
     tv.textColor = _mainColor;
-//    tv.backgroundColor = _mainColor;
     
     return tv;
 }
 
-- (UILabel*) createMessageView {
+- (UITextView*) createMessageView {
     CGRect frame = _contentView.bounds;
-    frame.size.height = 50;
+    frame.size.height -= (50 + 50);
     frame.origin.y = 50;
-    UILabel *mv = [[UILabel alloc] initWithFrame:frame];
+    UITextView *mv = [[UITextView alloc] initWithFrame:frame];
     mv.textAlignment = NSTextAlignmentCenter;
-    mv.font = [UIFont systemFontOfSize:18.0];
-    mv.textColor = _mainColor;
+    mv.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
+    mv.editable = NO;
     
     return mv;
 }
@@ -161,23 +165,43 @@
     CGRect frame = _contentView.bounds;
     frame.origin.y = frame.size.height - 50;
     frame.size.height = 50;
-    frame.size.width = frame.size.width / 2.0f;
     
     UIButton *cancel = [[UIButton alloc] initWithFrame:frame];
-    [cancel setTitleColor:_mainColor forState:UIControlStateNormal];
-    [cancel.layer setBorderWidth:1.0f];
-    [cancel.layer setBorderColor:_mainColor.CGColor];
+    [cancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancel setBackgroundColor:_mainColor];
     
     [cancel addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
     
     return cancel;
 }
 
-
 #pragma mark- Actions
 
 - (void)show {
+    // add to current top view controller
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    self.frame = mainWindow.frame;
     
+    [mainWindow addSubview:self];
+    [self setupUI];
+    
+    
+    // start animation
+    self.contentView.center = CGPointMake(self.center.x, self.center.y + self.frame.size.height);
+    [self performContainerAnimation];
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.backgroundDimmingView.alpha = TT_BACKGROUND_ALPHA;
+    }];
+}
+
+- (void)performContainerAnimation {
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7f initialSpringVelocity:3.0f options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+        self.contentView.center = self.center;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void) dismissAlertView {
