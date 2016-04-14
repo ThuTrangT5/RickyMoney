@@ -10,7 +10,7 @@
 #import "RMConstant.h"
 
 @implementation TTCalendar {
-    NSDate *_dateSelected, *_previousSelected;
+    NSDate *_dateSelected, *_fromDate, *_toDate;
     __weak IBOutlet UIView *contentView;
 }
 
@@ -26,15 +26,21 @@
 //    return self;
 //}
 
+- (instancetype)init {
+    self = [self initializeSubviews];
+    [contentView.layer setCornerRadius:10.0f];
+    [contentView.layer setMasksToBounds:YES];
+    contentView.center = CGPointMake(self.center.x, self.center.y + self.frame.size.height);
+    
+    return self;
+}
+
 - (instancetype) initCalendarWithTitle:(NSString*)  title andConfirmButton:(NSString*) buttonTitle {
     self = [super init];
     
     if (self) {
         self = [self initializeSubviews];
     }
-    
-    _titleView.text = title;
-    [_confirmButton setTitle:buttonTitle forState:UIControlStateNormal];
     
     return self;
 }
@@ -62,17 +68,9 @@
     
     _calendarMenuView.scrollView.scrollEnabled = NO; // Scroll not supported with JTVerticalCalendarView
 }
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 #pragma mark- JTCalendar delegate
-// Exemple of implementation of prepareDayView method
-// Used to customize the appearance of dayView
+
 - (void)calendar:(JTCalendarManager *)calendar prepareDayView:(JTCalendarDayView *)dayView
 {
     dayView.hidden = NO;
@@ -81,8 +79,8 @@
     if([dayView isFromAnotherMonth]){
         dayView.hidden = YES;
     }
-    // previous selected date
-    else if (_previousSelected && [_calendarManager.dateHelper date:_previousSelected isTheSameDayThan:dayView.date]){
+    // from date
+    else if (_fromDate && [_calendarManager.dateHelper date:_fromDate isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
         dayView.circleView.backgroundColor = [UIColor blueColor];
         dayView.dotView.backgroundColor = [UIColor whiteColor];
@@ -140,6 +138,18 @@
             [_calendarContentView loadPreviousPageWithAnimation];
         }
     }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MMM yyyy"];
+    NSString *dateString = [formatter stringFromDate:_dateSelected];
+    
+    if (_fromDate == nil) {
+        _titleViewLeft.text = [NSString stringWithFormat:@"From date\n%@", dateString];
+        
+    } else {
+        _titleViewRight.text = [NSString stringWithFormat:@"To date\n%@", dateString];
+    }
+    
 }
 
 #pragma mark- Actions
@@ -153,9 +163,7 @@
         [self initCalendar];
     }
     
-    CGRect frame = contentView.frame;
-    frame.origin.y = self.frame.size.height;
-    contentView.frame = frame;
+    contentView.center = CGPointMake(self.center.x, self.center.y + self.frame.size.height);
     
     [UIView animateWithDuration:TTCalendarAnimationDuration
                           delay:0
@@ -166,14 +174,8 @@
                          contentView.center = self.center;
                          NSLog(@"Main View = %@", NSStringFromCGRect(self.frame));
                          NSLog(@"contentView.frame = %@", NSStringFromCGRect(contentView.frame));
-                     } completion:^(BOOL finished) {
-                         
-                     }];
-    
-    
-    //    [UIView animateWithDuration:0.3f animations:^{
-    //        contentView.alpha = 1.0f;
-    //    }];
+                     } completion:^(BOOL finished) {}
+     ];
 }
 
 - (void) hide {
@@ -199,13 +201,21 @@
 
 - (IBAction)ontouchConfirm:(id)sender {
     if (_dateSelected != nil) {
-        _previousSelected = _dateSelected;
-        [_calendarManager reload];
         
-        // call delegate of TTCalendar
-        [self.delegate TTCalendar:self didSelectDate:_dateSelected];
+        if (_fromDate == nil) {
+            _fromDate = _dateSelected;
+            [_calendarManager reload];
+            
+        } else {
+            _toDate = _dateSelected;
+            
+            [self.delegate TTCalendarDidSelectWithFromDate:_fromDate toDate:_toDate];
+            [self hide];
+        }
     }
 }
 
-
+- (IBAction)ontouchCancel:(id)sender {
+    [self hide];
+}
 @end

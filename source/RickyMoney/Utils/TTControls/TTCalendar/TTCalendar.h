@@ -13,7 +13,7 @@
 
 @protocol TTCalendarDelegate <NSObject>
 @optional
-- (void) TTCalendar:(TTCalendar*) calendar didSelectDate:(NSDate*) selectedDate;
+- (void) TTCalendarDidSelectWithFromDate:(NSDate *) fromDate toDate:(NSDate*) toDate;
 @end
 
 
@@ -23,13 +23,13 @@
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
 @property (weak, nonatomic) IBOutlet JTVerticalCalendarView *calendarContentView;
-@property (weak, nonatomic) IBOutlet UILabel *titleView;
-@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleViewLeft;
+@property (weak, nonatomic) IBOutlet UILabel *titleViewRight;
 
 // delegate
 @property (nonatomic, weak) id<TTCalendarDelegate> delegate;
 
-- (instancetype) initCalendarWithTitle:(NSString*)  title andConfirmButton:(NSString*) buttonTitle;
+//- (instancetype) initCalendarWithTitle:(NSString*)  title andConfirmButton:(NSString*) buttonTitle;
 
 - (void) show;
 - (void) hide;

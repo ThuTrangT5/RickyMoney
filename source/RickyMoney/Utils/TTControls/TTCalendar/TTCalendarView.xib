@@ -12,29 +12,40 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="QIM-Bo-iJ1">
-                    <rect key="frame" x="40" y="173" width="295" height="320"/>
+                    <rect key="frame" x="40" y="173" width="295" height="332"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="Gya-rS-scH" customClass="JTCalendarMenuView">
                             <rect key="frame" x="0.0" y="41" width="295" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LoA-or-cOl">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="42"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LoA-or-cOl">
+                            <rect key="frame" x="0.0" y="0.0" width="148" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Llo-I8-QWV">
+                            <rect key="frame" x="147" y="0.0" width="148" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gtX-uJ-Zfd">
-                            <rect key="frame" x="0.0" y="290" width="295" height="30"/>
+                            <rect key="frame" x="0.0" y="290" width="148" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Confirm">
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Cancel">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="ontouchConfirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="KCo-2t-oRm"/>
+                                <action selector="ontouchCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="Li1-kX-Qbg"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" id="XnT-9Z-mVW" customClass="JTVerticalCalendarView">
@@ -42,6 +53,18 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6D7-yV-4RT">
+                            <rect key="frame" x="147" y="290" width="148" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.76078431369999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <state key="normal" title="Confirm">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ontouchConfirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="ROE-pz-oHX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -51,11 +74,11 @@
             <connections>
                 <outlet property="calendarContentView" destination="XnT-9Z-mVW" id="8OM-5B-HiN"/>
                 <outlet property="calendarMenuView" destination="Gya-rS-scH" id="gBY-N0-OPJ"/>
-                <outlet property="confirmButton" destination="gtX-uJ-Zfd" id="NkY-5u-ZNz"/>
                 <outlet property="contentView" destination="QIM-Bo-iJ1" id="Aw7-97-vUI"/>
-                <outlet property="titleView" destination="LoA-or-cOl" id="Bkr-yR-8v4"/>
+                <outlet property="titleViewLeft" destination="LoA-or-cOl" id="ptF-Xq-GIp"/>
+                <outlet property="titleViewRight" destination="Llo-I8-QWV" id="SwT-mJ-gos"/>
             </connections>
-            <point key="canvasLocation" x="210" y="417"/>
+            <point key="canvasLocation" x="209.5" y="416.5"/>
         </view>
     </objects>
 </document>

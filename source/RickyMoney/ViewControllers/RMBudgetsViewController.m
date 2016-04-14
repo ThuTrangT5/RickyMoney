@@ -158,7 +158,6 @@
 }
 
 - (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
-    [self.rangeButton setTitle:pickerData[row] forState:UIControlStateNormal];
     _fromDate = nil;
     _toDate = nil;
     
@@ -166,6 +165,7 @@
         [self showCalendar];
         
     } else {
+        [self.rangeButton setTitle:pickerData[row] forState:UIControlStateNormal];
         [self getBudgetsByTimePeriod:pickerData[row]];
     }
 }
@@ -181,31 +181,22 @@
 #pragma mark- Calendar
 
 - (void) showCalendar {
-    TTCalendar *calendar = [[TTCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
+    TTCalendar *calendar = [[TTCalendar alloc]init];
     calendar.delegate = self;
     [calendar show];
 }
 
-- (void)TTCalendar:(TTCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
+- (void)TTCalendarDidSelectWithFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
+    _fromDate = fromDate;
+    _toDate = toDate;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd MMM yyyy"];
+    formatter.dateFormat = @"dd MMM yyyy";
+    [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
+                  forState:UIControlStateNormal];
     
-    if (_fromDate == nil) {
-        calendar.titleView.text = [NSString stringWithFormat:@"%@ => ...", [formatter stringFromDate:selectedDate]];
-        [calendar.confirmButton setTitle:@"Confirm" forState:UIControlStateNormal];
-        _fromDate = selectedDate;
-        
-    } else {
-        _toDate = selectedDate;
-        [calendar hide];
-        
-        [_rangeButton setTitle:[NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:_fromDate], [formatter stringFromDate:_toDate]]
-                      forState:UIControlStateNormal];
-        
-        [formatter setDateFormat:DATE_FORMATTER_IN_DB];
-        [self getBudgetsFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
-    }
+    [formatter setDateFormat:DATE_FORMATTER_IN_DB];
+    [self getBudgetsFromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate]];
 }
 
 #pragma mark- Actions
