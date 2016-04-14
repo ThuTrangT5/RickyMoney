@@ -11,7 +11,7 @@
 #import "RickyMoney-Swift.h"
 #import "RMDataManagement.h"
 
-#define Y_OFFSET 55
+#define Y_OFFSET 155
 
 @implementation RMChangePasswordViewController {
     float yBeforeMoveUp;
@@ -109,7 +109,7 @@
         
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.view.frame;
-            frame.origin.y -= Y_OFFSET;
+            frame.origin.y = - (currentFocusTextField.frame.origin.y - Y_OFFSET);
             self.view.frame = frame;
         }];
     }

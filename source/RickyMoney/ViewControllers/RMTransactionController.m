@@ -11,6 +11,7 @@
 
 #import "RMDataManagement.h"
 #import "RMObjects.h"
+#import "MDTableViewCell.h"
 
 #define DATE_FORMAT_STRING @"EEE, MMM dd yyyy"
 
@@ -95,7 +96,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"transactionCell"];
+    MDTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"transactionCell"];
     
     // UI
     UIView *amountView = [cell viewWithTag:1];
@@ -121,13 +122,20 @@
         [self getTransactionsByPage:currentPage + 1];
     }
     
+    cell.rippleColor = RM_COLOR;
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    selectedIndexPath = indexPath;
-    NSString *transactionId = [(Transaction*)_transactions[indexPath.row] objectId];
-    [self performSegueWithIdentifier:@"transactionDetail" sender:transactionId];
+    double delayInSeconds = 0.35;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        selectedIndexPath = indexPath;
+        NSString *transactionId = [(Transaction*)_transactions[indexPath.row] objectId];
+        [self performSegueWithIdentifier:@"transactionDetail" sender:transactionId];
+    });
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

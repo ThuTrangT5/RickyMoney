@@ -1,5 +1,5 @@
 //
-//  RMCalendar.h
+//  TTCalendar.h
 //  RickyMoney
 //
 //  Created by Thu Trang on 1/11/16.
@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "JTCalendar.h"
 
-@class RMCalendar;
+@class TTCalendar;
 
-@protocol RMCalendarDelegate <NSObject>
+@protocol TTCalendarDelegate <NSObject>
 @optional
-- (void) RMCalendar:(RMCalendar*) calendar didSelectDate:(NSDate*) selectedDate;
+- (void) TTCalendar:(TTCalendar*) calendar didSelectDate:(NSDate*) selectedDate;
 @end
 
 
-@interface RMCalendar : UIView <JTCalendarDelegate>
+@interface TTCalendar : UIView <JTCalendarDelegate>
 
 // calendar
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 
 // delegate
-@property (nonatomic, weak) id<RMCalendarDelegate> delegate;
+@property (nonatomic, weak) id<TTCalendarDelegate> delegate;
 
 - (instancetype) initCalendarWithTitle:(NSString*)  title andConfirmButton:(NSString*) buttonTitle;
 

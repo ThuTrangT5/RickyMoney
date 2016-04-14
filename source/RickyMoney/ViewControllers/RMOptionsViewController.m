@@ -12,6 +12,8 @@
 #import "RMDataManagement.h"
 #import "RMObjects.h"
 
+#import "MDCollectionViewCell.h"
+
 @implementation RMOptionsViewController
 
 - (void)viewDidLoad {
@@ -70,7 +72,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = (self.option == OPTION_CURRENCY) ? @"currencyCell" : @"categoryCell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: identifier forIndexPath:indexPath];
+    MDCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: identifier forIndexPath:indexPath];
     
     if (self.option == OPTION_CURRENCY) {
         Currency *currency = [self.optionData objectAtIndex:indexPath.row];
@@ -95,12 +97,19 @@
         categoryName.text = category.enName;
     }
     
+    cell.rippleColor = RM_COLOR;
+    
     return cell;
 }
 
 #pragma mark- UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    double delayInSeconds = 0.35;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
     id selectedData = _optionData[indexPath.row];
     
     if (self.delegate != nil) {
@@ -113,7 +122,7 @@
         transactionsVC.categoryId = [(Category*)selectedData objectId];
         [self.navigationController pushViewController: transactionsVC animated: YES];
     }
-    
+    });
 }
 
 @end

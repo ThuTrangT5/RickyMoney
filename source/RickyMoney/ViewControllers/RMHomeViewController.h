@@ -10,9 +10,9 @@
 #import <LMDropdownView/LMDropdownView.h>
 #import "RMConstant.h"
 #import "CZPicker.h"
-#import "RMCalendar.h"
+#import "TTCalendar.h"
 
-@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CZPickerViewDataSource, CZPickerViewDelegate, RMCalendarDelegate>
+@interface RMHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CZPickerViewDataSource, CZPickerViewDelegate, TTCalendarDelegate>
 
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *expenseTransactions, *incomeTransactions;

@@ -14,6 +14,7 @@
 #import "RMDataManagement.h"
 
 #import "RMChangePasswordViewController.h"
+#import "MDTableViewCell.h"
 
 @implementation RMSettingViewController {
     NSMutableArray *_userInfo;
@@ -50,7 +51,7 @@
         
         if (currentUser.avatar != nil) {;
             UIImage *image = [RMDataManagement decodeBase64ToImage:currentUser.avatar];
-             [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+            [_profileField setBackgroundImage:image forState:UIControlStateNormal];
         }
     }
 }
@@ -67,7 +68,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MDTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     NSArray *cellData = _userInfo[indexPath.row];
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
@@ -77,19 +78,25 @@
     [(UILabel*)[cell viewWithTag:2] setText:cellData[1]];
     [(UILabel*)[cell viewWithTag:3] setText:cellData[2]];
     
+    cell.rippleColor = RM_COLOR;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0){ // change password
-        [self performSegueWithIdentifier:@"changePasswordSegue" sender:nil];
+    double delayInSeconds = 0.35;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
-    } else if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
-        
-    } else if (indexPath.row == 2) { // update passcode
-        [self openPasscodeView];
-    }
+        if (indexPath.row == 0){ // change password
+            [self performSegueWithIdentifier:@"changePasswordSegue" sender:nil];
+            
+        } else if (indexPath.row == 1) {
+            [self performSegueWithIdentifier:@"optionSegue" sender:indexPath];
+            
+        } else if (indexPath.row == 2) { // update passcode
+            [self openPasscodeView];
+        }
+    });
 }
 
 #pragma mark- PickerView

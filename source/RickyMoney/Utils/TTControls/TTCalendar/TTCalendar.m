@@ -1,20 +1,20 @@
 //
-//  RMCalendar.m
+//  TTCalendar.m
 //  RickyMoney
 //
 //  Created by Thu Trang on 1/11/16.
 //  Copyright © 2016 adelphatech. All rights reserved.
 //
 
-#import "RMCalendar.h"
+#import "TTCalendar.h"
 #import "RMConstant.h"
 
-@implementation RMCalendar {
+@implementation TTCalendar {
     NSDate *_dateSelected, *_previousSelected;
     __weak IBOutlet UIView *contentView;
 }
 
-#define RMCalendarAnimationDuration 0.5
+#define TTCalendarAnimationDuration 0.5
 
 //-(instancetype)initWithCoder:(NSCoder *)aDecoder {
 //    self = [super initWithCoder:aDecoder];
@@ -40,7 +40,7 @@
 }
 
 - (instancetype)initializeSubviews {
-    id view = [[[NSBundle mainBundle] loadNibNamed:@"RMCalendarView" owner:self options:nil] firstObject];
+    id view = [[[NSBundle mainBundle] loadNibNamed:@"TTCalendarView" owner:self options:nil] firstObject];
     
     return view;
 }
@@ -157,7 +157,7 @@
     frame.origin.y = self.frame.size.height;
     contentView.frame = frame;
     
-    [UIView animateWithDuration:RMCalendarAnimationDuration
+    [UIView animateWithDuration:TTCalendarAnimationDuration
                           delay:0
          usingSpringWithDamping:0.7f
           initialSpringVelocity:3.0f
@@ -177,7 +177,7 @@
 }
 
 - (void) hide {
-    [UIView animateWithDuration:RMCalendarAnimationDuration
+    [UIView animateWithDuration:TTCalendarAnimationDuration
                           delay:0
          usingSpringWithDamping:0.7f
           initialSpringVelocity:3.0f
@@ -202,8 +202,8 @@
         _previousSelected = _dateSelected;
         [_calendarManager reload];
         
-        // call delegate of RMCalendar
-        [self.delegate RMCalendar:self didSelectDate:_dateSelected];
+        // call delegate of TTCalendar
+        [self.delegate TTCalendar:self didSelectDate:_dateSelected];
     }
 }
 

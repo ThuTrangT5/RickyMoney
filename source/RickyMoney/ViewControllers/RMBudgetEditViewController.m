@@ -83,10 +83,6 @@
         catImg = budget.categoryIcon;
         catBudget = budget.budget;
         
-    } else if ([cellData isKindOfClass:[Category class]] == YES) {
-        Category *cat = (Category*) cellData;
-        catName = cat.enName;
-        catImg = cat.icon;
     }
     
     UITextField *budgetField = (UITextField*) [cell viewWithTag:3];
@@ -120,13 +116,8 @@
     if ([cellData isKindOfClass:[Budget class]] == YES) {
         Budget *budget = (Budget*)cellData;
         catId = budget.categoryId;
-        
-    } else if ([cellData isKindOfClass:[Category class]] == YES) {
-        Category *cat = (Category*) cellData;
-        catId = cat.objectId;
+        [_budgetUpdatedData setValue:textField.text forKey:catId];
     }
-    
-    [_budgetUpdatedData setValue:textField.text forKey:catId];
     
     // update text format
     textField.text = [NSString stringWithFormat:@"%.2f", [textField.text floatValue]];

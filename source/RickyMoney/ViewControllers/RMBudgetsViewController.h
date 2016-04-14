@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CZPicker.h"
-#import "RMCalendar.h"
+#import "TTCalendar.h"
 
-@interface RMBudgetsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CZPickerViewDataSource, CZPickerViewDelegate, RMCalendarDelegate>
+@interface RMBudgetsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CZPickerViewDataSource, CZPickerViewDelegate, TTCalendarDelegate>
 
 @property (strong, nonatomic) NSMutableArray *budgetData;
 

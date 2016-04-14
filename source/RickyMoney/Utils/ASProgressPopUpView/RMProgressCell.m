@@ -23,7 +23,7 @@
     // Initialization code
     ASProgressPopUpView *progressView = (ASProgressPopUpView *)[self viewWithTag:1];
     progressView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-    progressView.popUpViewAnimatedColors = @[ RM_COLOR, [UIColor redColor]];
+    progressView.popUpViewAnimatedColors = @[RM_COLOR, [UIColor redColor]];
     progressView.progress = 0.0;
     
     progressView.delegate = self;

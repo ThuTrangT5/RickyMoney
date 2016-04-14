@@ -12,6 +12,8 @@
 #import "RMTransactionController.h"
 #import "RMDataManagement.h"
 #import "TTAlertView.h"
+#import "MDTableViewCell.h"
+
 #import "RickyMoney-Swift.h"
 
 @interface RMHomeViewController () <MDRotatingPieChartDataSource>
@@ -123,7 +125,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
+    MDTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
     NSArray *cellData = _menuItems[indexPath.row];
     
     UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
@@ -133,30 +135,39 @@
     UILabel *item = (UILabel*) [cell viewWithTag:2];
     [item setText: cellData[1]];
     
+    cell.rippleColor = RM_COLOR;
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) { // profile
-        [self performSegueWithIdentifier:@"settingSegue" sender:nil];
+    
+    double delayInSeconds = 0.35;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
-    } else if (indexPath.row == 1) { // Transactions
-        [self performSegueWithIdentifier:@"transactionSegue" sender:nil];
+        if (indexPath.row == 0) { // profile
+            [self performSegueWithIdentifier:@"settingSegue" sender:nil];
+            
+        } else if (indexPath.row == 1) { // Transactions
+            [self performSegueWithIdentifier:@"transactionSegue" sender:nil];
+            
+        } else if (indexPath.row == 2) { // category
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *category = [mainStoryboard instantiateViewControllerWithIdentifier: @"OptionsVC"];
+            [self.navigationController pushViewController: category animated: YES];
+            
+        } else if (indexPath.row == 3) { // budget
+            [self performSegueWithIdentifier:@"budgetSegue" sender:nil];
+            
+        } else if (indexPath.row == 4) { // about
+            
+        } else if (indexPath.row == 5) { // sign out
+            [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
+            
+        }
         
-    } else if (indexPath.row == 2) { // category
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        UIViewController *category = [mainStoryboard instantiateViewControllerWithIdentifier: @"OptionsVC"];
-        [self.navigationController pushViewController: category animated: YES];
-        
-    } else if (indexPath.row == 3) { // budget
-        [self performSegueWithIdentifier:@"budgetSegue" sender:nil];
-        
-    } else if (indexPath.row == 4) { // about
-        
-    } else if (indexPath.row == 5) { // sign out
-        [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
-        
-    }
+    });
 }
 
 #pragma mark- Chart
@@ -355,12 +366,12 @@
 #pragma mark- Calendar
 
 - (void) showCalendar {
-    RMCalendar *calendar = [[RMCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
+    TTCalendar *calendar = [[TTCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
     calendar.delegate = self;
     [calendar show];
 }
 
-- (void)RMCalendar:(RMCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
+- (void)TTCalendar:(TTCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd MMM yyyy"];

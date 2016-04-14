@@ -181,12 +181,12 @@
 #pragma mark- Calendar
 
 - (void) showCalendar {
-    RMCalendar *calendar = [[RMCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
+    TTCalendar *calendar = [[TTCalendar alloc] initCalendarWithTitle:@"... => ..." andConfirmButton:@"Next"];
     calendar.delegate = self;
     [calendar show];
 }
 
-- (void)RMCalendar:(RMCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
+- (void)TTCalendar:(TTCalendar *)calendar didSelectDate:(NSDate *)selectedDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd MMM yyyy"];
