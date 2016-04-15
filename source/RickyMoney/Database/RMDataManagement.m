@@ -296,7 +296,7 @@ static sqlite3_stmt *statement = nil;
 - (User*) getCurrentUserDetail {
     User *currentUser = nil;
     NSString *userId = [self getCurrentUserId];
-    
+    // (objectId text primary key, email text, password text, currencyId text, avatar text, passcode text)"
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         NSString *query = [NSString stringWithFormat: @"SELECT A.*, B.name, B.symbol from %@ as A LEFT JOIN %@ as B ON A.currencyId = B.objectId WHERE A.objectId = \"%@\"", USER_TABLE_NAME, CURRENCY_TABLE_NAME, userId];
         

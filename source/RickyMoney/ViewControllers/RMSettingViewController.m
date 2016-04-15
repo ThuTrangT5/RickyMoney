@@ -32,9 +32,9 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"Current Password = %@", currentUser.password);
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    NSLog(@"Current Password = %@", currentUser.password);
+//}
 
 #pragma mark- User information
 - (void) getUserInfo {
@@ -158,7 +158,7 @@
 #pragma mark- PassCode
 
 - (void) openPasscodeView {
-    NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
+    NSString *passcode = currentUser.passcode;
     NSString *titleMessage = @"";
     if (passcode == nil || passcode.length == 0) {
         titleMessage = @"Enter New PassCode to set it ON";
@@ -169,12 +169,12 @@
     RMPasscodeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: PASSCODE_VIEW_STORYBOARD_KEY];
     vc.delegate = self;
     vc.titleText = titleMessage;
+    vc.currentPasscode = passcode;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)doneActionWithPasscode:(RMPasscodeViewController *) passcodeVC {
-    NSString *currentPasscode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
-    NSString *newPasscode = passcodeVC.passcodeField.text;
+- (void)doneActionWithPasscode:(NSString *) newPasscode {
+    NSString *currentPasscode = currentUser.passcode;
     
     if ((currentPasscode == nil || currentPasscode.length == 0) && newPasscode != nil && newPasscode.length > 0) {
         // turn on passcode
@@ -186,8 +186,6 @@
         _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
         [self.tableView reloadData];
         
-        [passcodeVC dismissViewControllerAnimated:YES completion:nil];
-        
     } else if (currentPasscode != nil && currentPasscode.length > 0){
         if ([newPasscode isEqualToString:currentPasscode]) {
             // turn off passcode
@@ -198,10 +196,6 @@
             
             _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
             [self.tableView reloadData];
-            [passcodeVC dismissViewControllerAnimated:YES completion:nil];
-            
-        } else {
-            [passcodeVC passcodeIsWrong];
         }
     }
     

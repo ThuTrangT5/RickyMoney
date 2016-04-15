@@ -39,6 +39,6 @@ typedef enum _transactiontype {
 #define CURRENT_USER_ID @"RM-CURRENT_USER_ID"
 #define LOGIN_DATE @"RM-LOGIN_DATE"
 #define TIMEOUT_LOGIN_DAYS 7.0
-#define CURRENT_PASSCODE @"RM-CURRENT_USER_ID"
+#define CURRENT_PASSCODE @"RM-CURRENT_PASSCODE"
 
 #endif

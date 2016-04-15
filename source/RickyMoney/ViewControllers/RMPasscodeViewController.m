@@ -108,10 +108,10 @@
 
 - (IBAction)ontouchDonePasscode:(id)sender {
     if (self.delegate) {
-        [self.delegate doneActionWithPasscode: self];
+        [self.delegate doneActionWithPasscode: self.passcodeField.text];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        NSString *passcode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
-        if (passcode != nil && [_passcodeField.text isEqualToString:passcode] == NO) {
+        if (_currentPasscode != nil && _currentPasscode.length > 0 && [_passcodeField.text isEqualToString:_currentPasscode] == NO) {
             [self passcodeIsWrong];
             
         } else {

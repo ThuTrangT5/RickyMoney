@@ -13,7 +13,7 @@
 
 @protocol RMPasscodeDelegate <NSObject>
 
-- (void) doneActionWithPasscode:(RMPasscodeViewController*) passcodeController;
+- (void) doneActionWithPasscode:(NSString*) newPasscode;
 
 @end
 
@@ -32,6 +32,7 @@
 @property (nonatomic, strong) UIColor *mainColor;
 
 @property (nonatomic, strong) NSString *titleText;
+@property (nonatomic, strong) NSString *currentPasscode;
 
 - (void) displayView;
 - (void) passcodeIsWrong;
