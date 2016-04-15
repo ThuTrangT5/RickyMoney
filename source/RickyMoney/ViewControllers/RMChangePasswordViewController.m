@@ -10,6 +10,7 @@
 #import "UIImage+FontAwesome.h"
 #import "RickyMoney-Swift.h"
 #import "RMDataManagement.h"
+#import "TTAlertView.h"
 
 #define Y_OFFSET 155
 
@@ -70,21 +71,22 @@
 #pragma mark- Actions
 
 - (BOOL) validate {
-    NSString *message = nil;
+    NSString *message = @"";
     if (_currentPasswordField.text.length == 0 || [_currentPasswordField.text isEqualToString:_currentUser.password] == NO) {
-        message = @"Please input the correct current password.";
+        message = @"Please input the correct current password.\n";
     }
     
     if (_updatePasswordField.text.length < 6) {
-        message = @"New password has 6 characters atleast.";
+        message = [message stringByAppendingString:@"New password has 6 characters atleast.\n"];
     }
     
     if ([_updatePasswordField.text isEqualToString:_confirmPasswordField.text] == NO) {
-        message = @"Confirm new password is incorrect.";
+        message = [message stringByAppendingString:@"Confirm new password is incorrect.\n"];
     }
     
-    if (message != nil) {
-        // ???
+    if (message.length > 0) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Error" andErrorMessage:message];
+        [alert show];
         return NO;
     }
     
@@ -96,7 +98,12 @@
         if ([[RMDataManagement getSharedInstance] updatePassword:_updatePasswordField.text forUser:_currentUser.objectId] == YES) {
             NSLog(@"Update Password successfully");
             _currentUser.password = _updatePasswordField.text;
-            // ???
+            _currentPasswordField.text = @"";
+            _updatePasswordField.text = @"";
+            _confirmPasswordField.text = @"";
+            
+            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Password" andMessage:@"Sucessfully."];
+            [alert show];
         }
     }
 }

@@ -124,6 +124,11 @@
 
 - (void)displayView {
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (vc.presentedViewController != nil) {
+        vc = vc.presentedViewController;
+    }
+    
     [vc presentViewController:self animated:YES completion:nil];
 }
 

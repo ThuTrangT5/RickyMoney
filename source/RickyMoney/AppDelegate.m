@@ -50,8 +50,7 @@
 
 #pragma Login & Logout
 
-- (void) loginSuccess {
-    
+- (void) loginSuccess {    
     [UIView transitionWithView:self.window
                       duration:0.5
                        options:UIViewAnimationOptionTransitionCurlUp
