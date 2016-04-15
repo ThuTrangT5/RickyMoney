@@ -10,53 +10,14 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>056714C2EEFED9A3096FCF0FE81651E8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>48999A0EE7C210A0D755683B04FBCAC0</string>
-				<string>3B234963ED7335F58636FA1EB16CC8FC</string>
-				<string>DFC77213EA49EFDBF0E3D0B6A2F1E9AB</string>
-				<string>C1B8E7F7E3A42BB61291EFF936C5496B</string>
-				<string>E779248F1FBAE2FDD4635AE8AEF0B481</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>LMDropdownView</string>
-			<key>path</key>
-			<string>LMDropdownView</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>058685CD41DA29F87E5EBE092DB4DC67</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>E8F5F5117D1ACF5AF5FC21FAD4DF268D</string>
-			<key>remoteInfo</key>
-			<string>LMDropdownView</string>
-		</dict>
-		<key>05D35DC65C90B1F38EF85952440E3D7F</key>
+		<key>012A7E018F3D34F159894EBD7EACACF9</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D635D41133915B228CE899EF89DD95CE</string>
+			<string>C36B810AAB8C0BB46D540AA9B1202F6F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>07561F0200CAD92CCDE9E27D69B51032</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9A57635A830DEFF3FAC9149D83AA13B1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>07AFD5E034AD44D0E6E150EF38540124</key>
+		<key>01F12551D5B0AE6BEF87F055AD1B3054</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -65,9 +26,64 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorDoubleBounceAnimation.h</string>
+			<string>DGActivityIndicatorBallPulseSyncAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorDoubleBounceAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>05D357BB6B08D5AE584757E91210DC8A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallTrianglePathAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>05D35DC65C90B1F38EF85952440E3D7F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>124DBC63301095B2F3B28111731F2E7C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>07561F0200CAD92CCDE9E27D69B51032</key>
+		<dict>
+			<key>fileRef</key>
+			<string>84834169B76A4147C73F8506E29ECA27</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>079D21916DC6639B8DA358777BDBFA6E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>089EAFE185D76ED7B2F6808C31D9B896</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>07E09DA211BA5E92A0E434BBD075F7EF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -84,20 +100,32 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>0B11B83CA8C00E07665C991265EE01AB</key>
+		<key>089EAFE185D76ED7B2F6808C31D9B896</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorRotatingSquaresAnimation.h</string>
+			<string>archive.ar</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSquaresAnimation.h</string>
+			<string>libFirebaseStatic.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0A9C7DAF92E64953114E3877DC0EFFA8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>305202E7625F6DFE02559C9C8CC9E96B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>0B15ACBFEFE60D005E263CAA80B56064</key>
 		<dict>
@@ -147,10 +175,23 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>0B9337A5E6218A59C95A35792C748007</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FMutableData.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0C2B4BE785E3A2C20BF8446EB1146F1D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2E39B2116DED3E983A15893FD51054B0</string>
+			<string>D206A3C88C8C3E81CEE7647A5EF5AA0E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -161,20 +202,50 @@
 				</array>
 			</dict>
 		</dict>
-		<key>0F9E7A63F42D90E37F295C418A4285EE</key>
+		<key>104B2F9766E3C56F08294DD4C5D1CC84</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>8091CCDF1198DCF2DAAFB92B1A8B123E</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallSpinFadeLoader.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>105C1121B08F48B956F791DBD2B28067</key>
+		<key>124DBC63301095B2F3B28111731F2E7C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>12F355E408F6D0FC0A06677EE0BDBF08</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorThreeDotsAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>133A718AA70535C19BE80421528D5A61</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -189,22 +260,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>12BD868AEADEC5302AA7BBF7364167D0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallScaleAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>15090CCA5430F71A403DA136C31F7FA4</key>
+		<key>1358F8A34FB42A5E845134DABC376C29</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -213,16 +269,46 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallScaleAnimation.h</string>
+			<string>DGActivityIndicatorLineScalePulseOutRapidAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>13A8DEA7333B0A900E3063339C5B52C0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallZigZagAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1525C87A54C7D295C0F861F6138465B7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImage+LMExtension.m</string>
+			<key>path</key>
+			<string>LMDropdownView/Vender/UIImage+LMExtension.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>15F4CD739A0EDE86912D1530E917B57A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5D3801D3DD862346DFD044268CBE8693</string>
+			<string>3C282FB17E92E16157C6AB2D9FA56682</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -233,7 +319,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>173447FA90C80E701F3541681A154288</key>
+		<key>16E1F8968241B6820049DEDB5671645C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -246,10 +332,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>171D6D20E443D79B5505B3ED13125023</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>LMDropdownView.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>17682BE883A2F4C49C8EFC6D2E1EA54A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>8F7E14F7C8638E29E397046D138EB40E</string>
+			<string>987BB9708928AD41F31EC3BB2FF65C5D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -263,27 +360,29 @@
 		<key>17D18ECCC07E5598886456B73C630F94</key>
 		<dict>
 			<key>fileRef</key>
-			<string>911C0E5AE169AA50011792409D6B2760</string>
+			<string>901B1F77D70A20C2C145A46F5D77452A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>195763E66CCC49FC55AEA99993A79371</key>
+		<key>18D44C0584EA602EB72C7FABD093A038</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallGridBeatAnimation.h</string>
 			<key>path</key>
-			<string>LMDropdownView.xcconfig</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridBeatAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1AB5058C0B562ECF9AB105FD43010686</key>
+		<key>191DE2EB9A35585AE0A88BA9F833A1F4</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D51BC675AA259FC494F504F80BAB1062</string>
+			<string>F618CA6CFDFF306D4F3B59710D7608C3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -294,7 +393,21 @@
 				</array>
 			</dict>
 		</dict>
-		<key>1F57769F756A649252B8B17AA8A44DAA</key>
+		<key>1AB5058C0B562ECF9AB105FD43010686</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5E3A750A159C9180BA948FE1EEF60644</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1BA0315D43E6EF6702CC00AD3EC80FE5</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -303,35 +416,70 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorCookieTerminatorAnimation.m</string>
+			<string>DGActivityIndicatorTriangleSkewSpinAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1C3EF85CD30E6FF2E51471BD5B3CEB29</key>
+		<dict>
+			<key>fileRef</key>
+			<string>38FDD93AD72752B4409304E6DB24B6C0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1D925BB011B04DDED982C7946571A67A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CEEEA7AA9E491248B7E71EDF3B8B9DCC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1D9D7FF5237C8CC91EF58DC45AC274FB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F89E37A1A79C2B98D098EA9B4CD43C04</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1E6DB2DFFF610C6B0AC2ADEAC5111699</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallTrianglePathAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1F9BEB9B8BE5906E0BE6309A7DA20E8F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>8F0C2C193D398F3023E69B93B15F41F4</string>
+			<string>206C61409035652C3FE48F3FAF13312B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>21A8C404F62C351710EDFE59BCFFC456</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallPulseAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2514D0D0AB19D4A2079FB18E62F9909A</key>
+		<key>206C61409035652C3FE48F3FAF13312B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -340,13 +488,64 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorView.m</string>
+			<string>DGActivityIndicatorLineScalePartyAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/DGActivityIndicatorView.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>28F9617588B9E50F8DA959BA555F44F3</key>
+		<key>20B56609144CE204DFA8221F742B2D76</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9255815C9F7C6CB8EF0592332DE7032A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2124AB7EB26AD8C59207E5C09155E8A6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>238147F7876AD19AD36F7A77571339F4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FDataSnapshot.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>239B10F388840841389B7F09648735B1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>84448B1C850CF50E09B1511E26382104</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>248347DD4DA70E800BFBBDBC94164124</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -355,9 +554,37 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallScaleRippleAnimation.h</string>
+			<string>DGActivityIndicatorBallBeatAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallBeatAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>25DE5E778020AE7719C4F618538764C0</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>E8F5F5117D1ACF5AF5FC21FAD4DF268D</string>
+			<key>remoteInfo</key>
+			<string>LMDropdownView</string>
+		</dict>
+		<key>287C79E0AA489F5A9AED0A60B336036D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorTwoDotsAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTwoDotsAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -382,18 +609,53 @@
 			<key>productName</key>
 			<string>DGActivityIndicatorView</string>
 			<key>productReference</key>
-			<string>3B09B5425A7211A867E981D109043069</string>
+			<string>83B8C63C4865617D196B138CFCB486D4</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>29179CAE010886793596C23EBB9A9FD5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CF07F782DE193E10319D38BB52AAC697</string>
+				<string>869FB69F4932C4EB8F98E64DB9C7A556</string>
+				<string>F89E37A1A79C2B98D098EA9B4CD43C04</string>
+				<string>689EC8877AA5FD4914665DA396FB88E7</string>
+				<string>4AE4E4C0953B59CD5D3CB1EB3CEE00E3</string>
+				<string>16E1F8968241B6820049DEDB5671645C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/Firebase</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2949416D5FF64D27E225B0D18B7579FF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D635D41133915B228CE899EF89DD95CE</string>
+			<string>124DBC63301095B2F3B28111731F2E7C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>2A7BE2F5536D789193820D53CCD8722E</key>
+		<key>2B10385561E6CC68638551A408302BEF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotateMultipleAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateMultipleAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2B82D000469EAA343340A76328475C8F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -402,9 +664,22 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorLineScalePulseOutRapidAnimation.h</string>
+			<string>DGActivityIndicatorTwoDotsAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTwoDotsAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2CFC4807865ABCEF57C5F0694AC89512</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FirebaseApp.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -425,7 +700,7 @@
 		<key>2DA140470AD85B2CCFB7213E92E08D71</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DA2F4CA5D773F75100E4E7E8192D0EEF</string>
+			<string>5688249281AF2409A40DBE693F3C4DC1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -439,7 +714,7 @@
 		<key>2E17210766F697F9AD9103CAFBD8BBE6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2A7BE2F5536D789193820D53CCD8722E</string>
+			<string>1358F8A34FB42A5E845134DABC376C29</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -450,7 +725,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>2E39B2116DED3E983A15893FD51054B0</key>
+		<key>2E1B05F6EB0A954B614316834657979C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -459,11 +734,49 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorTriangleSkewSpinAnimation.h</string>
+			<string>DGActivityIndicatorFiveDotsAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorFiveDotsAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2F1496011DBBB75777645194AAAFE92D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2CFC4807865ABCEF57C5F0694AC89512</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>2FDCAAB615C287D16BF7F1F2AA978246</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>C23FCF31260D47CEC1494A292DAA1A1E</string>
+				<string>1D925BB011B04DDED982C7946571A67A</string>
+				<string>E60FA42EEC3ECC48701DB55986D25D69</string>
+				<string>E8B534D15D2B25919ACD898217266891</string>
+				<string>239B10F388840841389B7F09648735B1</string>
+				<string>60F9139BDD38565B78214C4FC5F5729D</string>
+				<string>1C3EF85CD30E6FF2E51471BD5B3CEB29</string>
+				<string>2F1496011DBBB75777645194AAAFE92D</string>
+				<string>6646DA26298257396C7FFE141BB84CC3</string>
+				<string>DB05A9DD8244D10C28B6915C514AE15F</string>
+				<string>4D75CF0089B20355B17A851513C4A002</string>
+				<string>191DE2EB9A35585AE0A88BA9F833A1F4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>305202E7625F6DFE02559C9C8CC9E96B</key>
 		<dict>
@@ -478,7 +791,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>30540EE17BFF78268B08834E46C57365</key>
+		<key>314EA5FEF07CD422EAEC3A735C5114A7</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -493,17 +806,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>30EE4034386BFE4C570D1F62502F87C9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A5493A62CFC2406D88915BCBAB65BB45</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
 		<key>3172B83647ECB68754D95036683F599E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7F074FFA40D3C7ABEAE73D7B5849BFEC</string>
+			<string>6BA083C4BA03052D2718BCB7D41A622A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -517,7 +823,7 @@
 		<key>31BCE71DD41D9B408054A722E9F287F1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>55124AEDBCA990C4E4FC0C3A84381867</string>
+			<string>AEB1C6E9430178256BFC8A7ED7F04566</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -531,21 +837,47 @@
 		<key>33331F50BCD2DD67D4C3F1748B164A00</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2514D0D0AB19D4A2079FB18E62F9909A</string>
+			<string>BB42EA6BD45EDA19118EFCE3BCB97026</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>35E1183C4AD7CB053E237A78A86E7C16</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FConfig.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>35EA56E9588C168CE5D242D32CE506A2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>0A9C7DAF92E64953114E3877DC0EFFA8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>370C235D4E25EE97B99C676BBBEF41D6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>785D4B04425D714F3A679A5F1F277E68</string>
+			<string>7B2FD7B6CF66D2B8B8653B0F4022F87F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>38451C426B6EFF7A2C108D93D362E4FE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>0B11B83CA8C00E07665C991265EE01AB</string>
+			<string>B045773E62569D88E3DEA935AE5BB752</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -555,6 +887,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>38FDD93AD72752B4409304E6DB24B6C0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Firebase.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>39DF7FFC0F815BC75D67EF23B3BF3B59</key>
 		<dict>
@@ -603,10 +948,25 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>39F506D41E0E9CF2679D1DFE244475C9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotateAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3A296D151BCD4D2C4077CAAA448A3F6F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A0EDEFC9B89948A99EDC25928D0E62A9</string>
+			<string>D18882142C7C67706C248C135F624247</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -617,65 +977,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>3B09B5425A7211A867E981D109043069</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>DGActivityIndicatorView.framework</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3B234963ED7335F58636FA1EB16CC8FC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>LMDropdownView.m</string>
-			<key>path</key>
-			<string>LMDropdownView/LMDropdownView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3D2C3D0AF39B5CD02ABACCE8C58275FE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorRotatingSquaresAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSquaresAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3D84442DEA29C031E27C571242BC2B67</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>56966CBA02558AF532CBE0215AB61221</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3D93845154306A4098BC2486EA5C5D90</key>
+		<key>3C282FB17E92E16157C6AB2D9FA56682</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -683,129 +985,54 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotateMultipleAnimation.h</string>
 			<key>path</key>
-			<string>LMDropdownView-umbrella.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateMultipleAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3F6702FADB4E863280C8F18BF76478B2</key>
+		<key>3CF2ECB2B9E11A520B73981A8FFB0BFE</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>798639E62C67E33F14AE0B98F375D747</string>
-				<string>5906EFA2F5297BEB7DCDF7607A54A30F</string>
-				<string>56A8EF33286E9D8C021B3662A27D116A</string>
-				<string>669D1049E176A8AC48D3012CDA6714F4</string>
-				<string>55124AEDBCA990C4E4FC0C3A84381867</string>
-				<string>173447FA90C80E701F3541681A154288</string>
-			</array>
+			<key>fileRef</key>
+			<string>5748477D33A4183875F7FF5B3FF6F463</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3E842BACF83ECF99C298FE9DFF4196DE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Support Files</string>
+			<string>DGActivityIndicatorRotatingTrigonAnimation.m</string>
 			<key>path</key>
-			<string>../Target Support Files/DGActivityIndicatorView</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingTrigonAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>410C732EBCF95BA581445898D1D58021</key>
+		<key>3F21BCAF7BFAE6EB1BF936D797848CEE</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>DC48A421E193A88CCF018F94D7A35526</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-RickyMoney/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-RickyMoney/Pods-RickyMoney.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_RickyMoney</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>XCBuildConfiguration</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>433CD3331B6C3787F473C941B61FC68F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E294F3BD993E240DCFCB4DC1329C9F36</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
+			<string>DGActivityIndicatorDoubleBounceAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorDoubleBounceAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>43CA18EAE392C4A2AC4D5B584CD76E17</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>30EE4034386BFE4C570D1F62502F87C9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
 		</dict>
 		<key>43CAE225BF09A06CBDBF7E4CDE0BECC8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4B87BEE790FEA4C918C00712FF5FAEC8</string>
+			<string>BCD6EE1654C6A6518B57A913B0CF364A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -816,18 +1043,58 @@
 				</array>
 			</dict>
 		</dict>
-		<key>45ADB592A691FB335748EE938DA19DB7</key>
+		<key>445CB0DBC9E3F5779C71C030D64D4449</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorThreeDotsAnimation.m</string>
 			<key>path</key>
-			<string>LMDropdownView.modulemap</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>474DFF6BE7459564D3644E29CE1F3A0A</key>
+		<key>454E5006EE27966EC68CECDB4FBC0BDB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorRotatingTrigonAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingTrigonAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4643D6042F336F2CB5ADC8E1841A3B48</key>
+		<dict>
+			<key>fileRef</key>
+			<string>124DBC63301095B2F3B28111731F2E7C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>46E052D320E3B778B76D8393E0BAFE0F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>012A7E018F3D34F159894EBD7EACACF9</string>
+				<string>1D9D7FF5237C8CC91EF58DC45AC274FB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>479AEC84A4BC6CB23AC161F0B35038AA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -842,42 +1109,26 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>48999A0EE7C210A0D755683B04FBCAC0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>LMDropdownView.h</string>
-			<key>path</key>
-			<string>LMDropdownView/LMDropdownView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>4980117A03B0E96A110B3CB37CC79395</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BDCDAF0418E919DF372ADB28D1CA49D8</string>
+			<string>104B2F9766E3C56F08294DD4C5D1CC84</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>499EA10609D7F628D5A994C8FC5AD492</key>
+		<key>49B346C14D532324DCD14D0FA1347BC6</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9E5F9A409F7A80E320328AA627E5F72F</string>
+				<string>A137EDCFE721980B861039D09E3342BD</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallScaleMultipleAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>XCConfigurationList</string>
 		</dict>
 		<key>4AC90167421F8D2AA89910B9DC6DD5A4</key>
 		<dict>
@@ -893,7 +1144,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>4B612F3B99511F46A0351A4237AAAD08</key>
+		<key>4AE4E4C0953B59CD5D3CB1EB3CEE00E3</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -901,61 +1152,22 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorTriplePulseAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriplePulseAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4B87BEE790FEA4C918C00712FF5FAEC8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorLineScalePartyAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.h</string>
+			<string>Firebase-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>4D220E0A716E8D7AEB2D681482CAC058</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AF066F8D85A4D7A3B3A04D25E4D2AC88</string>
+			<string>C3721B5E916BD3D71A8D36C520E15AC1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>4EBC5098491E4A72C65DE823F45233E1</key>
+		<key>4D75CF0089B20355B17A851513C4A002</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EA1C30FD23F6F7FD6C04A197E2BEF105</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4F01AD7CC47DE2D97BE02DC39B5BA4C1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallZigZagDeflectAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagDeflectAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4F3F87E6BBF8AE5DC7194DAC3874E50C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>15090CCA5430F71A403DA136C31F7FA4</string>
+			<string>DDA0D4C5F3F1E21F1492DA07F1BA641C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -965,6 +1177,54 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>4E212D66CF2A8A5771872BF3C8CF35CF</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>875802AE3E681F3EA1066495563AFE46</string>
+				<string>D6882CEB85394DD650E51D9EE8C460E2</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>4EBC5098491E4A72C65DE823F45233E1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C920B471A0B01EF5E439BF3ECECA205C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4F3F87E6BBF8AE5DC7194DAC3874E50C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5A104EB94C2950FC6CC7E8223F69303F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>4F503A4F494B2F41C22A39C09A64085C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>LMDropdownView.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>4F9FFFBB2DE8FA70500489EEC5EAFA6B</key>
 		<dict>
@@ -995,7 +1255,7 @@
 		<key>507F973A0B3FE19FAF4E2CD83A088010</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4B612F3B99511F46A0351A4237AAAD08</string>
+			<string>A28944E13CAABC754B86403E2FB904DE</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1006,7 +1266,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>512A9B362DC23A6EA275094F00F595A7</key>
+		<key>5688249281AF2409A40DBE693F3C4DC1</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1015,72 +1275,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallBeatAnimation.h</string>
+			<string>DGActivityIndicatorBallGridPulseAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallBeatAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>54A523AA7B604C8F16E92CCB7AFCE763</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorView.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/DGActivityIndicatorView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>55124AEDBCA990C4E4FC0C3A84381867</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>55F271FDC83AF53F6DF8B84E7B94D72B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorTripleRingsAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTripleRingsAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>56966CBA02558AF532CBE0215AB61221</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D635D41133915B228CE899EF89DD95CE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>56A8EF33286E9D8C021B3662A27D116A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView-dummy.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridPulseAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1098,40 +1295,94 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>56D25F02A9A45BE218D08B60D206C3AC</key>
+		<key>5748477D33A4183875F7FF5B3FF6F463</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>3B09B5425A7211A867E981D109043069</string>
-				<string>DCF5A1E815A9EBFB3738E62B2860CE0D</string>
-				<string>8BA20E26D034363052BBBFF6732F2794</string>
-			</array>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>Products</string>
+			<string>SystemConfiguration.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework</string>
 			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>5906EFA2F5297BEB7DCDF7607A54A30F</key>
+		<key>57A032EACE69FACC06686061D614B2B0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorLineScaleAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView.xcconfig</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScaleAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>57E23C0B72BF449427D51FE1AE7AA17B</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>B7AC9326D819482593FE118E915409D7</string>
+			<key>remoteInfo</key>
+			<string>Firebase</string>
+		</dict>
+		<key>5884A51250E7A80934C2B978B93E6100</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>593BCFECDD9AEFB0BF1FA719BB048168</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>LMDropdownView-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>593F06155CDE7ACBBA7476D7AB82F8FB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AF21E297F61020AB9F923EE3BACAE799</string>
+			<string>E9C5EA110FE7857A943EE8FE7F1AB577</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>5A104EB94C2950FC6CC7E8223F69303F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallScaleAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>5AE592C8CF2495AB8EFE49BE6AE6BDF7</key>
 		<dict>
@@ -1146,7 +1397,20 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5CE6606AA24CD5778E0E0919CD752E68</key>
+		<key>5CD637580FDA1F4191CE392368AB5EEF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5E165DFB287CA9249C2A72F068083E35</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1155,13 +1419,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorTwoDotsAnimation.m</string>
+			<string>DGActivityIndicatorBallRotateAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTwoDotsAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallRotateAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5D3801D3DD862346DFD044268CBE8693</key>
+		<key>5E3A750A159C9180BA948FE1EEF60644</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1170,81 +1434,106 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotateMultipleAnimation.h</string>
+			<string>DGActivityIndicatorBallScaleRippleMultipleAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateMultipleAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleMultipleAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5DF8D4716D25CFDAD936D23E08A0102C</key>
+		<key>60F9139BDD38565B78214C4FC5F5729D</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>4AE4E4C0953B59CD5D3CB1EB3CEE00E3</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorFiveDotsAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorFiveDotsAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>632CD4E7CDFB2AB04FF56ADC2FD2728D</key>
+		<key>61371CFE0221D1EBE2EEE554214B9989</key>
 		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
 			<key>includeInIndex</key>
-			<string>1</string>
+			<string>0</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotateAnimation.m</string>
+			<string>Firebase.framework</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.m</string>
+			<string>Firebase.framework</string>
 			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>62CC6574E04707933E8DF18D345DDD70</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>LMDropdownView</string>
+			<key>target</key>
+			<string>E8F5F5117D1ACF5AF5FC21FAD4DF268D</string>
+			<key>targetProxy</key>
+			<string>25DE5E778020AE7719C4F618538764C0</string>
 		</dict>
 		<key>63824AB90301BF4FB0AF39159218BA59</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B8AA84F00C14F4A7F607273F6BCB115C</string>
+			<string>445CB0DBC9E3F5779C71C030D64D4449</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>669D1049E176A8AC48D3012CDA6714F4</key>
+		<key>65C55F1383D7B33F172AB9DF85637A38</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildConfigurationList</key>
+			<string>4E212D66CF2A8A5771872BF3C8CF35CF</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D08FF375E1C87CC9E7B264C27C1C5FFB</string>
+				<string>DF2031E62921636516C87FD3698B543D</string>
+				<string>35EA56E9588C168CE5D242D32CE506A2</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>9E9738158C1F70D5489EBB48BB89BDCF</string>
+				<string>AA9272F2E072028DA1DDF526E95D6D15</string>
+				<string>62CC6574E04707933E8DF18D345DDD70</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>676E8084726069CD6EE0297D6EB33C39</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXNativeTarget</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallZigZagDeflectAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagDeflectAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>Pods-RickyMoney</string>
+			<key>productName</key>
+			<string>Pods-RickyMoney</string>
+			<key>productReference</key>
+			<string>95B659F0F908AB4EFC4A48263C42C4D5</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>6646DA26298257396C7FFE141BB84CC3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B4D414C4F67EBC8B4FA5DCB2B0863435</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>6850450E57AC4796A55FE4DC36619439</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A542309C0866AF62A3B5DF0B58014751</string>
+			<string>F69EE06A42388726F541E5C8880A9724</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1272,10 +1561,23 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>689EC8877AA5FD4914665DA396FB88E7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Firebase-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>6A52028A42CC4DF7615602D7220F10EC</key>
 		<dict>
 			<key>fileRef</key>
-			<string>512A9B362DC23A6EA275094F00F595A7</string>
+			<string>248347DD4DA70E800BFBBDBC94164124</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1289,11 +1591,54 @@
 		<key>6B2E0B17FDB03D52543CEC2DCC99A920</key>
 		<dict>
 			<key>fileRef</key>
-			<string>105C1121B08F48B956F791DBD2B28067</string>
+			<string>133A718AA70535C19BE80421528D5A61</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>6BE27BF8ED868879AA44DDAF319E51B0</key>
+		<key>6BA083C4BA03052D2718BCB7D41A622A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorNineDotsAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorNineDotsAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6CAA8B9475A7E0E05F26F73FFFA736E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C36B810AAB8C0BB46D540AA9B1202F6F</string>
+				<string>86B698120CD7B1FD37A6116DA1D10BFB</string>
+				<string>CEEEA7AA9E491248B7E71EDF3B8B9DCC</string>
+				<string>35E1183C4AD7CB053E237A78A86E7C16</string>
+				<string>238147F7876AD19AD36F7A77571339F4</string>
+				<string>84448B1C850CF50E09B1511E26382104</string>
+				<string>38FDD93AD72752B4409304E6DB24B6C0</string>
+				<string>2CFC4807865ABCEF57C5F0694AC89512</string>
+				<string>B4D414C4F67EBC8B4FA5DCB2B0863435</string>
+				<string>0B9337A5E6218A59C95A35792C748007</string>
+				<string>DDA0D4C5F3F1E21F1492DA07F1BA641C</string>
+				<string>F618CA6CFDFF306D4F3B59710D7608C3</string>
+				<string>079D21916DC6639B8DA358777BDBFA6E</string>
+				<string>29179CAE010886793596C23EBB9A9FD5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Firebase</string>
+			<key>path</key>
+			<string>Firebase</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6CD6317A34476761B9E180621476F8E0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1302,23 +1647,23 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallTrianglePathAnimation.m</string>
+			<string>DGActivityIndicatorNineDotsAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorNineDotsAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>6CE44760279C7F040C589DF3D75AEC3D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D74534C13614B082756E25F508D9B837</string>
+			<string>DA1D1BF0EB618398E96F7A5DE5212DD8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>702573B4B747660E66FE7CCED6C669D1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F2E5AB7FCEDC1632DF91167BEDE5976B</string>
+			<string>C863AE4DEF5E884D7655D319E557918A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1332,7 +1677,7 @@
 		<key>70CCE71D9C707719CFE89C7FB88CB4E1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>12BD868AEADEC5302AA7BBF7364167D0</string>
+			<string>7D37C74FB3273F548B287C7A5CD7B576</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1352,7 +1697,7 @@
 		<key>725C6B9DADF105D8368E507CF57D6BAC</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B71918E5147B0BF468651B11BC9B1DD8</string>
+			<string>AA12A4AA9D0BE4388B94866EF2EC5160</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1363,7 +1708,42 @@
 				</array>
 			</dict>
 		</dict>
-		<key>785D4B04425D714F3A679A5F1F277E68</key>
+		<key>7272F8ED3A36D93394EC1B7784B2A891</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2124AB7EB26AD8C59207E5C09155E8A6</string>
+				<string>C5FDB38CCBFA53D2F3FA4F2D9D744042</string>
+				<string>5884A51250E7A80934C2B978B93E6100</string>
+				<string>07E09DA211BA5E92A0E434BBD075F7EF</string>
+				<string>AEB1C6E9430178256BFC8A7ED7F04566</string>
+				<string>5CD637580FDA1F4191CE392368AB5EEF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/DGActivityIndicatorView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>72BF696908508631E24D103426CF6CF4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotatePulseAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotatePulseAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>73798F639E92C92B638A151FF09E015A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1372,9 +1752,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorLineScalePulseOutAnimation.m</string>
+			<string>DGActivityIndicatorBallScaleRippleAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1395,14 +1775,21 @@
 		<key>78AB27588A0498FBBD085B0F342A8849</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BD56DD86FE9160B6A48863E873BFBD06</string>
+			<string>3E842BACF83ECF99C298FE9DFF4196DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>78EEF6D0B17AAB7A050AB33C7D78FE2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A5493A62CFC2406D88915BCBAB65BB45</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>7932A6070CCE19AE9BF9D6272D73BBBF</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5906EFA2F5297BEB7DCDF7607A54A30F</string>
+			<string>C5FDB38CCBFA53D2F3FA4F2D9D744042</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -1459,21 +1846,10 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>798639E62C67E33F14AE0B98F375D747</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>79DDBBFABB11DBC22C7866F7C5E77A79</key>
 		<dict>
 			<key>fileRef</key>
-			<string>48999A0EE7C210A0D755683B04FBCAC0</string>
+			<string>D1E56E99475AA6AB75FF7E08AB3DE5E1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1484,25 +1860,25 @@
 				</array>
 			</dict>
 		</dict>
-		<key>7ACAE5EBC92EDAE2542D03313AC0753D</key>
+		<key>7B2FD7B6CF66D2B8B8653B0F4022F87F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotatePulseAnimation.h</string>
+			<string>DGActivityIndicatorLineScalePulseOutAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotatePulseAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7B95A5748C7BA6F77B9AE06C673BEABD</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D5DA6BB94966CD8A6E1516DC3D826809</string>
+			<string>454E5006EE27966EC68CECDB4FBC0BDB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1513,32 +1889,47 @@
 				</array>
 			</dict>
 		</dict>
-		<key>7D3A3E967D67B209974ABA65953F17AC</key>
+		<key>7BEA102669812588358A4C3E59D935B9</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallZigZagAnimation.h</string>
+			<string>DGActivityIndicatorBallGridBeatAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridBeatAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7D37C74FB3273F548B287C7A5CD7B576</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallScaleAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7D9AF3EF5F280F29EAB684701AD5880C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9878576DD5C1F7FAC38F7A448445BD06</string>
+			<string>2B10385561E6CC68638551A408302BEF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>7DA49190498C084817EDBC72C07A7275</key>
 		<dict>
 			<key>fileRef</key>
-			<string>30540EE17BFF78268B08834E46C57365</string>
+			<string>314EA5FEF07CD422EAEC3A735C5114A7</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1547,44 +1938,15 @@
 			<key>children</key>
 			<array>
 				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>433CD3331B6C3787F473C941B61FC68F</string>
-				<string>9EC27EACE69898D2D7D85163A5AB97A8</string>
-				<string>56D25F02A9A45BE218D08B60D206C3AC</string>
+				<string>20B56609144CE204DFA8221F742B2D76</string>
+				<string>FC892D90A01E5A78B3BB99282DF01AAD</string>
+				<string>B60313130CE0557D72DA64AFFC6AB3CD</string>
 				<string>D16D67C4E10890D1D738EE49EE1D5654</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7F074FFA40D3C7ABEAE73D7B5849BFEC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorNineDotsAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorNineDotsAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8091CCDF1198DCF2DAAFB92B1A8B123E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>305202E7625F6DFE02559C9C8CC9E96B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
 		</dict>
 		<key>811519CB8F683AC06F9C98B55AC40F11</key>
 		<dict>
@@ -1658,11 +2020,26 @@
 		<key>81C03B62588C3CD53C101D7395FB8BF7</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C153B3FC76DEE4989B2E35CD22A6D27F</string>
+			<string>A45AFB3FCE1DA7B5C38EC6C0D9F43214</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>85192502C3A0657C4F4411CB9A3133CD</key>
+		<key>83B8C63C4865617D196B138CFCB486D4</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>DGActivityIndicatorView.framework</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>84448B1C850CF50E09B1511E26382104</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1670,10 +2047,69 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallScaleMultipleAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.h</string>
+			<string>FEventType.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>84834169B76A4147C73F8506E29ECA27</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallGridPulseAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridPulseAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85A4F602CA6B100539E601AE38A2D9C0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A935F484F7F2A7555B9829BB3FC60DFA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>86271383C8BAFBBB29E807346708B73B</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>291621037D68F7869D267C25CE205F97</string>
+			<key>remoteInfo</key>
+			<string>DGActivityIndicatorView</string>
+		</dict>
+		<key>869FB69F4932C4EB8F98E64DB9C7A556</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Firebase.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>86B698120CD7B1FD37A6116DA1D10BFB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FAuthData.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1688,10 +2124,78 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>875802AE3E681F3EA1066495563AFE46</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>9789359473D1946E1B913AD7F8663367</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-RickyMoney/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-RickyMoney/Pods-RickyMoney.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_RickyMoney</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
 		<key>88009544EDCD424A0008F2D8530A6467</key>
 		<dict>
 			<key>fileRef</key>
-			<string>499EA10609D7F628D5A994C8FC5AD492</string>
+			<string>94B23C60A43181C5E55BA61C406E87C0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1774,7 +2278,7 @@
 		<key>883438908E72EDB6864A50F2D8A1E640</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7ACAE5EBC92EDAE2542D03313AC0753D</string>
+			<string>72BF696908508631E24D103426CF6CF4</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1788,7 +2292,7 @@
 		<key>8A45630674D1B21D9F08C4253A97FDE3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D10E12291817E4E17C916720290BD02E</string>
+			<string>12F355E408F6D0FC0A06677EE0BDBF08</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1799,22 +2303,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>8BA20E26D034363052BBBFF6732F2794</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_RickyMoney.framework</string>
-			<key>path</key>
-			<string>Pods-RickyMoney.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>8C04EA5472FEF48C72F2F35501C99F98</key>
+		<key>8B500FA747D0CCE1FBFDF565431D7342</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1823,53 +2312,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallRotateAnimation.m</string>
+			<string>DGActivityIndicatorBallPulseAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallRotateAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>8DFC4DA2F353A06F54487ECA6E3123EF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>LMDropdownView</string>
-			<key>target</key>
-			<string>E8F5F5117D1ACF5AF5FC21FAD4DF268D</string>
-			<key>targetProxy</key>
-			<string>058685CD41DA29F87E5EBE092DB4DC67</string>
-		</dict>
-		<key>8EDEEF03336BBB11DCCD9C44BE8BB329</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EBDAE2CD5A133270C38C6D0F81A2906C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8F0C2C193D398F3023E69B93B15F41F4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorLineScalePartyAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8F3944C711B7D5D9B7155C9437AA81E1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B2D1DAF9C347C000A8CD0E2F7F4A6654</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8F7E14F7C8638E29E397046D138EB40E</key>
+		<key>8D12EF9CCF0D6E86BF78C344020CA3FC</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1878,27 +2327,42 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorCookieTerminatorAnimation.h</string>
+			<string>DGActivityIndicatorBallScaleMultipleAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>902A1271DB996151FE1BE7AF43EA3194</key>
+		<key>8EDEEF03336BBB11DCCD9C44BE8BB329</key>
 		<dict>
 			<key>fileRef</key>
-			<string>28F9617588B9E50F8DA959BA555F44F3</string>
+			<string>7BEA102669812588358A4C3E59D935B9</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
 		</dict>
-		<key>911C0E5AE169AA50011792409D6B2760</key>
+		<key>8F0FFD391BD4F971CA914726B4D4F0BD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallRotateAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallRotateAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F3944C711B7D5D9B7155C9437AA81E1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>593BCFECDD9AEFB0BF1FA719BB048168</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>901B1F77D70A20C2C145A46F5D77452A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1913,23 +2377,73 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>902A1271DB996151FE1BE7AF43EA3194</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F271C17B2E4444BACB5F6B65B52BF241</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>9255815C9F7C6CB8EF0592332DE7032A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>A935F484F7F2A7555B9829BB3FC60DFA</string>
+				<string>124DBC63301095B2F3B28111731F2E7C</string>
+				<string>E2C820D145E4933183056582925332E6</string>
+				<string>5748477D33A4183875F7FF5B3FF6F463</string>
+				<string>C3721B5E916BD3D71A8D36C520E15AC1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>9334ADD06D1212F5CEB6761B9B870A29</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3B234963ED7335F58636FA1EB16CC8FC</string>
+			<string>A6D74FAB2ECE9D05EA16CE1134DEB128</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>96E9760D0C1A87E2149AC4808E5DCD9D</key>
+		<key>94B23C60A43181C5E55BA61C406E87C0</key>
 		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXTargetDependency</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorView</string>
-			<key>target</key>
-			<string>291621037D68F7869D267C25CE205F97</string>
-			<key>targetProxy</key>
-			<string>B34A180FB1009B86486EF6D3372AC845</string>
+			<string>DGActivityIndicatorBallScaleMultipleAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>95B659F0F908AB4EFC4A48263C42C4D5</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods_RickyMoney.framework</string>
+			<key>path</key>
+			<string>Pods-RickyMoney.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>9789359473D1946E1B913AD7F8663367</key>
 		<dict>
@@ -1944,33 +2458,18 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>9878576DD5C1F7FAC38F7A448445BD06</key>
+		<key>987BB9708928AD41F31EC3BB2FF65C5D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotateMultipleAnimation.m</string>
+			<string>DGActivityIndicatorCookieTerminatorAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateMultipleAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>98C11FFF677A8D08E8B16689D61FA997</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorFiveDotsAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorFiveDotsAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1992,7 +2491,7 @@
 		<key>99FA387F351E05B19E84C8FE1933D03F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EE63C6686B1AD473694DCF08125C4F1A</string>
+			<string>B2D96139BA0D5374711E72EA06F6F96D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2002,95 +2501,11 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>9A3699FDB772A7BB64E45387A49447C4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A0EDEFC9B89948A99EDC25928D0E62A9</string>
-				<string>512A9B362DC23A6EA275094F00F595A7</string>
-				<string>30540EE17BFF78268B08834E46C57365</string>
-				<string>C9F8C62D3244175EB73C58795D2B4643</string>
-				<string>632CD4E7CDFB2AB04FF56ADC2FD2728D</string>
-				<string>5D3801D3DD862346DFD044268CBE8693</string>
-				<string>9878576DD5C1F7FAC38F7A448445BD06</string>
-				<string>7ACAE5EBC92EDAE2542D03313AC0753D</string>
-				<string>DCBAF92D6A853A2E9ABED1888B085397</string>
-				<string>E6BF36538876689DB6378500B13DFCE4</string>
-				<string>EBDAE2CD5A133270C38C6D0F81A2906C</string>
-				<string>DA2F4CA5D773F75100E4E7E8192D0EEF</string>
-				<string>9A57635A830DEFF3FAC9149D83AA13B1</string>
-				<string>21A8C404F62C351710EDFE59BCFFC456</string>
-				<string>EDFC7CC86AD7CF2EEB2D2FFFA91C4F12</string>
-				<string>BB3A62B4C2C4AA293F31845648282ACD</string>
-				<string>A542309C0866AF62A3B5DF0B58014751</string>
-				<string>E5D5D2A4D6FB504F0B21FD523889AAAD</string>
-				<string>8C04EA5472FEF48C72F2F35501C99F98</string>
-				<string>15090CCA5430F71A403DA136C31F7FA4</string>
-				<string>12BD868AEADEC5302AA7BBF7364167D0</string>
-				<string>85192502C3A0657C4F4411CB9A3133CD</string>
-				<string>499EA10609D7F628D5A994C8FC5AD492</string>
-				<string>28F9617588B9E50F8DA959BA555F44F3</string>
-				<string>EA689CC1E114F20D02FE6F24B857CE7A</string>
-				<string>D51BC675AA259FC494F504F80BAB1062</string>
-				<string>EA1C30FD23F6F7FD6C04A197E2BEF105</string>
-				<string>9BC7E252022456E825A056947901C16F</string>
-				<string>BDCDAF0418E919DF372ADB28D1CA49D8</string>
-				<string>A0640A6A8267DA420E0C9A6B7BBC7332</string>
-				<string>6BE27BF8ED868879AA44DDAF319E51B0</string>
-				<string>7D3A3E967D67B209974ABA65953F17AC</string>
-				<string>C153B3FC76DEE4989B2E35CD22A6D27F</string>
-				<string>4F01AD7CC47DE2D97BE02DC39B5BA4C1</string>
-				<string>676E8084726069CD6EE0297D6EB33C39</string>
-				<string>8F7E14F7C8638E29E397046D138EB40E</string>
-				<string>1F57769F756A649252B8B17AA8A44DAA</string>
-				<string>07AFD5E034AD44D0E6E150EF38540124</string>
-				<string>911C0E5AE169AA50011792409D6B2760</string>
-				<string>5DF8D4716D25CFDAD936D23E08A0102C</string>
-				<string>98C11FFF677A8D08E8B16689D61FA997</string>
-				<string>A3ACC18310CB705B8EE8ADB9DD7E8480</string>
-				<string>474DFF6BE7459564D3644E29CE1F3A0A</string>
-				<string>4B87BEE790FEA4C918C00712FF5FAEC8</string>
-				<string>8F0C2C193D398F3023E69B93B15F41F4</string>
-				<string>B71918E5147B0BF468651B11BC9B1DD8</string>
-				<string>785D4B04425D714F3A679A5F1F277E68</string>
-				<string>2A7BE2F5536D789193820D53CCD8722E</string>
-				<string>AF21E297F61020AB9F923EE3BACAE799</string>
-				<string>7F074FFA40D3C7ABEAE73D7B5849BFEC</string>
-				<string>A05D1D92AE16956603110399FC0ED902</string>
-				<string>F2E5AB7FCEDC1632DF91167BEDE5976B</string>
-				<string>105C1121B08F48B956F791DBD2B28067</string>
-				<string>0B11B83CA8C00E07665C991265EE01AB</string>
-				<string>3D2C3D0AF39B5CD02ABACCE8C58275FE</string>
-				<string>D5DA6BB94966CD8A6E1516DC3D826809</string>
-				<string>BD56DD86FE9160B6A48863E873BFBD06</string>
-				<string>D10E12291817E4E17C916720290BD02E</string>
-				<string>B8AA84F00C14F4A7F607273F6BCB115C</string>
-				<string>2E39B2116DED3E983A15893FD51054B0</string>
-				<string>B6FE021FE5CF5A34D2AC162E4AF35CA0</string>
-				<string>4B612F3B99511F46A0351A4237AAAD08</string>
-				<string>D74534C13614B082756E25F508D9B837</string>
-				<string>EE63C6686B1AD473694DCF08125C4F1A</string>
-				<string>55F271FDC83AF53F6DF8B84E7B94D72B</string>
-				<string>D4CA22E70ED0BD318BD9A6C5F248A717</string>
-				<string>5CE6606AA24CD5778E0E0919CD752E68</string>
-				<string>54A523AA7B604C8F16E92CCB7AFCE763</string>
-				<string>2514D0D0AB19D4A2079FB18E62F9909A</string>
-				<string>3F6702FADB4E863280C8F18BF76478B2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>DGActivityIndicatorView</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>9A388C9AD29318111DA4BD9B0E904507</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E5D5D2A4D6FB504F0B21FD523889AAAD</string>
+			<string>8F0FFD391BD4F971CA914726B4D4F0BD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2101,25 +2516,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>9A57635A830DEFF3FAC9149D83AA13B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallGridPulseAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridPulseAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>9A7EC672396A59E69FECD2247C0CEB4A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>21A8C404F62C351710EDFE59BCFFC456</string>
+			<string>F894982053D187C2783183A26DA17B74</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2133,138 +2533,14 @@
 		<key>9B56777035894EEA07259D2D2A04F93F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>474DFF6BE7459564D3644E29CE1F3A0A</string>
+			<string>479AEC84A4BC6CB23AC161F0B35038AA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>9BC7E252022456E825A056947901C16F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallSpinFadeLoader.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9EC27EACE69898D2D7D85163A5AB97A8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>9A3699FDB772A7BB64E45387A49447C4</string>
-				<string>056714C2EEFED9A3096FCF0FE81651E8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9F8B0B292DF7731375D7D21F6095A637</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EDFC7CC86AD7CF2EEB2D2FFFA91C4F12</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A05D1D92AE16956603110399FC0ED902</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorNineDotsAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorNineDotsAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A0640A6A8267DA420E0C9A6B7BBC7332</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallTrianglePathAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A0EDEFC9B89948A99EDC25928D0E62A9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorAnimationProtocol.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/DGActivityIndicatorAnimationProtocol.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A3ACC18310CB705B8EE8ADB9DD7E8480</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorLineScaleAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScaleAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A542309C0866AF62A3B5DF0B58014751</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallPulseSyncAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A5493A62CFC2406D88915BCBAB65BB45</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-RickyMoney-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AB464A48DD78E5ED2C1E678642279ABE</key>
+		<key>9E5F9A409F7A80E320328AA627E5F72F</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>9789359473D1946E1B913AD7F8663367</string>
+			<string>869FB69F4932C4EB8F98E64DB9C7A556</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2285,8 +2561,10 @@
 				<string>YES</string>
 				<key>GCC_NO_COMMON_BLOCKS</key>
 				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Firebase/Firebase-prefix.pch</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-RickyMoney/Info.plist</string>
+				<string>Target Support Files/Firebase/Info.plist</string>
 				<key>INSTALL_PATH</key>
 				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
@@ -2297,22 +2575,12 @@
 					<string>@executable_path/Frameworks</string>
 					<string>@loader_path/Frameworks</string>
 				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
 				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-RickyMoney/Pods-RickyMoney.modulemap</string>
+				<string>Target Support Files/Firebase/Firebase.modulemap</string>
 				<key>MTL_ENABLE_DEBUG_INFO</key>
 				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
 				<key>PRODUCT_NAME</key>
-				<string>Pods_RickyMoney</string>
+				<string>Firebase</string>
 				<key>SDKROOT</key>
 				<string>iphoneos</string>
 				<key>SKIP_INSTALL</key>
@@ -2329,167 +2597,187 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>AB8B19DFC68C46BA609EC9467715054E</key>
+		<key>9E9738158C1F70D5489EBB48BB89BDCF</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>DGActivityIndicatorView</string>
+			<key>target</key>
+			<string>291621037D68F7869D267C25CE205F97</string>
+			<key>targetProxy</key>
+			<string>86271383C8BAFBBB29E807346708B73B</string>
+		</dict>
+		<key>9F8B0B292DF7731375D7D21F6095A637</key>
 		<dict>
 			<key>fileRef</key>
-			<string>85192502C3A0657C4F4411CB9A3133CD</string>
+			<string>8B500FA747D0CCE1FBFDF565431D7342</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
 		</dict>
-		<key>AE0CBE76C4F9564CFE8E3FBE0F64F016</key>
+		<key>A137EDCFE721980B861039D09E3342BD</key>
 		<dict>
-			<key>buildConfigurationList</key>
-			<string>CBF777B5C7AAFB7AD2C3A33E6C543D52</string>
-			<key>buildPhases</key>
+			<key>baseConfigurationReference</key>
+			<string>869FB69F4932C4EB8F98E64DB9C7A556</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Firebase/Firebase-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Firebase/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Firebase/Firebase.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>Firebase</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>A28944E13CAABC754B86403E2FB904DE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorTriplePulseAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriplePulseAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A45AFB3FCE1DA7B5C38EC6C0D9F43214</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallZigZagAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A4DF5C0325D6146B9C1344027C80CF6B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallZigZagDeflectAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagDeflectAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A5493A62CFC2406D88915BCBAB65BB45</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-RickyMoney-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A6D74FAB2ECE9D05EA16CE1134DEB128</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>LMDropdownView.m</string>
+			<key>path</key>
+			<string>LMDropdownView/LMDropdownView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A7E10F383DCD59079712A57B50DCF88E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
 			<array>
-				<string>43CA18EAE392C4A2AC4D5B584CD76E17</string>
-				<string>3D84442DEA29C031E27C571242BC2B67</string>
-				<string>0F9E7A63F42D90E37F295C418A4285EE</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>96E9760D0C1A87E2149AC4808E5DCD9D</string>
-				<string>8DFC4DA2F353A06F54487ECA6E3123EF</string>
+				<string>85A4F602CA6B100539E601AE38A2D9C0</string>
+				<string>DFEBECFC61D01720EA26E0FC844DE04D</string>
+				<string>BD050B295EC63FCBD295EBA18A2F27EB</string>
+				<string>3CF2ECB2B9E11A520B73981A8FFB0BFE</string>
 			</array>
 			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-RickyMoney</string>
-			<key>productName</key>
-			<string>Pods-RickyMoney</string>
-			<key>productReference</key>
-			<string>8BA20E26D034363052BBBFF6732F2794</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
-		<key>AF066F8D85A4D7A3B3A04D25E4D2AC88</key>
+		<key>A935F484F7F2A7555B9829BB3FC60DFA</key>
 		<dict>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>UIKit.framework</string>
+			<string>CFNetwork.framework</string>
 			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework</string>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CFNetwork.framework</string>
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>AF21E297F61020AB9F923EE3BACAE799</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorLineScalePulseOutRapidAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B14F635E504FBCC9C7FB53491C5F43CF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E6BF36538876689DB6378500B13DFCE4</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B2D1DAF9C347C000A8CD0E2F7F4A6654</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>LMDropdownView-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B34A180FB1009B86486EF6D3372AC845</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>291621037D68F7869D267C25CE205F97</string>
-			<key>remoteInfo</key>
-			<string>DGActivityIndicatorView</string>
-		</dict>
-		<key>B3D6FD60E6CB653FCD3D4D9C680E2795</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BB3A62B4C2C4AA293F31845648282ACD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B430582BF4ECDE5DA729E32D7801AC46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C9F8C62D3244175EB73C58795D2B4643</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B630F28EAA126CCC9BAE21CD3232F559</key>
-		<dict>
-			<key>fileRef</key>
-			<string>55F271FDC83AF53F6DF8B84E7B94D72B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6FE021FE5CF5A34D2AC162E4AF35CA0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorTriangleSkewSpinAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B71918E5147B0BF468651B11BC9B1DD8</key>
+		<key>AA12A4AA9D0BE4388B94866EF2EC5160</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2504,38 +2792,34 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B86569C319BA94F27358796E29180867</key>
+		<key>AA9272F2E072028DA1DDF526E95D6D15</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B8AA84F00C14F4A7F607273F6BCB115C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXTargetDependency</string>
 			<key>name</key>
-			<string>DGActivityIndicatorThreeDotsAnimation.m</string>
+			<string>Firebase</string>
+			<key>target</key>
+			<string>B7AC9326D819482593FE118E915409D7</string>
+			<key>targetProxy</key>
+			<string>57E23C0B72BF449427D51FE1AE7AA17B</string>
+		</dict>
+		<key>AA9FCD0D7130C0EA97B10C48B84E63BE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.m</string>
+			<string>LMDropdownView-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B9E66BFCBCE3F60A331D3E985C2206E1</key>
+		<key>AB8B19DFC68C46BA609EC9467715054E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4F01AD7CC47DE2D97BE02DC39B5BA4C1</string>
+			<string>8D12EF9CCF0D6E86BF78C344020CA3FC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2545,6 +2829,226 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>AE9D0E840C8099AA20C7EA289DB6A723</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImage+LMExtension.h</string>
+			<key>path</key>
+			<string>LMDropdownView/Vender/UIImage+LMExtension.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AEB1C6E9430178256BFC8A7ED7F04566</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AF3AD48F439ABFBCA25F2BA3DD643A95</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallSpinFadeLoader.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B045773E62569D88E3DEA935AE5BB752</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorRotatingSquaresAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSquaresAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B134F72E81D46D15AF158776FD26389D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotateAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B14F635E504FBCC9C7FB53491C5F43CF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>18D44C0584EA602EB72C7FABD093A038</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B2D96139BA0D5374711E72EA06F6F96D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorTripleRingsAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTripleRingsAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B3D6FD60E6CB653FCD3D4D9C680E2795</key>
+		<dict>
+			<key>fileRef</key>
+			<string>01F12551D5B0AE6BEF87F055AD1B3054</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B430582BF4ECDE5DA729E32D7801AC46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B134F72E81D46D15AF158776FD26389D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B4D414C4F67EBC8B4FA5DCB2B0863435</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FirebaseServerValue.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B60313130CE0557D72DA64AFFC6AB3CD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>83B8C63C4865617D196B138CFCB486D4</string>
+				<string>61371CFE0221D1EBE2EEE554214B9989</string>
+				<string>D1783197C20A299904765160690FF6D4</string>
+				<string>95B659F0F908AB4EFC4A48263C42C4D5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B630F28EAA126CCC9BAE21CD3232F559</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA0C8AC8D3068B4B6E05F60411E591AC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B7AC9326D819482593FE118E915409D7</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>49B346C14D532324DCD14D0FA1347BC6</string>
+			<key>buildPhases</key>
+			<array>
+				<string>46E052D320E3B778B76D8393E0BAFE0F</string>
+				<string>A7E10F383DCD59079712A57B50DCF88E</string>
+				<string>2FDCAAB615C287D16BF7F1F2AA978246</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Firebase</string>
+			<key>productName</key>
+			<string>Firebase</string>
+			<key>productReference</key>
+			<string>61371CFE0221D1EBE2EEE554214B9989</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>B9E66BFCBCE3F60A331D3E985C2206E1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A4DF5C0325D6146B9C1344027C80CF6B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>BA1C6517AD3C7A06DE5D713C691B0405</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorCookieTerminatorAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
 		<dict>
@@ -2566,29 +3070,29 @@
 		<key>BB344F817FF547333D72B09B73E47763</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EA689CC1E114F20D02FE6F24B857CE7A</string>
+			<string>73798F639E92C92B638A151FF09E015A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>BB3A62B4C2C4AA293F31845648282ACD</key>
+		<key>BB42EA6BD45EDA19118EFCE3BCB97026</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallPulseSyncAnimation.h</string>
+			<string>DGActivityIndicatorView.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.h</string>
+			<string>DGActivityIndicatorView/DGActivityIndicatorView.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BB9F3C679F0D948D111B2713F1CA5F6A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A0640A6A8267DA420E0C9A6B7BBC7332</string>
+			<string>05D357BB6B08D5AE584757E91210DC8A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2602,7 +3106,7 @@
 		<key>BBCA0A1AACF7BAB7864FCD0719B78C85</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5DF8D4716D25CFDAD936D23E08A0102C</string>
+			<string>2E1B05F6EB0A954B614316834657979C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2613,35 +3117,27 @@
 				</array>
 			</dict>
 		</dict>
-		<key>BD56DD86FE9160B6A48863E873BFBD06</key>
+		<key>BCD6EE1654C6A6518B57A913B0CF364A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorRotatingTrigonAnimation.m</string>
+			<string>DGActivityIndicatorLineScalePartyAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingTrigonAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BDCDAF0418E919DF372ADB28D1CA49D8</key>
+		<key>BD050B295EC63FCBD295EBA18A2F27EB</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>E2C820D145E4933183056582925332E6</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallSpinFadeLoader.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>BE08A5BA3589A8652E1DD7D2D944A306</key>
 		<dict>
@@ -2659,80 +3155,14 @@
 		<key>C054D6E72B61DACDE9935F0EF7131033</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5CE6606AA24CD5778E0E0919CD752E68</string>
+			<string>287C79E0AA489F5A9AED0A60B336036D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C153B3FC76DEE4989B2E35CD22A6D27F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallZigZagAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C1B8E7F7E3A42BB61291EFF936C5496B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImage+LMExtension.m</string>
-			<key>path</key>
-			<string>LMDropdownView/Vender/UIImage+LMExtension.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C6A0ADFB01F5886273F6AD6CB4399A0E</key>
+		<key>C23FCF31260D47CEC1494A292DAA1A1E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1F57769F756A649252B8B17AA8A44DAA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C88AC66D44949F77E6D5A59F4933571F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>56A8EF33286E9D8C021B3662A27D116A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C99E45F7F2253B8380741F3DE2B6F784</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C1B8E7F7E3A42BB61291EFF936C5496B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C9F8C62D3244175EB73C58795D2B4643</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotateAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CB13A851913814EEE6A164233BF15074</key>
-		<dict>
-			<key>fileRef</key>
-			<string>54A523AA7B604C8F16E92CCB7AFCE763</string>
+			<string>86B698120CD7B1FD37A6116DA1D10BFB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2743,28 +3173,68 @@
 				</array>
 			</dict>
 		</dict>
-		<key>CBF777B5C7AAFB7AD2C3A33E6C543D52</key>
+		<key>C36B810AAB8C0BB46D540AA9B1202F6F</key>
 		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>AB464A48DD78E5ED2C1E678642279ABE</string>
-				<string>410C732EBCF95BA581445898D1D58021</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>XCConfigurationList</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Empty.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>D087C9CFBF8359F8BE6E8EC885158912</key>
+		<key>C3721B5E916BD3D71A8D36C520E15AC1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>C53C93E7BA623C0ACAEE855B1D3FEFEE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorFiveDotsAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorFiveDotsAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C5FDB38CCBFA53D2F3FA4F2D9D744042</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C6A0ADFB01F5886273F6AD6CB4399A0E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B6FE021FE5CF5A34D2AC162E4AF35CA0</string>
+			<string>BA1C6517AD3C7A06DE5D713C691B0405</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>D10E12291817E4E17C916720290BD02E</key>
+		<key>C863AE4DEF5E884D7655D319E557918A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2773,11 +3243,147 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorThreeDotsAnimation.h</string>
+			<string>DGActivityIndicatorRotatingSandglassAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSandglassAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C88AC66D44949F77E6D5A59F4933571F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5884A51250E7A80934C2B978B93E6100</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C920B471A0B01EF5E439BF3ECECA205C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallScaleRippleMultipleAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleMultipleAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C99E45F7F2253B8380741F3DE2B6F784</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1525C87A54C7D295C0F861F6138465B7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA0C8AC8D3068B4B6E05F60411E591AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorTripleRingsAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTripleRingsAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAF824ABF86AF46FC3DB3BA62CC81A39</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D1E56E99475AA6AB75FF7E08AB3DE5E1</string>
+				<string>A6D74FAB2ECE9D05EA16CE1134DEB128</string>
+				<string>AE9D0E840C8099AA20C7EA289DB6A723</string>
+				<string>1525C87A54C7D295C0F861F6138465B7</string>
+				<string>D32F6FC70AD63C9F76665D4FDEE2BA85</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>LMDropdownView</string>
+			<key>path</key>
+			<string>LMDropdownView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CB13A851913814EEE6A164233BF15074</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DD6DC71371E21984437E64F1D18C8D5B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CD319797DC67071F76980651CEBCD178</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallClipRotatePulseAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotatePulseAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CEEEA7AA9E491248B7E71EDF3B8B9DCC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FAuthType.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CF07F782DE193E10319D38BB52AAC697</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Firebase.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D087C9CFBF8359F8BE6E8EC885158912</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1BA0315D43E6EF6702CC00AD3EC80FE5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D08FF375E1C87CC9E7B264C27C1C5FFB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>78EEF6D0B17AAB7A050AB33C7D78FE2F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>D16D67C4E10890D1D738EE49EE1D5654</key>
 		<dict>
@@ -2789,6 +3395,86 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D1783197C20A299904765160690FF6D4</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>LMDropdownView.framework</string>
+			<key>path</key>
+			<string>LMDropdownView.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>D18882142C7C67706C248C135F624247</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorAnimationProtocol.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/DGActivityIndicatorAnimationProtocol.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D1E56E99475AA6AB75FF7E08AB3DE5E1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>LMDropdownView.h</string>
+			<key>path</key>
+			<string>LMDropdownView/LMDropdownView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D206A3C88C8C3E81CEE7647A5EF5AA0E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorTriangleSkewSpinAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D32F6FC70AD63C9F76665D4FDEE2BA85</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E8B9C09ABAB2E413435B9FC8C4268018</string>
+				<string>171D6D20E443D79B5505B3ED13125023</string>
+				<string>4F503A4F494B2F41C22A39C09A64085C</string>
+				<string>593BCFECDD9AEFB0BF1FA719BB048168</string>
+				<string>AA9FCD0D7130C0EA97B10C48B84E63BE</string>
+				<string>F268EF8BEF62A6A2E3B8EF17CAA2B759</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/LMDropdownView</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2818,7 +3504,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>56D25F02A9A45BE218D08B60D206C3AC</string>
+			<string>B60313130CE0557D72DA64AFFC6AB3CD</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -2828,76 +3514,101 @@
 			<key>targets</key>
 			<array>
 				<string>291621037D68F7869D267C25CE205F97</string>
+				<string>B7AC9326D819482593FE118E915409D7</string>
 				<string>E8F5F5117D1ACF5AF5FC21FAD4DF268D</string>
-				<string>AE0CBE76C4F9564CFE8E3FBE0F64F016</string>
+				<string>65C55F1383D7B33F172AB9DF85637A38</string>
 			</array>
-		</dict>
-		<key>D4CA22E70ED0BD318BD9A6C5F248A717</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorTwoDotsAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTwoDotsAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D51BC675AA259FC494F504F80BAB1062</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallScaleRippleMultipleAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleMultipleAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D57EE053A502E26C9D9542900DF51746</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3D2C3D0AF39B5CD02ABACCE8C58275FE</string>
+			<string>F711EAF3E6EF608DEBF85B7E8B8C4126</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>D5DA6BB94966CD8A6E1516DC3D826809</key>
+		<key>D6882CEB85394DD650E51D9EE8C460E2</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>baseConfigurationReference</key>
+			<string>DC48A421E193A88CCF018F94D7A35526</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/Pods-RickyMoney/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/Pods-RickyMoney/Pods-RickyMoney.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>org.cocoapods.${PRODUCT_NAME:rfc1034identifier}</string>
+				<key>PRODUCT_NAME</key>
+				<string>Pods_RickyMoney</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>XCBuildConfiguration</string>
 			<key>name</key>
-			<string>DGActivityIndicatorRotatingTrigonAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingTrigonAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>Release</string>
 		</dict>
-		<key>D635D41133915B228CE899EF89DD95CE</key>
+		<key>D820364E60396B6CBA51EC6661B1D2D5</key>
 		<dict>
+			<key>fileRef</key>
+			<string>2B82D000469EAA343340A76328475C8F</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>D74534C13614B082756E25F508D9B837</key>
+		<key>DA1D1BF0EB618398E96F7A5DE5212DD8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2912,10 +3623,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>D820364E60396B6CBA51EC6661B1D2D5</key>
+		<key>DB05A9DD8244D10C28B6915C514AE15F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D4CA22E70ED0BD318BD9A6C5F248A717</string>
+			<string>0B9337A5E6218A59C95A35792C748007</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2925,21 +3636,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>DA2F4CA5D773F75100E4E7E8192D0EEF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallGridPulseAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridPulseAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>DC48A421E193A88CCF018F94D7A35526</key>
 		<dict>
@@ -2954,40 +3650,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>DCBAF92D6A853A2E9ABED1888B085397</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallClipRotatePulseAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotatePulseAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DCF5A1E815A9EBFB3738E62B2860CE0D</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>LMDropdownView.framework</string>
-			<key>path</key>
-			<string>LMDropdownView.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
 		<key>DD0CF102363A373C3D8F44E4929D50D3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7D3A3E967D67B209974ABA65953F17AC</string>
+			<string>13A8DEA7333B0A900E3063339C5B52C0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2998,10 +3664,122 @@
 				</array>
 			</dict>
 		</dict>
+		<key>DD6DC71371E21984437E64F1D18C8D5B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorView.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/DGActivityIndicatorView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DD842BD31C17AB3E26C89ABEAAE70012</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D18882142C7C67706C248C135F624247</string>
+				<string>248347DD4DA70E800BFBBDBC94164124</string>
+				<string>314EA5FEF07CD422EAEC3A735C5114A7</string>
+				<string>B134F72E81D46D15AF158776FD26389D</string>
+				<string>39F506D41E0E9CF2679D1DFE244475C9</string>
+				<string>3C282FB17E92E16157C6AB2D9FA56682</string>
+				<string>2B10385561E6CC68638551A408302BEF</string>
+				<string>72BF696908508631E24D103426CF6CF4</string>
+				<string>CD319797DC67071F76980651CEBCD178</string>
+				<string>18D44C0584EA602EB72C7FABD093A038</string>
+				<string>7BEA102669812588358A4C3E59D935B9</string>
+				<string>5688249281AF2409A40DBE693F3C4DC1</string>
+				<string>84834169B76A4147C73F8506E29ECA27</string>
+				<string>F894982053D187C2783183A26DA17B74</string>
+				<string>8B500FA747D0CCE1FBFDF565431D7342</string>
+				<string>01F12551D5B0AE6BEF87F055AD1B3054</string>
+				<string>F69EE06A42388726F541E5C8880A9724</string>
+				<string>8F0FFD391BD4F971CA914726B4D4F0BD</string>
+				<string>5E165DFB287CA9249C2A72F068083E35</string>
+				<string>5A104EB94C2950FC6CC7E8223F69303F</string>
+				<string>7D37C74FB3273F548B287C7A5CD7B576</string>
+				<string>8D12EF9CCF0D6E86BF78C344020CA3FC</string>
+				<string>94B23C60A43181C5E55BA61C406E87C0</string>
+				<string>F271C17B2E4444BACB5F6B65B52BF241</string>
+				<string>73798F639E92C92B638A151FF09E015A</string>
+				<string>5E3A750A159C9180BA948FE1EEF60644</string>
+				<string>C920B471A0B01EF5E439BF3ECECA205C</string>
+				<string>AF3AD48F439ABFBCA25F2BA3DD643A95</string>
+				<string>104B2F9766E3C56F08294DD4C5D1CC84</string>
+				<string>05D357BB6B08D5AE584757E91210DC8A</string>
+				<string>1E6DB2DFFF610C6B0AC2ADEAC5111699</string>
+				<string>13A8DEA7333B0A900E3063339C5B52C0</string>
+				<string>A45AFB3FCE1DA7B5C38EC6C0D9F43214</string>
+				<string>A4DF5C0325D6146B9C1344027C80CF6B</string>
+				<string>F67A6EA464D52BBCB7A5245FDC049308</string>
+				<string>987BB9708928AD41F31EC3BB2FF65C5D</string>
+				<string>BA1C6517AD3C7A06DE5D713C691B0405</string>
+				<string>3F21BCAF7BFAE6EB1BF936D797848CEE</string>
+				<string>901B1F77D70A20C2C145A46F5D77452A</string>
+				<string>2E1B05F6EB0A954B614316834657979C</string>
+				<string>C53C93E7BA623C0ACAEE855B1D3FEFEE</string>
+				<string>57A032EACE69FACC06686061D614B2B0</string>
+				<string>479AEC84A4BC6CB23AC161F0B35038AA</string>
+				<string>BCD6EE1654C6A6518B57A913B0CF364A</string>
+				<string>206C61409035652C3FE48F3FAF13312B</string>
+				<string>AA12A4AA9D0BE4388B94866EF2EC5160</string>
+				<string>7B2FD7B6CF66D2B8B8653B0F4022F87F</string>
+				<string>1358F8A34FB42A5E845134DABC376C29</string>
+				<string>E9C5EA110FE7857A943EE8FE7F1AB577</string>
+				<string>6BA083C4BA03052D2718BCB7D41A622A</string>
+				<string>6CD6317A34476761B9E180621476F8E0</string>
+				<string>C863AE4DEF5E884D7655D319E557918A</string>
+				<string>133A718AA70535C19BE80421528D5A61</string>
+				<string>B045773E62569D88E3DEA935AE5BB752</string>
+				<string>F711EAF3E6EF608DEBF85B7E8B8C4126</string>
+				<string>454E5006EE27966EC68CECDB4FBC0BDB</string>
+				<string>3E842BACF83ECF99C298FE9DFF4196DE</string>
+				<string>12F355E408F6D0FC0A06677EE0BDBF08</string>
+				<string>445CB0DBC9E3F5779C71C030D64D4449</string>
+				<string>D206A3C88C8C3E81CEE7647A5EF5AA0E</string>
+				<string>1BA0315D43E6EF6702CC00AD3EC80FE5</string>
+				<string>A28944E13CAABC754B86403E2FB904DE</string>
+				<string>DA1D1BF0EB618398E96F7A5DE5212DD8</string>
+				<string>B2D96139BA0D5374711E72EA06F6F96D</string>
+				<string>CA0C8AC8D3068B4B6E05F60411E591AC</string>
+				<string>2B82D000469EAA343340A76328475C8F</string>
+				<string>287C79E0AA489F5A9AED0A60B336036D</string>
+				<string>DD6DC71371E21984437E64F1D18C8D5B</string>
+				<string>BB42EA6BD45EDA19118EFCE3BCB97026</string>
+				<string>7272F8ED3A36D93394EC1B7784B2A891</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>DGActivityIndicatorView</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DDA0D4C5F3F1E21F1492DA07F1BA641C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FQuery.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>DDCFD4610CFB4F63668FD8D0891ACA41</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3D93845154306A4098BC2486EA5C5D90</string>
+			<string>F268EF8BEF62A6A2E3B8EF17CAA2B759</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3015,29 +3793,34 @@
 		<key>DE5158499A7116BF2B6DF560FD21A88A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>632CD4E7CDFB2AB04FF56ADC2FD2728D</string>
+			<string>39F506D41E0E9CF2679D1DFE244475C9</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>DFC77213EA49EFDBF0E3D0B6A2F1E9AB</key>
+		<key>DF2031E62921636516C87FD3698B543D</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>4643D6042F336F2CB5ADC8E1841A3B48</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIImage+LMExtension.h</string>
-			<key>path</key>
-			<string>LMDropdownView/Vender/UIImage+LMExtension.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DFEBECFC61D01720EA26E0FC844DE04D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>124DBC63301095B2F3B28111731F2E7C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>E0660A2CA391B520CA13127DBD19867F</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>195763E66CCC49FC55AEA99993A79371</string>
+			<string>4F503A4F494B2F41C22A39C09A64085C</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3094,24 +3877,10 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>E294F3BD993E240DCFCB4DC1329C9F36</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D635D41133915B228CE899EF89DD95CE</string>
-				<string>AF066F8D85A4D7A3B3A04D25E4D2AC88</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>E2BEA93256B26EA7D1C8F402B3786C40</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9BC7E252022456E825A056947901C16F</string>
+			<string>AF3AD48F439ABFBCA25F2BA3DD643A95</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3122,60 +3891,64 @@
 				</array>
 			</dict>
 		</dict>
+		<key>E2C820D145E4933183056582925332E6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Security.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Security.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
 		<key>E4D2414595D5EB2CC4AC8878DF31FD72</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6BE27BF8ED868879AA44DDAF319E51B0</string>
+			<string>1E6DB2DFFF610C6B0AC2ADEAC5111699</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>E5D5D2A4D6FB504F0B21FD523889AAAD</key>
+		<key>E60FA42EEC3ECC48701DB55986D25D69</key>
+		<dict>
+			<key>fileRef</key>
+			<string>35E1183C4AD7CB053E237A78A86E7C16</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E8B534D15D2B25919ACD898217266891</key>
+		<dict>
+			<key>fileRef</key>
+			<string>238147F7876AD19AD36F7A77571339F4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E8B9C09ABAB2E413435B9FC8C4268018</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallRotateAnimation.h</string>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallRotateAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E6BF36538876689DB6378500B13DFCE4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallGridBeatAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridBeatAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E779248F1FBAE2FDD4635AE8AEF0B481</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B86569C319BA94F27358796E29180867</string>
-				<string>45ADB592A691FB335748EE938DA19DB7</string>
-				<string>195763E66CCC49FC55AEA99993A79371</string>
-				<string>B2D1DAF9C347C000A8CD0E2F7F4A6654</string>
-				<string>F824F168EA80EA2E7FAE83F8ECCB0FEB</string>
-				<string>3D93845154306A4098BC2486EA5C5D90</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/LMDropdownView</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3200,18 +3973,18 @@
 			<key>productName</key>
 			<string>LMDropdownView</string>
 			<key>productReference</key>
-			<string>DCF5A1E815A9EBFB3738E62B2860CE0D</string>
+			<string>D1783197C20A299904765160690FF6D4</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
 		<key>E99BFA3C549F1641104A1492DD4D2185</key>
 		<dict>
 			<key>fileRef</key>
-			<string>676E8084726069CD6EE0297D6EB33C39</string>
+			<string>F67A6EA464D52BBCB7A5245FDC049308</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>EA1C30FD23F6F7FD6C04A197E2BEF105</key>
+		<key>E9C5EA110FE7857A943EE8FE7F1AB577</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3220,46 +3993,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>DGActivityIndicatorBallScaleRippleMultipleAnimation.m</string>
+			<string>DGActivityIndicatorLineScalePulseOutRapidAnimation.m</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleMultipleAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EA689CC1E114F20D02FE6F24B857CE7A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallScaleRippleAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleAnimation.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EBDAE2CD5A133270C38C6D0F81A2906C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallGridBeatAnimation.m</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallGridBeatAnimation.m</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>ED33CA85D0B58F9776D067F0800D64F0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DFC77213EA49EFDBF0E3D0B6A2F1E9AB</string>
+			<string>AE9D0E840C8099AA20C7EA289DB6A723</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3270,22 +4013,20 @@
 				</array>
 			</dict>
 		</dict>
-		<key>EDFC7CC86AD7CF2EEB2D2FFFA91C4F12</key>
+		<key>F268EF8BEF62A6A2E3B8EF17CAA2B759</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>DGActivityIndicatorBallPulseAnimation.m</string>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseAnimation.m</string>
+			<string>LMDropdownView-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EE63C6686B1AD473694DCF08125C4F1A</key>
+		<key>F271C17B2E4444BACB5F6B65B52BF241</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3294,31 +4035,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>DGActivityIndicatorTripleRingsAnimation.h</string>
+			<string>DGActivityIndicatorBallScaleRippleAnimation.h</string>
 			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorTripleRingsAnimation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2E5AB7FCEDC1632DF91167BEDE5976B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>DGActivityIndicatorRotatingSandglassAnimation.h</string>
-			<key>path</key>
-			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSandglassAnimation.h</string>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleAnimation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F39F64DC6F7F1FF7246D958725FB6E5C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5906EFA2F5297BEB7DCDF7607A54A30F</string>
+			<string>C5FDB38CCBFA53D2F3FA4F2D9D744042</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3378,25 +4104,11 @@
 		<key>F46030CE704666228CCCD89A59586A99</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DCBAF92D6A853A2E9ABED1888B085397</string>
+			<string>CD319797DC67071F76980651CEBCD178</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>F708EA5BCF76945F780EEEACB215968D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>98C11FFF677A8D08E8B16689D61FA997</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F70938307E06D652E364D266EA014497</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A05D1D92AE16956603110399FC0ED902</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F824F168EA80EA2E7FAE83F8ECCB0FEB</key>
+		<key>F618CA6CFDFF306D4F3B59710D7608C3</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3405,14 +4117,73 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>LMDropdownView-prefix.pch</string>
+			<string>FTransactionResult.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F67A6EA464D52BBCB7A5245FDC049308</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallZigZagDeflectAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagDeflectAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F69EE06A42388726F541E5C8880A9724</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallPulseSyncAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F708EA5BCF76945F780EEEACB215968D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C53C93E7BA623C0ACAEE855B1D3FEFEE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F70938307E06D652E364D266EA014497</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6CD6317A34476761B9E180621476F8E0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F711EAF3E6EF608DEBF85B7E8B8C4126</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>DGActivityIndicatorRotatingSquaresAnimation.m</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSquaresAnimation.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F827541D56D5F4EFB385B5D4B94B47C9</key>
 		<dict>
 			<key>fileRef</key>
-			<string>07AFD5E034AD44D0E6E150EF38540124</string>
+			<string>3F21BCAF7BFAE6EB1BF936D797848CEE</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3426,14 +4197,42 @@
 		<key>F829446E4D6BA30AB151A03970AFB2D8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>8C04EA5472FEF48C72F2F35501C99F98</string>
+			<string>5E165DFB287CA9249C2A72F068083E35</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>F894982053D187C2783183A26DA17B74</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>DGActivityIndicatorBallPulseAnimation.h</string>
+			<key>path</key>
+			<string>DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseAnimation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F89E37A1A79C2B98D098EA9B4CD43C04</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Firebase-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>FA538AB69B24F23BAD0822FBC8854194</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A3ACC18310CB705B8EE8ADB9DD7E8480</string>
+			<string>57A032EACE69FACC06686061D614B2B0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3447,7 +4246,7 @@
 		<key>FAAF40124FAF1457BE98C4A534D7573D</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>195763E66CCC49FC55AEA99993A79371</string>
+			<string>4F503A4F494B2F41C22A39C09A64085C</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -3518,6 +4317,21 @@
 			<string>PBXSourcesBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
+		</dict>
+		<key>FC892D90A01E5A78B3BB99282DF01AAD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DD842BD31C17AB3E26C89ABEAAE70012</string>
+				<string>6CAA8B9475A7E0E05F26F73FFFA736E9</string>
+				<string>CAF824ABF86AF46FC3DB3BA62CC81A39</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

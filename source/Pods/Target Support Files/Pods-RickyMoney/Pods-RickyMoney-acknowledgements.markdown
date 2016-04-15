@@ -27,6 +27,10 @@ SOFTWARE.
 
 
 
+## Firebase
+
+https://www.firebase.com/terms/terms-of-service.html
+
 ## LMDropdownView
 
 The MIT License (MIT)

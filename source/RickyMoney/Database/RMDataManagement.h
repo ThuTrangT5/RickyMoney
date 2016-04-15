@@ -18,6 +18,7 @@
 + (NSString *)encodeToBase64String:(UIImage *)image;
 + (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
 
+- (BOOL) createNewUserWithEmail:(NSString *) email password:(NSString*) password andUserId:(NSString*) userId;
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
 - (User*) getCurrentUserDetail;

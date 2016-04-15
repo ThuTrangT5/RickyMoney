@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-RickyMoney/DGActivityIndicatorView.framework"
+  install_framework "Pods-RickyMoney/Firebase.framework"
   install_framework "Pods-RickyMoney/LMDropdownView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-RickyMoney/DGActivityIndicatorView.framework"
+  install_framework "Pods-RickyMoney/Firebase.framework"
   install_framework "Pods-RickyMoney/LMDropdownView.framework"
 fi

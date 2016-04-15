@@ -1,15 +1,18 @@
 PODS:
   - DGActivityIndicatorView (2.0)
+  - Firebase (2.5.1)
   - LMDropdownView (1.0.3)
 
 DEPENDENCIES:
   - DGActivityIndicatorView
+  - Firebase (>= 2.5.1)
   - LMDropdownView
 
 SPEC CHECKSUMS:
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   LMDropdownView: f03fadfe65908c735580f63d04c47e6d7c5325f3
 
-PODFILE CHECKSUM: b5b7fcb466d1c0a0a5bb2b15f5d027e42752fd57
+PODFILE CHECKSUM: 527bec8af810fb3f89fcbea842bd44e91b952dce
 
 COCOAPODS: 1.0.0.beta.2

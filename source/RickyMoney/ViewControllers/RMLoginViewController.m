@@ -12,6 +12,8 @@
 #import "UIImage+FontAwesome.h"
 
 #import "RMDataManagement.h"
+#import "RMFireBaseManagement.h"
+#import "TTAlertView.h"
 
 #define DATE_FORMAT @"yyyy-MM-dd"
 
@@ -79,27 +81,41 @@
 
 - (IBAction)loginAction:(id)sender {
     if ([self validate]) {
-        NSString *userId = [[RMDataManagement getSharedInstance] loginWithEmail:self.emailField.text andPassword:self.passwordField.text];
-        if (userId == nil) {
-            
-            // The login failed. Check error to see why.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"Your email or password is not correct."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-            
-        } else {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = DATE_FORMAT;
-            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
-            
-            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
-            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
-            
-            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-        }
+        
+        [RMFireBaseManagement loginWithEmail:_emailField.text andPassword:_passwordField.text successBlock:^(NSString *userId) {
+            if (userId != nil) {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = DATE_FORMAT;
+                NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
+                
+                [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
+                [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+                
+                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+            }
+        }];
+        
+        //        NSString *userId = [[RMDataManagement getSharedInstance] loginWithEmail:self.emailField.text andPassword:self.passwordField.text];
+        //        if (userId == nil) {
+        //
+        //            // The login failed. Check error to see why.
+        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+        //                                                            message:@"Your email or password is not correct."
+        //                                                           delegate:self
+        //                                                  cancelButtonTitle:@"OK"
+        //                                                  otherButtonTitles:nil];
+        //            [alert show];
+        //
+        //        } else {
+        //            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        //            formatter.dateFormat = DATE_FORMAT;
+        //            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
+        //
+        //            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
+        //            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+        //
+        //            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+        //        }
     }
 }
 
@@ -107,18 +123,7 @@
     
     if ([self validate]) {
         
-        NSString *userId = [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
-        if (userId == nil) {
-            
-            // The login failed. Check error to see why.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message: @"This email is already signed up."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-            
-        } else {
+        [RMFireBaseManagement signupWithEmail:_emailField.text andPassword:_passwordField.text successBlock:^(NSString *userId) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat = DATE_FORMAT;
             NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
@@ -127,7 +132,29 @@
             [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
             
             [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-        }
+        }];
+        
+        //        NSString *userId = [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
+        //        if (userId == nil) {
+        //
+        //            // The login failed. Check error to see why.
+        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+        //                                                            message: @"This email is already signed up."
+        //                                                           delegate:self
+        //                                                  cancelButtonTitle:@"OK"
+        //                                                  otherButtonTitles:nil];
+        //            [alert show];
+        //
+        //        } else {
+        //            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        //            formatter.dateFormat = DATE_FORMAT;
+        //            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
+        //
+        //            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
+        //            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+        //
+        //            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+        //        }
     }
 }
 
@@ -163,11 +190,8 @@
     }
     
     if (!isValid) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:errorMessage
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Login Error"
+                                                andErrorMessage:errorMessage];
         [alert show];
     }
     

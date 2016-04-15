@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '68B1123DC8766C7C2DEE8F61'
+               BlueprintIdentifier = 'D4D21CA8239EF30FCAC1A285'
                BlueprintName = 'LMDropdownView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LMDropdownView.framework'>

@@ -6,5 +6,6 @@ target 'RickyMoney' do
     
 pod 'DGActivityIndicatorView'
 pod 'LMDropdownView'
+pod 'Firebase', '>= 2.5.1'
 
 end

@@ -11,6 +11,8 @@
 
 #define RM_COLOR [UIColor colorWithRed:230.0/255.0 green:194.0/255.0 blue:32.0/255.0 alpha:1.0] // # e6c220
 
+#define RM_FIREBASE_URL  @"https://rickymoney.firebaseio.com"
+
 typedef enum _options {
     OPTION_PASSCODE,
     OPTION_CURRENCY,

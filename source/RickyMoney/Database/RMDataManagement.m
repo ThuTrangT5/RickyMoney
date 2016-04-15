@@ -198,17 +198,33 @@ static sqlite3_stmt *statement = nil;
     return [UIImage imageWithData:data];
 }
 
-#pragma mark- MESSAGE
-
-+ (void) showMessage:(NSString*) message withTitle:(NSString*) title {
-   
-    
-//    [alert add]
-    //[[UNAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    
-}
-
 #pragma mark- USER
+
+- (BOOL) createNewUserWithEmail:(NSString *) email password:(NSString*) password andUserId:(NSString*) userId {
+    BOOL result = NO;
+    
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
+        
+        NSString *insertQuery = [NSString stringWithFormat:@"insert or replace into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurrency_01\")", USER_TABLE_NAME, userId, email, password];
+        
+        char * errMsg;
+        int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
+        if(result != SQLITE_OK) {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
+            
+        } else {
+            NSLog(@"Insert new User(%@, %@) to Local DB successfully", userId, email);
+            result = YES;
+        }
+        
+        sqlite3_close(database);
+        
+        return result;
+    }
+    
+    return result;
+}
 
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password {
     NSString *userId = nil; // result is the created user id
