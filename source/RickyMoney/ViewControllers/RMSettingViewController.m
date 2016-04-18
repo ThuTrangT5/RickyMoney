@@ -177,32 +177,32 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)doneActionWithPasscode:(NSString *) newPasscode {
-    NSString *currentPasscode = currentUser.passcode;
-    
-    if ((currentPasscode == nil || currentPasscode.length == 0) && newPasscode != nil && newPasscode.length > 0) {
-        // turn on passcode
-        [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:CURRENT_PASSCODE];
-        
-        currentUser.passcode = newPasscode;
-        [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
-        
-        _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
-        [self.tableView reloadData];
-        
-    } else if (currentPasscode != nil && currentPasscode.length > 0){
-        if ([newPasscode isEqualToString:currentPasscode]) {
-            // turn off passcode
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_PASSCODE];
-            
-            currentUser.passcode = nil;
-            [[RMDataManagement getSharedInstance] updatePasscode:nil forUser:currentUser.objectId];
-            
-            _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
-            [self.tableView reloadData];
-        }
+- (void)doneActionWithPasscode:(NSString *) passcode {
+    NSString *newPasscode = passcode;
+    if ([newPasscode isEqualToString:currentUser.passcode]) {
+        newPasscode = @"";
     }
     
+    [RMFireBaseManagement updatePasscode:newPasscode forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
+        if (isSuccess) {
+            if (newPasscode.length > 0) {
+                // turn on passcode
+                [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:CURRENT_PASSCODE];
+                _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
+                
+            } else {
+                // turn off passcode
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_PASSCODE];
+                _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
+            }
+            
+            currentUser.passcode = newPasscode;
+            
+            [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
+            
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark- RMOptionDelegate

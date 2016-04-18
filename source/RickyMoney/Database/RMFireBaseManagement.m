@@ -187,14 +187,14 @@ static Firebase *myRootRef = nil;
     
     [userRef setValue:passcode withCompletionBlock:^(NSError *error, Firebase *ref) {
         if (error != nil) {
-            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Update Avatar" andErrorMessage:[error.userInfo valueForKey:NSLocalizedDescriptionKey]];
-            [alert show];
-        } else {
-            [[RMDataManagement getSharedInstance] updatePasscode:passcode forUser:userId];
             
-            if (block != nil) {
-                block(TRUE);
-            }
+            NSLog(@"Update Passcode FireBase Error : %@", error.description);
+            
+        }
+        BOOL resultOff = [[RMDataManagement getSharedInstance] updatePasscode:passcode forUser:userId];
+        
+        if (block != nil) {
+            block(resultOff);
         }
     }];
 }

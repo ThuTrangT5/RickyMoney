@@ -60,23 +60,23 @@
         UIView *btn = [self.view viewWithTag:i];
         btn.layer.borderColor = [[UIColor whiteColor] CGColor];
         btn.layer.borderWidth = 1.0f;
-//        btn.layer.cornerRadius = btn.frame.size.height / 2.0;
+        //        btn.layer.cornerRadius = btn.frame.size.height / 2.0;
         btn.backgroundColor = _mainColor;
     }
 }
 
 - (void) setBlurBackground {
-//    //only apply the blur if the user hasn't disabled transparency effects
-//    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-//        UIView *maskView = [self.view viewWithTag:10];
-//        
-//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-//        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-//        blurEffectView.frame = self.view.bounds;
-//        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//        
-//        [maskView addSubview:blurEffectView];
-//    }
+    //    //only apply the blur if the user hasn't disabled transparency effects
+    //    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+    //        UIView *maskView = [self.view viewWithTag:10];
+    //
+    //        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    //        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    //        blurEffectView.frame = self.view.bounds;
+    //        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //
+    //        [maskView addSubview:blurEffectView];
+    //    }
 }
 
 #pragma mark- Actions
@@ -107,16 +107,13 @@
 }
 
 - (IBAction)ontouchDonePasscode:(id)sender {
-    if (self.delegate) {
+    
+    if (_currentPasscode != nil && _currentPasscode.length > 0 && [_passcodeField.text isEqualToString:_currentPasscode] == NO) {
+        [self passcodeIsWrong];
+        
+    } else {
         [self.delegate doneActionWithPasscode: self.passcodeField.text];
         [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        if (_currentPasscode != nil && _currentPasscode.length > 0 && [_passcodeField.text isEqualToString:_currentPasscode] == NO) {
-            [self passcodeIsWrong];
-            
-        } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
     }
 }
 
