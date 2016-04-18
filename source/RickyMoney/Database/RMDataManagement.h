@@ -21,6 +21,7 @@
 - (BOOL) createNewUserWithEmail:(NSString *) email password:(NSString*) password andUserId:(NSString*) userId;
 - (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
+- (NSString*) getCurrentUserId;
 - (User*) getCurrentUserDetail;
 - (NSString*) getCurrentUserCurrencySymbol;
 

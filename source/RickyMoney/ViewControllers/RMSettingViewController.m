@@ -12,6 +12,7 @@
 
 #import "RMObjects.h"
 #import "RMDataManagement.h"
+#import "RMFireBaseManagement.h"
 
 #import "RMChangePasswordViewController.h"
 #import "MDTableViewCell.h"
@@ -38,7 +39,6 @@
 
 #pragma mark- User information
 - (void) getUserInfo {
-    
     currentUser = [[RMDataManagement getSharedInstance] getCurrentUserDetail];
     if (currentUser != nil) {
         NSString *currency = [NSString stringWithFormat:@"%@(%@)", currentUser.currencyName, currentUser.currencySymbol];
@@ -147,9 +147,13 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    if ([[RMDataManagement getSharedInstance] updateAvatar:image forUser:currentUser.objectId] == YES) {
+    //    if ([[RMDataManagement getSharedInstance] updateAvatar:image forUser:currentUser.objectId] == YES) {
+    //        [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+    //    }
+    
+    [RMFireBaseManagement updateAvatar:image forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
         [_profileField setBackgroundImage:image forState:UIControlStateNormal];
-    }
+    }];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -225,7 +229,7 @@
     
     if ([segue.identifier isEqualToString:@"changePasswordSegue"]) {
         RMChangePasswordViewController *vc = (RMChangePasswordViewController*) [segue destinationViewController];
-        vc.currentUser = currentUser;
+        vc.currentUserEmail = currentUser.email;
         
     } else if ([segue.identifier isEqualToString:@"optionSegue"]) {
         RMOptionsViewController *optionVC = (RMOptionsViewController*)[segue destinationViewController];

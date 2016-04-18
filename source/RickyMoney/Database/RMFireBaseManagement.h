@@ -7,13 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "User.h"
 
 @interface RMFireBaseManagement : NSObject
 
 + (void) loginWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block;
 + (void) signupWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block;
++ (void) changPasswordForUser:(NSString*) email formOld:(NSString*) oldPass toNew:(NSString*) newPass successBlock:(void (^) (BOOL isSuccess)) block;
++ (void) updateCurrency:(NSString*) newCurrencyId forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block;
++ (void) updateAvatar:(UIImage*) newAvatar forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block;
++ (void) updatePasscode:(NSString*) passcode forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block;
 
-+ (void) getUserDetail:(NSString*) userId successBlock: (void (^)(User *)) block;
++ (void) getCurrentUserDetailWithSuccessBlock: (void (^)(User *)) block;
+
++ (void) createData;
 
 @end

@@ -45,6 +45,7 @@
     // testing
     _emailField.text = @"thutrangitmt@gmail.com";
     _passwordField.text = @"111111";
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -133,28 +134,6 @@
             
             [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
         }];
-        
-        //        NSString *userId = [[RMDataManagement getSharedInstance] createNewUserWithEmail:self.emailField.text password:self.passwordField.text];
-        //        if (userId == nil) {
-        //
-        //            // The login failed. Check error to see why.
-        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-        //                                                            message: @"This email is already signed up."
-        //                                                           delegate:self
-        //                                                  cancelButtonTitle:@"OK"
-        //                                                  otherButtonTitles:nil];
-        //            [alert show];
-        //
-        //        } else {
-        //            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        //            formatter.dateFormat = DATE_FORMAT;
-        //            NSString *loginedDate = [formatter stringFromDate:[NSDate new]];
-        //
-        //            [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
-        //            [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
-        //
-        //            [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
-        //        }
     }
 }
 

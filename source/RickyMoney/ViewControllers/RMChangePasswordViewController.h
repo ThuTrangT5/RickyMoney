@@ -11,7 +11,7 @@
 
 @interface RMChangePasswordViewController : UIViewController <UITextFieldDelegate>
 
-@property (strong, nonatomic) User *currentUser;
+@property (strong, nonatomic) NSString *currentUserEmail;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *currentPasswordField;

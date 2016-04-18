@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/ViewControllers/RMSettingViewController.m"
-            timestampString = "482383956.924628"
+            timestampString = "482662458.704806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-openPasscodeView"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,12 +170,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RickyMoney/Database/RMFireBaseManagement.m"
-            timestampString = "482410727.769939"
+            timestampString = "482664881.891076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "+loginWithEmail:andPassword:successBlock:"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "+getCurrentUserDetailWithSuccessBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickyMoney/Database/RMFireBaseManagement.m"
+            timestampString = "482664881.891076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "+updateAvatar:forCurrentUserWithSuccessBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickyMoney/Database/RMFireBaseManagement.m"
+            timestampString = "482664852.647633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "+updateAvatar:forCurrentUserWithSuccessBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

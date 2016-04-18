@@ -10,6 +10,7 @@
 #import "UIImage+FontAwesome.h"
 #import "RickyMoney-Swift.h"
 #import "RMDataManagement.h"
+#import "RMFireBaseManagement.h"
 #import "TTAlertView.h"
 
 #define Y_OFFSET 155
@@ -17,7 +18,6 @@
 @implementation RMChangePasswordViewController {
     float yBeforeMoveUp;
     UITextField *currentFocusTextField;
-    NSString *currentPassword;
 }
 
 - (void)viewDidLoad {
@@ -49,7 +49,7 @@
 }
 
 - (void) bindingUserDetail {
-    _emailField.text = _currentUser.email;
+    _emailField.text = _currentUserEmail;
 }
 
 #pragma mark- UITextFieldDelegate
@@ -72,8 +72,8 @@
 
 - (BOOL) validate {
     NSString *message = @"";
-    if (_currentPasswordField.text.length == 0 || [_currentPasswordField.text isEqualToString:_currentUser.password] == NO) {
-        message = @"Please input the correct current password.\n";
+    if (_currentPasswordField.text.length == 0) {
+        message = @"Please input current password.\n";
     }
     
     if (_updatePasswordField.text.length < 6) {
@@ -95,16 +95,17 @@
 
 - (IBAction)ontouchChangePassword:(id)sender {
     if ([self validate]) {
-        if ([[RMDataManagement getSharedInstance] updatePassword:_updatePasswordField.text forUser:_currentUser.objectId] == YES) {
-            NSLog(@"Update Password successfully");
-            _currentUser.password = _updatePasswordField.text;
-            _currentPasswordField.text = @"";
-            _updatePasswordField.text = @"";
-            _confirmPasswordField.text = @"";
-            
-            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Password" andMessage:@"Sucessfully."];
-            [alert show];
-        }
+        
+        [RMFireBaseManagement changPasswordForUser:_currentUserEmail formOld:_currentPasswordField.text toNew:_confirmPasswordField.text successBlock:^(BOOL isSuccess) {
+            if (isSuccess) {
+                _currentPasswordField.text = @"";
+                _updatePasswordField.text = @"";
+                _confirmPasswordField.text = @"";
+                
+                TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Password" andMessage:@"Sucessfully."];
+                [alert show];
+            }
+        }];
     }
 }
 
