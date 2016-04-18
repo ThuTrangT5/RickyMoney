@@ -65,11 +65,18 @@ static Firebase *myRootRef = nil;
             }
             
         } else {
-            [[RMDataManagement getSharedInstance] createNewUserWithEmail:email password:password andUserId:authData.uid];
             
-            if (block != nil) {
-                block(authData.uid);
-            }
+            [[NSUserDefaults standardUserDefaults] setValue:authData.uid forKey:CURRENT_USER_ID];
+            
+            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
+                user.password = password;
+                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
+                
+                if (block != nil) {
+                    block(authData.uid);
+                }
+            }];
+            
         }
     }];
 }
@@ -85,9 +92,18 @@ static Firebase *myRootRef = nil;
             
         } else {
             NSString *uid = [result objectForKey:@"uid"];
+            
             NSLog(@"Successfully created user account FIREBASE with uid: %@", uid);
             [self setDefaultInfoForUser:uid withEmail:email];
-            [[RMDataManagement getSharedInstance] createNewUserWithEmail:email password:password andUserId:uid];
+            
+            User *newUser = [[User alloc] init];
+            newUser.objectId = uid;
+            newUser.email = email;
+            newUser.password = password;
+            
+            [[RMDataManagement getSharedInstance] createNewUserWithInfo:newUser];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:uid forKey:CURRENT_USER_ID];
             
             if (block != nil) {
                 block(uid);
@@ -122,7 +138,7 @@ static Firebase *myRootRef = nil;
     NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
     
     NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys: email, @"email", @"RMCurrency_01", @"currencyId", nil];
-    NSDictionary *passcode = [[NSDictionary alloc] initWithObjectsAndKeys:@"no-passcode", currentDeviceId, nil];
+    NSDictionary *passcode = [[NSDictionary alloc] initWithObjectsAndKeys:@"", currentDeviceId, nil];
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys: info, @"info", passcode, @"passcode", nil];
     
     Firebase *root = [self RMRoofRef];
@@ -230,8 +246,18 @@ static Firebase *myRootRef = nil;
     }];
 }
 
-+ (void) createData {
++ (void) getRemoteData {
+    Firebase *root = [self RMRoofRef];
     
+    Firebase *categoryRef = [root childByAppendingPath:@"category"];
+    [categoryRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [[RMDataManagement getSharedInstance] updateCategoryWithData:snapshot.value];
+    }];
+    
+    Firebase *currencyRef = [root childByAppendingPath:@"currency"];
+    [currencyRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [[RMDataManagement getSharedInstance] updateCurrencyWithData:snapshot.value];
+    }];
 }
 
 @end

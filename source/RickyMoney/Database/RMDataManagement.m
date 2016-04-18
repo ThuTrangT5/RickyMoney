@@ -46,12 +46,12 @@ static sqlite3_stmt *statement = nil;
         [self createTransactionTable];
         [self createBudgetTable];
         
-        [self createCategoryData];
-        [self createCurrencyData];
+//        [self createCategoryData];
+//        [self createCurrencyData];
     }
     
-//    [self deleteTable:BUDGET_TABLE_NAME];
-
+    //    [self deleteTable:BUDGET_TABLE_NAME];
+    
     return isSuccess;
 }
 
@@ -186,6 +186,52 @@ static sqlite3_stmt *statement = nil;
     }
 }
 
+- (void) updateCurrencyWithData:(NSDictionary*) objects {
+    
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+    
+        for (NSString *objectId in objects.allKeys) {
+            NSDictionary *objectValue = [objects valueForKey:objectId];
+            NSString *name = [objectValue valueForKey:@"name"];
+            NSString *symbol = [objectValue valueForKey:@"symbol"];
+            NSString *image = [objectValue valueForKey:@"image"];
+            
+            //(objectId text primary key, name text, symbol text, image text)"
+            
+            NSString *insertQuery = @"insert or replace into %@ (objectId, name, symbol, image) values (\"%@\", \"%@\", \"%@\", \"%@\")";
+            insertQuery = [NSString stringWithFormat:insertQuery, CURRENCY_TABLE_NAME, objectId, name, symbol, image];
+            
+            char * errMsg;
+            if (sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+                NSLog(@"Failed to Insert CURRENCY table: %s", errMsg);
+            }
+        }
+        sqlite3_close(database);
+    }
+}
+
+- (void) updateCategoryWithData:(NSDictionary*) objects {
+    
+    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        
+        for (NSString *objectId in objects.allKeys) {
+            NSDictionary *objectValue = [objects valueForKey: objectId];
+            NSString *vnName = [objectValue valueForKey:@"vnName"];
+            NSString *enName = [objectValue valueForKey:@"enName"];
+            NSString *icon = [objectValue valueForKey:@"icon"];
+            
+            NSString *insertQuery = @"insert or replace into %@ (objectId, vnName, enName, icon) values (\"%@\", \"%@\", \"%@\", \"%@\")";
+            insertQuery = [NSString stringWithFormat:insertQuery, CATEGORY_TABLE_NAME, objectId, vnName, enName, icon];
+            
+            char * errMsg;
+            if (sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg) != SQLITE_OK) {
+                NSLog(@"Failed to Insert CATEGORY table: %s", errMsg);
+            }
+        }
+        sqlite3_close(database);
+    }
+}
+
 #pragma mark- BASE64 <=> Image
 
 + (NSString *)encodeToBase64String:(UIImage *)image {
@@ -200,13 +246,21 @@ static sqlite3_stmt *statement = nil;
 
 #pragma mark- USER
 
-- (BOOL) createNewUserWithEmail:(NSString *) email password:(NSString*) password andUserId:(NSString*) userId {
+- (BOOL) createNewUserWithInfo:(User*) userInfo {
     BOOL result = NO;
     
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
         
-        NSString *insertQuery = [NSString stringWithFormat:@"insert or replace into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurrency_01\")", USER_TABLE_NAME, userId, email, password];
+        NSString *insertQuery = @"insert or replace into %@ (objectId, email, password, currencyId, avatar) values (\"%@\", \"%@\", \"%@\", \"%@\", %@)";
+        insertQuery = [NSString stringWithFormat: insertQuery,
+                       USER_TABLE_NAME,
+                       userInfo.objectId,
+                       userInfo.email,
+                       userInfo.password,
+                       userInfo.currencyId == nil ? @"RMCurrency_01" : userInfo.currencyId,
+                       userInfo.avatar == nil ? @"null" : [NSString stringWithFormat:@"\"%@\"", userInfo.avatar]
+                       ];
         
         char * errMsg;
         int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
@@ -214,7 +268,7 @@ static sqlite3_stmt *statement = nil;
             NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
             
         } else {
-            NSLog(@"Insert new User(%@, %@) to Local DB successfully", userId, email);
+            NSLog(@"Insert new User(%@, %@) to Local DB successfully", userInfo.objectId, userInfo.email);
             result = YES;
         }
         
@@ -224,50 +278,6 @@ static sqlite3_stmt *statement = nil;
     }
     
     return result;
-}
-
-- (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password {
-    NSString *userId = nil; // result is the created user id
-    
-    const char *dbpath = [databasePath UTF8String];
-    if (sqlite3_open(dbpath, &database) == SQLITE_OK) {
-        
-        // 1. Check exists email
-        NSString *query = [NSString stringWithFormat: @"SELECT objectId from %@ WHERE email = \"%@\"", USER_TABLE_NAME, email];
-        int rc = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, NULL);
-        if(rc == SQLITE_OK){
-            if (sqlite3_step(statement) == SQLITE_ROW) {
-                NSLog(@"Email %@ is already taken", email);
-                
-                sqlite3_finalize(statement);
-                sqlite3_close(database);
-                
-                return nil;
-                
-            } else {
-                sqlite3_finalize(statement);
-            }
-        }
-        
-        // 2. Create new account
-        
-        userId = [self createAutoIdentifierForTable: USER_TABLE_NAME];
-        NSString *insertQuery = [NSString stringWithFormat:@"insert into %@ (objectId, email, password, currencyId) values (\"%@\", \"%@\", \"%@\", \"RMCurrency_01\")", USER_TABLE_NAME, userId, email, password];
-        
-        char * errMsg;
-        int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
-        if(result != SQLITE_OK) {
-            NSLog(@"Failed to insert record  rc:%d, msg=%s",result,errMsg);
-            userId = nil;
-            
-        } else {
-            NSLog(@"Insert new User(%@, %@) successfully", userId, email);
-        }
-        
-        sqlite3_close(database);
-    }
-    
-    return userId;
 }
 
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password {
@@ -426,7 +436,7 @@ static sqlite3_stmt *statement = nil;
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         NSString *updateQuery;
-        if (newPasscode == nil) {
+        if (newPasscode == nil || newPasscode.length == 0) {
             updateQuery = @"update %@ set passcode = null where objectId = \"%@\"";
             updateQuery = [NSString stringWithFormat:updateQuery, USER_TABLE_NAME, userId];
             
@@ -832,7 +842,7 @@ static sqlite3_stmt *statement = nil;
         int result = sqlite3_exec(database, [insertQuery UTF8String], NULL, NULL, &errMsg);
         if(result != SQLITE_OK) {
             NSLog(@"Failed to insert TRANSACTION record: %s", errMsg);
-    
+            
         } else {
             NSLog(@"Insert new TRANSACTION[%@, %@] successfully", categoryId, userId);
             result = YES;

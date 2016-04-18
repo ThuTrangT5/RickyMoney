@@ -18,8 +18,10 @@
 + (NSString *)encodeToBase64String:(UIImage *)image;
 + (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
 
-- (BOOL) createNewUserWithEmail:(NSString *) email password:(NSString*) password andUserId:(NSString*) userId;
-- (NSString*) createNewUserWithEmail:(NSString *) email password:(NSString*) password;
+- (void) updateCategoryWithData:(NSDictionary*) objects;
+- (void) updateCurrencyWithData:(NSDictionary*) objects;
+
+- (BOOL) createNewUserWithInfo:(User*) userInfo;
 - (NSString*) loginWithEmail:(NSString*) email andPassword:(NSString*) password;
 - (NSString*) getCurrentUserId;
 - (User*) getCurrentUserDetail;

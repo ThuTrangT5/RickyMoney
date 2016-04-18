@@ -21,6 +21,6 @@
 
 + (void) getCurrentUserDetailWithSuccessBlock: (void (^)(User *)) block;
 
-+ (void) createData;
++ (void) getRemoteData;
 
 @end

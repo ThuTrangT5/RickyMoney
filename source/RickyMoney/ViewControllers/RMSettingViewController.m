@@ -42,10 +42,14 @@
     currentUser = [[RMDataManagement getSharedInstance] getCurrentUserDetail];
     if (currentUser != nil) {
         NSString *currency = [NSString stringWithFormat:@"%@(%@)", currentUser.currencyName, currentUser.currencySymbol];
+        NSString *passcodeState = @"ON";
+        if (currentUser.passcode == nil || currentUser.passcode.length == 0) {
+            passcodeState = @"OFF";
+        }
         
         _userInfo[0] = @[@"fa-envelope-o",@"Email", currentUser.email];
         _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        _userInfo[2] = @[@"fa-lock", @"Passcode", currentUser.passcode == nil ? @"OFF" : @"ON"];
+        _userInfo[2] = @[@"fa-lock", @"Passcode", passcodeState];
         
         [self.tableView reloadData];
         
