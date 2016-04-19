@@ -12,12 +12,39 @@
 #import "TTAlertView.h"
 #import "RMDataManagement.h"
 #import "Currency.h"
+#import <DGActivityIndicatorView/DGActivityIndicatorView.h>
 
 static Firebase *myRootRef = nil;
+static DGActivityIndicatorView *activityIndicatorView = nil;
 
 #define NO_INTERNET_ERROR @"The Internet connection appears to be offline."
+#define ACTIVITY_INDICATOR_TAG 999
 
 @implementation RMFireBaseManagement
+
++ (void) showWaiting {
+    if (activityIndicatorView != nil) {
+        [self closeWaiting];
+    }
+    
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeDoubleBounce tintColor:RM_COLOR size:100];
+    activityIndicatorView.frame = topController.view.bounds;
+    activityIndicatorView.center = topController.view.center;
+    activityIndicatorView.tag = ACTIVITY_INDICATOR_TAG;
+    [topController.view addSubview:activityIndicatorView];
+    [activityIndicatorView startAnimating];
+}
+
++ (void) closeWaiting {
+    [activityIndicatorView stopAnimating];
+    [activityIndicatorView removeFromSuperview];
+    activityIndicatorView = nil;
+}
 
 + (Firebase*) RMRoofRef {
     if (myRootRef == nil) {
@@ -28,10 +55,13 @@ static Firebase *myRootRef = nil;
 }
 
 + (void) loginWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block {
+    [self showWaiting];
+    
     Firebase *root = [self RMRoofRef];
     [root authUser:email password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
+        [self closeWaiting];
+        
         if (error) {
-            
             NSString *errorMessage = [error.userInfo valueForKey:NSLocalizedDescriptionKey];
             if (error.code == FAuthenticationErrorNetworkError) {
                 // login Offline
@@ -82,8 +112,12 @@ static Firebase *myRootRef = nil;
 }
 
 + (void) signupWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block {
+    [self showWaiting];
+    
     Firebase *root = [self RMRoofRef];
     [root createUser:email password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+        [self closeWaiting];
+        
         if (error) {
             // There was an error creating the account
             TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Sign Up Error"
@@ -113,8 +147,12 @@ static Firebase *myRootRef = nil;
 }
 
 + (void) changPasswordForUser:(NSString*) email formOld:(NSString*) oldPass toNew:(NSString*) newPass successBlock:(void (^) (BOOL isSuccess)) block {
+    [self showWaiting];
+    
     Firebase *root = [self RMRoofRef];
     [root changePasswordForUser:email fromOld:oldPass toNew:newPass withCompletionBlock:^(NSError *error) {
+        [self closeWaiting];
+        
         if (error) {
             TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Sign Up Error"
                                                     andErrorMessage:[error.userInfo valueForKey:NSLocalizedDescriptionKey]];
@@ -148,6 +186,8 @@ static Firebase *myRootRef = nil;
 }
 
 + (void) updateCurrency:(NSString*) newCurrencyId forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block {
+    [self showWaiting];
+    
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     
     Firebase *root = [self RMRoofRef];
@@ -155,6 +195,8 @@ static Firebase *myRootRef = nil;
     Firebase *userRef = [root childByAppendingPath:userCurrencyPath];
     
     [userRef setValue:newCurrencyId withCompletionBlock:^(NSError *error, Firebase *ref) {
+        [self closeWaiting];
+        
         if (error != nil) {
             TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Update Currency" andErrorMessage: error.description];
             [alert show];
@@ -170,6 +212,8 @@ static Firebase *myRootRef = nil;
 }
 
 + (void) updateAvatar:(UIImage*) newAvatar forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block {
+    [self showWaiting];
+    
     NSString *imageString = [RMDataManagement encodeToBase64String:newAvatar];
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     
@@ -178,6 +222,8 @@ static Firebase *myRootRef = nil;
     Firebase *childRef = [root childByAppendingPath:path];
     
     [childRef setValue:imageString withCompletionBlock:^(NSError *error, Firebase *ref) {
+        [self closeWaiting];
+        
         if (error != nil) {
             TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Update Avatar" andErrorMessage:[error.userInfo valueForKey:NSLocalizedDescriptionKey]];
             [alert show];

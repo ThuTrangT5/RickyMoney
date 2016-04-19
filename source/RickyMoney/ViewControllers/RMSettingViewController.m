@@ -187,25 +187,24 @@
         newPasscode = @"";
     }
     
+    [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
+    
+    if (newPasscode.length > 0) {
+        // turn on passcode
+        [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:CURRENT_PASSCODE];
+        _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
+        
+    } else {
+        // turn off passcode
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_PASSCODE];
+        _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
+    }
+    
+    [self.tableView reloadData];
+    currentUser.passcode = newPasscode;
+    
     [RMFireBaseManagement updatePasscode:newPasscode forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
-        if (isSuccess) {
-            if (newPasscode.length > 0) {
-                // turn on passcode
-                [[NSUserDefaults standardUserDefaults] setValue:newPasscode forKey:CURRENT_PASSCODE];
-                _userInfo[2] = @[@"fa-key", @"Passcode", @"ON"];
-                
-            } else {
-                // turn off passcode
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_PASSCODE];
-                _userInfo[2] = @[@"fa-key", @"Passcode", @"OFF"];
-            }
-            
-            currentUser.passcode = newPasscode;
-            
-            [[RMDataManagement getSharedInstance] updatePasscode:newPasscode forUser:currentUser.objectId];
-            
-            [self.tableView reloadData];
-        }
+        NSLog(@"UpdatePasscode REMOTE %@", isSuccess ? @"OK" : @"FAIL");
     }];
 }
 
@@ -214,17 +213,31 @@
 - (void)optionViewsDoneWithSelectedData:(id)selectedData {
     Currency *currencyObject = (Currency *) selectedData;
     
-    if ([[RMDataManagement getSharedInstance] updateCurrency:currencyObject.objectId forUser:currentUser.objectId] == YES) {
-        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
-        
-        currentUser.currencyName = currencyObject.name;
-        currentUser.currencySymbol = currencyObject.symbol;
-        
-        _userInfo[1] = @[@"fa-money", @"Currency", currency];
-        [_tableView reloadData];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
-    }
+    //    if ([[RMDataManagement getSharedInstance] updateCurrency:currencyObject.objectId forUser:currentUser.objectId] == YES) {
+    //        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
+    //
+    //        currentUser.currencyName = currencyObject.name;
+    //        currentUser.currencySymbol = currencyObject.symbol;
+    //
+    //        _userInfo[1] = @[@"fa-money", @"Currency", currency];
+    //        [_tableView reloadData];
+    //
+    //        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
+    //    }
+    
+    [RMFireBaseManagement updateCurrency:currencyObject.objectId forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
+        if (isSuccess) {
+            NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
+            
+            currentUser.currencyName = currencyObject.name;
+            currentUser.currencySymbol = currencyObject.symbol;
+            
+            _userInfo[1] = @[@"fa-money", @"Currency", currency];
+            [_tableView reloadData];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
+        }
+    }];
 }
 
 #pragma mark- prepareForSegue
