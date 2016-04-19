@@ -8,9 +8,9 @@
 
 #import "RMTransactionDetailController.h"
 #import "UIImage+FontAwesome.h"
-
 #import "RMDataManagement.h"
 #import "RMObjects.h"
+#import "TTAlertView.h"
 
 #define DATE_FORMAT @"MMM dd, yyyy"
 
@@ -96,27 +96,24 @@
     [_amountField resignFirstResponder];
     
     // validate
-    BOOL isValid = YES;
+    NSString *message = nil;
     
     if (_itemField.text.length == 0) {
-        isValid = NO;
-    }
-    if (_amountField.text.length == 0) {
-        isValid = NO;
-    }
-    if (_categoryId == nil || _categoryId.length == 0) {
-        isValid = NO;
+        message = @"Please input item field.";
+        
+    } else if (_amountField.text.length == 0) {
+        message = @"Please input amount field.";
+        
+    } else if (_categoryId == nil || _categoryId.length == 0) {
+        message = @"Please select category field.";
     }
     
-    if (isValid) {
+    if (message == nil) {
         [self saveTransaction];
         
     } else {
-        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                    message:@"Something not right. Please check again!"
-                                   delegate:nil cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil]
-         show];
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Transaction" andErrorMessage: message];
+        [alert show];
     }
 }
 
