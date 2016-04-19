@@ -41,7 +41,7 @@
 - (void) getUserInfo {
     currentUser = [[RMDataManagement getSharedInstance] getCurrentUserDetail];
     if (currentUser != nil) {
-        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currentUser.currencyName, currentUser.currencySymbol];
+        NSString *currency = [NSString stringWithFormat:@"%@ (%@)", currentUser.currencyName, currentUser.currencySymbol];
         NSString *passcodeState = @"ON";
         if (currentUser.passcode == nil || currentUser.passcode.length == 0) {
             passcodeState = @"OFF";
@@ -207,22 +207,10 @@
 
 - (void)optionViewsDoneWithSelectedData:(id)selectedData {
     Currency *currencyObject = (Currency *) selectedData;
-    
-    //    if ([[RMDataManagement getSharedInstance] updateCurrency:currencyObject.objectId forUser:currentUser.objectId] == YES) {
-    //        NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
-    //
-    //        currentUser.currencyName = currencyObject.name;
-    //        currentUser.currencySymbol = currencyObject.symbol;
-    //
-    //        _userInfo[1] = @[@"fa-money", @"Currency", currency];
-    //        [_tableView reloadData];
-    //
-    //        [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCurrency object:currencyObject];
-    //    }
-    
+
     [RMFireBaseManagement updateCurrency:currencyObject.objectId forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
         if (isSuccess) {
-            NSString *currency = [NSString stringWithFormat:@"%@(%@)", currencyObject.name, currencyObject.symbol];
+            NSString *currency = [NSString stringWithFormat:@"%@ (%@)", currencyObject.name, currencyObject.symbol];
             
             currentUser.currencyName = currencyObject.name;
             currentUser.currencySymbol = currencyObject.symbol;
