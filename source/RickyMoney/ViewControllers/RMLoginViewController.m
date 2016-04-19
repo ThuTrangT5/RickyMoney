@@ -106,6 +106,14 @@
                 [[NSUserDefaults standardUserDefaults] setValue:_passwordField.text forKey:LOGIN_PASSWORD];
                 
                 [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+                
+                // get Account detail to save into local DB
+                [RMFireBaseManagement getCurrentUserDetailWithSuccessBlock:^(User *user) {
+                    user.password = _passwordField.text;
+                    [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
+                    NSLog(@"DONE sace Account detail offline");
+                }];
+                
             }
         }];
     }

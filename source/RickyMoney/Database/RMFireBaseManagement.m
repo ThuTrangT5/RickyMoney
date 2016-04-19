@@ -98,14 +98,18 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
             
             [[NSUserDefaults standardUserDefaults] setValue:authData.uid forKey:CURRENT_USER_ID];
             
-            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
-                user.password = password;
-                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
-                
-                if (block != nil) {
-                    block(authData.uid);
-                }
-            }];
+            if (block!= nil) {
+                block(authData.uid);
+            }
+            
+//            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
+//                user.password = password;
+//                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
+//                
+//                if (block != nil) {
+//                    block(authData.uid);
+//                }
+//            }];
             
         }
     }];
@@ -291,8 +295,9 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     }];
 }
 
+
+// get account detail to store in local database
 + (void) getCurrentUserDetailWithSuccessBlock: (void (^)(User *)) block {
-    [self showWaiting];
     
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     
@@ -301,7 +306,6 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     Firebase *usersRef = [root childByAppendingPath: userPath];
     
     [usersRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        [self closeWaiting];
         
         User *user = nil;
         if (snapshot == nil) {
