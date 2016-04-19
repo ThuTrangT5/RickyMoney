@@ -146,6 +146,36 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     }];
 }
 
++ (void) resetPasswordForUser:(NSString*) email {
+    [self showWaiting];
+    Firebase *root = [self RMRoofRef];
+    
+    [root resetPasswordForUser:email withCompletionBlock:^(NSError *error) {
+        [self closeWaiting];
+        
+        NSString *message = nil;
+        if (error) {
+            switch (error.code) {
+                case FAuthenticationErrorInvalidEmail:
+                case FAuthenticationErrorUserDoesNotExist:
+                    message = @"The specified user account does not exist.";
+                    break;
+                    
+                default:
+                    message = [NSString stringWithFormat:@"Error resetting password: %@", error.description];
+                    break;
+            }
+            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Reset Password" andErrorMessage: message];
+            [alert show];
+            
+        } else {
+            message = @"Password reset email sent successfully.\nPlease check your email.";
+            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Reset Password" andMessage: message];
+            [alert show];
+        }
+    }];
+}
+
 + (void) changPasswordForUser:(NSString*) email formOld:(NSString*) oldPass toNew:(NSString*) newPass successBlock:(void (^) (BOOL isSuccess)) block {
     [self showWaiting];
     

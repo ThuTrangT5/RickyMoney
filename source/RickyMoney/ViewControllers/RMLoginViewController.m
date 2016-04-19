@@ -47,7 +47,7 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated {   
+- (void)viewDidAppear:(BOOL)animated {
     _emailField.text = @"";
     _passwordField.text = @"";
     
@@ -134,9 +134,24 @@
 - (IBAction)twitterLoginAction:(id)sender {
 }
 
+- (IBAction)resetPassowrd:(id)sender {
+    if ([self NSStringIsValidEmail:_emailField.text] == NO) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Reset Password" andMessage:@"Email is invalid"];
+        [alert show];
+        
+    } else {
+        [RMFireBaseManagement resetPasswordForUser:_emailField.text];
+    }
+}
+
 #pragma mark- Validate
 
--(BOOL) NSStringIsValidEmail:(NSString *)checkString{
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString {
+    
+    if (checkString == nil || checkString.length == 0) {
+        return NO;
+    }
+    
     BOOL stricterFilter = NO;
     NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
     NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
