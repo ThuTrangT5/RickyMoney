@@ -84,7 +84,7 @@
         [self addSubview:_contentView];
     }
     
-    if (_titleField == nil) {
+    if ( _titleAlert != nil && _titleAlert.length > 0 && _titleField == nil) {
         _titleField = [self createTitleView];
         [_contentView addSubview:_titleField];
     }
@@ -103,6 +103,21 @@
     [_titleField setText:_titleAlert];
     [_messageField setText:_messageAlert];\
     [_cancelButton setTitle:_cancelButtonTitle forState:UIControlStateNormal];
+    
+    // update fit size
+    CGFloat fixedWidth = _messageField.frame.size.width;
+    CGSize newSize = [_messageField sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = _messageField.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    _messageField.frame = newFrame;
+    
+    CGRect frame = _contentView.frame;
+    frame.size.height = _titleField.frame.size.height + newFrame.size.height + 50;
+    _contentView.frame = frame;
+    
+    frame = _cancelButton.frame;
+    frame.origin.y = newFrame.origin.y + newFrame.size.height;
+    _cancelButton.frame = frame;
     
 }
 
@@ -152,8 +167,8 @@
 - (UITextView*) createMessageView {
     CGRect frame = _contentView.bounds;
     frame.size.height -= (50 + 50);
-    frame.origin.y = 50;
-    UITextView *mv = [[UITextView alloc] initWithFrame:frame];
+    frame.origin.y = (_titleField == nil) ? 0 : 50;
+    UITextView *mv = [[UITextView alloc] initWithFrame:frame];    
     mv.textAlignment = NSTextAlignmentCenter;
     mv.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
     mv.editable = NO;

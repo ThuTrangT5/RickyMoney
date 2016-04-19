@@ -47,7 +47,7 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {   
     _emailField.text = @"";
     _passwordField.text = @"";
     
