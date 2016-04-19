@@ -70,29 +70,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    Budget *budget = (Budget*) [_budgetData objectAtIndex:indexPath.row];
     
-    id cellData = [_budgetData objectAtIndex:indexPath.row];
+    UIImageView *icon = (UIImageView*)[cell viewWithTag:1];
+    UIImage *img = [RMDataManagement decodeBase64ToImage: budget.categoryIcon];
+    icon.image = img;
     
-    NSString *catName = @"";
-    NSString *catImg = @"";
-    float catBudget = 0.0f;
-    
-    if ([cellData isKindOfClass:[Budget class]] == YES) {
-        Budget *budget = (Budget*)cellData;
-        catName = budget.categoryName;
-        catImg = budget.categoryIcon;
-        catBudget = budget.budget;
-        
-    }
-    
-    UITextField *budgetField = (UITextField*) [cell viewWithTag:3];
-    
-    NSString *imageFile = [[NSBundle mainBundle] pathForResource:catImg ofType:@"png"];
-    [((UIImageView*)[cell viewWithTag:1]) setImage:[UIImage imageWithContentsOfFile:imageFile]];
-    [((UILabel*) [cell viewWithTag:2]) setText:catName];
+    [((UILabel*) [cell viewWithTag:2]) setText:budget.categoryName];
     [((UILabel*) [cell viewWithTag:4]) setText:currency];
     
-    budgetField.text = [NSString stringWithFormat:@"%.2f", catBudget];
+    UITextField *budgetField = (UITextField*) [cell viewWithTag:3];
+    budgetField.text = [NSString stringWithFormat:@"%.2f", budget.budget];
     budgetField.delegate = self;
     budgetField.inputAccessoryView = doneToolbar;
     
