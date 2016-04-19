@@ -42,19 +42,19 @@
     tap.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:tap];
     
-    // testing
-    _emailField.text = @"thutrangitmt@gmail.com";
-    _passwordField.text = @"111111";
-    
     // download remote data
     [RMFireBaseManagement getRemoteData];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    _emailField.text = @"";
+    _passwordField.text = @"";
     
-    NSString *loginedUserId = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_USER_ID];
-    if (loginedUserId != nil) {
+    NSString *loginEmail = [[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_EMAIL];
+    NSString *loginPassword = [[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_PASSWORD];
+    
+    if (loginEmail != nil && loginPassword != nil) {
         // check time out login
         NSString *loginDate = [[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_DATE];
         if (loginDate != nil) {
@@ -70,9 +70,17 @@
             
             long days = [difference day];
             if (days < TIMEOUT_LOGIN_DAYS) {
-                NSLog(@"Already Logined with id = %@", loginedUserId);
-                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
+                NSLog(@"Already Logined with %@/%@", loginEmail, loginPassword);
+                
+                _emailField.text = loginEmail;
+                _passwordField.text = loginPassword;
+                [self loginAction:nil];
+                
+                //                [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
             }
+        } else {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_EMAIL];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_PASSWORD];
         }
     }
 }
@@ -94,6 +102,8 @@
                 
                 [[NSUserDefaults standardUserDefaults] setValue:loginedDate forKey:LOGIN_DATE];
                 [[NSUserDefaults standardUserDefaults] setValue:userId forKey:CURRENT_USER_ID];
+                [[NSUserDefaults standardUserDefaults] setValue:_emailField.text forKey:LOGIN_EMAIL];
+                [[NSUserDefaults standardUserDefaults] setValue:_passwordField.text forKey:LOGIN_PASSWORD];
                 
                 [(AppDelegate*)[[UIApplication sharedApplication] delegate] loginSuccess];
             }

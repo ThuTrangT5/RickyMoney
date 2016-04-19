@@ -149,17 +149,12 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    //    if ([[RMDataManagement getSharedInstance] updateAvatar:image forUser:currentUser.objectId] == YES) {
-    //        [_profileField setBackgroundImage:image forState:UIControlStateNormal];
-    //    }
-    
-    [RMFireBaseManagement updateAvatar:image forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
-        [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        [RMFireBaseManagement updateAvatar:image forCurrentUserWithSuccessBlock:^(BOOL isSuccess) {
+            [_profileField setBackgroundImage:image forState:UIControlStateNormal];
+        }];
     }];
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 

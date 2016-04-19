@@ -13,7 +13,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.    
+    // Override point for customization after application launch.
     
     return YES;
 }
@@ -50,7 +50,7 @@
 
 #pragma Login & Logout
 
-- (void) loginSuccess {    
+- (void) loginSuccess {
     [UIView transitionWithView:self.window
                       duration:0.5
                        options:UIViewAnimationOptionTransitionCurlUp
@@ -66,7 +66,9 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey: LOGIN_DATE];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey: CURRENT_USER_ID];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey: CURRENT_PASSCODE];
-
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_EMAIL];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGIN_PASSWORD];
+    
     [UIView transitionWithView:self.window
                       duration:0.5
                        options:UIViewAnimationOptionTransitionCrossDissolve

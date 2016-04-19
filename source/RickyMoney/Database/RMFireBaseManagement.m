@@ -262,6 +262,8 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 }
 
 + (void) getCurrentUserDetailWithSuccessBlock: (void (^)(User *)) block {
+    [self showWaiting];
+    
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     
     Firebase *root = [self RMRoofRef];
@@ -269,6 +271,8 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     Firebase *usersRef = [root childByAppendingPath: userPath];
     
     [usersRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [self closeWaiting];
+        
         User *user = nil;
         if (snapshot == nil) {
             // get user infor offline
