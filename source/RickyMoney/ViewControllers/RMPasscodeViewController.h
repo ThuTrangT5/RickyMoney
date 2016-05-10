@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <THPinViewController/THPinViewController.h>
 
 @class RMPasscodeViewController;
 

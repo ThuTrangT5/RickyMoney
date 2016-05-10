@@ -102,14 +102,14 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
                 block(authData.uid);
             }
             
-//            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
-//                user.password = password;
-//                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
-//                
-//                if (block != nil) {
-//                    block(authData.uid);
-//                }
-//            }];
+            //            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
+            //                user.password = password;
+            //                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
+            //
+            //                if (block != nil) {
+            //                    block(authData.uid);
+            //                }
+            //            }];
             
         }
     }];
@@ -180,6 +180,12 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     }];
 }
 
++ (void) logout {
+    Firebase *root = [self RMRoofRef];
+    [root unauth];
+    
+}
+
 + (void) changPasswordForUser:(NSString*) email formOld:(NSString*) oldPass toNew:(NSString*) newPass successBlock:(void (^) (BOOL isSuccess)) block {
     [self showWaiting];
     
@@ -227,6 +233,8 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     Firebase *root = [self RMRoofRef];
     NSString *userCurrencyPath = [NSString stringWithFormat: @"users/%@/info/currencyId", userId];
     Firebase *userRef = [root childByAppendingPath:userCurrencyPath];
+    
+    userRef set
     
     [userRef setValue:newCurrencyId withCompletionBlock:^(NSError *error, Firebase *ref) {
         [self closeWaiting];

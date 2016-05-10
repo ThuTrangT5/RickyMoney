@@ -13,6 +13,7 @@
 #import "RMDataManagement.h"
 #import "TTAlertView.h"
 #import "MDTableViewCell.h"
+#import "RMFireBaseManagement.h"
 
 #import "RickyMoney-Swift.h"
 
@@ -163,6 +164,7 @@
         } else if (indexPath.row == 4) { // about
             
         } else if (indexPath.row == 5) { // sign out
+            [RMFireBaseManagement logout];
             [(AppDelegate*)[[UIApplication sharedApplication] delegate] logoutSuccess];
             
         }

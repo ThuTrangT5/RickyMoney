@@ -8,6 +8,7 @@
 
 #import "RMBudgetEditViewController.h"
 #import "RMDataManagement.h"
+#import "TTAlertView.h"
 
 @implementation RMBudgetEditViewController {
     NSString *currency;
@@ -143,5 +144,8 @@
         
         [[RMDataManagement getSharedInstance] createNewBudget:budget forCategory:catId];
     }
+    
+    TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Budget" andMessage: @"Save successfully!"];
+    [alert show];
 }
 @end
