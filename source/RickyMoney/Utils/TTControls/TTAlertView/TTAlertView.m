@@ -66,6 +66,11 @@
         _titleAlert = title;
         _messageAlert = message;
         _mainColor = [UIColor redColor];
+        
+        // check for error network
+        if ([message containsString:@"NETWORK_ERROR"]) {
+            message = @"This function require internet connection.";
+        }
     }
     
     return self;

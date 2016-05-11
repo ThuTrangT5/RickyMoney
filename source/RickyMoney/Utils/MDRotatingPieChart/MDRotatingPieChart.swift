@@ -134,7 +134,7 @@ class MDRotatingPieChart: UIControl {
         var currentStartAngle:CGFloat = 0
         var angleSum:CGFloat = 0
         
-        for (var index = 0; index < datasource?.numberOfSlices(); index += 1) {
+        for index in 0...datasource.numberOfSlices() {
             prepareSlice(&angleSum, currentStartAngle: &currentStartAngle, total: total, index: index)
         }
     }
@@ -451,7 +451,7 @@ class MDRotatingPieChart: UIControl {
      */
     func formatFromDisplayValueType(slice:Slice, displayType:DisplayValueType) -> String {
         
-        var toRet = ""
+        var toRet = slice.label
         
         switch(displayType) {
         case .Value :
@@ -461,9 +461,6 @@ class MDRotatingPieChart: UIControl {
             toRet = (properties.nf.stringFromNumber(slice.percent)?.stringByAppendingString("%"))!
             break
         case .Label :
-            toRet = slice.label
-            break
-        default :
             toRet = slice.label
             break
         }

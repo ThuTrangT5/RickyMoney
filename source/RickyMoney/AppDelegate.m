@@ -36,6 +36,7 @@
     if (passcode != nil && passcode.length > 0) {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         RMPasscodeViewController *vc = (RMPasscodeViewController*) [mainStoryboard instantiateViewControllerWithIdentifier:PASSCODE_VIEW_STORYBOARD_KEY];
+        vc.currentPasscode = [[NSUserDefaults standardUserDefaults] valueForKey:CURRENT_PASSCODE];
         [vc displayView];
     }
 }

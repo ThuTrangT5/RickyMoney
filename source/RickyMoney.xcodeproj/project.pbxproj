@@ -25,6 +25,8 @@
 		6A2037F31C3BC3BD00F680C7 /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2037F21C3BC3BD00F680C7 /* CZPickerView.m */; };
 		6A22EE9A1CB0F597002B72FC /* RMOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */; };
 		6A22EE9F1CB166B8002B72FC /* RMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */; };
+		6A4508991CE2EBCF00F763F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4508981CE2EBCF00F763F7 /* SystemConfiguration.framework */; };
+		6A45089C1CE2ECE400F763F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A45089B1CE2ECE400F763F7 /* Reachability.m */; };
 		6A6450C31CBF6476000A892A /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A6450C21CBF6476000A892A /* bg1.jpg */; };
 		6A6450C51CBF6680000A892A /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A6450C41CBF6680000A892A /* bg2.jpg */; };
 		6A6450D11CBF874B000A892A /* MDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6450C81CBF874B000A892A /* MDCollectionViewCell.m */; };
@@ -121,6 +123,9 @@
 		6A22EE991CB0F597002B72FC /* RMOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMOptionsViewController.m; sourceTree = "<group>"; };
 		6A22EE9D1CB166B8002B72FC /* RMChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMChangePasswordViewController.h; sourceTree = "<group>"; };
 		6A22EE9E1CB166B8002B72FC /* RMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMChangePasswordViewController.m; sourceTree = "<group>"; };
+		6A4508981CE2EBCF00F763F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6A45089A1CE2ECE400F763F7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6A45089B1CE2ECE400F763F7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6A6450C21CBF6476000A892A /* bg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.jpg; sourceTree = "<group>"; };
 		6A6450C41CBF6680000A892A /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 		6A6450C71CBF874B000A892A /* MDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCollectionViewCell.h; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4508991CE2EBCF00F763F7 /* SystemConfiguration.framework in Frameworks */,
 				6AFAF5CD1CB4CA3B00C166BC /* libsqlite3.tbd in Frameworks */,
 				E06F6608DEDF55E046A60678 /* Pods_RickyMoney.framework in Frameworks */,
 			);
@@ -334,6 +340,8 @@
 				6A2037EF1C3BC3BD00F680C7 /* CZPicker */,
 				6AC020431C4CDEF6001A1DCA /* MDRotatingPieChart */,
 				18CAE96E1B9B4DD400E0185D /* RMConstant.h */,
+				6A45089A1CE2ECE400F763F7 /* Reachability.h */,
+				6A45089B1CE2ECE400F763F7 /* Reachability.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 		71F895E18A22AF386955E608 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A4508981CE2EBCF00F763F7 /* SystemConfiguration.framework */,
 				6AFAF5CC1CB4CA3B00C166BC /* libsqlite3.tbd */,
 				D78B0670AB5E11E3B5B48698 /* Pods_RickyMoney.framework */,
 			);
@@ -745,6 +754,7 @@
 				6A6451171CBF9632000A892A /* TTDatePickerView.m in Sources */,
 				6AA88C2D1CB79E4000EB4D6A /* Budget.m in Sources */,
 				6A6451101CBF9632000A892A /* JTCalendarPageView.m in Sources */,
+				6A45089C1CE2ECE400F763F7 /* Reachability.m in Sources */,
 				6A0E78D11CC0D21F00C5D715 /* RMFireBaseManagement.m in Sources */,
 				6AC0204E1C4CE0D8001A1DCA /* MDRotatingPieChartDelegate.swift in Sources */,
 				6AC0204D1C4CE0D8001A1DCA /* MDRotatingPieChart.swift in Sources */,
@@ -829,7 +839,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -872,7 +882,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -899,8 +909,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -920,8 +930,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thutrangitmt@gmail.com (6U9XK92U65)";
 				INFOPLIST_FILE = RickyMoney/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

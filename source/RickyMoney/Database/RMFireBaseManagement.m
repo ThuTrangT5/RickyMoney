@@ -13,9 +13,11 @@
 #import "RMDataManagement.h"
 #import "Currency.h"
 #import <DGActivityIndicatorView/DGActivityIndicatorView.h>
+#import "Reachability.h"
 
 static Firebase *myRootRef = nil;
 static DGActivityIndicatorView *activityIndicatorView = nil;
+static BOOL OFFLINE_STATUS = YES;
 
 #define NO_INTERNET_ERROR @"The Internet connection appears to be offline."
 #define ACTIVITY_INDICATOR_TAG 999
@@ -49,6 +51,33 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 + (Firebase*) RMRoofRef {
     if (myRootRef == nil) {
         myRootRef = [[Firebase alloc] initWithUrl: RM_FIREBASE_URL];
+        
+        // Allocate a reachability object
+        Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+        
+        // Set the blocks
+        reach.reachableBlock = ^(Reachability*reach) {
+            // keep in mind this is called on a background thread
+            // and if you are updating the UI it needs to happen
+            // on the main thread, like this:
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"REACHABLE!");
+            });
+        };
+        
+        reach.unreachableBlock = ^(Reachability*reach){
+            NSLog(@"UNREACHABLE!");
+            OFFLINE_STATUS = YES;
+        };
+        
+        reach.reachableBlock = ^(Reachability*reach){
+            NSLog(@"REACHABLE!");
+            OFFLINE_STATUS = NO;
+        };
+        
+        // Start the notifier, which will cause the reachability object to retain itself!
+        [reach startNotifier];
     }
     
     return myRootRef;
@@ -56,6 +85,21 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 
 + (void) loginWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block {
     [self showWaiting];
+    
+    if (OFFLINE_STATUS) {
+        [self closeWaiting];
+        
+        NSString *userId = [[RMDataManagement getSharedInstance] loginWithEmail:email andPassword:password];
+        if (userId == nil) {
+            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Login Error" andErrorMessage: @"Your email or password is not correct."];
+            [alert show];
+            
+        } else if (block != nil) {
+            block(userId);
+        }
+        
+        return;
+    }
     
     Firebase *root = [self RMRoofRef];
     [root authUser:email password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
@@ -69,6 +113,7 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
                 if (userId == nil) {
                     TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Login Error" andErrorMessage: @"Your email or password is not correct."];
                     [alert show];
+                    
                 } else if (block != nil) {
                     block(userId);
                 }
@@ -101,21 +146,18 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
             if (block!= nil) {
                 block(authData.uid);
             }
-            
-            //            [self getCurrentUserDetailWithSuccessBlock:^(User *user) {
-            //                user.password = password;
-            //                [[RMDataManagement getSharedInstance] createNewUserWithInfo:user];
-            //
-            //                if (block != nil) {
-            //                    block(authData.uid);
-            //                }
-            //            }];
-            
         }
     }];
 }
 
 + (void) signupWithEmail:(NSString *) email andPassword:(NSString*) password successBlock: (void (^)(NSString *)) block {
+    
+    if (OFFLINE_STATUS) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Sign Up Error" andErrorMessage: @"This function require internet connection."];
+        [alert show];
+        return;
+    }
+    
     [self showWaiting];
     
     Firebase *root = [self RMRoofRef];
@@ -151,6 +193,12 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 }
 
 + (void) resetPasswordForUser:(NSString*) email {
+    if (OFFLINE_STATUS) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Reset Password Error" andErrorMessage: @"This function require internet connection."];
+        [alert show];
+        return;
+    }
+    
     [self showWaiting];
     Firebase *root = [self RMRoofRef];
     
@@ -187,6 +235,12 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 }
 
 + (void) changPasswordForUser:(NSString*) email formOld:(NSString*) oldPass toNew:(NSString*) newPass successBlock:(void (^) (BOOL isSuccess)) block {
+    if (OFFLINE_STATUS) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Password Error" andErrorMessage: @"This function require internet connection."];
+        [alert show];
+        return;
+    }
+    
     [self showWaiting];
     
     Firebase *root = [self RMRoofRef];
@@ -194,7 +248,8 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
         [self closeWaiting];
         
         if (error) {
-            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Sign Up Error"
+            
+            TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Password Error"
                                                     andErrorMessage:[error.userInfo valueForKey:NSLocalizedDescriptionKey]];
             [alert show];
             
@@ -226,6 +281,12 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
 }
 
 + (void) updateCurrency:(NSString*) newCurrencyId forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block {
+    if (OFFLINE_STATUS) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Change Currency Error" andErrorMessage: @"This function require internet connection."];
+        [alert show];
+        return;
+    }
+    
     [self showWaiting];
     
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
@@ -233,8 +294,6 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     Firebase *root = [self RMRoofRef];
     NSString *userCurrencyPath = [NSString stringWithFormat: @"users/%@/info/currencyId", userId];
     Firebase *userRef = [root childByAppendingPath:userCurrencyPath];
-    
-    userRef set
     
     [userRef setValue:newCurrencyId withCompletionBlock:^(NSError *error, Firebase *ref) {
         [self closeWaiting];
@@ -253,10 +312,29 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     }];
 }
 
++ (UIImage*) resizeImage:(UIImage*) image toNewSize:(CGSize) newSize {
+    float x = (newSize.width -  image.size.width) / 2.0;
+    float y = (newSize.height -  image.size.height) / 2.0;
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(x, y, newSize.width, newSize.height)];
+    UIImage *newImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImg;
+}
+
 + (void) updateAvatar:(UIImage*) newAvatar forCurrentUserWithSuccessBlock: (void (^)(BOOL)) block {
+    if (OFFLINE_STATUS) {
+        TTAlertView *alert = [[TTAlertView alloc] initWithTitle:@"Update Avatar Error" andErrorMessage: @"This function require internet connection."];
+        [alert show];
+        return;
+    }
+    
     [self showWaiting];
     
-    NSString *imageString = [RMDataManagement encodeToBase64String:newAvatar];
+    UIImage *resizeAvatar = [self resizeImage:newAvatar toNewSize: CGSizeMake(200, 200)];
+    NSString *imageString = [RMDataManagement encodeToBase64String:resizeAvatar];
+    //    NSString *imageString = [RMDataManagement encodeToBase64String:newAvatar];
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     
     Firebase *root = [self RMRoofRef];
@@ -284,6 +362,14 @@ static DGActivityIndicatorView *activityIndicatorView = nil;
     NSString *userId = [[RMDataManagement getSharedInstance] getCurrentUserId];
     UIDevice *device = [UIDevice currentDevice];
     NSString  *uuid = [[device identifierForVendor]UUIDString];
+    
+    if (OFFLINE_STATUS) {
+        BOOL resultoff = [[RMDataManagement getSharedInstance] updatePasscode:passcode forUser:userId];
+        if (block != nil) {
+            block(resultoff);
+        }
+        return;
+    }
     
     Firebase *root = [self RMRoofRef];
     NSString *passcodePath = [NSString stringWithFormat: @"users/%@/passcode/%@", userId, uuid];
