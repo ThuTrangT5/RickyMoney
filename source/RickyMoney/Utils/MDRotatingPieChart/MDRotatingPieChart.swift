@@ -134,7 +134,11 @@ class MDRotatingPieChart: UIControl {
         var currentStartAngle:CGFloat = 0
         var angleSum:CGFloat = 0
         
-        for index in 0...datasource.numberOfSlices() {
+        print("number of slice = \(datasource.numberOfSlices())")
+        
+        let numberSlices = datasource.numberOfSlices() - 1
+        
+        for index in 0...numberSlices {
             prepareSlice(&angleSum, currentStartAngle: &currentStartAngle, total: total, index: index)
         }
     }
